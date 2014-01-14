@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/jp.ac.kyushu.iarch.model/src" modelPluginID="jp.ac.kyushu.iarch.model"
+    modelName="Behavior" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>Behavior.ecore</foreignModel>
+  <genPackages prefix="Behavior" disposableProviderFactory="true" ecorePackage="Behavior.ecore#/">
+    <genClasses image="false" ecoreClass="Behavior.ecore#//BehavioralFeature">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//BehavioralFeature/method"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//Operation"/>
+    <genClasses image="false" ecoreClass="Behavior.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Behavior.ecore#//NamedElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Behavior.ecore#//NamedElement/Archpoint"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Behavior.ecore#//Behavior">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Behavior/context"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Behavior/specification"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Behavior/redefinedBehavior"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Behavior.ecore#//BehavioredClassifier">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//BehavioredClassifier/classifierBehavior"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Behavior.ecore#//BehavioredClassifier/ownedBehavior"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//BehavioredClassifier/include"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Behavior.ecore#//Classifier">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Classifier/inheritedMember"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Classifier/redefinedClassifier"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Classifier/general"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Behavior.ecore#//Classifier/isAbstract"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Classifier/feature"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//Actor"/>
+    <genClasses ecoreClass="Behavior.ecore#//Class">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Class/nestedClassifier"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//Namespace"/>
+    <genClasses image="false" ecoreClass="Behavior.ecore#//RedefinableElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//RedefinableElement/redefinitionContext"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//RedefinableElement/redefinableELement"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Behavior.ecore#//Element">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Behavior.ecore#//Element/ownedComment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Element/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Element/ownedElement"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//Message">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Behavior.ecore#//Message/interaction"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Message/receiveEvent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Message/sendEvent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Message/connector"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Behavior.ecore#//Message/MessageOrder"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//Lifeline">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Lifeline/coveredBy"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Behavior.ecore#//Lifeline/interaction"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Lifeline/endby"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Lifeline/actor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Behavior.ecore#//Lifeline/behaviorExecution"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//Interaction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Behavior.ecore#//Interaction/fragment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Behavior.ecore#//Interaction/object"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Behavior.ecore#//Interaction/destructionevent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Behavior.ecore#//Interaction/lifeline"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Behavior.ecore#//Interaction/message"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Behavior.ecore#//InteractionFragment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//InteractionFragment/covered"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Behavior.ecore#//InteractionFragment/enclosingInteraction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Behavior.ecore#//InteractionFragment/generalOrdering"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//Comment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Comment/annotatedElement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Behavior.ecore#//Comment/body"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Behavior.ecore#//Feature">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Feature/featuringClassifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Behavior.ecore#//Feature/isStatic"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//OccurrenceSpecification">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//OccurrenceSpecification/toAfter"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//OccurrenceSpecification/toBefore"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Behavior.ecore#//ExecutionSpecification">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//ExecutionSpecification/start"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//ExecutionSpecification/finish"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//MessageEnd">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//MessageEnd/message"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//Connector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//Connector/contract"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Behavior.ecore#//Event"/>
+    <genClasses ecoreClass="Behavior.ecore#//CreatEvent"/>
+    <genClasses ecoreClass="Behavior.ecore#//DestructionEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//DestructionEvent/end"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Behavior.ecore#//DestructionEvent/interaction"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//ExecutionEvent"/>
+    <genClasses ecoreClass="Behavior.ecore#//MessageOccurreceSpecification">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//MessageOccurreceSpecification/event"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//ExecutionOccurrenceSpecification">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//ExecutionOccurrenceSpecification/execution"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//GeneralOrdering">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//GeneralOrdering/before"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//GeneralOrdering/after"/>
+    </genClasses>
+    <genClasses ecoreClass="Behavior.ecore#//BehaviorExecutionSpecification"/>
+    <genClasses ecoreClass="Behavior.ecore#//Object"/>
+  </genPackages>
+</genmodel:GenModel>

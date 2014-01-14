@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" xmlns:umlClass="http://umlClass/1.0">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="ClassDiagram" name="Class" snapToGrid="true" pictogramLinks="/0/@children.0/@link /0/@children.0/@children.1/@link /0/@children.1/@link /0/@children.1/@children.1/@link /0/@children.0/@children.3/@link /0/@children.1/@children.3/@link /0/@children.1/@children.4/@link /0/@children.1/@children.5/@link /0/@children.1/@children.6/@link /0/@children.1/@children.7/@link /0/@connections.0/@link /0/@children.1/@children.8/@link" version="0.10.0">
+    <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.3" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="100" height="52" x="1" y="70" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/1"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.0"/>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.2" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="100" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="100" height="20" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Observer"/>
+        <link businessObjects="/1"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.2" lineWidth="2" filled="false" transparency="0.0">
+          <points y="32"/>
+          <points x="100" y="32"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="96" height="20" x="2" y="32" font="/0/@fonts.1" value="update()"/>
+        <link businessObjects="/1/@ownedOperation.0"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:RoundedRectangle" background="/0/@colors.3" foreground="/0/@colors.2" lineWidth="2" transparency="0.0" width="161" height="152" x="150" y="20" cornerHeight="5" cornerWidth="5"/>
+      <link businessObjects="/2"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.0"/>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <anchors xsi:type="pi:ChopboxAnchor"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.2" lineWidth="2" filled="false" transparency="0.0">
+          <points y="20"/>
+          <points x="161" y="20"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="161" height="20" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Subject"/>
+        <link businessObjects="/2"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.2" lineWidth="2" filled="false" transparency="0.0">
+          <points y="32"/>
+          <points x="161" y="32"/>
+        </graphicsAlgorithm>
+      </children>
+      <children visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="157" height="20" x="2" y="32" font="/0/@fonts.1" value="update()"/>
+        <link businessObjects="/2/@ownedOperation.0"/>
+      </children>
+      <children visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="157" height="20" x="2" y="52" font="/0/@fonts.1" value="removeObserver()"/>
+        <link businessObjects="/2/@ownedOperation.1"/>
+      </children>
+      <children visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="157" height="20" x="2" y="72" font="/0/@fonts.1" value="_notify()"/>
+        <link businessObjects="/2/@ownedOperation.2"/>
+      </children>
+      <children visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="157" height="20" x="2" y="92" font="/0/@fonts.1" value="getState()"/>
+        <link businessObjects="/2/@ownedOperation.3"/>
+      </children>
+      <children visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="157" height="20" x="2" y="112" font="/0/@fonts.1" value="setState()"/>
+        <link businessObjects="/2/@ownedOperation.4"/>
+      </children>
+      <children visible="true" active="true">
+        <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" lineWidth="1" filled="false" transparency="0.0" width="157" height="20" x="2" y="132" font="/0/@fonts.1" value="addObserver()"/>
+        <link businessObjects="/2/@ownedOperation.5"/>
+      </children>
+    </children>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.0/@anchors.0" end="/0/@children.1/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.2" lineWidth="2" filled="true" transparency="0.0">
+        <points x="50"/>
+        <points x="100" y="100"/>
+        <points y="100"/>
+      </graphicsAlgorithm>
+      <link businessObjects="/3"/>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.2" lineWidth="2" filled="false" transparency="0.0">
+          <points x="-15" y="10"/>
+          <points/>
+          <points x="-15" y="-10"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <colors red="227" green="238" blue="249"/>
+    <colors red="255" green="255" blue="255"/>
+    <colors red="98" green="131" blue="167"/>
+    <colors red="187" green="218" blue="247"/>
+    <colors/>
+    <fonts name="Arial" size="8" bold="true"/>
+    <fonts name="Arial" size="8" italic="true" bold="true"/>
+    <fonts name="Arial" size="8"/>
+  </pi:Diagram>
+  <umlClass:Class name="Observer" Archpoint="true">
+    <ownedOperation name="update"/>
+  </umlClass:Class>
+  <umlClass:Class name="Subject" Archpoint="true">
+    <ownedOperation name="update" Archpoint="true"/>
+    <ownedOperation name="removeObserver" Archpoint="true"/>
+    <ownedOperation name="_notify" Archpoint="true"/>
+    <ownedOperation name="getState" Archpoint="true"/>
+    <ownedOperation name="setState" Archpoint="true"/>
+    <ownedOperation name="addObserver" Archpoint="true"/>
+  </umlClass:Class>
+  <umlClass:Association name="newAssociation" Archpoint="true"/>
+</xmi:XMI>

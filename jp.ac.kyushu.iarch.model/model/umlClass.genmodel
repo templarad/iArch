@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/jp.ac.kyushu.iarch.model/src" modelPluginID="jp.ac.kyushu.iarch.model"
+    modelName="UmlClass" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>umlClass.ecore</foreignModel>
+  <genPackages prefix="UmlClass" disposableProviderFactory="true" ecorePackage="umlClass.ecore#/">
+    <genDataTypes ecoreDataType="umlClass.ecore#//String"/>
+    <genDataTypes ecoreDataType="umlClass.ecore#//Boolean"/>
+    <genDataTypes ecoreDataType="umlClass.ecore#//Integer"/>
+    <genClasses image="false" ecoreClass="umlClass.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute umlClass.ecore#//NamedElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute umlClass.ecore#//NamedElement/Archpoint"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="umlClass.ecore#//Classifier">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Classifier/attribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Classifier/redefinedClassifier"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference umlClass.ecore#//Classifier/package"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference umlClass.ecore#//Classifier/generalization"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="umlClass.ecore#//StructuralFeature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute umlClass.ecore#//StructuralFeature/isReadOnly"/>
+    </genClasses>
+    <genClasses ecoreClass="umlClass.ecore#//Class">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference umlClass.ecore#//Class/ownedOperation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference umlClass.ecore#//Class/ownedAttribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Class/superClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute umlClass.ecore#//Class/isActive"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Class/reference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference umlClass.ecore#//Class/nestedClassifier"/>
+    </genClasses>
+    <genClasses ecoreClass="umlClass.ecore#//Property">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference umlClass.ecore#//Property/class"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference umlClass.ecore#//Property/datatype"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Property/opposite"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference umlClass.ecore#//Property/owningAssociation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Property/association"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Property/redefinedProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Property/subsettedProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Property/classifier"/>
+    </genClasses>
+    <genClasses ecoreClass="umlClass.ecore#//Association">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference umlClass.ecore#//Association/ownedEnd"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Association/memberEnd"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Association/navigableOwnedEnd"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Association/target"/>
+    </genClasses>
+    <genClasses ecoreClass="umlClass.ecore#//Operation">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference umlClass.ecore#//Operation/class"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference umlClass.ecore#//Operation/datatype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute umlClass.ecore#//Operation/isQuery"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute umlClass.ecore#//Operation/isOrdered"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute umlClass.ecore#//Operation/isUnique"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute umlClass.ecore#//Operation/lower"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute umlClass.ecore#//Operation/upper"/>
+    </genClasses>
+    <genClasses ecoreClass="umlClass.ecore#//DataType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference umlClass.ecore#//DataType/ownedAttribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference umlClass.ecore#//DataType/ownedOperation"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="umlClass.ecore#//TypedElement"/>
+    <genClasses ecoreClass="umlClass.ecore#//Package">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference umlClass.ecore#//Package/classifiers"/>
+    </genClasses>
+    <genClasses ecoreClass="umlClass.ecore#//Generalization">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference umlClass.ecore#//Generalization/specific"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Generalization/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Generalization/source"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="umlClass.ecore#//Relationship"/>
+    <genClasses image="false" ecoreClass="umlClass.ecore#//Element">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Element/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference umlClass.ecore#//Element/ownedElement"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="umlClass.ecore#//DirectedRelationship"/>
+  </genPackages>
+</genmodel:GenModel>

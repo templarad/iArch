@@ -1,0 +1,29 @@
+grammar jp.ac.kyushu.iarch.archdsl.ArchDSL with org.eclipse.xtext.common.Terminals
+
+generate archDSL "http://www.ac.jp/kyushu/iarch/archdsl/ArchDSL"
+
+Model:
+	interfaces+=Interface*
+	behaviors+=Behavior*
+;
+
+Interface:
+	"interface component" name=ID "{"
+		methods+=Method*
+	"}"
+;
+
+Method:
+	type=ID name=ID "(" (param+=Param(","param+=Param)*)?");"
+;
+
+
+Param :
+	type=ID name=ID
+;
+
+Behavior:
+	interface=[Interface] "=" "(" (call+=[Method|FQN]("->"call+=[Method|FQN])*"->"end=[Interface])?");"
+;
+
+FQN: ID ("."ID)*;

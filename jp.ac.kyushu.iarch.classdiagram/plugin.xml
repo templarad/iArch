@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+<extension
+      point="org.eclipse.graphiti.ui.diagramTypes">
+    <diagramType
+      description="This is the diagram type for Graphiti Class Diagram"
+      id="jp.ac.kyushu.iarch.classdiagram.diagram.DiagramType"
+      name="Graphiti Diagram Type"
+      type="ClassDiagram">
+    </diagramType>
+  </extension>
+
+  <extension
+      point="org.eclipse.graphiti.ui.diagramTypeProviders">
+    <diagramTypeProvider
+      class="jp.ac.kyushu.iarch.classdiagram.diagram.DiagramTypeProvider"
+      description="This is my editor for the Graphiti test"
+      id="jp.ac.kyushu.iarch.classdiagram.diagram.DiagramTypeProvider"
+      name="Class Diagram">
+      <diagramType
+        id="jp.ac.kyushu.iarch.classdiagram.diagram.DiagramType">
+      </diagramType>
+    </diagramTypeProvider>
+  </extension>
+
+
+
+
+ <extension
+    point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+    <propertyContributor contributorId="ClassDiagram.PropertyContributor"> 
+        <propertyCategory category="Graphiti"> 
+        </propertyCategory> 
+    </propertyContributor> 
+</extension>
+       
+ <extension
+      point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+    <propertyTabs
+          contributorId="ClassDiagram.PropertyContributor">
+    <propertyTab
+         category="Graphiti"
+         id="graphiti.main.tab"
+          label="Main">
+    </propertyTab>
+   </propertyTabs>
+</extension>
+
+
+
+ <extension
+      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+    <propertySections
+          contributorId="ClassDiagram.PropertyContributor">
+        <propertySection
+              class="jp.ac.kyushu.iarch.classdiagram.property.ClassDiagramSection"
+              filter="jp.ac.kyushu.iarch.classdiagram.property.ClassDiagramFilter"
+              id="graphiti.main.tab.emfclass"
+              tab="graphiti.main.tab">
+        </propertySection>
+    </propertySections>
+ </extension>
+</plugin>

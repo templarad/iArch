@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension
+      point="org.eclipse.graphiti.ui.diagramTypes">
+    <diagramType
+      description="Sequence Diagram"
+      id="jp.ac.kyushu.iarch.sequencediagram.DiagramType"
+      name="SequenceDiagram"
+      type="SequenceDiagram">
+    </diagramType>
+  </extension>
+
+  <extension
+      point="org.eclipse.graphiti.ui.diagramTypeProviders">
+    <diagramTypeProvider
+      class="jp.ac.kyushu.iarch.sequencediagram.diagram.providers.SequenceDiagramTypeProvider"
+      description="Sequence Diagram Editor"
+      id="jp.ac.kyushu.iarch.sequencediagram.diagram.SequenceDiagramTypeProvider"
+      name="Sequence Diagram Editor">
+      <diagramType
+        id="jp.ac.kyushu.iarch.sequencediagram.DiagramType">
+      </diagramType>
+    </diagramTypeProvider>
+  </extension>
+  
+ <!--	<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+		<propertyContributor contributorId="SequenceDiagram.PropertyContributor"/>
+	      	<propertyTab
+	            category="sample"
+	            id="sequencddiagram.PropertyTab"
+	            label="Property"/>
+	         <propertyTab
+	            afterTab="mview.ButtonTab"
+	            category="sample"
+	            id="sequencddiagram.AdvancedTab"
+	            label="Advanced"/>
+	</extension>-->
+	<extension
+    point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+    <propertyContributor contributorId="SequenceDiagram.PropertyContributor"> 
+        <propertyCategory category="Graphiti"> 
+        </propertyCategory> 
+    </propertyContributor> 
+</extension>
+       
+ <extension
+      point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+    <propertyTabs
+          contributorId="SequenceDiagram.PropertyContributor">
+    <propertyTab
+         category="Graphiti"
+         id="graphiti.main.tab"
+          label="Main">
+    </propertyTab>
+   </propertyTabs>
+</extension>
+
+
+
+ <extension
+      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+    <propertySections
+          contributorId="SequenceDiagram.PropertyContributor">
+        <propertySection
+              class="jp.ac.kyushu.iarch.sequencediagram.property.SequenceDiagramSection"
+              filter="jp.ac.kyushu.iarch.sequencediagram.property.SequenceDiagramFilter"
+              id="graphiti.main.tab.emfclass"
+              tab="graphiti.main.tab">
+        </propertySection>
+    </propertySections>
+ </extension>
+ </plugin>

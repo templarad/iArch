@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Behavior -->
+      <package
+            uri="http://behavior/1.0"
+            class="behavior.BehaviorPackage"
+            genModel="model/Behavior.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated umlClass -->
+      <package
+            uri="http://umlClass/1.0"
+            class="umlClass.UmlClassPackage"
+            genModel="model/umlClass.genmodel"/>
+   </extension>
+
+</plugin>
