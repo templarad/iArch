@@ -128,7 +128,11 @@ public class SequenceFeatureProvider extends DefaultFeatureProvider {
         Object bo = getBusinessObjectForPictogramElement(pe);
         if (bo instanceof Actor) {
             return new DirectEditActorFeature(this);
-        }else if(bo instanceof Message){
+        }
+        else if(bo instanceof behavior.Object){
+        	return new DirectEditObjectFeature(this);
+        }
+        else if(bo instanceof Message){
         	return new DirectEditMessageFeature(this);
         }
         else if(pe instanceof ConnectionDecorator){
