@@ -1,0 +1,46 @@
+gitサーバーをたてる
+	133.5.38.120/gitbucket
+
+		
+李
+	UMLの勉強中
+	xtextの説明を読んでいる
+	論文を読んでいる
+
+李（シャビ）	
+	Archface<-->source code(李)11/11
+		- バグ修正
+		- XMLファイルの修正
+
+艾
+	Archface<-->図（艾）　Done
+		- Archpointのチェック（艾） Done
+		- message 順番のチェック（艾）　Done
+			* Sorting timing :newMessageを作る時、同じ名前のMessageとしてsort　出来ない(名前を使ってsendとreceiveを探しているから)
+
+	Demo　シナリオを考える（艾） 11/11
+	post 日本語
+			今後の考える
+			第一回 11/11
+			第二回 11/18
+			第三回 11/25
+	統合する（艾） 11/11
+	Archpointを外すと、対応しているモデルとソースコードの色が変わる
+
+山本
+	XMLファイル解析の修正 11/11
+	抽象度表記（） 11/...
+
+	
+Todo	
+	FOSE(11/28)の準備
+		- Archface, source code, 図　のチェック		
+		- 最終確認 11/25		
+		
+	FOSE終わり～
+		- dataflow図を入れる	
+		- リファクタリング
+		
+	MODELSWARD 14		
+		- プレゼン
+		- post 英語

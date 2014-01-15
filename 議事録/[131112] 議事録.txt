@@ -1,0 +1,63 @@
+﻿次回の会議
+	11/18 18:00~
+		
+黄
+	〇〇さんの卒論と修論を呼んでいる 11/18
+	目標：
+		1.alloyからシンタックス生成　
+		2.proteaj ArgyleJ
+			- 自分の環境で動くように 11/18
+		3.xtextの勉強
+		フィーチャーモデルを改めて考える
+			
+李
+	論文を読んでいる　done
+	UMLの勉強中
+		- EMFの勉強中 
+	xtextの説明を読んでいる
+		- １５分バージョンでいい 11/18
+	目標
+		- ArchfaceからJAVA　code生成する
+
+李（シャビ）	
+	Archface<-->source code(李)
+		- バグ修正 11/18
+		- XMLファイルの修正 done
+
+艾
+	post 日本語
+		第一回 done
+		次回　poster内容	
+			目的
+			機能一覧
+				実現出来たと出来てない部分
+			今後の課題
+				残っている機能
+	Archface<-->図（艾）
+			* Sorting timing :newMessageを作る時、同じ名前のMessageとしてsort　出来ない(名前を使ってsendとreceiveを探しているから)
+
+	Demo　シナリオを考える（艾） 11/11 
+	post 日本語
+			今後の考える
+			第一回 11/11 
+			第二回 11/18
+			第三回 11/25
+	Archpointを外すと、対応しているモデルとソースコードの色が変わる
+
+山本
+	XMLファイル解析の修正 done
+	抽象度表記（） done
+
+	
+Todo	
+	FOSE(11/28)の準備
+		- Archface, source code, 図　のチェック		
+		- 最終確認 11/25		
+		
+	FOSE終わり～
+		- dataflow図を入れる	
+		- リファクタリング
+		
+	MODELSWARD 14		
+		- プレゼン
+		- post 英語

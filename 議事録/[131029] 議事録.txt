@@ -1,0 +1,31 @@
+﻿Todo
+		- gitサーバーをたてる
+	
+	FOSE(11/28)の準備
+		- コードのXMLに変換したファイルを山本さんに渡す　今日中(李)
+		- post 日本語（艾）
+			今後の考える
+			第一回　11/12
+			第二回 11/19
+			第三回 11/25
+		- Demo　シナリオを考える（艾）11/5
+		- Archface, source code, 図　のチェック
+			Archface<-->source code(李)11/5
+			Archface<-->図（艾）
+		- 抽象度表記（山本） 11/5
+		- message 順番のチェック（艾） 11/5
+			* Sorting timing :newMessageを作る時、同じ名前のMessageとしてsort　出来ない(名前を使ってsendとreceiveを探しているから)
+
+		- Archpointのチェック（艾） 11/12
+		- 統合する（艾）11/12
+		- 最終確認 11/25
+		
+		
+	FOSE終わり～
+		- dataflow図を入れる	
+		- リファクタリング
+		
+	MODELSWARD 14
+		
+		- プレゼン
+		- post 英語

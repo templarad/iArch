@@ -1,0 +1,54 @@
+﻿次回の会議
+	11/25 18:00~
+		
+
+李
+	UMLの勉強中
+		- EMFの勉強中 
+	xtextの説明を読んでいる　
+		- １５分バージョンでいい 11/18 done
+	xtextのHello world作成　done
+	ArchfaceのDSLを呼んでいる
+	
+	目標
+		- ArchfaceからJAVA　code生成する
+
+李（シャビ）	
+	Archface<-->source code(李)
+		- バグ修正 11/18　done
+		- XMLファイルの修正 done
+	ソースコードを細合先生に送る
+
+艾
+	post 日本語
+		第一回 done
+		第二回 11/18　done
+		次回　poster内容	
+			目的
+			アプローチ
+			Archface<-->図（艾）
+			* Sorting timing :newMessageを作る時、同じ名前のMessageとしてsort　出来ない(名前を使ってsendとreceiveを探しているから)
+
+	Demo　シナリオを考える（艾） 11/11 
+	post 日本語
+			今後の考える
+			第三回 11/25
+	Archpointを外すと、対応しているモデルとソースコードの色が変わる
+
+山本
+	XMLファイル解析の修正 done
+	抽象度表記（） done
+
+	
+Todo	
+	FOSE(11/28)の準備
+		- Archface, source code, 図　のチェック		
+		- 最終確認 11/25		
+		
+	FOSE終わり～
+		- dataflow図を入れる	
+		- リファクタリング
+		
+	MODELSWARD 14		
+		- プレゼン
+		- post 英語
