@@ -108,7 +108,7 @@ public class SequenceFeatureProvider extends DefaultFeatureProvider {
 	    }else if (bo instanceof BehaviorExecutionSpecification) {
 	        return new MoveBehaviorExecutionFeature(this);
 	    }else if (bo instanceof MessageOccurrenceSpecification){
-	    	return new MoveMessageOccurreceSpecificationFeature(this);
+	    	return new MoveMessageOccurrenceSpecificationFeature(this);
 	    }
 	    return super.getMoveShapeFeature(context);
 	 } 

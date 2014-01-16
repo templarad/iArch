@@ -18,9 +18,9 @@ import behavior.DestructionEvent;
 import behavior.Message;
 import behavior.MessageOccurrenceSpecification;
 
-public class MoveMessageOccurreceSpecificationFeature extends DefaultMoveShapeFeature{
+public class MoveMessageOccurrenceSpecificationFeature extends DefaultMoveShapeFeature{
  
-    public MoveMessageOccurreceSpecificationFeature (IFeatureProvider fp) {
+    public MoveMessageOccurrenceSpecificationFeature (IFeatureProvider fp) {
         super(fp);
     }
  
