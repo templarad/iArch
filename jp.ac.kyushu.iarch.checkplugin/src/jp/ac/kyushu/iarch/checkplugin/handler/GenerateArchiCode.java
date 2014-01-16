@@ -23,7 +23,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import umlClass.Operation;
 import behavior.Lifeline;
 import behavior.Message;
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 
 
 public class GenerateArchiCode implements IHandler {
@@ -113,8 +113,8 @@ public class GenerateArchiCode implements IHandler {
 				SequenceCode += ob.getName() + " = (";
 				for(Message msg:messages){
 					Lifeline oblifeline = ob.getInclude();
-					Lifeline sendlifeline = ((MessageOccurreceSpecification)msg.getSendEvent()).getCovered().get(0);
-					Lifeline recivelifeline = ((MessageOccurreceSpecification)msg.getReceiveEvent()).getCovered().get(0);					
+					Lifeline sendlifeline = ((MessageOccurrenceSpecification)msg.getSendEvent()).getCovered().get(0);
+					Lifeline recivelifeline = ((MessageOccurrenceSpecification)msg.getReceiveEvent()).getCovered().get(0);					
 					if (oblifeline == sendlifeline||oblifeline == recivelifeline){
 						SequenceCode += ob.getName()+ "." +msg.getName()+"->";
 					}

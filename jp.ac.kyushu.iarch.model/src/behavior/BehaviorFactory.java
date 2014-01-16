@@ -148,13 +148,13 @@ public interface BehaviorFactory extends EFactory {
 	ExecutionEvent createExecutionEvent();
 
 	/**
-	 * Returns a new object of class '<em>Message Occurrece Specification</em>'.
+	 * Returns a new object of class '<em>Message Occurrence Specification</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Message Occurrece Specification</em>'.
+	 * @return a new object of class '<em>Message Occurrence Specification</em>'.
 	 * @generated
 	 */
-	MessageOccurreceSpecification createMessageOccurreceSpecification();
+	MessageOccurrenceSpecification createMessageOccurrenceSpecification();
 
 	/**
 	 * Returns a new object of class '<em>Execution Occurrence Specification</em>'.

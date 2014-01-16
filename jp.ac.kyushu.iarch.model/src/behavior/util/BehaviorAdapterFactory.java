@@ -25,7 +25,7 @@ import behavior.InteractionFragment;
 import behavior.Lifeline;
 import behavior.Message;
 import behavior.MessageEnd;
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 import behavior.NamedElement;
 import behavior.Namespace;
 import behavior.OccurrenceSpecification;
@@ -196,8 +196,8 @@ public class BehaviorAdapterFactory extends AdapterFactoryImpl {
 				return createExecutionEventAdapter();
 			}
 			@Override
-			public Adapter caseMessageOccurreceSpecification(MessageOccurreceSpecification object) {
-				return createMessageOccurreceSpecificationAdapter();
+			public Adapter caseMessageOccurrenceSpecification(MessageOccurrenceSpecification object) {
+				return createMessageOccurrenceSpecificationAdapter();
 			}
 			@Override
 			public Adapter caseExecutionOccurrenceSpecification(ExecutionOccurrenceSpecification object) {
@@ -586,16 +586,16 @@ public class BehaviorAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link behavior.MessageOccurreceSpecification <em>Message Occurrece Specification</em>}'.
+	 * Creates a new adapter for an object of class '{@link behavior.MessageOccurrenceSpecification <em>Message Occurrence Specification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see behavior.MessageOccurreceSpecification
+	 * @see behavior.MessageOccurrenceSpecification
 	 * @generated
 	 */
-	public Adapter createMessageOccurreceSpecificationAdapter() {
+	public Adapter createMessageOccurrenceSpecificationAdapter() {
 		return null;
 	}
 

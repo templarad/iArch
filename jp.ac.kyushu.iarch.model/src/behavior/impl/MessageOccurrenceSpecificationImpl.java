@@ -6,7 +6,7 @@ import behavior.BehaviorPackage;
 import behavior.Event;
 import behavior.Message;
 import behavior.MessageEnd;
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -17,19 +17,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Message Occurrece Specification</b></em>'.
+ * An implementation of the model object '<em><b>Message Occurrence Specification</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link behavior.impl.MessageOccurreceSpecificationImpl#getMessage <em>Message</em>}</li>
- *   <li>{@link behavior.impl.MessageOccurreceSpecificationImpl#getEvent <em>Event</em>}</li>
+ *   <li>{@link behavior.impl.MessageOccurrenceSpecificationImpl#getMessage <em>Message</em>}</li>
+ *   <li>{@link behavior.impl.MessageOccurrenceSpecificationImpl#getEvent <em>Event</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationImpl implements MessageOccurreceSpecification {
+public class MessageOccurrenceSpecificationImpl extends OccurrenceSpecificationImpl implements MessageOccurrenceSpecification {
 	/**
 	 * The cached value of the '{@link #getMessage() <em>Message</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -55,7 +55,7 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MessageOccurreceSpecificationImpl() {
+	protected MessageOccurrenceSpecificationImpl() {
 		super();
 	}
 
@@ -66,7 +66,7 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return BehaviorPackage.Literals.MESSAGE_OCCURRECE_SPECIFICATION;
+		return BehaviorPackage.Literals.MESSAGE_OCCURRENCE_SPECIFICATION;
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 			message = (Message)eResolveProxy(oldMessage);
 			if (message != oldMessage) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__MESSAGE, oldMessage, message));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE, oldMessage, message));
 			}
 		}
 		return message;
@@ -104,7 +104,7 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 		Message oldMessage = message;
 		message = newMessage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__MESSAGE, oldMessage, message));
+			eNotify(new ENotificationImpl(this, Notification.SET, BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE, oldMessage, message));
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 			event = (Event)eResolveProxy(oldEvent);
 			if (event != oldEvent) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__EVENT, oldEvent, event));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT, oldEvent, event));
 			}
 		}
 		return event;
@@ -142,7 +142,7 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 		Event oldEvent = event;
 		event = newEvent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__EVENT, oldEvent, event));
+			eNotify(new ENotificationImpl(this, Notification.SET, BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT, oldEvent, event));
 	}
 
 	/**
@@ -153,10 +153,10 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__MESSAGE:
+			case BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE:
 				if (resolve) return getMessage();
 				return basicGetMessage();
-			case BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__EVENT:
+			case BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT:
 				if (resolve) return getEvent();
 				return basicGetEvent();
 		}
@@ -171,10 +171,10 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__MESSAGE:
+			case BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE:
 				setMessage((Message)newValue);
 				return;
-			case BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__EVENT:
+			case BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT:
 				setEvent((Event)newValue);
 				return;
 		}
@@ -189,10 +189,10 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__MESSAGE:
+			case BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE:
 				setMessage((Message)null);
 				return;
-			case BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__EVENT:
+			case BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT:
 				setEvent((Event)null);
 				return;
 		}
@@ -207,9 +207,9 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__MESSAGE:
+			case BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE:
 				return message != null;
-			case BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__EVENT:
+			case BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT:
 				return event != null;
 		}
 		return super.eIsSet(featureID);
@@ -224,7 +224,7 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == MessageEnd.class) {
 			switch (derivedFeatureID) {
-				case BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__MESSAGE: return BehaviorPackage.MESSAGE_END__MESSAGE;
+				case BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE: return BehaviorPackage.MESSAGE_END__MESSAGE;
 				default: return -1;
 			}
 		}
@@ -240,11 +240,11 @@ public class MessageOccurreceSpecificationImpl extends OccurrenceSpecificationIm
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == MessageEnd.class) {
 			switch (baseFeatureID) {
-				case BehaviorPackage.MESSAGE_END__MESSAGE: return BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION__MESSAGE;
+				case BehaviorPackage.MESSAGE_END__MESSAGE: return BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE;
 				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-} //MessageOccurreceSpecificationImpl
+} //MessageOccurrenceSpecificationImpl

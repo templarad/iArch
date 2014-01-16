@@ -100,8 +100,8 @@
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Behavior.ecore#//DestructionEvent/interaction"/>
     </genClasses>
     <genClasses ecoreClass="Behavior.ecore#//ExecutionEvent"/>
-    <genClasses ecoreClass="Behavior.ecore#//MessageOccurreceSpecification">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//MessageOccurreceSpecification/event"/>
+    <genClasses ecoreClass="Behavior.ecore#//MessageOccurrenceSpecification">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//MessageOccurrenceSpecification/event"/>
     </genClasses>
     <genClasses ecoreClass="Behavior.ecore#//ExecutionOccurrenceSpecification">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Behavior.ecore#//ExecutionOccurrenceSpecification/execution"/>

@@ -33,7 +33,7 @@ import behavior.BehaviorExecutionSpecification;
 import behavior.DestructionEvent;
 import behavior.Lifeline;
 import behavior.Message;
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 
 public class SequenceFeatureProvider extends DefaultFeatureProvider {
 
@@ -107,7 +107,7 @@ public class SequenceFeatureProvider extends DefaultFeatureProvider {
 	        return new MoveDestructionEventFeature(this);
 	    }else if (bo instanceof BehaviorExecutionSpecification) {
 	        return new MoveBehaviorExecutionFeature(this);
-	    }else if (bo instanceof MessageOccurreceSpecification){
+	    }else if (bo instanceof MessageOccurrenceSpecification){
 	    	return new MoveMessageOccurreceSpecificationFeature(this);
 	    }
 	    return super.getMoveShapeFeature(context);
@@ -157,6 +157,8 @@ public class SequenceFeatureProvider extends DefaultFeatureProvider {
 	        return new ResizeObjectFeature(this);
 	    }else if (bo instanceof BehaviorExecutionSpecification) {
 	        return new ResizeBehaviorExecutionFeature(this);
+	    }else if (bo instanceof MessageOccurrenceSpecification) {
+	        return new ResizeMessageOccurrenceSpecificationFeature(this);
 	    }
 	    return super.getResizeShapeFeature(context);
 	 }

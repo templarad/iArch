@@ -2990,14 +2990,14 @@ public interface BehaviorPackage extends EPackage {
 	int EXECUTION_EVENT_OPERATION_COUNT = EVENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link behavior.impl.MessageOccurreceSpecificationImpl <em>Message Occurrece Specification</em>}' class.
+	 * The meta object id for the '{@link behavior.impl.MessageOccurrenceSpecificationImpl <em>Message Occurrence Specification</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see behavior.impl.MessageOccurreceSpecificationImpl
-	 * @see behavior.impl.BehaviorPackageImpl#getMessageOccurreceSpecification()
+	 * @see behavior.impl.MessageOccurrenceSpecificationImpl
+	 * @see behavior.impl.BehaviorPackageImpl#getMessageOccurrenceSpecification()
 	 * @generated
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION = 25;
+	int MESSAGE_OCCURRENCE_SPECIFICATION = 25;
 
 	/**
 	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -3006,7 +3006,7 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__OWNED_COMMENT = OCCURRENCE_SPECIFICATION__OWNED_COMMENT;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__OWNED_COMMENT = OCCURRENCE_SPECIFICATION__OWNED_COMMENT;
 
 	/**
 	 * The feature id for the '<em><b>Owner</b></em>' reference.
@@ -3015,7 +3015,7 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__OWNER = OCCURRENCE_SPECIFICATION__OWNER;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__OWNER = OCCURRENCE_SPECIFICATION__OWNER;
 
 	/**
 	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
@@ -3024,7 +3024,7 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__OWNED_ELEMENT = OCCURRENCE_SPECIFICATION__OWNED_ELEMENT;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__OWNED_ELEMENT = OCCURRENCE_SPECIFICATION__OWNED_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3033,7 +3033,7 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__NAME = OCCURRENCE_SPECIFICATION__NAME;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__NAME = OCCURRENCE_SPECIFICATION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Archpoint</b></em>' attribute.
@@ -3042,7 +3042,7 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__ARCHPOINT = OCCURRENCE_SPECIFICATION__ARCHPOINT;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__ARCHPOINT = OCCURRENCE_SPECIFICATION__ARCHPOINT;
 
 	/**
 	 * The feature id for the '<em><b>Covered</b></em>' reference list.
@@ -3051,7 +3051,7 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__COVERED = OCCURRENCE_SPECIFICATION__COVERED;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__COVERED = OCCURRENCE_SPECIFICATION__COVERED;
 
 	/**
 	 * The feature id for the '<em><b>Enclosing Interaction</b></em>' container reference.
@@ -3060,7 +3060,7 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__ENCLOSING_INTERACTION = OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION = OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION;
 
 	/**
 	 * The feature id for the '<em><b>General Ordering</b></em>' containment reference.
@@ -3069,7 +3069,7 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__GENERAL_ORDERING = OCCURRENCE_SPECIFICATION__GENERAL_ORDERING;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING = OCCURRENCE_SPECIFICATION__GENERAL_ORDERING;
 
 	/**
 	 * The feature id for the '<em><b>To After</b></em>' reference list.
@@ -3078,7 +3078,7 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__TO_AFTER = OCCURRENCE_SPECIFICATION__TO_AFTER;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__TO_AFTER = OCCURRENCE_SPECIFICATION__TO_AFTER;
 
 	/**
 	 * The feature id for the '<em><b>To Before</b></em>' reference list.
@@ -3087,7 +3087,7 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__TO_BEFORE = OCCURRENCE_SPECIFICATION__TO_BEFORE;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__TO_BEFORE = OCCURRENCE_SPECIFICATION__TO_BEFORE;
 
 	/**
 	 * The feature id for the '<em><b>Message</b></em>' reference.
@@ -3096,7 +3096,7 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__MESSAGE = OCCURRENCE_SPECIFICATION_FEATURE_COUNT + 0;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE = OCCURRENCE_SPECIFICATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Event</b></em>' reference.
@@ -3105,25 +3105,25 @@ public interface BehaviorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION__EVENT = OCCURRENCE_SPECIFICATION_FEATURE_COUNT + 1;
+	int MESSAGE_OCCURRENCE_SPECIFICATION__EVENT = OCCURRENCE_SPECIFICATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Message Occurrece Specification</em>' class.
+	 * The number of structural features of the '<em>Message Occurrence Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION_FEATURE_COUNT = OCCURRENCE_SPECIFICATION_FEATURE_COUNT + 2;
+	int MESSAGE_OCCURRENCE_SPECIFICATION_FEATURE_COUNT = OCCURRENCE_SPECIFICATION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Message Occurrece Specification</em>' class.
+	 * The number of operations of the '<em>Message Occurrence Specification</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_OCCURRECE_SPECIFICATION_OPERATION_COUNT = OCCURRENCE_SPECIFICATION_OPERATION_COUNT + 0;
+	int MESSAGE_OCCURRENCE_SPECIFICATION_OPERATION_COUNT = OCCURRENCE_SPECIFICATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link behavior.impl.ExecutionOccurrenceSpecificationImpl <em>Execution Occurrence Specification</em>}' class.
@@ -4263,25 +4263,25 @@ public interface BehaviorPackage extends EPackage {
 	EClass getExecutionEvent();
 
 	/**
-	 * Returns the meta object for class '{@link behavior.MessageOccurreceSpecification <em>Message Occurrece Specification</em>}'.
+	 * Returns the meta object for class '{@link behavior.MessageOccurrenceSpecification <em>Message Occurrence Specification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Message Occurrece Specification</em>'.
-	 * @see behavior.MessageOccurreceSpecification
+	 * @return the meta object for class '<em>Message Occurrence Specification</em>'.
+	 * @see behavior.MessageOccurrenceSpecification
 	 * @generated
 	 */
-	EClass getMessageOccurreceSpecification();
+	EClass getMessageOccurrenceSpecification();
 
 	/**
-	 * Returns the meta object for the reference '{@link behavior.MessageOccurreceSpecification#getEvent <em>Event</em>}'.
+	 * Returns the meta object for the reference '{@link behavior.MessageOccurrenceSpecification#getEvent <em>Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Event</em>'.
-	 * @see behavior.MessageOccurreceSpecification#getEvent()
-	 * @see #getMessageOccurreceSpecification()
+	 * @see behavior.MessageOccurrenceSpecification#getEvent()
+	 * @see #getMessageOccurrenceSpecification()
 	 * @generated
 	 */
-	EReference getMessageOccurreceSpecification_Event();
+	EReference getMessageOccurrenceSpecification_Event();
 
 	/**
 	 * Returns the meta object for class '{@link behavior.ExecutionOccurrenceSpecification <em>Execution Occurrence Specification</em>}'.
@@ -5030,14 +5030,14 @@ public interface BehaviorPackage extends EPackage {
 		EClass EXECUTION_EVENT = eINSTANCE.getExecutionEvent();
 
 		/**
-		 * The meta object literal for the '{@link behavior.impl.MessageOccurreceSpecificationImpl <em>Message Occurrece Specification</em>}' class.
+		 * The meta object literal for the '{@link behavior.impl.MessageOccurrenceSpecificationImpl <em>Message Occurrence Specification</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see behavior.impl.MessageOccurreceSpecificationImpl
-		 * @see behavior.impl.BehaviorPackageImpl#getMessageOccurreceSpecification()
+		 * @see behavior.impl.MessageOccurrenceSpecificationImpl
+		 * @see behavior.impl.BehaviorPackageImpl#getMessageOccurrenceSpecification()
 		 * @generated
 		 */
-		EClass MESSAGE_OCCURRECE_SPECIFICATION = eINSTANCE.getMessageOccurreceSpecification();
+		EClass MESSAGE_OCCURRENCE_SPECIFICATION = eINSTANCE.getMessageOccurrenceSpecification();
 
 		/**
 		 * The meta object literal for the '<em><b>Event</b></em>' reference feature.
@@ -5045,7 +5045,7 @@ public interface BehaviorPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MESSAGE_OCCURRECE_SPECIFICATION__EVENT = eINSTANCE.getMessageOccurreceSpecification_Event();
+		EReference MESSAGE_OCCURRENCE_SPECIFICATION__EVENT = eINSTANCE.getMessageOccurrenceSpecification_Event();
 
 		/**
 		 * The meta object literal for the '{@link behavior.impl.ExecutionOccurrenceSpecificationImpl <em>Execution Occurrence Specification</em>}' class.

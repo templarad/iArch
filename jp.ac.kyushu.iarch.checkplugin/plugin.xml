@@ -95,5 +95,9 @@
             restorable="true">
       </view>
    </extension>
+   <extension
+         point="org.eclipse.core.resources.fileModificationValidator">
+         <fileModificationValidator class="jp.ac.kyushu.iarch.checkplugin.Savehook"/>
+   </extension>
 
 </plugin>

@@ -17,7 +17,7 @@ import behavior.Interaction;
 import behavior.Lifeline;
 import behavior.Message;
 import behavior.MessageEnd;
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 import behavior.Namespace;
 import behavior.OccurrenceSpecification;
 import behavior.Operation;
@@ -88,7 +88,7 @@ public class BehaviorFactoryImpl extends EFactoryImpl implements BehaviorFactory
 			case BehaviorPackage.CREAT_EVENT: return createCreatEvent();
 			case BehaviorPackage.DESTRUCTION_EVENT: return createDestructionEvent();
 			case BehaviorPackage.EXECUTION_EVENT: return createExecutionEvent();
-			case BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION: return createMessageOccurreceSpecification();
+			case BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION: return createMessageOccurrenceSpecification();
 			case BehaviorPackage.EXECUTION_OCCURRENCE_SPECIFICATION: return createExecutionOccurrenceSpecification();
 			case BehaviorPackage.GENERAL_ORDERING: return createGeneralOrdering();
 			case BehaviorPackage.BEHAVIOR_EXECUTION_SPECIFICATION: return createBehaviorExecutionSpecification();
@@ -243,9 +243,9 @@ public class BehaviorFactoryImpl extends EFactoryImpl implements BehaviorFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MessageOccurreceSpecification createMessageOccurreceSpecification() {
-		MessageOccurreceSpecificationImpl messageOccurreceSpecification = new MessageOccurreceSpecificationImpl();
-		return messageOccurreceSpecification;
+	public MessageOccurrenceSpecification createMessageOccurrenceSpecification() {
+		MessageOccurrenceSpecificationImpl messageOccurrenceSpecification = new MessageOccurrenceSpecificationImpl();
+		return messageOccurrenceSpecification;
 	}
 
 	/**

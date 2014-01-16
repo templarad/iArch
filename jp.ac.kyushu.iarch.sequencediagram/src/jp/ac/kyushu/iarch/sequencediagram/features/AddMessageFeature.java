@@ -23,7 +23,7 @@ import org.eclipse.graphiti.util.ColorConstant;
 import org.eclipse.graphiti.util.IColorConstant;
 
 import behavior.Message;
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 
 
 
@@ -124,16 +124,16 @@ public class AddMessageFeature extends AbstractAddFeature {
     	for(Shape shape:getDiagram().getChildren())
 		{
 			Object bo = getBusinessObjectForPictogramElement(shape);
-			if (bo instanceof MessageOccurreceSpecification)
+			if (bo instanceof MessageOccurrenceSpecification)
 			{
 				if(mos.size()==0){
 					mos.add(shape);
-					MgCounted=((MessageOccurreceSpecification)bo).getMessage().getName();
+					MgCounted=((MessageOccurrenceSpecification)bo).getMessage().getName();
 					continue;
 				}
 				//If a message have the same name,
 				//it has been add into the mos array. 
-				if(MgCounted == ((MessageOccurreceSpecification)bo).getMessage().getName())
+				if(MgCounted == ((MessageOccurrenceSpecification)bo).getMessage().getName())
 					continue;
 				
 				
@@ -158,14 +158,14 @@ public class AddMessageFeature extends AbstractAddFeature {
 				//insert by the order information
 				mos.add(order, shape);
 				//mos=insert(mos,shape,order);
-				MgCounted=((MessageOccurreceSpecification)bo).getMessage().getName();				
+				MgCounted=((MessageOccurrenceSpecification)bo).getMessage().getName();				
 			}
 		}
     	i=0;
     	for(Shape sortShape:mos){
     		if(sortShape==null)break;
-    		MessageOccurreceSpecification mosinstance=
-    				(MessageOccurreceSpecification)getBusinessObjectForPictogramElement(sortShape);
+    		MessageOccurrenceSpecification mosinstance=
+    				(MessageOccurrenceSpecification)getBusinessObjectForPictogramElement(sortShape);
     		Message mginstance = mosinstance.getMessage();
     		mginstance.setMessageOrder(i);//set order information in business model
     		

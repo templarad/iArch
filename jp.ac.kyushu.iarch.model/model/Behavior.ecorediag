@@ -437,7 +437,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_8mFt28xEEeKi97jNOhwC9g"/>
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_8mFt0cxEEeKi97jNOhwC9g" fontColor="4210752" fontName="メイリオ" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
-    <element xmi:type="ecore:EClass" href="Behavior.ecore#//MessageOccurreceSpecification"/>
+    <element xmi:type="ecore:EClass" href="Behavior.ecore#//MessageOccurrenceSpecification"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8mFt0sxEEeKi97jNOhwC9g" x="2082" y="684"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_8mGU4MxEEeKi97jNOhwC9g" type="1001">
@@ -1286,7 +1286,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_8mYozcxEEeKi97jNOhwC9g" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_8mYozsxEEeKi97jNOhwC9g" fontColor="4210752" fontName="メイリオ" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="Behavior.ecore#//MessageOccurreceSpecification/event"/>
+    <element xmi:type="ecore:EReference" href="Behavior.ecore#//MessageOccurrenceSpecification/event"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_8mYoz8xEEeKi97jNOhwC9g" points="[0, 0, -141, 60]$[141, -60, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8pUA8sxEEeKi97jNOhwC9g" id="(0.5464285714285714,0.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8pUA88xEEeKi97jNOhwC9g" id="(0.39215686274509803,1.0)"/>

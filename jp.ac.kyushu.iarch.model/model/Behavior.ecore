@@ -137,7 +137,7 @@
         eOpposite="#//Interaction/destructionevent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExecutionEvent" eSuperTypes="#//Event"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MessageOccurreceSpecification" eSuperTypes="#//OccurrenceSpecification #//MessageEnd">
+  <eClassifiers xsi:type="ecore:EClass" name="MessageOccurrenceSpecification" eSuperTypes="#//OccurrenceSpecification #//MessageEnd">
     <eStructuralFeatures xsi:type="ecore:EReference" name="event" lowerBound="1" eType="#//Event"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExecutionOccurrenceSpecification" eSuperTypes="#//OccurrenceSpecification">

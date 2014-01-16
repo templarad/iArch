@@ -16,7 +16,7 @@ import org.eclipse.graphiti.services.ILinkService;
 
 import behavior.DestructionEvent;
 import behavior.Message;
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 
 public class MoveMessageOccurreceSpecificationFeature extends DefaultMoveShapeFeature{
  
@@ -68,11 +68,11 @@ public class MoveMessageOccurreceSpecificationFeature extends DefaultMoveShapeFe
     	Object ob = getBusinessObjectForPictogramElement(context.getPictogramElement());
     	
     	//Move MOS, both source and target.
-		if (ob instanceof MessageOccurreceSpecification){
+		if (ob instanceof MessageOccurrenceSpecification){
 			boolean IsStart;//The context to be moved is a source MOS.
-			MessageOccurreceSpecification MgWhich = (MessageOccurreceSpecification) ob;
-			MessageOccurreceSpecification Mgstart = (MessageOccurreceSpecification)MgWhich.getMessage().getSendEvent();
-			MessageOccurreceSpecification Mgend = (MessageOccurreceSpecification)Mgstart.getMessage().getReceiveEvent();
+			MessageOccurrenceSpecification MgWhich = (MessageOccurrenceSpecification) ob;
+			MessageOccurrenceSpecification Mgstart = (MessageOccurrenceSpecification)MgWhich.getMessage().getSendEvent();
+			MessageOccurrenceSpecification Mgend = (MessageOccurrenceSpecification)Mgstart.getMessage().getReceiveEvent();
 			if(MgWhich == Mgstart)IsStart = true;
 			else IsStart = false;
 			
@@ -81,14 +81,14 @@ public class MoveMessageOccurreceSpecificationFeature extends DefaultMoveShapeFe
 			if(IsStart){
 				for (PictogramElement pe : linkServivce.getPictogramElements(getDiagram(), Mgend)){
 					if (pe instanceof ContainerShape&&
-							(MessageOccurreceSpecification)getBusinessObjectForPictogramElement(pe) == Mgend)//&&pe.getGraphicsAlgorithm().getX()==context.getX()
+							(MessageOccurrenceSpecification)getBusinessObjectForPictogramElement(pe) == Mgend)//&&pe.getGraphicsAlgorithm().getX()==context.getX()
 					{		
 						//#check
 						if(pe.getGraphicsAlgorithm().getX() != context.getShape().getGraphicsAlgorithm().getX())
 						gaService.setLocation(pe.getGraphicsAlgorithm(), pe.getGraphicsAlgorithm().getX(), posY);
 					}
 					else if(pe instanceof ContainerShape&&
-							(MessageOccurreceSpecification)getBusinessObjectForPictogramElement(pe) == Mgstart)
+							(MessageOccurrenceSpecification)getBusinessObjectForPictogramElement(pe) == Mgstart)
 					{					
 						gaService.setLocation(pe.getGraphicsAlgorithm(), pe.getGraphicsAlgorithm().getX(), posY);
 					}
@@ -97,12 +97,12 @@ public class MoveMessageOccurreceSpecificationFeature extends DefaultMoveShapeFe
 			else{
 				for (PictogramElement pe : linkServivce.getPictogramElements(getDiagram(), Mgstart)){
 					if (pe instanceof ContainerShape&&
-							(MessageOccurreceSpecification)getBusinessObjectForPictogramElement(pe) == Mgend)//&&pe.getGraphicsAlgorithm().getX()==context.getX()
+							(MessageOccurrenceSpecification)getBusinessObjectForPictogramElement(pe) == Mgend)//&&pe.getGraphicsAlgorithm().getX()==context.getX()
 					{		
 						gaService.setLocation(pe.getGraphicsAlgorithm(), pe.getGraphicsAlgorithm().getX(), posY);
 					}
 					else if(pe instanceof ContainerShape&&
-							(MessageOccurreceSpecification)getBusinessObjectForPictogramElement(pe) == Mgstart)
+							(MessageOccurrenceSpecification)getBusinessObjectForPictogramElement(pe) == Mgstart)
 					{
 						//#check
 						if(pe.getGraphicsAlgorithm().getX() != context.getShape().getGraphicsAlgorithm().getX())
@@ -126,16 +126,16 @@ public class MoveMessageOccurreceSpecificationFeature extends DefaultMoveShapeFe
     	for(Shape shape:getDiagram().getChildren())
 		{
 			Object bo = getBusinessObjectForPictogramElement(shape);
-			if (bo instanceof MessageOccurreceSpecification)
+			if (bo instanceof MessageOccurrenceSpecification)
 			{
 				if(mos.size()==0){
 					mos.add(shape);
-					MgCounted=((MessageOccurreceSpecification)bo).getMessage().getName();
+					MgCounted=((MessageOccurrenceSpecification)bo).getMessage().getName();
 					continue;
 				}
 				//If a message have the same name,
 				//it has been add into the mos array. 
-				if(MgCounted == ((MessageOccurreceSpecification)bo).getMessage().getName())
+				if(MgCounted == ((MessageOccurrenceSpecification)bo).getMessage().getName())
 					continue;
 				
 				
@@ -160,14 +160,14 @@ public class MoveMessageOccurreceSpecificationFeature extends DefaultMoveShapeFe
 				//insert by the order information
 				mos.add(order, shape);
 				//mos=insert(mos,shape,order);
-				MgCounted=((MessageOccurreceSpecification)bo).getMessage().getName();				
+				MgCounted=((MessageOccurrenceSpecification)bo).getMessage().getName();				
 			}
 		}
     	i=0;
     	for(Shape sortShape:mos){
     		if(sortShape==null)break;
-    		MessageOccurreceSpecification mosinstance=
-    				(MessageOccurreceSpecification)getBusinessObjectForPictogramElement(sortShape);
+    		MessageOccurrenceSpecification mosinstance=
+    				(MessageOccurrenceSpecification)getBusinessObjectForPictogramElement(sortShape);
     		Message mginstance = mosinstance.getMessage();
     		mginstance.setMessageOrder(i);//set order information in business model
     		

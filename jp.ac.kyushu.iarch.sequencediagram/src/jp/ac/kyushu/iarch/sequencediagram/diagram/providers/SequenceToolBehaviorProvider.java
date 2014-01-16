@@ -25,7 +25,7 @@ public class SequenceToolBehaviorProvider extends DefaultToolBehaviorProvider{
                 && !(name.charAt(0) >= 'A' && name.charAt(0) <= 'Z')) {
                 IDecorator imageRenderingDecorator =
                     new ImageDecorator(
-                        IPlatformImageConstants.IMG_ECLIPSE_WARNING_TSK);
+                        IPlatformImageConstants.IMG_ECLIPSE_ERROR_TSK);//IMG_ECLIPSE_WARNING_TSK
                 imageRenderingDecorator
                     .setMessage("Name should start with upper case letter");
                 return new IDecorator[] { imageRenderingDecorator };

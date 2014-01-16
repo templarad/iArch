@@ -8,7 +8,7 @@ import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.services.Graphiti;
 import org.eclipse.graphiti.services.ILinkService;
 
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 
 public class MoveAnchorFeature extends DefaultMoveAnchorFeature{
 	
@@ -27,15 +27,15 @@ public class MoveAnchorFeature extends DefaultMoveAnchorFeature{
 		
 		
 		Object ob = getBusinessObjectForPictogramElement(context.getAnchor());
-		if (ob instanceof MessageOccurreceSpecification){
-			MessageOccurreceSpecification MgWhich = (MessageOccurreceSpecification) ob;
-			MessageOccurreceSpecification Mgstart = (MessageOccurreceSpecification)MgWhich.getMessage().getSendEvent();
-			MessageOccurreceSpecification Mgend = (MessageOccurreceSpecification)Mgstart.getMessage().getReceiveEvent();
+		if (ob instanceof MessageOccurrenceSpecification){
+			MessageOccurrenceSpecification MgWhich = (MessageOccurrenceSpecification) ob;
+			MessageOccurrenceSpecification Mgstart = (MessageOccurrenceSpecification)MgWhich.getMessage().getSendEvent();
+			MessageOccurrenceSpecification Mgend = (MessageOccurrenceSpecification)Mgstart.getMessage().getReceiveEvent();
 			if(MgWhich == Mgstart){				
 				moveAnchor(context.getAnchor(), context.getAnchor().getGraphicsAlgorithm().getX(), posY);
 				for (PictogramElement pe : linkServivce.getPictogramElements(getDiagram(), Mgend)){
 					if (pe instanceof Anchor&&
-							(MessageOccurreceSpecification)getBusinessObjectForPictogramElement(pe) == Mgend){
+							(MessageOccurrenceSpecification)getBusinessObjectForPictogramElement(pe) == Mgend){
 						Anchor anchor = (Anchor) pe;
 						moveAnchor(anchor, anchor.getGraphicsAlgorithm().getX(), posY);
 					}
@@ -46,7 +46,7 @@ public class MoveAnchorFeature extends DefaultMoveAnchorFeature{
 				moveAnchor(context.getAnchor(), context.getAnchor().getGraphicsAlgorithm().getX(), posY);
 				for (PictogramElement pe : linkServivce.getPictogramElements(getDiagram(), Mgstart)){
 					if (pe instanceof Anchor&&
-							(MessageOccurreceSpecification)getBusinessObjectForPictogramElement(pe) == Mgstart){
+							(MessageOccurrenceSpecification)getBusinessObjectForPictogramElement(pe) == Mgstart){
 						Anchor anchor = (Anchor) pe;
 						moveAnchor(anchor, anchor.getGraphicsAlgorithm().getX(), posY);
 					}

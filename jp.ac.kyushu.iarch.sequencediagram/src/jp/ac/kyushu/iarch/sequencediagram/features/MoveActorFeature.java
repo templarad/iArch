@@ -14,7 +14,7 @@ import behavior.Actor;
 import behavior.BehaviorExecutionSpecification;
 import behavior.DestructionEvent;
 import behavior.Lifeline;
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 
 
 public class MoveActorFeature extends DefaultMoveShapeFeature{
@@ -72,14 +72,14 @@ public class MoveActorFeature extends DefaultMoveShapeFeature{
     				}
     			}
     			//find the MessageOccurreceSpecification on the lifeline
-    			if(ob instanceof MessageOccurreceSpecification)
+    			if(ob instanceof MessageOccurrenceSpecification)
     			{
     				//
     				Shape shapeactor = context.getShape();
     			    Object bo = getBusinessObjectForPictogramElement(shapeactor);
     			    behavior.Object object = (behavior.Object) bo;
     				Lifeline ll = object.getInclude();
-    				MessageOccurreceSpecification MOS = (MessageOccurreceSpecification) ob;
+    				MessageOccurrenceSpecification MOS = (MessageOccurrenceSpecification) ob;
 
     				if(ll == MOS.getCovered().get(0)){
     					//move the MessageOccurreceSpecification

@@ -26,7 +26,7 @@ import behavior.InteractionFragment;
 import behavior.Lifeline;
 import behavior.Message;
 import behavior.MessageEnd;
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 import behavior.NamedElement;
 import behavior.Namespace;
 import behavior.OccurrenceSpecification;
@@ -227,7 +227,7 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass messageOccurreceSpecificationEClass = null;
+	private EClass messageOccurrenceSpecificationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -998,8 +998,8 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMessageOccurreceSpecification() {
-		return messageOccurreceSpecificationEClass;
+	public EClass getMessageOccurrenceSpecification() {
+		return messageOccurrenceSpecificationEClass;
 	}
 
 	/**
@@ -1007,8 +1007,8 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMessageOccurreceSpecification_Event() {
-		return (EReference)messageOccurreceSpecificationEClass.getEStructuralFeatures().get(0);
+	public EReference getMessageOccurrenceSpecification_Event() {
+		return (EReference)messageOccurrenceSpecificationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1202,8 +1202,8 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 
 		executionEventEClass = createEClass(EXECUTION_EVENT);
 
-		messageOccurreceSpecificationEClass = createEClass(MESSAGE_OCCURRECE_SPECIFICATION);
-		createEReference(messageOccurreceSpecificationEClass, MESSAGE_OCCURRECE_SPECIFICATION__EVENT);
+		messageOccurrenceSpecificationEClass = createEClass(MESSAGE_OCCURRENCE_SPECIFICATION);
+		createEReference(messageOccurrenceSpecificationEClass, MESSAGE_OCCURRENCE_SPECIFICATION__EVENT);
 
 		executionOccurrenceSpecificationEClass = createEClass(EXECUTION_OCCURRENCE_SPECIFICATION);
 		createEReference(executionOccurrenceSpecificationEClass, EXECUTION_OCCURRENCE_SPECIFICATION__EXECUTION);
@@ -1271,8 +1271,8 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 		creatEventEClass.getESuperTypes().add(this.getEvent());
 		destructionEventEClass.getESuperTypes().add(this.getEvent());
 		executionEventEClass.getESuperTypes().add(this.getEvent());
-		messageOccurreceSpecificationEClass.getESuperTypes().add(this.getOccurrenceSpecification());
-		messageOccurreceSpecificationEClass.getESuperTypes().add(this.getMessageEnd());
+		messageOccurrenceSpecificationEClass.getESuperTypes().add(this.getOccurrenceSpecification());
+		messageOccurrenceSpecificationEClass.getESuperTypes().add(this.getMessageEnd());
 		executionOccurrenceSpecificationEClass.getESuperTypes().add(this.getOccurrenceSpecification());
 		generalOrderingEClass.getESuperTypes().add(this.getNamedElement());
 		behaviorExecutionSpecificationEClass.getESuperTypes().add(this.getExecutionSpecification());
@@ -1379,8 +1379,8 @@ public class BehaviorPackageImpl extends EPackageImpl implements BehaviorPackage
 
 		initEClass(executionEventEClass, ExecutionEvent.class, "ExecutionEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(messageOccurreceSpecificationEClass, MessageOccurreceSpecification.class, "MessageOccurreceSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMessageOccurreceSpecification_Event(), this.getEvent(), null, "event", null, 1, 1, MessageOccurreceSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(messageOccurrenceSpecificationEClass, MessageOccurrenceSpecification.class, "MessageOccurrenceSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMessageOccurrenceSpecification_Event(), this.getEvent(), null, "event", null, 1, 1, MessageOccurrenceSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(executionOccurrenceSpecificationEClass, ExecutionOccurrenceSpecification.class, "ExecutionOccurrenceSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExecutionOccurrenceSpecification_Execution(), this.getExecutionSpecification(), null, "execution", null, 1, 1, ExecutionOccurrenceSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

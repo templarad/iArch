@@ -25,7 +25,7 @@ import behavior.InteractionFragment;
 import behavior.Lifeline;
 import behavior.Message;
 import behavior.MessageEnd;
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 import behavior.NamedElement;
 import behavior.Namespace;
 import behavior.OccurrenceSpecification;
@@ -323,14 +323,14 @@ public class BehaviorSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case BehaviorPackage.MESSAGE_OCCURRECE_SPECIFICATION: {
-				MessageOccurreceSpecification messageOccurreceSpecification = (MessageOccurreceSpecification)theEObject;
-				T result = caseMessageOccurreceSpecification(messageOccurreceSpecification);
-				if (result == null) result = caseOccurrenceSpecification(messageOccurreceSpecification);
-				if (result == null) result = caseMessageEnd(messageOccurreceSpecification);
-				if (result == null) result = caseInteractionFragment(messageOccurreceSpecification);
-				if (result == null) result = caseNamedElement(messageOccurreceSpecification);
-				if (result == null) result = caseElement(messageOccurreceSpecification);
+			case BehaviorPackage.MESSAGE_OCCURRENCE_SPECIFICATION: {
+				MessageOccurrenceSpecification messageOccurrenceSpecification = (MessageOccurrenceSpecification)theEObject;
+				T result = caseMessageOccurrenceSpecification(messageOccurrenceSpecification);
+				if (result == null) result = caseOccurrenceSpecification(messageOccurrenceSpecification);
+				if (result == null) result = caseMessageEnd(messageOccurrenceSpecification);
+				if (result == null) result = caseInteractionFragment(messageOccurrenceSpecification);
+				if (result == null) result = caseNamedElement(messageOccurrenceSpecification);
+				if (result == null) result = caseElement(messageOccurrenceSpecification);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -753,17 +753,17 @@ public class BehaviorSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Message Occurrece Specification</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Message Occurrence Specification</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Message Occurrece Specification</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Message Occurrence Specification</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMessageOccurreceSpecification(MessageOccurreceSpecification object) {
+	public T caseMessageOccurrenceSpecification(MessageOccurrenceSpecification object) {
 		return null;
 	}
 

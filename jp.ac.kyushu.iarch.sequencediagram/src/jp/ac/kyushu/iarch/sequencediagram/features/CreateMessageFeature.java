@@ -26,7 +26,7 @@ import behavior.BehaviorExecutionSpecification;
 import behavior.Lifeline;
 import behavior.Message;
 import behavior.BehaviorFactory;
-import behavior.MessageOccurreceSpecification;
+import behavior.MessageOccurrenceSpecification;
 
 public class CreateMessageFeature extends AbstractCreateConnectionFeature {
 	
@@ -62,8 +62,8 @@ public class CreateMessageFeature extends AbstractCreateConnectionFeature {
 			BehaviorExecutionSpecification BehaviorExecutionOnsource =BehaviorFactory.eINSTANCE.createBehaviorExecutionSpecification();
 			BehaviorExecutionSpecification BehaviorExecutionOntarget =BehaviorFactory.eINSTANCE.createBehaviorExecutionSpecification();
 
-			MessageOccurreceSpecification startMOS = BehaviorFactory.eINSTANCE.createMessageOccurreceSpecification();
-			MessageOccurreceSpecification endMOS = BehaviorFactory.eINSTANCE.createMessageOccurreceSpecification();
+			MessageOccurrenceSpecification startMOS = BehaviorFactory.eINSTANCE.createMessageOccurrenceSpecification();
+			MessageOccurrenceSpecification endMOS = BehaviorFactory.eINSTANCE.createMessageOccurrenceSpecification();
 
 			startMOS.setMessage(message);
 			endMOS.setMessage(message);
