@@ -99,5 +99,9 @@
          point="org.eclipse.core.resources.fileModificationValidator">
          <fileModificationValidator class="jp.ac.kyushu.iarch.checkplugin.Savehook"/>
    </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+         <startup class="jp.ac.kyushu.iarch.checkplugin.Savehook"/>
+   </extension>
 
 </plugin>
