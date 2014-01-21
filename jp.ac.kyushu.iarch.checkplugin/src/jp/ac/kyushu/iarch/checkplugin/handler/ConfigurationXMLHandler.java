@@ -123,6 +123,7 @@ public class ConfigurationXMLHandler implements IHandler{
 			}else{
 				CreateConfigFile(project,dialog);
 			}
+			ArchfaceChecker.readXMLContent(project);
 		}
 		
 			
