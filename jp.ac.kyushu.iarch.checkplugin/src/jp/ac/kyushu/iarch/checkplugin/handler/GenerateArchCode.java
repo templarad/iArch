@@ -26,7 +26,7 @@ import behavior.Message;
 import behavior.MessageOccurrenceSpecification;
 
 
-public class GenerateArchiCode implements IHandler {
+public class GenerateArchCode implements IHandler {
 
 
 	@Override

@@ -1,10 +1,12 @@
 package jp.ac.kyushu.iarch.checkplugin.handler;
 
 import java.util.List;
+
 import jp.ac.kyushu.iarch.archdsl.ArchDSLPlugin;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.archdsl.ui.internal.ArchDSLActivator;
 import jp.ac.kyushu.iarch.checkplugin.utils.ProjectSelectionUtils;
+import jp.ac.kyushu.iarch.checkplugin.view.SelectAllFileDialog;
 import jp.ac.kyushu.iarch.checkplugin.view.SelectDiagramsDialog;
 
 import org.eclipse.core.commands.ExecutionEvent;
@@ -23,7 +25,7 @@ import org.eclipse.xtext.ui.resource.XtextResourceSetProvider;
 
 import com.google.inject.Injector;
 
-public class CheckArchifaceHandler implements IHandler {
+public class CheckArchfaceHandler implements IHandler {
 	final private static Injector injector = ArchDSLActivator.getInstance()
 			.getInjector(ArchDSLPlugin.getLanguageName());
 
@@ -40,7 +42,7 @@ public class CheckArchifaceHandler implements IHandler {
 		// create dialog & items
 		IProject project = ProjectSelectionUtils.getProject(event, "Check Archiface");
 
-		SelectDiagramsDialog dialog = new SelectDiagramsDialog(
+		SelectAllFileDialog dialog = new SelectAllFileDialog(
 				HandlerUtil.getActiveShell(event), project);
 		if (dialog.open() == MessageDialog.OK) {
 			// clear problems
