@@ -20,6 +20,7 @@ public class CheckerWorkSpaceJob extends Job {
 		}			
 		ArchfaceChecker archfaceChecker = new ArchfaceChecker(proj);
 		archfaceChecker.checkProject();
+		monitor.done();
 		return Status.OK_STATUS;
 	}
 }

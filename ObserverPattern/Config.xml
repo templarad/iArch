@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Project name="ObserverPattern">
+  <Archfile>
+    <Path Attribute="\ObserverPattern\arch\observer.arch"/>
+  </Archfile>
+  <ClassDiagram>
+    <Path Attribute="\ObserverPattern\diagrams\Class.diagram"/>
+  </ClassDiagram>
+  <SequenceDiagram>
+    <Path Attribute="\ObserverPattern\diagrams\Sequence_Valid.diagram"/>
+  </SequenceDiagram>
+  <SourceCode>
+    <Path Attribute="\ObserverPattern\src\Subject.java"/>
+    <Path Attribute="\ObserverPattern\src\State.java"/>
+    <Path Attribute="\ObserverPattern\src\Observer.java"/>
+    <Path Attribute="\ObserverPattern\src\Main.java"/>
+  </SourceCode>
+  <ARXML>
+    <Path Attribute="\ObserverPattern\codeXML.xml"/>
+  </ARXML>
+</Project>
