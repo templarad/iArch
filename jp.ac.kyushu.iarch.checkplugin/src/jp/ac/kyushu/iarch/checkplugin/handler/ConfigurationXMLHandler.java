@@ -82,10 +82,7 @@ public class ConfigurationXMLHandler implements IHandler{
 		}
 	}
 
-	public IResource ReadIResource(IPath path){
-		IResource re = ResourcesPlugin.getWorkspace().getRoot().findMember(path);
-		return re;
-	}
+
 	
 	public boolean isConfigFileExist(IProject project){
 		String ConfigFile=project.getProject().getLocation().toOSString()+"/Config.xml";
