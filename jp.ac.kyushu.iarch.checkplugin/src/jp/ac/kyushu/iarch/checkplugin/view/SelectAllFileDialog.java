@@ -54,7 +54,7 @@ public class SelectAllFileDialog extends Dialog {
 	
 	@Override
 	protected Point getInitialSize() {
-		return new Point(500, 800);
+		return new Point(480, 840);
 	}
 	
 	@Override
@@ -71,13 +71,13 @@ public class SelectAllFileDialog extends Dialog {
 		CheckCheckedStateListener checkboxListener = new CheckCheckedStateListener();
 		Composite composite = (Composite)super.createDialogArea(parent);
 		Label archiLabel = new Label(composite, SWT.NONE);
-		archiLabel.setText("Archiface files");
+		archiLabel.setText("Archiface file");
 		archiTable = new Table(composite, SWT.CHECK|SWT.BORDER | SWT.V_SCROLL);
 		archiTable.setLayoutData(new GridData(350, 50));
 		archiTable.addSelectionListener(checkboxListener);
 
 		Label classLabel = new Label(composite, SWT.NONE);
-		classLabel.setText("Class Diagrams");
+		classLabel.setText("Class Diagram");
 		classTable = new Table(composite, SWT.CHECK|SWT.BORDER|SWT.V_SCROLL);
 		classTable.setLayoutData(new GridData(350, 50));
 		classTable.addSelectionListener(checkboxListener);
@@ -89,13 +89,13 @@ public class SelectAllFileDialog extends Dialog {
 		sequenceTable.addSelectionListener(checkboxListener);
 		
 		Label sourceLabel = new Label(composite, SWT.NONE);
-		sourceLabel.setText("Source code");
+		sourceLabel.setText("Source code files");
 		sourceTable = new Table(composite, SWT.CHECK|SWT.BORDER|SWT.V_SCROLL);
 		sourceTable.setLayoutData(new GridData(350, 100));
 		sourceTable.addSelectionListener(checkboxListener);
 
 		Label xmlLabel = new Label(composite,SWT.NONE);
-		xmlLabel.setText("Archiface files");
+		xmlLabel.setText("Abstraction Ratio files");
 		xmlTable = new Table(composite, SWT.CHECK|SWT.BORDER | SWT.V_SCROLL);
 		xmlTable.setLayoutData(new GridData(350, 50));
 		xmlTable.addSelectionListener(checkboxListener);
@@ -149,7 +149,7 @@ public class SelectAllFileDialog extends Dialog {
 	}
 	
 	/**
-	 * @author hosoai
+	 * @author Ai Di
 	 * Selection validation
 	 */
 	class CheckCheckedStateListener implements SelectionListener{

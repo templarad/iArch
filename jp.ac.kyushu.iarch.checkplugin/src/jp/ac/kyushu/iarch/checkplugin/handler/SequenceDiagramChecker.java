@@ -11,6 +11,8 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.graphiti.mm.pictograms.Diagram;
+
 
 import behavior.Message;
 import behavior.MessageOccurrenceSpecification;
@@ -23,11 +25,27 @@ public class SequenceDiagramChecker {
 		for(Behavior behavior : archiface.getBehaviors()){
 			if(checkMessageOrder(behavior, diagramMessages)){
 				ProblemViewManager.addInfo(sequenceResource, behavior.getInterface().getName()+
-						" sequence order is valid",behavior.getInterface().getName()+" sequence" );
+						" sequence order is valid",behavior.getInterface().getName());
 			}else{
 				ProblemViewManager.addError(sequenceResource, behavior.getInterface().getName()+
-						" sequence order is invalid",behavior.getInterface().getName()+" sequence" );//"."+behavior.getCall().get(order).getName()+	
+						" sequence order is invalid",behavior.getInterface().getName());//"."+behavior.getCall().get(order).getName()+	
 				//error marker
+//				for(EObject eob:sequenceDiagram.getContents()){
+//					if(eob instanceof Diagram){
+//						
+//					}else if(eob instanceof behavior.Object){
+//						behavior.Object ob = (behavior.Object) eob;
+//						String name = ob.getName();
+//						
+//
+//						if(name.equals(behavior.getInterface().getName())){
+//							
+//
+//						}
+//					}
+//				}
+
+
 			}
 		}
 		return false;
