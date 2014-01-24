@@ -11,7 +11,6 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.graphiti.mm.pictograms.Diagram;
 
 
 import behavior.Message;
