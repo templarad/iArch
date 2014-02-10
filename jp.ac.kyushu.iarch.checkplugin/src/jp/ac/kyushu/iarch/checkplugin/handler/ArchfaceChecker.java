@@ -21,6 +21,8 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.resource.XtextResourceSetProvider;
@@ -34,11 +36,12 @@ public class ArchfaceChecker {
 	private static List<String> SequenceDiagramPathes= new ArrayList<String>();
 	private static List<String> SourceCodePathes = new ArrayList<String>();
 	private static String ARXMLPath=null;
+	private static IJavaProject JavaProject=null;
 	
 	public ArchfaceChecker(IProject project){
 		ProblemViewManager.removeAllProblems(project);
 		readXMLContent(project);
-		
+		setJavaProject(JavaCore.create(project));
 	}
 	
 	public void checkProject(){		
@@ -50,8 +53,8 @@ public class ArchfaceChecker {
 			IResource classDiagramResource, 
 			List<IResource> sequenceDiagramResources,
 			List<IResource> sourceCodeResources,
-			IResource aRXMLResource
-			){
+			IResource aRXMLResource){
+		
 		Model ArchModel = getArchifaceModel(archfile);
 		ClassDiagramChecker classDiagramChecker = new ClassDiagramChecker();
 		classDiagramChecker.checkClassDiagram(ArchModel, classDiagramResource);
@@ -221,5 +224,19 @@ public class ArchfaceChecker {
 		Resource resource = rs.getResource(URI.createPlatformResourceURI(
 				archfile.getFullPath().toString(), true), true);
 		return (Model) resource.getContents().get(0);
+	}
+
+	/**
+	 * @return the javaProject
+	 */
+	public static IJavaProject getJavaProject() {
+		return JavaProject;
+	}
+
+	/**
+	 * @param javaProject the javaProject to set
+	 */
+	private static void setJavaProject(IJavaProject javaProject) {
+		JavaProject = javaProject;
 	}
 }
