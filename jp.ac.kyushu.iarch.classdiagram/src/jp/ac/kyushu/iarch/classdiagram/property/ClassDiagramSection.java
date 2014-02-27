@@ -96,6 +96,7 @@ public class ClassDiagramSection extends GFPropertySection implements
     						return;
     					NamedElement nm = (NamedElement)bo;
     					nm.setArchpoint(isArchPoint);
+    					this.getDiagramBehavior().refreshRenderingDecorators(pe);
     				}
     			}
     			

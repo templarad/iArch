@@ -45,8 +45,9 @@ public class ClassDiagramChecker{
 	private umlClass.Class findClass(Interface archiclass,
 			List<EObject> umlClasses) {
 		for (EObject obj : umlClasses) {
-			if (obj instanceof umlClass.Class) {
+			if (obj instanceof umlClass.Class) {				
 				umlClass.Class umlClass = (umlClass.Class) obj;
+				if(!umlClass.isArchpoint()) continue;
 				if (umlClass.getName().equals(archiclass.getName())) {
 					return umlClass;
 				}
@@ -57,7 +58,8 @@ public class ClassDiagramChecker{
 
 	private umlClass.Operation findMethod(Method method, Class umlClass) {
 		for (Operation op : umlClass.getOwnedOperation()) {
-			if (op.getName().equals(method.getName())) {
+			if(!op.isArchpoint()) continue;
+			if (op.getName().equals(method.getName())&&umlClass.isArchpoint()) {
 				return op;
 				// TODO Parameter/Return Type check.
 			}

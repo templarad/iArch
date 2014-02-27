@@ -4,7 +4,10 @@ import org.eclipse.graphiti.features.IFeature;
 import org.eclipse.graphiti.features.context.IContext;
 import org.eclipse.graphiti.features.context.impl.CustomContext;
 import org.eclipse.graphiti.features.impl.AbstractFeature;
+import org.eclipse.graphiti.features.impl.Reason;
+import org.eclipse.graphiti.mm.pictograms.FreeFormConnection;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
+import org.eclipse.graphiti.mm.pictograms.Shape;
 import org.eclipse.graphiti.services.Graphiti;
 import org.eclipse.graphiti.ui.platform.GFPropertySection;
 import org.eclipse.swt.SWT;
@@ -21,6 +24,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
+
 import behavior.NamedElement;;
 public class SequenceDiagramSection extends GFPropertySection implements
     ITabbedPropertyConstants {
@@ -97,6 +101,17 @@ public class SequenceDiagramSection extends GFPropertySection implements
     						return;
     					NamedElement nm = (NamedElement)bo;
     					nm.setArchpoint(isArchPoint);
+    					
+    					//We cannot refresh a FreeFormConnection to update its warn Decorators,
+    					//Instead, we can refresh its name box, to update its Decorators
+    					if (pe instanceof FreeFormConnection){
+    						FreeFormConnection cs = (FreeFormConnection) pe;
+    						//Refresh all of its name boxes.
+        	            	for (Shape shape : cs.getConnectionDecorators()) {    	                    
+        	                    this.getDiagramBehavior().refreshRenderingDecorators(shape);        	                    
+        	                }
+    					}
+    					
     					this.getDiagramBehavior().refreshRenderingDecorators(pe);
     				}
     			}

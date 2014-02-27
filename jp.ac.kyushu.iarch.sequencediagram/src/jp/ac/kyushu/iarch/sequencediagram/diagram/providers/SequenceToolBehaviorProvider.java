@@ -23,23 +23,26 @@ public class SequenceToolBehaviorProvider extends DefaultToolBehaviorProvider{
     public IDecorator[] getDecorators(PictogramElement pe) {
     	
     	IFeatureProvider featureProvider = getFeatureProvider();
+        
+        if (pe instanceof ConnectionDecorator) {        	
+    		PictogramElement pecon = ((ConnectionDecorator)pe).getConnection();
+    		Object bo = featureProvider.getBusinessObjectForPictogramElement(pecon);
+    		if(bo instanceof Message){
+            	for(Object ob: pe.eContents()){
+            		if(!((Message) bo).isArchpoint()){
+            			IDecorator imageRenderingDecorator =
+                                new ImageDecorator(
+                                    IPlatformImageConstants.IMG_ECLIPSE_WARNING_TSK);
+                            imageRenderingDecorator
+                                .setMessage("Archpoint Unselected");
+                            return new IDecorator[] { imageRenderingDecorator };
+            		}
+            	}
+            }
+    	}
+    	
         Object bo = featureProvider.getBusinessObjectForPictogramElement(pe);
-        if(bo instanceof Message){
-        	for(Object ob: pe.eContents()){
-        		if(ob instanceof ConnectionDecorator&&!((Message) bo).isArchpoint()){
-        			IDecorator imageRenderingDecorator =
-                            new ImageDecorator(
-                                IPlatformImageConstants.IMG_ECLIPSE_WARNING_TSK);
-                        imageRenderingDecorator
-                            .setMessage("Archpoint Unselected");
-                        return new IDecorator[] { imageRenderingDecorator };
-        		}
-        	}
-        	
-        		
-        	
-        		
-        }
+        
         if(bo instanceof behavior.Object){
         	boolean isArchpoint = ((NamedElement)bo).isArchpoint();
         	if(!isArchpoint){

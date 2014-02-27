@@ -62,6 +62,9 @@
         <MethodInvocation name="update">
           <InvocationExpression>o</InvocationExpression>
         </MethodInvocation>
+        <MethodInvocation name="_notify">
+          <InvocationExpression/>
+        </MethodInvocation>
       </MethodDeclaration>
       <MethodDeclaration lineNumber="22" name="_notify">
         <MethodModifiers>
@@ -676,6 +679,7 @@
   <Package name="com.sun.corba.se.pept.broker"/>
   <Package name="com.sun.corba.se.internal.iiop"/>
   <Package name="com.sun.xml.internal.bind.v2.schemagen.xmlschema"/>
+  <Package name="com.oracle.util"/>
   <Package name="javax.security.cert"/>
   <Package name="sun.java2d.pipe"/>
   <Package name="com.sun.corba.se.impl.oa.toa"/>
@@ -777,8 +781,9 @@
   <Package name="com.sun.security.jgss"/>
   <Package name="com.sun.jmx.snmp.IPAcl"/>
   <Package name="com.sun.xml.internal.ws.policy.spi"/>
-  <Package name="sun.java2d.windows"/>
+  <Package name="com.sun.org.apache.xalan.internal.utils"/>
   <Package name="com.sun.java.swing.plaf.motif.resources"/>
+  <Package name="sun.java2d.windows"/>
   <Package name="com.sun.org.apache.xerces.internal.impl.xpath"/>
   <Package name="com.sun.xml.internal.ws.transport.http.client"/>
   <Package name="javax.xml.crypto.dsig"/>
@@ -825,6 +830,7 @@
   <Package name="com.sun.xml.internal.bind.v2"/>
   <Package name="javax.xml.bind.annotation.adapters"/>
   <Package name="com.sun.xml.internal.ws.policy.subject"/>
+  <Package name="com.oracle.nio"/>
   <Package name="javax.xml.stream.util"/>
   <Package name="com.sun.org.apache.xml.internal.dtm.ref.dom2dtm"/>
   <Package name="sun.rmi.transport"/>
@@ -1053,6 +1059,7 @@
   <Package name="javax.swing.border"/>
   <Package name="com.sun.org.apache.xml.internal.security.utils.resolver"/>
   <Package name="org.omg.stub"/>
+  <Package name="com.sun.org.apache.xerces.internal.utils"/>
   <Package name="com.sun.jndi.url.corbaname"/>
   <Package name="javax.swing.event"/>
   <Package name="com.sun.xml.internal.ws.client.dispatch"/>
@@ -1220,6 +1227,21 @@
   <Package name="sun.nio"/>
   <Package name="sun.nio.cs"/>
   <Package name="sun.awt"/>
+  <Package name="oracle.jrockit"/>
+  <Package name=""/>
+  <Package name="oracle"/>
+  <Package name="com"/>
+  <Package name="com.oracle.jrockit.jfr.client"/>
+  <Package name="oracle.jrockit.jfr"/>
+  <Package name="oracle.jrockit.jfr.parser"/>
+  <Package name="oracle.jrockit.jfr.events"/>
+  <Package name="com.oracle.jrockit.jfr"/>
+  <Package name="com.oracle.jrockit.jfr.management"/>
+  <Package name="com.oracle.jrockit"/>
+  <Package name="com.oracle"/>
+  <Package name="oracle.jrockit.jfr.openmbean"/>
+  <Package name="oracle.jrockit.jfr.tools"/>
+  <Package name="oracle.jrockit.jfr.settings"/>
   <Package name=""/>
   <Package name="sun"/>
   <Package name="sun.net"/>

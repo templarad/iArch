@@ -104,7 +104,7 @@
     <fonts name="Arial" size="8"/>
   </pi:Diagram>
   <umlClass:Class name="Observer" Archpoint="true">
-    <ownedOperation name="update"/>
+    <ownedOperation name="update" Archpoint="true"/>
   </umlClass:Class>
   <umlClass:Class name="Subject" Archpoint="true">
     <ownedOperation name="update" Archpoint="true"/>
