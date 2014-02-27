@@ -31,7 +31,7 @@ public class ClassDiagramChecker{
 				for(Method m : archiclass.getMethods()){
 					Operation op = findMethod(m, umlClass);
 					if(op!=null){
-						ProblemViewManager.addInfo(classDiagramResource, "  "+archiclass.getName()+"."+m.getName()+" is valid", m.getName());						
+						//ProblemViewManager.addInfo(classDiagramResource, "  "+archiclass.getName()+"."+m.getName()+" is valid", m.getName());						
 					}else{
 						ProblemViewManager.addError(classDiagramResource, "  "+archiclass.getName()+"."+m.getName()+" not found", m.getName());
 					}

@@ -29,10 +29,10 @@ public class AbstractionRatioChecker {
 		// count class
 		for (Interface archiclass : archiface.getInterfaces()) {
 			i_class_num++;
-			ProblemViewManager.addInfo(archifile, "[arch] class("+i_class_num+") "+archiclass.getName(), archiclass.getName());
+			//ProblemViewManager.addInfo(archifile, "[arch] class("+i_class_num+") "+archiclass.getName(), archiclass.getName());
 			for(Method m : archiclass.getMethods()){
 				i_method_num++;	
-				ProblemViewManager.addInfo(archifile, "[arch] method("+i_method_num+") "+archiclass.getName()+"."+m.getName(), m.getName());
+				//ProblemViewManager.addInfo(archifile, "[arch] method("+i_method_num+") "+archiclass.getName()+"."+m.getName(), m.getName());
 			}
 		}
 
@@ -47,7 +47,7 @@ public class AbstractionRatioChecker {
 			for(Method method: archiclassBehavior.getCall()){
 				Interface nowInterface = (Interface)method.eContainer();
 				i++;
-				ProblemViewManager.addInfo(archifile, "[arch] Behavior("+i+") ("+archiclassBehavior.getInterface().getName()+") " +nowInterface.getName()+"."+method.getName(), "archiface");
+				//ProblemViewManager.addInfo(archifile, "[arch] Behavior("+i+") ("+archiclassBehavior.getInterface().getName()+") " +nowInterface.getName()+"."+method.getName(), "archiface");
 				if(nowInterface.getName().equals(previousInterfaceName)){//自分自身でmethodを呼んでいる場合
 					i_behavior_num = i_behavior_num + 2;
 				}
@@ -63,7 +63,7 @@ public class AbstractionRatioChecker {
 		i_archpoint_num = getMethodNum() + getClassNum() + getBehaviorNum();
 		//archpoint数set
 		setArchpointNum(i_archpoint_num);
-		ProblemViewManager.addInfo(archifile, "[arch] ArchPoint is "+getArchpointNum(), "archface");
+		//ProblemViewManager.addInfo(archifile, "[arch] ArchPoint is "+getArchpointNum(), "archface");
 	}
 	
 	public void checkXml(IResource xml,Document xmldocument){
@@ -116,14 +116,14 @@ public class AbstractionRatioChecker {
 		for(int i = 0;i < class_nodes.getLength();i++){
 			Element xml_class = (Element)class_nodes.item(i);
 			i_class_num++;
-			ProblemViewManager.addInfo(xml, "[xml] class("+i_class_num+") "+xml_class.getAttribute("name"), "archface");
+			//ProblemViewManager.addInfo(xml, "[xml] class("+i_class_num+") "+xml_class.getAttribute("name"), "archface");
 			//method カウント
 			NodeList class_methods = class_nodes.item(i).getChildNodes();
 			for(int j = 0;j < class_methods.getLength();j++){
 				if(class_methods.item(j).getNodeName().equals("MethodDeclaration")){
 					Element xml_method = (Element)class_methods.item(j);
 					i_method_num++;
-					ProblemViewManager.addInfo(xml, "[xml] method("+i_method_num+") "+xml_class.getAttribute("name")+"."+xml_method.getAttribute("name"), "archface");
+					//ProblemViewManager.addInfo(xml, "[xml] method("+i_method_num+") "+xml_class.getAttribute("name")+"."+xml_method.getAttribute("name"), "archface");
 					//method invocation カウント
 					NodeList method_invocations = class_methods.item(j).getChildNodes();
 					for(int k = 0;k < method_invocations.getLength();k++){
@@ -134,7 +134,7 @@ public class AbstractionRatioChecker {
 							for(int l = 0;l < invocation_childs.getLength();l++){
 								if(invocation_childs.item(l).getNodeName().equals("InvocationExpression")){
 									Element invocation_class = (Element)invocation_childs.item(l);
-									ProblemViewManager.addInfo(xml, "[xml] methodinvocation("+i_invocation_point_num+") "+xml_class.getAttribute("name")+"."+xml_method.getAttribute("name")+" calls "+invocation_class.getAttribute("name")+"."+method_invocation.getAttribute("name"), "archface");
+									//ProblemViewManager.addInfo(xml, "[xml] methodinvocation("+i_invocation_point_num+") "+xml_class.getAttribute("name")+"."+xml_method.getAttribute("name")+" calls "+invocation_class.getAttribute("name")+"."+method_invocation.getAttribute("name"), "archface");
 								}
 							}
 						}
@@ -148,18 +148,18 @@ public class AbstractionRatioChecker {
 		
 		xml_point = getXmlClassNum() + getXmlMethodNum() + getXmlInvocationPointNum();
 		setXmlpointNum(xml_point);
-		ProblemViewManager.addInfo(xml, "[xml] ProgramPoint is "+getXmlpointNum(), "archface");
+		//ProblemViewManager.addInfo(xml, "[xml] ProgramPoint is "+getXmlpointNum(), "archface");
 	}
 
 	public void calculateAbstractionRatio(IResource archifile){
 		if(xml_point_num == 0){
-			ProblemViewManager.addInfo(archifile, "*** cant calculate AbstractionRatio ", "archface");
+			//ProblemViewManager.addInfo(archifile, "*** cant calculate AbstractionRatio ", "archface");
 		}
 		else{
 			double x = (double)arch_archpoint_num/xml_point_num;
 			double i_abstraction_ratio = (double)1 - x;
 			setAbstractionRatio(i_abstraction_ratio);
-			ProblemViewManager.addInfo(archifile, "*** AbstractionRatio is "+getAbstractionRatio(), "archface");	
+			//ProblemViewManager.addInfo(archifile, "*** AbstractionRatio is "+getAbstractionRatio(), "archface");	
 		}
 	}
 	

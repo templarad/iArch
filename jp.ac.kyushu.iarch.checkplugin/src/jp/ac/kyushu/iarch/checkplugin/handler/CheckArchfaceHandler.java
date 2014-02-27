@@ -7,7 +7,6 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.archdsl.ui.internal.ArchDSLActivator;
 import jp.ac.kyushu.iarch.checkplugin.utils.ProjectSelectionUtils;
 import jp.ac.kyushu.iarch.checkplugin.view.SelectAllFileDialog;
-import jp.ac.kyushu.iarch.checkplugin.view.SelectDiagramsDialog;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;

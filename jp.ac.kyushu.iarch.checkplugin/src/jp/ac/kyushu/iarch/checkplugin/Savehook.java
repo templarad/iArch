@@ -2,6 +2,7 @@ package jp.ac.kyushu.iarch.checkplugin;
 
 import java.util.ArrayList;
 
+import jp.ac.kyushu.iarch.checkplugin.handler.ARChecker;
 import jp.ac.kyushu.iarch.checkplugin.handler.ArchfaceChecker;
 import jp.ac.kyushu.iarch.checkplugin.handler.CheckerWorkSpaceJob;
 import jp.ac.kyushu.iarch.checkplugin.handler.ClassDiagramChecker;
@@ -79,6 +80,9 @@ public class Savehook extends AbstractUIPlugin implements IStartup {
 				if(changed.size()>0)
 				{
 					new CheckerWorkSpaceJob("Check", changed.get(0)).schedule();
+					
+					ARChecker archecker = new ARChecker();
+					archecker.checkAR(ArchfaceChecker.getArchfileResource(), ArchfaceChecker.getARXMLResource());
 				}
 				//ProblemViewManager.removeAllProblems(proj);
 				

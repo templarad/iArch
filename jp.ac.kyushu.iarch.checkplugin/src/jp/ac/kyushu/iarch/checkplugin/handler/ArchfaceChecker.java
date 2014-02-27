@@ -56,6 +56,7 @@ public class ArchfaceChecker {
 			IResource aRXMLResource){
 		
 		Model ArchModel = getArchifaceModel(archfile);
+		//check diagram
 		ClassDiagramChecker classDiagramChecker = new ClassDiagramChecker();
 		classDiagramChecker.checkClassDiagram(ArchModel, classDiagramResource);
 		
@@ -63,6 +64,14 @@ public class ArchfaceChecker {
 		for(IResource sequenceDiagramResource : sequenceDiagramResources){
 			sequenceDiagramChecker.checkSequenceDiagram(ArchModel, sequenceDiagramResource);					
 		}
+		
+		//Check source code
+		ASTSourceCodeChecker astchecker = new ASTSourceCodeChecker();
+		astchecker.SourceCodeArchifileChecker(ArchModel, getJavaProject());
+		
+		//Check AR
+//		ARChecker archecker = new ARChecker();
+//		archecker.checkAR(archfile, aRXMLResource);
 		
 		return;
 	}
@@ -76,7 +85,7 @@ public class ArchfaceChecker {
 		return false;
 	}
 	
-	public static IResource ReadIResource(IPath path){
+	public static IResource readIResource(IPath path){
 		IResource re = ResourcesPlugin.getWorkspace().getRoot().findMember(path);
 		return re;
 	}
@@ -145,7 +154,7 @@ public class ArchfaceChecker {
 	 */
 	public static IResource getARXMLResource() {
 		IPath path = new Path(ARXMLPath);
-		IResource ARXMLResource = ReadIResource(path);
+		IResource ARXMLResource = readIResource(path);
 		return ARXMLResource;
 	}
 
@@ -161,7 +170,7 @@ public class ArchfaceChecker {
 	 */
 	public static IResource getClassDiagramResource() {
 		IPath path = new Path(ClassDiagramPath);
-		IResource ClassDiagramResource = ReadIResource(path);
+		IResource ClassDiagramResource = readIResource(path);
 		return ClassDiagramResource;
 	}
 
@@ -177,7 +186,7 @@ public class ArchfaceChecker {
 	 */
 	public static IResource getArchfileResource() {
 		IPath path = new Path(ArchfilePath);
-		IResource Archfile = ReadIResource(path);
+		IResource Archfile = readIResource(path);
 		return Archfile;
 	}
 
@@ -195,7 +204,7 @@ public class ArchfaceChecker {
 		List<IResource> SequenceDiagramResources = new ArrayList<IResource>();
 		for(String SequenceDiagramPath:SequenceDiagramPathes){
 			IPath path = new Path(SequenceDiagramPath);
-			IResource SequenceDiagramResource = ReadIResource(path);
+			IResource SequenceDiagramResource = readIResource(path);
 			SequenceDiagramResources.add(SequenceDiagramResource);			
 		}
 			
@@ -209,7 +218,7 @@ public class ArchfaceChecker {
 		List<IResource> SourceCodeResources = new ArrayList<IResource>();
 		for(String SourceCodePath:SourceCodePathes){
 			IPath path = new Path(SourceCodePath);
-			IResource SourceCodeResource = ReadIResource(path);
+			IResource SourceCodeResource = readIResource(path);
 			SourceCodeResources.add(SourceCodeResource);			
 		}
 		return SourceCodeResources;
