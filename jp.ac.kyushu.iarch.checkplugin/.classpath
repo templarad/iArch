@@ -5,6 +5,5 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="lib/jaxen-1.1.6.jar"/>
-	<classpathentry kind="lib" path="lib/org.apache.xerces_2.9.0.v201101211617.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
