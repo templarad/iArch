@@ -71,8 +71,8 @@ public class GenerateArchCode implements IHandler {
 		Code+= findClass(classDiagram.getContents());//Gen Class Code
 		Code+= "\n";
 		Code+= getSequenceCode(sequenceDiagramResources);//Gen Squence Code
-		
-		String ArchiCodeFile="Gen-Archi.arch";
+		String projectPath = archifile.getProject().getLocation().toOSString();
+		String ArchiCodeFile=projectPath +"/Gen-Arch.arch";
 		File myFilePath = new File(ArchiCodeFile);
 		try {
 			if (!myFilePath.exists()) {
@@ -102,7 +102,7 @@ public class GenerateArchCode implements IHandler {
 			List<behavior.Object> diagramObject = new ArrayList<behavior.Object>();
 			List<Message> messages = new ArrayList<Message>();
 			for(EObject obj : sequenceDiagram.getContents()){
-				if(obj instanceof behavior.Object){
+				if(obj instanceof behavior.Object&&((behavior.Object) obj).isArchpoint()){
 					diagramObject.add((behavior.Object)obj);
 				}
 				if(obj instanceof Message){
@@ -115,7 +115,10 @@ public class GenerateArchCode implements IHandler {
 					Lifeline oblifeline = ob.getInclude();
 					Lifeline sendlifeline = ((MessageOccurrenceSpecification)msg.getSendEvent()).getCovered().get(0);
 					Lifeline recivelifeline = ((MessageOccurrenceSpecification)msg.getReceiveEvent()).getCovered().get(0);					
-					if (oblifeline == sendlifeline||oblifeline == recivelifeline){
+					if (oblifeline == sendlifeline){
+						SequenceCode += recivelifeline.getActor().getName()+ "." +msg.getName()+"->";
+						
+					}else if(oblifeline == recivelifeline){
 						SequenceCode += ob.getName()+ "." +msg.getName()+"->";
 					}
 				}
@@ -155,8 +158,7 @@ public class GenerateArchCode implements IHandler {
 	private String findMethod(umlClass.Class umlClass){
 		String Code="";
 		for(Operation operation:umlClass.getOwnedOperation()){
-			Code+="\tport "+operation.getName()+"() :\n"+
-		"\t\t"+"execution(void "+operation.getName()+"()) ;\n";
+			Code+="\tvoid "+operation.getName()+"() :\n";//+"\t\t"+"execution(void "+operation.getName()+"()) ;\n"
 		}
 		return Code;
 	}

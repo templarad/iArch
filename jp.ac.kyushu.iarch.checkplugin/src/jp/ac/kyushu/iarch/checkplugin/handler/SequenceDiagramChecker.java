@@ -66,7 +66,10 @@ public class SequenceDiagramChecker {
 		int diagOrderCount = 0;
 		int messageOrderCount = 0;
 		for(Method methodCall : behavior.getCall()){
+
 			System.out.println("in "+methodCall.getName());
+			if(methodCall.getName()==null)continue;//in case of "no declaration in Archface component"
+			
 			for(diagOrderCount=0;;diagOrderCount++){
 				if(diagOrderCount>=diagramMessages.size()){
 					return false;

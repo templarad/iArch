@@ -20,9 +20,10 @@ public class CheckerWorkSpaceJob extends Job {
 	//A new job to do the check
 	protected IStatus run(IProgressMonitor monitor) {
 		if(proj==null){
-			System.out.println("null");
+			System.out.println("Project is null: Auto-check");
 			return Status.CANCEL_STATUS;
 		}
+		ProblemViewManager.removeAllProblems(proj);
 		ArchfaceChecker archfaceChecker = new ArchfaceChecker(proj);
 		archfaceChecker.checkProject();
 		monitor.done();

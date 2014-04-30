@@ -64,7 +64,8 @@ public class Savehook extends AbstractUIPlugin implements IStartup {
 							if(ext.equals("class") )
 								return true;
 							else{
-								changed.add(proj);								
+								changed.add(proj);
+								ArchfaceChecker.readXMLContent(proj);
 							}
 		   					//return true;
 		               }
@@ -79,13 +80,12 @@ public class Savehook extends AbstractUIPlugin implements IStartup {
 				}
 				if(changed.size()>0)
 				{
-					new CheckerWorkSpaceJob("Check", changed.get(0)).schedule();
 					
 					ARChecker archecker = new ARChecker();
 					archecker.checkAR(ArchfaceChecker.getArchfileResource(), ArchfaceChecker.getARXMLResource());
+					new CheckerWorkSpaceJob("Check", changed.get(0)).schedule();
 				}
 				//ProblemViewManager.removeAllProblems(proj);
-				
 				
 			}//@Override public void resourceChanged
 		});

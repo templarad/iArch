@@ -88,11 +88,11 @@ public class ARChecker {
 		
 		abstractionRatioView.setRatio(checker.getAbstractionRatio());
 		abstractionRatioView.setArchAndImpl(checker.getArchpointNum(), checker.getXmlpointNum());
-		abstractionRatioView.setStructureRatio((double)(checker.getClassNum()+checker.getMethodNum())
+		abstractionRatioView.setStructureRatio(1-(double)(checker.getClassNum()+checker.getMethodNum())
 				/(double)(checker.getXmlClassNum()+checker.getXmlMethodNum()));
 		abstractionRatioView.setStructureArchAndImpl(checker.getXmlClassNum()+checker.getMethodNum() ,
 				checker.getXmlClassNum()+checker.getXmlMethodNum());
-		abstractionRatioView.setBehaviorRatio((double)checker.getBehaviorNum() 
+		abstractionRatioView.setBehaviorRatio(1-(double)checker.getBehaviorNum() 
 				/ (double)checker.getXmlInvocationPointNum());
 		abstractionRatioView.setBehaviorArchAndImpl(checker.getBehaviorNum(),
 				checker.getXmlInvocationPointNum());

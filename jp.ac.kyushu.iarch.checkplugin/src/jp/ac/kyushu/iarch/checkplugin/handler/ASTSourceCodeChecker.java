@@ -246,12 +246,14 @@ public class ASTSourceCodeChecker{
 					boolean flag2 = false;
 
 					String methodName = methodCall.getName();
+					if(null==methodName)continue;//add by AiDi
 					String classNameString = ((Interface) methodCall.eContainer()).getName();
 					int lineNumber=0;
 					Node classNode = null;
 					if (classNameL != null) {
 						classNode = test.selectSingleNode("Class[@name='" + classNameL + "']");
 					}
+					if(classNode==null)continue;//add by AiDi
 					if (methodNameLaString != null) {
 						Node methodDcl = classNode.selectSingleNode("MethodDeclaration[@name='" + methodNameLaString + "']");
 						flag2 = (methodDcl.selectSingleNode("MethodInvocation[@name='" + methodName + "']") != null);

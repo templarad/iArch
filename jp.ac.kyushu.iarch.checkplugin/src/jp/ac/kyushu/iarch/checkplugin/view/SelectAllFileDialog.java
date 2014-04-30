@@ -73,31 +73,31 @@ public class SelectAllFileDialog extends Dialog {
 		Label archiLabel = new Label(composite, SWT.NONE);
 		archiLabel.setText("Archiface file");
 		archiTable = new Table(composite, SWT.CHECK|SWT.BORDER | SWT.V_SCROLL);
-		archiTable.setLayoutData(new GridData(350, 50));
+		archiTable.setLayoutData(new GridData(400, 50));
 		archiTable.addSelectionListener(checkboxListener);
 
 		Label classLabel = new Label(composite, SWT.NONE);
 		classLabel.setText("Class Diagram");
 		classTable = new Table(composite, SWT.CHECK|SWT.BORDER|SWT.V_SCROLL);
-		classTable.setLayoutData(new GridData(350, 50));
+		classTable.setLayoutData(new GridData(400, 50));
 		classTable.addSelectionListener(checkboxListener);
 
 		Label sequenceLabel = new Label(composite, SWT.NONE);
 		sequenceLabel.setText("Sequence Diagrams");
 		sequenceTable = new Table(composite, SWT.CHECK|SWT.BORDER|SWT.V_SCROLL);
-		sequenceTable.setLayoutData(new GridData(350, 100));
+		sequenceTable.setLayoutData(new GridData(400, 100));
 		sequenceTable.addSelectionListener(checkboxListener);
 		
 		Label sourceLabel = new Label(composite, SWT.NONE);
 		sourceLabel.setText("Source code files");
 		sourceTable = new Table(composite, SWT.CHECK|SWT.BORDER|SWT.V_SCROLL);
-		sourceTable.setLayoutData(new GridData(350, 100));
+		sourceTable.setLayoutData(new GridData(400, 100));
 		sourceTable.addSelectionListener(checkboxListener);
 
 		Label xmlLabel = new Label(composite,SWT.NONE);
 		xmlLabel.setText("Abstraction Ratio files");
 		xmlTable = new Table(composite, SWT.CHECK|SWT.BORDER | SWT.V_SCROLL);
-		xmlTable.setLayoutData(new GridData(350, 50));
+		xmlTable.setLayoutData(new GridData(400, 50));
 		xmlTable.addSelectionListener(checkboxListener);
 		setInitialItems();
 		
