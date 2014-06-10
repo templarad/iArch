@@ -15,4 +15,4 @@ Subject = (Subject.setState->Subject._notify->
 );
 	
 Observer = (Observer.update->Subject.getState
-	->Observer);
+	->Observer); 
