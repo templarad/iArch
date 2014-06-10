@@ -25,7 +25,7 @@ public class ClassDiagramChecker{
 			umlClass.Class umlClass = findClass(archiclass,
 					classDiagram.getContents());
 			if (umlClass != null) {
-				ProblemViewManager.addInfo(classDiagramResource, archiclass.getName()+" is valid", archiclass.getName());
+				//ProblemViewManager.addInfo(classDiagramResource, archiclass.getName()+" is valid", archiclass.getName());
 				
 				//check methods
 				for(Method m : archiclass.getMethods()){

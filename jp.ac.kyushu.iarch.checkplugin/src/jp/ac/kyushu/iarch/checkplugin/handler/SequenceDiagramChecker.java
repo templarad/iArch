@@ -23,8 +23,8 @@ public class SequenceDiagramChecker {
 
 		for(Behavior behavior : archiface.getBehaviors()){
 			if(checkMessageOrder(behavior, diagramMessages)){
-				ProblemViewManager.addInfo(sequenceResource, behavior.getInterface().getName()+
-						" sequence order is valid",behavior.getInterface().getName());
+				//ProblemViewManager.addInfo(sequenceResource, behavior.getInterface().getName()+
+				//" sequence order is valid",behavior.getInterface().getName());
 			}else{
 				ProblemViewManager.addError(sequenceResource, behavior.getInterface().getName()+
 						" sequence order is invalid",behavior.getInterface().getName());//"."+behavior.getCall().get(order).getName()+	

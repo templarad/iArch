@@ -71,7 +71,7 @@ public class ARChecker {
 		//for(IViewReference view :PlatformUI.getWorkbench().getActiveWorkbenchWindows().getActivePage().getViewReferences()){
 		for(IViewReference view :views[0].getActivePage().getViewReferences()){
 			if(view.getId().equals(AbstractionRatioViewPart.ID)){
-				abstractionRatioView = (AbstractionRatioViewPart)view.getView(false);
+				abstractionRatioView = (AbstractionRatioViewPart)view.getView(true);
 				
 			}
 		}

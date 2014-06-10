@@ -65,9 +65,8 @@ public class Savehook extends AbstractUIPlugin implements IStartup {
 								return true;
 							else{
 								changed.add(proj);
-								ArchfaceChecker.readXMLContent(proj);
+								ArchfaceChecker.readXMLContent(proj);					
 							}
-		   					//return true;
 		               }
 		               return true;
 		            }

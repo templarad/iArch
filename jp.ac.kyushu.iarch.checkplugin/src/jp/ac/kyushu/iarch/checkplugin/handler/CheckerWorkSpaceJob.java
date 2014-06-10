@@ -24,7 +24,7 @@ public class CheckerWorkSpaceJob extends Job {
 			return Status.CANCEL_STATUS;
 		}
 		ProblemViewManager.removeAllProblems(proj);
-		ArchfaceChecker archfaceChecker = new ArchfaceChecker(proj);
+		ArchfaceChecker archfaceChecker = ArchfaceChecker.getInstance(proj);
 		archfaceChecker.checkProject();
 		monitor.done();
 		return Status.OK_STATUS;

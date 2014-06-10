@@ -8,7 +8,7 @@ import java.util.List;
 		state = State.IDEL;
 	}
 	public void update(){
-		_notify();
+		_notify(); 
 	}
 	public State getState(){
 		return this.state;
@@ -18,11 +18,11 @@ import java.util.List;
 			o.update();
 		}
 		_notify();
-	}
+	}  
 	public void _notify(){
 		for(Observer o : this.observers){
 			o.update();
-		}
+		} 
 	} 
 	public void addObserver(Observer observer){
 		this.observers.add(observer);

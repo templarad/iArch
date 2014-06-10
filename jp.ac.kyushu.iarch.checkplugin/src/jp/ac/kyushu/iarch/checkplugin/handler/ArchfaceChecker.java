@@ -37,13 +37,16 @@ public class ArchfaceChecker {
 	private static List<String> SourceCodePathes = new ArrayList<String>();
 	private static String ARXMLPath=null;
 	private static IJavaProject JavaProject=null;
-	
-	public ArchfaceChecker(IProject project){
+	private static ArchfaceChecker archfacechecker= new ArchfaceChecker();
+	private ArchfaceChecker(){
+		//Singleton
+	}
+	public static ArchfaceChecker getInstance(IProject project){
 		ProblemViewManager.removeAllProblems(project);
 		readXMLContent(project);
 		setJavaProject(JavaCore.create(project));
+		return archfacechecker;
 	}
-	
 	public void checkProject(){		
 		checkProjectValidation(getArchfileResource(),getClassDiagramResource(),
 				getSequenceDiagramResource(),getSourceCodeResource(),getARXMLResource());
@@ -89,64 +92,68 @@ public class ArchfaceChecker {
 		IResource re = ResourcesPlugin.getWorkspace().getRoot().findMember(path);
 		return re;
 	}
+	
+	private static void initial(){
+		ArchfilePath=null;
+		ClassDiagramPath=null;
+		SequenceDiagramPathes.removeAll(SequenceDiagramPathes);
+		//System.out.println();
+		SourceCodePathes.removeAll(SourceCodePathes);
+		ARXMLPath=null;
+	}
 
 	
 	public static void readXMLContent(IProject project) {
-		ArchfilePath=null;
-		ClassDiagramPath=null;
-		System.out.println(SequenceDiagramPathes.removeAll(SequenceDiagramPathes));;
-		SourceCodePathes.removeAll(SourceCodePathes);
-		ARXMLPath=null;
-		  try{
-			   SAXReader saxReader = new SAXReader();
-			   Document document = saxReader.read(project.getProject().getLocation().toOSString()+"/Config.xml");
-			   {
-				   @SuppressWarnings("unchecked")
+		initial();
+		try{
+			SAXReader saxReader = new SAXReader();
+			Document document = saxReader.read(project.getProject().getLocation().toOSString()+"/Config.xml");
+			{
+				@SuppressWarnings("unchecked")
 				List<Node> Archfilelist = document.selectNodes("//Archfile/Path/@Attribute");			   
-				   Attribute attribute=(Attribute) Archfilelist.get(0);
-				   setArchfilePath(attribute.getValue());
-			   }
-			   
-			   {
-				   @SuppressWarnings("unchecked")
+				Attribute attribute=(Attribute) Archfilelist.get(0);
+				setArchfilePath(attribute.getValue());
+			}
+		   
+			{
+				@SuppressWarnings("unchecked")
 				List<Node> ClassDiagramlist = document.selectNodes("//ClassDiagram/Path/@Attribute");			   
-				   Attribute attribute=(Attribute) ClassDiagramlist.get(0);
-				   setClassDiagramPath(attribute.getValue());
-			   }
-			   
-			   {
-
-				   @SuppressWarnings("unchecked")
+				Attribute attribute=(Attribute) ClassDiagramlist.get(0);
+				setClassDiagramPath(attribute.getValue());
+			}
+		   
+			{
+				@SuppressWarnings("unchecked")
 				List<Node> SequenceDiagramlist = document.selectNodes("//SequenceDiagram/Path/@Attribute");
-				   for (Iterator<Node> iter = SequenceDiagramlist.iterator(); iter.hasNext(); ) {
-			            Attribute attribute = (Attribute) iter.next();
-			            String url = attribute.getValue();
-			            SequenceDiagramPathes.add(url);
-			        }
-			   }
-			   
-			   {
-				   @SuppressWarnings("unchecked")
+				for (Iterator<Node> iter = SequenceDiagramlist.iterator(); iter.hasNext(); ) {
+					Attribute attribute = (Attribute) iter.next();
+					String url = attribute.getValue();
+					SequenceDiagramPathes.add(url);
+					}
+				}
+			
+			{
+				@SuppressWarnings("unchecked")
 				List<Node> SourceCodelist = document.selectNodes("//SourceCode/Path/@Attribute");
-				   for (Iterator<Node> iter = SourceCodelist.iterator(); iter.hasNext(); ) {
-			            Attribute attribute = (Attribute) iter.next();
-			            String url = attribute.getValue();
-			            SourceCodePathes.add(url);
-			        }
-			   }
-			   
-			   {
-				   @SuppressWarnings("unchecked")
-				List<Node> ARXMLlist = document.selectNodes("//ARXML/Path/@Attribute");			   
-				   Attribute attribute=(Attribute) ARXMLlist.get(0);
-				   setARXMLPath(attribute.getValue());
-			   }
-			   
-			   }
-		  catch(DocumentException e){
-              System.out.println(e.getMessage());
-              }
-	}
+				for (Iterator<Node> iter = SourceCodelist.iterator(); iter.hasNext(); ) {
+					Attribute attribute = (Attribute) iter.next();
+					String url = attribute.getValue();
+					SourceCodePathes.add(url);
+					}
+				}
+			
+			{
+				@SuppressWarnings("unchecked")
+				List<Node> ARXMLlist = document.selectNodes("//ARXML/Path/@Attribute");
+				Attribute attribute=(Attribute) ARXMLlist.get(0);
+				setARXMLPath(attribute.getValue());
+				}
+			
+		}
+		catch(DocumentException e){
+			System.out.println(e.getMessage());
+			}
+		}
 	
 
 	/**
