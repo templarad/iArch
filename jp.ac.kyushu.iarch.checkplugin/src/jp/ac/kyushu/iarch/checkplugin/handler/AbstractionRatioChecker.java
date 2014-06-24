@@ -5,29 +5,23 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
+import jp.ac.kyushu.iarch.checkplugin.model.AbstractionRatio;
+import jp.ac.kyushu.iarch.checkplugin.model.ArchfaceModel;
 
 import org.w3c.dom.*;
+import org.apache.xerces.parsers.DOMParser;
 import org.eclipse.core.resources.IResource;
 
-public class AbstractionRatioChecker {
-	private int arch_method_num;
-	private int arch_class_num;
-	private int arch_behavior_num;
-	private int arch_archpoint_num;
-	private int xml_method_num;
-	private int xml_class_num;
-	private int xml_invocation_point_num;
-	private int xml_point_num;
-	private double abstraction_ratio;
+public class AbstractionRatioChecker extends AbstractionRatio{
 	
-	public void checkArchiface(Model archiface,IResource archifile){
+	public void checkArchface(Model archface,IResource archfile){
 		int i_class_num = 0;
 		int i_method_num = 0;
 		int i_behavior_num = 0;
 		int i_archpoint_num = 0;
 		
 		// count class
-		for (Interface archiclass : archiface.getInterfaces()) {
+		for (Interface archiclass : archface.getInterfaces()) {
 			i_class_num++;
 			//ProblemViewManager.addInfo(archifile, "[arch] class("+i_class_num+") "+archiclass.getName(), archiclass.getName());
 			for(Method m : archiclass.getMethods()){
@@ -42,9 +36,9 @@ public class AbstractionRatioChecker {
 		setMethodNum(i_method_num);
 
 		int i = 0;
-		for (Behavior archiclassBehavior : archiface.getBehaviors()) {
+		for (Behavior archclassBehavior : archface.getBehaviors()) {
 			String previousInterfaceName = "";
-			for(Method method: archiclassBehavior.getCall()){
+			for(Method method: archclassBehavior.getCall()){
 				Interface nowInterface = (Interface)method.eContainer();
 				i++;
 				//ProblemViewManager.addInfo(archifile, "[arch] Behavior("+i+") ("+archiclassBehavior.getInterface().getName()+") " +nowInterface.getName()+"."+method.getName(), "archiface");
@@ -152,85 +146,34 @@ public class AbstractionRatioChecker {
 	}
 
 	public void calculateAbstractionRatio(IResource archifile){
-		if(xml_point_num == 0){
+		if(getXmlpointNum() == 0){
 			//ProblemViewManager.addInfo(archifile, "*** cant calculate AbstractionRatio ", "archface");
 		}
 		else{
-			double x = (double)arch_archpoint_num/xml_point_num;
+			double x = (double)getArchpointNum()/getXmlpointNum();
 			double i_abstraction_ratio = (double)1 - x;
 			setAbstractionRatio(i_abstraction_ratio);
 			//ProblemViewManager.addInfo(archifile, "*** AbstractionRatio is "+getAbstractionRatio(), "archface");	
 		}
 	}
-	
-	public int getMethodNum(){
-		return arch_method_num;
+	private Document getCodeXml(IResource xml){
+		Document xmldocument = null;
+		try{
+			DOMParser parser = new DOMParser();
+			parser.parse(xml.getLocation().toString());
+			xmldocument = parser.getDocument();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return xmldocument;
 	}
 	
-	public void setMethodNum(int param){
-		arch_method_num = param;
-	}
-	
-	public int getClassNum(){
-		return arch_class_num;
-	}
-	
-	public void setClassNum(int param){
-		arch_class_num = param;
-	}
-	
-	public int getBehaviorNum(){
-		return arch_behavior_num;
-	}
-	
-	public void setBehaviorNum(int param){
-		arch_behavior_num = param;
-	}
-	
-	public int getArchpointNum(){
-		return arch_archpoint_num;
-	}
-	
-	public void setArchpointNum(int param){
-		arch_archpoint_num = param;
-	}
-	
-	public int getXmlMethodNum(){
-		return xml_method_num;
-	}
-	
-	public void setXmlMethodNum(int param){
-		xml_method_num = param;
-	}
-	
-	public int getXmlClassNum(){
-		return xml_class_num;
-	}
-	
-	public void setXmlClassNum(int param){
-		xml_class_num = param;
-	}
-	
-	public int getXmlInvocationPointNum(){
-		return xml_invocation_point_num;
-	}
-	
-	public void setXmlInvocationPointNum(int param){
-		xml_invocation_point_num = param;
-	}	
-	
-	public int getXmlpointNum(){
-		return xml_point_num;
-	}
-	
-	public void setXmlpointNum(int param){
-		xml_point_num = param;
-	}
-	
-	public double getAbstractionRatio(){
-		return abstraction_ratio;
-	}
-	public void setAbstractionRatio(double param){
-		abstraction_ratio = param;
+	public void execute(IResource archifile,IResource xml){
+		Model archiface = ArchfaceModel.getArchfaceModel(archifile);
+		checkArchface(archiface, archifile);	
+		Document xmldocument = getCodeXml(xml);
+		checkXml(xml,xmldocument);
+		calculateAbstractionRatio(archifile);
 	}
 }

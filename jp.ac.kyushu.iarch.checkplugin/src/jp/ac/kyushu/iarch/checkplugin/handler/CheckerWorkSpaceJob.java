@@ -30,8 +30,8 @@ public class CheckerWorkSpaceJob extends Job {
 		Display.getDefault().asyncExec(new Runnable() {
 		      @Override
 		      public void run() {
-		    	  ARChecker archecker = new ARChecker();
-		    	  archecker.checkAR(ArchfaceChecker.getArchfileResource(), ArchfaceChecker.getARXMLResource());
+		    	  ARHander arhander = new ARHander();
+		    	  arhander.checkAR(ArchfaceChecker.getArchfileResource(), ArchfaceChecker.getARXMLResource());
 		      }
 		    });
 		

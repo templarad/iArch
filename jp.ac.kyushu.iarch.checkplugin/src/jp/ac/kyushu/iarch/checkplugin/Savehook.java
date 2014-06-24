@@ -2,7 +2,7 @@ package jp.ac.kyushu.iarch.checkplugin;
 
 import java.util.ArrayList;
 
-import jp.ac.kyushu.iarch.checkplugin.handler.ARChecker;
+import jp.ac.kyushu.iarch.checkplugin.handler.ARHander;
 import jp.ac.kyushu.iarch.checkplugin.handler.ArchfaceChecker;
 import jp.ac.kyushu.iarch.checkplugin.handler.CheckerWorkSpaceJob;
 
