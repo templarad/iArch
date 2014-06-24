@@ -5,13 +5,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * Create a new job to check after project saving.
  */
 public class CheckerWorkSpaceJob extends Job {
 	IProject proj = null;
-	
 	public CheckerWorkSpaceJob(String firstName, IProject project) {
 		super(firstName);
 		this.proj = project;
@@ -26,7 +26,16 @@ public class CheckerWorkSpaceJob extends Job {
 		ProblemViewManager.removeAllProblems(proj);
 		ArchfaceChecker archfaceChecker = ArchfaceChecker.getInstance(proj);
 		archfaceChecker.checkProject();
-		monitor.done();
+		
+		Display.getDefault().asyncExec(new Runnable() {
+		      @Override
+		      public void run() {
+		    	  ARChecker archecker = new ARChecker();
+		    	  archecker.checkAR(ArchfaceChecker.getArchfileResource(), ArchfaceChecker.getARXMLResource());
+		      }
+		    });
+		
+		//monitor.done();
 		return Status.OK_STATUS;
 	}
 }

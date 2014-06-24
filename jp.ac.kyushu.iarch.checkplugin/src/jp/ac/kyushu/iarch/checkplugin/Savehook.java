@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import jp.ac.kyushu.iarch.checkplugin.handler.ARChecker;
 import jp.ac.kyushu.iarch.checkplugin.handler.ArchfaceChecker;
 import jp.ac.kyushu.iarch.checkplugin.handler.CheckerWorkSpaceJob;
-import jp.ac.kyushu.iarch.checkplugin.handler.ClassDiagramChecker;
-import jp.ac.kyushu.iarch.checkplugin.handler.ProblemViewManager;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -15,15 +13,13 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.resources.WorkspaceJob;
+
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
+
+
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jface.text.ITextSelection;
+
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.ISelectionService;
@@ -46,6 +42,8 @@ public class Savehook extends AbstractUIPlugin implements IStartup {
 				IResourceDelta rootDelta = event.getDelta();
 
 				final ArrayList<IProject> changed = new ArrayList<IProject>();
+				
+				//Visitor pattern
 				IResourceDeltaVisitor visitor = new IResourceDeltaVisitor() {
 					public boolean visit(IResourceDelta delta) {
 						//only interested in changed resources (not added or removed)
@@ -64,25 +62,28 @@ public class Savehook extends AbstractUIPlugin implements IStartup {
 							if(ext.equals("class") )
 								return true;
 							else{
-								changed.add(proj);
-								ArchfaceChecker.readXMLContent(proj);					
+								changed.add(proj);													
 							}
 		               }
 		               return true;
 		            }
-		         };//
+		         };//Visitor pattern
+		         
 				try {
 					rootDelta.accept(visitor);
 				} catch (CoreException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				//Check Archface if resource is changed
 				if(changed.size()>0)
 				{
+					ArchfaceChecker.readXMLContent(changed.get(0));
 					
-					ARChecker archecker = new ARChecker();
-					archecker.checkAR(ArchfaceChecker.getArchfileResource(), ArchfaceChecker.getARXMLResource());
-					new CheckerWorkSpaceJob("Check", changed.get(0)).schedule();
+					CheckerWorkSpaceJob checkjob = new CheckerWorkSpaceJob("Check", changed.get(0));
+					checkjob.schedule();
+
 				}
 				//ProblemViewManager.removeAllProblems(proj);
 				
