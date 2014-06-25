@@ -2,7 +2,6 @@ package jp.ac.kyushu.iarch.checkplugin;
 
 import java.util.ArrayList;
 
-import jp.ac.kyushu.iarch.checkplugin.handler.AbstractionRatioController;
 import jp.ac.kyushu.iarch.checkplugin.handler.ArchfaceChecker;
 import jp.ac.kyushu.iarch.checkplugin.handler.CheckerWorkSpaceJob;
 
@@ -55,7 +54,7 @@ public class Savehook extends AbstractUIPlugin implements IStartup {
 						IResource resource = delta.getResource();
 						//only interested in files changes
 						if (resource.getType() == IResource.FILE ) {
-							System.out.println(resource.getName()+" is changed.");
+							//System.out.println(resource.getName()+" is changed.");
 							String ext = resource.getFileExtension();
 							
 
@@ -78,12 +77,13 @@ public class Savehook extends AbstractUIPlugin implements IStartup {
 					e.printStackTrace();
 				}
 				
-				//Check Archface if resource is changed
+				//Check Archface if resource is changed,
+				//scheduled in another thread.
 				if(changed.size()>0)
 				{
 					ArchfaceChecker.readXMLContent(changed.get(0));
 					
-					CheckerWorkSpaceJob checkjob = new CheckerWorkSpaceJob("Check", changed.get(0));
+					CheckerWorkSpaceJob checkjob = CheckerWorkSpaceJob.getInstance(changed.get(0));
 					checkjob.schedule();
 
 				}

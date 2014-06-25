@@ -2,7 +2,6 @@ package jp.ac.kyushu.iarch.checkplugin.handler;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import jp.ac.kyushu.iarch.checkplugin.utils.ProjectSelectionUtils;
 import jp.ac.kyushu.iarch.checkplugin.view.SelectAllFileDialog;
@@ -18,8 +17,6 @@ import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.commands.IHandlerListener;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 

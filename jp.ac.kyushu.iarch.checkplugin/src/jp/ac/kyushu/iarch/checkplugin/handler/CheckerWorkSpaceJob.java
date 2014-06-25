@@ -11,12 +11,17 @@ import org.eclipse.swt.widgets.Display;
  * Create a new job to check after project saving.
  */
 public class CheckerWorkSpaceJob extends Job {
-	IProject proj = null;
-	public CheckerWorkSpaceJob(String firstName, IProject project) {
-		super(firstName);
-		this.proj = project;
+	private static IProject proj;
+	private static String Name = "Archface Auto-check";
+	private static CheckerWorkSpaceJob cwsJob = new CheckerWorkSpaceJob();
+	public CheckerWorkSpaceJob() {
+		super(Name);
+
 	}
-	
+	public static CheckerWorkSpaceJob getInstance(IProject project){
+		proj = project;
+		return cwsJob;
+	}
 	//A new job to do the check
 	protected IStatus run(IProgressMonitor monitor) {
 		if(proj==null){
@@ -35,7 +40,7 @@ public class CheckerWorkSpaceJob extends Job {
 		      }
 		    });
 		
-		//monitor.done();
+		monitor.done();
 		return Status.OK_STATUS;
 	}
 }
