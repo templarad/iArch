@@ -2,7 +2,7 @@ package jp.ac.kyushu.iarch.checkplugin;
 
 import java.util.ArrayList;
 
-import jp.ac.kyushu.iarch.checkplugin.handler.ARHander;
+import jp.ac.kyushu.iarch.checkplugin.handler.AbstractionRatioController;
 import jp.ac.kyushu.iarch.checkplugin.handler.ArchfaceChecker;
 import jp.ac.kyushu.iarch.checkplugin.handler.CheckerWorkSpaceJob;
 
@@ -57,12 +57,14 @@ public class Savehook extends AbstractUIPlugin implements IStartup {
 						if (resource.getType() == IResource.FILE ) {
 							System.out.println(resource.getName()+" is changed.");
 							String ext = resource.getFileExtension();
-							final IProject proj = delta.getResource().getProject();
+							
 
-							if(ext.equals("class") )
-								return true;
+							if(ext.equals("java")||ext.equals("arch")||ext.equals("diagram") ){
+								IProject proj = delta.getResource().getProject();
+								changed.add(proj);
+							}
 							else{
-								changed.add(proj);													
+								return true;												
 							}
 		               }
 		               return true;

@@ -36,9 +36,9 @@ public class CheckARHandler implements IHandler {
 			// clear problems
 			ProblemViewManager.removeAllProblems(project);
 			
-			ARHander archecker = new ARHander();
+			AbstractionRatioController arcontroller = new AbstractionRatioController();
 			
-			archecker.checkAR(dialog.getArchiface(), dialog.getXml());
+			arcontroller.checkAR(dialog.getArchiface(), dialog.getXml());
 
 			
 		}

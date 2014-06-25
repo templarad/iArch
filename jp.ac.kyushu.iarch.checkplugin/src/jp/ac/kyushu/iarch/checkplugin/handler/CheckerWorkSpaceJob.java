@@ -30,7 +30,7 @@ public class CheckerWorkSpaceJob extends Job {
 		Display.getDefault().asyncExec(new Runnable() {
 		      @Override
 		      public void run() {
-		    	  ARHander arhander = new ARHander();
+		    	  AbstractionRatioController arhander = new AbstractionRatioController();
 		    	  arhander.checkAR(ArchfaceChecker.getArchfileResource(), ArchfaceChecker.getARXMLResource());
 		      }
 		    });

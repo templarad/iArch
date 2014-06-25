@@ -17,13 +17,13 @@ public class ArchfaceModel {
 	final private static Injector injector = ArchDSLActivator.getInstance()
 			.getInjector(ArchDSLPlugin.getLanguageName());
 	
-	public static Model getArchfaceModel(IResource archifile) {
+	public static Model getArchfaceModel(IResource archfile) {
 		XtextResourceSet rs = (XtextResourceSet) injector.getInstance(
-				XtextResourceSetProvider.class).get(archifile.getProject());
+				XtextResourceSetProvider.class).get(archfile.getProject());
 		rs.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
 
 		Resource resource = rs.getResource(URI.createPlatformResourceURI(
-				archifile.getFullPath().toString(), true), true);
+				archfile.getFullPath().toString(), true), true);
 		return (Model) resource.getContents().get(0);
 	}
 }
