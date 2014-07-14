@@ -7,16 +7,11 @@ import java.util.List;
 		observers = new ArrayList<>();
 		state = State.IDEL;
 	}
-	public void update(){
-		_notify(); 
-	}
+
 	public State getState(){
 		return this.state;
 	}
 	public void setState(State state){
-		for(Observer o : this.observers){
-			o.update();
-		}
 		_notify();
 	}  
 	public void _notify(){

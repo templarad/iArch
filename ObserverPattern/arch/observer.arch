@@ -7,12 +7,11 @@ interface component Subject {
 }
 
 interface component Observer {
-	void update();
+	void update(); 
 }
- 
+
 Subject = (Subject.setState->Subject._notify->
 	Observer.update->Subject.getState->Subject
-);
-	
+);            
 Observer = (Observer.update->Subject.getState
-	->Observer); 
+	->Observer);

@@ -36,22 +36,13 @@
         </MethodModifiers>
         <returnType></returnType>
       </MethodDeclaration>
-      <MethodDeclaration lineNumber="10" name="update">
-        <MethodModifiers>
-          <modifier>public</modifier>
-          <modifier>void</modifier>
-        </MethodModifiers>
-        <MethodInvocation name="_notify">
-          <InvocationExpression/>
-        </MethodInvocation>
-      </MethodDeclaration>
-      <MethodDeclaration lineNumber="13" name="getState">
+      <MethodDeclaration lineNumber="11" name="getState">
         <MethodModifiers>
           <modifier>public</modifier>
         </MethodModifiers>
         <returnType>State</returnType>
       </MethodDeclaration>
-      <MethodDeclaration lineNumber="16" name="setState">
+      <MethodDeclaration lineNumber="14" name="setState">
         <MethodModifiers>
           <modifier>public</modifier>
           <modifier>void</modifier>
@@ -59,14 +50,11 @@
         <parameterTypeElement>
           <parameterType>State</parameterType>
         </parameterTypeElement>
-        <MethodInvocation name="update">
-          <InvocationExpression>o</InvocationExpression>
-        </MethodInvocation>
         <MethodInvocation name="_notify">
           <InvocationExpression/>
         </MethodInvocation>
       </MethodDeclaration>
-      <MethodDeclaration lineNumber="22" name="_notify">
+      <MethodDeclaration lineNumber="17" name="_notify">
         <MethodModifiers>
           <modifier>public</modifier>
           <modifier>void</modifier>
@@ -75,7 +63,7 @@
           <InvocationExpression>o</InvocationExpression>
         </MethodInvocation>
       </MethodDeclaration>
-      <MethodDeclaration lineNumber="27" name="addObserver">
+      <MethodDeclaration lineNumber="22" name="addObserver">
         <MethodModifiers>
           <modifier>public</modifier>
           <modifier>void</modifier>
@@ -87,7 +75,7 @@
           <InvocationExpression>this.observers</InvocationExpression>
         </MethodInvocation>
       </MethodDeclaration>
-      <MethodDeclaration lineNumber="30" name="removeObserver">
+      <MethodDeclaration lineNumber="25" name="removeObserver">
         <MethodModifiers>
           <modifier>public</modifier>
           <modifier>void</modifier>
@@ -123,9 +111,6 @@
         </MethodInvocation>
         <MethodInvocation name="getState">
           <InvocationExpression>subject</InvocationExpression>
-        </MethodInvocation>
-        <MethodInvocation name="println">
-          <InvocationExpression>System.out</InvocationExpression>
         </MethodInvocation>
       </MethodDeclaration>
     </Class>

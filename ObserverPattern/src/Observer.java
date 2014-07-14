@@ -6,6 +6,5 @@ public class Observer {
 	public void update(){
 		System.out.println("Observer.update()");
 		State state = subject.getState();
-		System.out.println("getState() : "+state);
 	}
 }
