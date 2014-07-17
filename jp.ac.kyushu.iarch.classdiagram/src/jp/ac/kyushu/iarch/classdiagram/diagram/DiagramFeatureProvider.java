@@ -80,7 +80,10 @@ public class DiagramFeatureProvider extends DefaultFeatureProvider {
     	   }
        }
        else if(pictogramElement instanceof ConnectionDecorator){
-       	return new UpdateAssociationFeature(this);
+    	   return new UpdateAssociationFeature(this);
+       }
+       else if(pictogramElement instanceof Shape){
+    	   return new UpdateAttributeFeature(this);
        }
        return super.getUpdateFeature(context);
      }  
