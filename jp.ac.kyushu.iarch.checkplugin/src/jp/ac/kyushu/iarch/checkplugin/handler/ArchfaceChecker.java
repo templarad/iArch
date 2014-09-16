@@ -1,6 +1,8 @@
 package jp.ac.kyushu.iarch.checkplugin.handler;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
@@ -97,7 +99,6 @@ public class ArchfaceChecker {
 		ArchfilePath=null;
 		ClassDiagramPath=null;
 		SequenceDiagramPathes.removeAll(SequenceDiagramPathes);
-		//System.out.println();
 		SourceCodePathes.removeAll(SourceCodePathes);
 		ARXMLPath=null;
 	}
@@ -107,7 +108,8 @@ public class ArchfaceChecker {
 		initial();
 		try{
 			SAXReader saxReader = new SAXReader();
-			Document document = saxReader.read(project.getProject().getLocation().toOSString()+"/Config.xml");
+			FileInputStream fis = new FileInputStream(project.getProject().getLocation().toOSString()+"\\Config.xml");
+			Document document = saxReader.read(fis);
 			{
 				@SuppressWarnings("unchecked")
 				List<Node> Archfilelist = document.selectNodes("//Archfile/Path/@Attribute");			   
@@ -152,7 +154,11 @@ public class ArchfaceChecker {
 		}
 		catch(DocumentException e){
 			System.out.println(e.getMessage());
-			}
+		} 
+		catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		}
 	
 

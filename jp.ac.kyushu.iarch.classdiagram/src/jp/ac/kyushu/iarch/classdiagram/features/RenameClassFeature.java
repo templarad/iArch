@@ -1,4 +1,16 @@
 package jp.ac.kyushu.iarch.classdiagram.features;
+
+
+import jp.ac.kyushu.iarch.classdiagram.diagram.ProjectReader;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
+import jp.ac.kyushu.iarch.basefunction.reader.*;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.graphiti.examples.common.ExampleUtil;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
@@ -50,8 +62,41 @@ public class RenameClassFeature extends AbstractCustomFeature {
                 String newName = ExampleUtil.askString(getName(), getDescription(),
                         currentName);
                 if (newName != null && !newName.equals(currentName)) {
-                    this.hasDoneChanges = true;
+                    
+                    
+                    
+                	RenameClassRefactoringJob rcrJob = RenameClassRefactoringJob.getInstance(currentName,newName);
+                	rcrJob.schedule();
+            		//archmodel.getInterfaces();
+//                    try{
+//            			SAXReader saxReader = new SAXReader();
+//            			FileInputStream fis = new FileInputStream(project.getProject().getLocation().toOSString()+"\\Config.xml");
+//            			Document document = saxReader.read(fis);
+//            			{
+//            				
+//            				List<Node> Archfilelist = document.selectNodes("//Archfile/Path/@Attribute");			   
+//            				Attribute attribute=(Attribute) Archfilelist.get(0);
+//            				
+//            			}			
+//            		}
+//            		catch(DocumentException e){
+//            			System.out.println(e.getMessage());
+//            		}
+////            		XMLreader xx= new XMLreader(project);
+//                    catch (FileNotFoundException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//                	IProject project = ProjectReader.getProject();
+//                    String aa= "/"+project.getProject().getName()+"/arch/observer.arch";
+//                    
+//                    System.out.println(aa);
+//                    IPath path = new Path(aa);
+//  		    	  IResource archfile = ResourcesPlugin.getWorkspace().getRoot().findMember(path);
+//                    Model archmodel = ArchModel.getArchfaceModel(archfile);
+                    
                     eClass.setName(newName);
+                    this.hasDoneChanges = true;
                     updatePictogramElement(pes[0]);
                 }
             }

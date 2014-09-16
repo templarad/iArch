@@ -2,9 +2,13 @@ package jp.ac.kyushu.iarch.classdiagram.diagram;
 
 import org.eclipse.graphiti.dt.IDiagramTypeProvider;
 import org.eclipse.graphiti.features.IFeatureProvider;
+import org.eclipse.graphiti.features.context.ICustomContext;
+import org.eclipse.graphiti.features.custom.ICustomFeature;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.platform.IPlatformImageConstants;
+import org.eclipse.graphiti.tb.ContextMenuEntry;
 import org.eclipse.graphiti.tb.DefaultToolBehaviorProvider;
+import org.eclipse.graphiti.tb.IContextMenuEntry;
 import org.eclipse.graphiti.tb.IDecorator;
 import org.eclipse.graphiti.tb.ImageDecorator;
 
@@ -18,7 +22,7 @@ public class ClassToolBehaviorProvider extends DefaultToolBehaviorProvider{
 		// TODO Auto-generated constructor stub
 	}
 
-	 @Override
+	@Override
 	public IDecorator[] getDecorators(PictogramElement pe) {
 	    	
     	IFeatureProvider featureProvider = getFeatureProvider();
@@ -37,4 +41,27 @@ public class ClassToolBehaviorProvider extends DefaultToolBehaviorProvider{
         }
         return super.getDecorators(pe);
     }
+
+	@Override
+	public IContextMenuEntry[] getContextMenu(ICustomContext context) {
+	    // create a sub-menu for all custom features
+	    ContextMenuEntry subMenu = new ContextMenuEntry(null, context);
+	    subMenu.setText("Refactor");
+	    subMenu.setDescription("Refactor features submenu");
+	    // display sub-menu hierarchical or flat
+	    subMenu.setSubmenu(true);
+
+	    // create a menu-entry in the sub-menu for each custom feature
+	    ICustomFeature[] customFeatures = getFeatureProvider().getCustomFeatures(context);
+	    for (int i = 0; i < customFeatures.length; i++) {
+	         ICustomFeature customFeature = customFeatures[i];
+	         if (customFeature.isAvailable(context)) {
+	             ContextMenuEntry menuEntry = new ContextMenuEntry(customFeature, context);
+	             subMenu.add(menuEntry);
+	         }
+	     }
+
+	     IContextMenuEntry ret[] = new IContextMenuEntry[] { subMenu };
+	     return ret;
+	}
 }

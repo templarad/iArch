@@ -1,6 +1,5 @@
 package jp.ac.kyushu.iarch.checkplugin.handler;
 
-import jp.ac.kyushu.iarch.checkplugin.model.AbstractionRatio;
 
 import org.eclipse.core.resources.IProject;
 

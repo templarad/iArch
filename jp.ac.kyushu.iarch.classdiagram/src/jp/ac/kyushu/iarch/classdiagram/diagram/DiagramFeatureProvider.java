@@ -67,14 +67,15 @@ public class DiagramFeatureProvider extends DefaultFeatureProvider {
     @Override
     public IUpdateFeature getUpdateFeature(IUpdateContext context) {
        PictogramElement pictogramElement = context.getPictogramElement();
+       Object bo = getBusinessObjectForPictogramElement(pictogramElement);
        if (pictogramElement instanceof ContainerShape) {
-           Object bo = getBusinessObjectForPictogramElement(pictogramElement);
+           
            if (bo instanceof umlClass.Class) {
                return new UpdateClassFeature(this);
            }
        }
        else if(pictogramElement instanceof FreeFormConnection){
-    	   Object bo = getBusinessObjectForPictogramElement(pictogramElement);
+
     	   if(bo instanceof Association){
     		   return new UpdateAssociationFeature(this);
     	   }
@@ -83,7 +84,9 @@ public class DiagramFeatureProvider extends DefaultFeatureProvider {
     	   return new UpdateAssociationFeature(this);
        }
        else if(pictogramElement instanceof Shape){
-    	   return new UpdateAttributeFeature(this);
+    	   if(bo instanceof Property||bo instanceof umlClass.Operation){
+    		   return new UpdateAttributeFeature(this);
+    	   }
        }
        return super.getUpdateFeature(context);
      }  
