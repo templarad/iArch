@@ -1,10 +1,15 @@
-package jp.ac.kyushu.iarch.classdiagram.diagram;
+package jp.ac.kyushu.iarch.basefunction.reader;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
-
+/**
+ * A class for getting current project when using diagram editor.
+ * 
+ * @author Templar
+ *
+ */
 public class ProjectReader {
 	
 	private static ProjectReader pr = new ProjectReader();

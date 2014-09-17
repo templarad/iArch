@@ -14,7 +14,7 @@ public class CheckerWorkSpaceJob extends Job {
 	private static IProject proj;
 	private static String Name = "Archface Auto-check";
 	private static CheckerWorkSpaceJob cwsJob = new CheckerWorkSpaceJob();
-	public CheckerWorkSpaceJob() {
+	private CheckerWorkSpaceJob() {
 		super(Name);
 
 	}
@@ -29,14 +29,14 @@ public class CheckerWorkSpaceJob extends Job {
 			return Status.CANCEL_STATUS;
 		}
 		ProblemViewManager.removeAllProblems(proj);
-		ArchfaceChecker archfaceChecker = ArchfaceChecker.getInstance(proj);
+		final ArchfaceChecker archfaceChecker = new ArchfaceChecker(proj);
 		archfaceChecker.checkProject();
 		
 		Display.getDefault().asyncExec(new Runnable() {
 		      @Override
 		      public void run() {
 		    	  AbstractionRatioController arhander = new AbstractionRatioController();
-		    	  arhander.checkAR(ArchfaceChecker.getArchfileResource(), ArchfaceChecker.getARXMLResource());
+		    	  arhander.checkAR(archfaceChecker.getArchfileResource(), ArchfaceChecker.getARXMLResource());
 		      }
 		    });
 		

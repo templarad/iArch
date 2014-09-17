@@ -24,3 +24,4 @@ Bundle-ClassPath: .,
  lib/dom4j-1.6.1.jar,
  lib/jaxen-1.1.6.jar
 Export-Package: jp.ac.kyushu.iarch.checkplugin.handler
+Import-Package: jp.ac.kyushu.iarch.basefunction.reader
