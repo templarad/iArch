@@ -1234,6 +1234,10 @@
   <Package name="sun.net.spi.nameservice.dns"/>
   <Package name="sun.net.spi.nameservice"/>
   <Package name=""/>
+  <Package name="com.apple"/>
+  <Package name="com.apple.dnssd"/>
+  <Package name="com"/>
+  <Package name=""/>
   <Package name="sun.text"/>
   <Package name="sun"/>
   <Package name="sun.util.resources"/>
