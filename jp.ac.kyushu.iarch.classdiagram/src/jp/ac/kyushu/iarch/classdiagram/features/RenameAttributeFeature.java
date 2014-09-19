@@ -1,10 +1,14 @@
 package jp.ac.kyushu.iarch.classdiagram.features;
+
+
 import org.eclipse.graphiti.examples.common.ExampleUtil;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.SWT;
 
 import umlClass.Property;
 
@@ -48,11 +52,22 @@ public class RenameAttributeFeature extends AbstractCustomFeature {
             Object bo = getBusinessObjectForPictogramElement(pes[0]);
             if (bo instanceof Property) {
             	Property eAttribute = (Property) bo;
+            	//
+            	if(eAttribute.isArchpoint()){
+            		
+            	}            		
+            	else{
+            		MessageDialog.open(MessageDialog.WARNING,
+        					null, "Can't refactoring",
+        					"Please check the archpoint property.", SWT.None);
+            		return;
+            	}
                 String currentName = eAttribute.getName();
                 // ask user for a new class name
                 String newName = ExampleUtil.askString(getName(), getDescription(),
                         currentName);
                 if (newName != null && !newName.equals(currentName)) {
+                	
                     this.hasDoneChanges = true;
                     eAttribute.setName(newName);
                     updatePictogramElement(((Shape) pes[0]).getContainer());

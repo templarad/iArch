@@ -12,11 +12,13 @@ Require-Bundle: org.eclipse.ui,
  jp.ac.kyushu.iarch.archdsl;bundle-version="1.0.0",
  jp.ac.kyushu.iarch.archdsl.ui;bundle-version="1.0.0",
  org.eclipse.xtext.ui;bundle-version="2.4.3",
- org.eclipse.jdt.core;bundle-version="3.9.2"
+ org.eclipse.jdt.core;bundle-version="3.9.2",
+ jp.ac.kyushu.iarch.model;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: jp.ac.kyushu.iarch.basefunction.hander,
+Export-Package: jp.ac.kyushu.iarch.basefunction.controller,
  jp.ac.kyushu.iarch.basefunction.reader
 Bundle-ClassPath: lib/dom4j-1.6.1.jar,
  lib/jaxen-1.1.6.jar,
  .
+Import-Package: org.eclipse.graphiti.mm.pictograms

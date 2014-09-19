@@ -2,9 +2,8 @@ package jp.ac.kyushu.iarch.sequencediagram.diagram.providers;
 
 import org.eclipse.graphiti.dt.AbstractDiagramTypeProvider;
 import org.eclipse.graphiti.dt.IDiagramTypeProvider;
-import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.tb.IToolBehaviorProvider;
-import org.eclipse.emf.ecore.resource.Resource;
+
 
 public class SequenceDiagramTypeProvider extends AbstractDiagramTypeProvider
 		implements IDiagramTypeProvider {
@@ -25,9 +24,9 @@ public class SequenceDiagramTypeProvider extends AbstractDiagramTypeProvider
         return toolBehaviorProviders;
     }
 	
-	@Override
-	public void resourcesSaved(Diagram diagram,
-            Resource[] savedResources){
+//	@Override
+//	public void resourcesSaved(Diagram diagram,
+//            Resource[] savedResources){
 
 //		String path = savedResources[0].getURI().toPlatformString(true).toString();
 //		IResource re = ResourcesPlugin.getWorkspace().getRoot().findMember(path);
@@ -64,5 +63,5 @@ public class SequenceDiagramTypeProvider extends AbstractDiagramTypeProvider
     	//------------End mark errors in diagram
 		//shape.get(0).getGraphicsAlgorithm().setForeground(MESSAGE_FOREGROUND.);
 		
-	}
+//	}
 }

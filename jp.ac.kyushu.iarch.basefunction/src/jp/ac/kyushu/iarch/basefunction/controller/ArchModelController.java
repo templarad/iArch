@@ -1,4 +1,4 @@
-package jp.ac.kyushu.iarch.basefunction.hander;
+package jp.ac.kyushu.iarch.basefunction.controller;
 
 import java.io.IOException;
 
@@ -10,13 +10,13 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.basefunction.reader.ArchModel;
 /**
  * A class for refactoring arch-code from diagram.
- * <br>After you use changeXXX method, it will save to arch-code automatically.
+ * <br>After you use changeXXX method, it will save the change to arch-code automatically.
  * @author Templar
  *
  */
-public class ArchModelHander extends ArchModel {
+public class ArchModelController extends ArchModel {
 	
-	public ArchModelHander(IResource archfile){
+	public ArchModelController(IResource archfile){
 		super(archfile);
 	}
 	/**
@@ -32,7 +32,7 @@ public class ArchModelHander extends ArchModel {
 		Model model = (Model) resource.getContents().get(0);
 		
 		int i=0;
-        for(Interface interfc :model.getInterfaces()){
+        for(Interface interfc : model.getInterfaces()){
         	
         	if(interfc.getName().equals(currentName)){
         		model.getInterfaces().get(i).setName(newName);
@@ -57,7 +57,7 @@ public class ArchModelHander extends ArchModel {
 	 * @param newAttri The new name of attribute you want to change to.
 	 * 
 	 */
-	public void changeAttributeName(String className, String currentAttri, String newAttri){
+	public void changeOperationName(String className, String currentAttri, String newAttri){
 		if(null == resource)
 			return;
 		boolean changed = false;
@@ -79,6 +79,22 @@ public class ArchModelHander extends ArchModel {
         	}
         	i++;
         }
+        if(!changed)
+        	return;
+		try {
+			resource.save(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void changeAttributeName(String className, String currentAttri, String newAttri){
+		if(null == resource)
+			return;
+		boolean changed = false;
+
+
         if(!changed)
         	return;
 		try {

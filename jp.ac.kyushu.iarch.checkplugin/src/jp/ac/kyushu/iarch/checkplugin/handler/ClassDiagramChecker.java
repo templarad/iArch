@@ -6,9 +6,12 @@ import java.util.List;
 
 
 
+
+
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
+import jp.ac.kyushu.iarch.basefunction.controller.GraphitiModelManager;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EObject;
@@ -42,13 +45,13 @@ public class ClassDiagramChecker{
 			}
 		}		
 	}
-	private umlClass.Class findClass(Interface archiclass,
+	private umlClass.Class findClass(Interface archclass,
 			List<EObject> umlClasses) {
 		for (EObject obj : umlClasses) {
 			if (obj instanceof umlClass.Class) {				
 				umlClass.Class umlClass = (umlClass.Class) obj;
 				if(!umlClass.isArchpoint()) continue;
-				if (umlClass.getName().equals(archiclass.getName())) {
+				if (umlClass.getName().equals(archclass.getName())) {
 					return umlClass;
 				}
 			}

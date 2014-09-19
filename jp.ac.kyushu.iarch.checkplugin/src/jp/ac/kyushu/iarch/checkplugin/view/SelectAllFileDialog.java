@@ -3,7 +3,7 @@ package jp.ac.kyushu.iarch.checkplugin.view;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.ac.kyushu.iarch.checkplugin.handler.GraphitiModelManager;
+import jp.ac.kyushu.iarch.basefunction.controller.GraphitiModelManager;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;

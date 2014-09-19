@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.ac.kyushu.iarch.basefunction.controller.GraphitiModelManager;
 import jp.ac.kyushu.iarch.checkplugin.utils.ProjectSelectionUtils;
 import jp.ac.kyushu.iarch.checkplugin.view.SelectDiagramsDialog;
 

@@ -168,7 +168,7 @@ public class XMLreader {
 	/**
 	 * @return the SequenceDiagramResources
 	 */
-	public static List<IResource> getSequenceDiagramResource(){
+	public List<IResource> getSequenceDiagramResource(){
 		List<IResource> SequenceDiagramResources = new ArrayList<IResource>();
 		for(String SequenceDiagramPath:SequenceDiagramPathes){
 			IPath path = new Path(SequenceDiagramPath);
@@ -182,7 +182,7 @@ public class XMLreader {
 	/**
 	 * @return the SourceCodeResources
 	 */
-	public static List<IResource> getSourceCodeResource(){
+	public List<IResource> getSourceCodeResource(){
 		List<IResource> SourceCodeResources = new ArrayList<IResource>();
 		for(String SourceCodePath:SourceCodePathes){
 			IPath path = new Path(SourceCodePath);
