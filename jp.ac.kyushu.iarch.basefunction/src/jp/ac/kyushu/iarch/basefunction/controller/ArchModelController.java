@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.eclipse.core.resources.IResource;
 
+import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
@@ -95,6 +96,51 @@ public class ArchModelController extends ArchModel {
 		boolean changed = false;
 
 
+        if(!changed)
+        	return;
+		try {
+			resource.save(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void removeMethod(String className, String currentAttri){
+		if(null == resource)
+			return;
+		boolean changed = false;
+		Model model = (Model) resource.getContents().get(0);
+		
+		int i=0;
+        for(Interface interfc :model.getInterfaces()){
+        	
+        	if(interfc.getName().equals(className)){
+        		int j = 0;
+        		for(Method method: interfc.getMethods()){
+        			if(currentAttri.equals(method.getName()) ){
+        				model.getInterfaces().get(i).getMethods().remove(j);
+        				changed=true;
+                		break;
+        			}
+        			j++;
+        		}        		
+        	}
+        	i++;
+        }
+        
+        for(Behavior behvior:model.getBehaviors()){
+        	i = 0;
+        	for(Method method : behvior.getCall()){
+        		if(method.getName().equals(currentAttri)){
+        			behvior.getCall().remove(i);
+        			i--;
+        			break;
+        		}
+        		i++;
+        	}
+        }
+        
         if(!changed)
         	return;
 		try {
