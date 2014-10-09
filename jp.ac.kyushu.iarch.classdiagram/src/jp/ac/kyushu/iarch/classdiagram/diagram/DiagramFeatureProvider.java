@@ -128,7 +128,8 @@ public class DiagramFeatureProvider extends DefaultFeatureProvider {
         									new RenameAssociationFeature(this),
         									new RenameAttributeFeature(this),
         									new RenameOperationFeature(this),
-        									new RefactorRemoveMethodFeature(this)};
+        									new RefactorRemoveMethodFeature(this),
+        									new GenerateClassDiagramFeature(this)};
     } 
     @Override
     public IDirectEditingFeature getDirectEditingFeature(

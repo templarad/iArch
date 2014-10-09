@@ -17,6 +17,7 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: jp.ac.kyushu.iarch.basefunction.controller,
+ jp.ac.kyushu.iarch.basefunction.model,
  jp.ac.kyushu.iarch.basefunction.reader
 Bundle-ClassPath: lib/dom4j-1.6.1.jar,
  lib/jaxen-1.1.6.jar,

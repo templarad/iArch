@@ -10,7 +10,6 @@ import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.graphiti.examples.common.ExampleUtil;
 import org.eclipse.graphiti.features.IDeleteFeature;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
@@ -23,7 +22,12 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 
 import umlClass.Operation;
-
+/**
+ * Haven't completed yet:<br>
+ * Modify sequence diagram function.
+ * @author Templar
+ *
+ */
 public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
 
 	private boolean hasDoneChanges = false;

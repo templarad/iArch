@@ -59,7 +59,7 @@ public class CreateOperationFeature extends AbstractCreateFeature {
         newOperation.setName(newOperationName);
         newOperation.setDatatype(newdatatype);
         DataType datetype = newOperation.getDatatype();
-        System.out.println(datetype.getName()+"...operation name:"+datetype.getOwnedOperation().get(0).getName());
+        //System.out.println(datetype.getName()+"...operation name:"+datetype.getOwnedOperation().get(0).getName());
         Object bo=getBusinessObjectForPictogramElement(context.getTargetContainer());
         if(bo instanceof umlClass.Class){
         	((umlClass.Class) bo).getOwnedOperation().add(newOperation);

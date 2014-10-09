@@ -136,7 +136,7 @@ public class XMLreader {
 	/**
 	 * @return the classDiagramResource
 	 */
-	public static IResource getClassDiagramResource() {
+	public IResource getClassDiagramResource() {
 		IPath path = new Path(ClassDiagramPath);
 		IResource ClassDiagramResource = readIResource(path);
 		return ClassDiagramResource;
