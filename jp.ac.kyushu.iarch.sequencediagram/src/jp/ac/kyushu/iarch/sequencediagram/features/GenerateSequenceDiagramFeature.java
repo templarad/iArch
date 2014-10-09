@@ -11,9 +11,14 @@ import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.graphiti.features.IAddFeature;
 import org.eclipse.graphiti.features.IFeatureProvider;
+import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.ICustomContext;
+import org.eclipse.graphiti.features.context.impl.AddContext;
 import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
+
+import behavior.BehaviorFactory;
 
 public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 
@@ -55,5 +60,16 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 	
 	public void generateSequenceDiagram(Resource sequenceResource, Model archfaceModel ){
 
+		behavior.Actor actor = BehaviorFactory.eINSTANCE.createActor();
+		actor.setName("Actor");
+		actor.setArchpoint(false);
+		AddContext addcontext = new AddContext();
+		addcontext.setX(20);
+		addcontext.setNewObject(actor);
+		addcontext.setTargetContainer(getDiagram());
+		IAddFeature iaddcontext = getFeatureProvider().getAddFeature(addcontext);
+		
+		if (null != iaddcontext)
+			iaddcontext.execute(addcontext);
 	}
 }
