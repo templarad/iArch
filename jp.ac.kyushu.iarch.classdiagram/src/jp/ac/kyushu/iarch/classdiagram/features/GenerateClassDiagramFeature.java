@@ -121,8 +121,8 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 				List<umlClass.Operation> operations = getOperations(archmodel, archclass);
 				generateOperations(umlclass, operations, classShape);
 				i++;
-				 layoutPictogramElement(classShape);
-			        updatePictogramElement(classShape);
+				layoutPictogramElement(classShape);
+			    updatePictogramElement(classShape);
 			}else{
 				//Fill the lost operation.
 				
