@@ -122,13 +122,13 @@ public interface ArchDSLPackage extends EPackage
   int UNCERTAIN_INTERFACE__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Super Interfaces</b></em>' reference list.
+   * The feature id for the '<em><b>Super Interface</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int UNCERTAIN_INTERFACE__SUPER_INTERFACES = 1;
+  int UNCERTAIN_INTERFACE__SUPER_INTERFACE = 1;
 
   /**
    * The feature id for the '<em><b>Altmethods</b></em>' containment reference list.
@@ -499,15 +499,15 @@ public interface ArchDSLPackage extends EPackage
   EAttribute getUncertainInterface_Name();
 
   /**
-   * Returns the meta object for the reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface#getSuperInterfaces <em>Super Interfaces</em>}'.
+   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface#getSuperInterface <em>Super Interface</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Super Interfaces</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface#getSuperInterfaces()
+   * @return the meta object for the reference '<em>Super Interface</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface#getSuperInterface()
    * @see #getUncertainInterface()
    * @generated
    */
-  EReference getUncertainInterface_SuperInterfaces();
+  EReference getUncertainInterface_SuperInterface();
 
   /**
    * Returns the meta object for the containment reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface#getAltmethods <em>Altmethods</em>}'.
@@ -865,12 +865,12 @@ public interface ArchDSLPackage extends EPackage
     EAttribute UNCERTAIN_INTERFACE__NAME = eINSTANCE.getUncertainInterface_Name();
 
     /**
-     * The meta object literal for the '<em><b>Super Interfaces</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Super Interface</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference UNCERTAIN_INTERFACE__SUPER_INTERFACES = eINSTANCE.getUncertainInterface_SuperInterfaces();
+    EReference UNCERTAIN_INTERFACE__SUPER_INTERFACE = eINSTANCE.getUncertainInterface_SuperInterface();
 
     /**
      * The meta object literal for the '<em><b>Altmethods</b></em>' containment reference list feature.

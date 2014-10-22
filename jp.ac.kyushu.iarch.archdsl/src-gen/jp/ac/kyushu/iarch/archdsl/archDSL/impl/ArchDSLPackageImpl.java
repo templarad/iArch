@@ -212,7 +212,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getUncertainInterface_SuperInterfaces()
+  public EReference getUncertainInterface_SuperInterface()
   {
     return (EReference)uncertainInterfaceEClass.getEStructuralFeatures().get(1);
   }
@@ -514,7 +514,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
 
     uncertainInterfaceEClass = createEClass(UNCERTAIN_INTERFACE);
     createEAttribute(uncertainInterfaceEClass, UNCERTAIN_INTERFACE__NAME);
-    createEReference(uncertainInterfaceEClass, UNCERTAIN_INTERFACE__SUPER_INTERFACES);
+    createEReference(uncertainInterfaceEClass, UNCERTAIN_INTERFACE__SUPER_INTERFACE);
     createEReference(uncertainInterfaceEClass, UNCERTAIN_INTERFACE__ALTMETHODS);
     createEReference(uncertainInterfaceEClass, UNCERTAIN_INTERFACE__OPTMETHODS);
 
@@ -587,7 +587,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
 
     initEClass(uncertainInterfaceEClass, UncertainInterface.class, "UncertainInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUncertainInterface_Name(), ecorePackage.getEString(), "name", null, 0, 1, UncertainInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getUncertainInterface_SuperInterfaces(), this.getInterface(), null, "superInterfaces", null, 0, -1, UncertainInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUncertainInterface_SuperInterface(), this.getInterface(), null, "superInterface", null, 0, 1, UncertainInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getUncertainInterface_Altmethods(), this.getAltMethod(), null, "altmethods", null, 0, -1, UncertainInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getUncertainInterface_Optmethods(), this.getOptMethod(), null, "optmethods", null, 0, -1, UncertainInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

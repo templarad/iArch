@@ -38,9 +38,10 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getModelAccess().getAlternatives_0(), "rule__Model__Alternatives_0");
-					put(grammarAccess.getUncertainInterfaceAccess().getAlternatives_5(), "rule__UncertainInterface__Alternatives_5");
+					put(grammarAccess.getUncertainInterfaceAccess().getAlternatives_4(), "rule__UncertainInterface__Alternatives_4");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getUncertainInterfaceAccess().getGroup(), "rule__UncertainInterface__Group__0");
+					put(grammarAccess.getUncertainInterfaceAccess().getGroup_2(), "rule__UncertainInterface__Group_2__0");
 					put(grammarAccess.getInterfaceAccess().getGroup(), "rule__Interface__Group__0");
 					put(grammarAccess.getMethodAccess().getGroup(), "rule__Method__Group__0");
 					put(grammarAccess.getMethodAccess().getGroup_3(), "rule__Method__Group_3__0");
@@ -66,9 +67,9 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getU_interfacesAssignment_0_1(), "rule__Model__U_interfacesAssignment_0_1");
 					put(grammarAccess.getModelAccess().getBehaviorsAssignment_1(), "rule__Model__BehaviorsAssignment_1");
 					put(grammarAccess.getUncertainInterfaceAccess().getNameAssignment_1(), "rule__UncertainInterface__NameAssignment_1");
-					put(grammarAccess.getUncertainInterfaceAccess().getSuperInterfacesAssignment_3(), "rule__UncertainInterface__SuperInterfacesAssignment_3");
-					put(grammarAccess.getUncertainInterfaceAccess().getAltmethodsAssignment_5_0(), "rule__UncertainInterface__AltmethodsAssignment_5_0");
-					put(grammarAccess.getUncertainInterfaceAccess().getOptmethodsAssignment_5_1(), "rule__UncertainInterface__OptmethodsAssignment_5_1");
+					put(grammarAccess.getUncertainInterfaceAccess().getSuperInterfaceAssignment_2_1(), "rule__UncertainInterface__SuperInterfaceAssignment_2_1");
+					put(grammarAccess.getUncertainInterfaceAccess().getAltmethodsAssignment_4_0(), "rule__UncertainInterface__AltmethodsAssignment_4_0");
+					put(grammarAccess.getUncertainInterfaceAccess().getOptmethodsAssignment_4_1(), "rule__UncertainInterface__OptmethodsAssignment_4_1");
 					put(grammarAccess.getInterfaceAccess().getNameAssignment_1(), "rule__Interface__NameAssignment_1");
 					put(grammarAccess.getInterfaceAccess().getMethodsAssignment_3(), "rule__Interface__MethodsAssignment_3");
 					put(grammarAccess.getMethodAccess().getTypeAssignment_0(), "rule__Method__TypeAssignment_0");

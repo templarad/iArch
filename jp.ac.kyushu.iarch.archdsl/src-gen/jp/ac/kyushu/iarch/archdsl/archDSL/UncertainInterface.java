@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface#getName <em>Name</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface#getSuperInterfaces <em>Super Interfaces</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface#getSuperInterface <em>Super Interface</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface#getAltmethods <em>Altmethods</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface#getOptmethods <em>Optmethods</em>}</li>
  * </ul>
@@ -54,20 +54,30 @@ public interface UncertainInterface extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Super Interfaces</b></em>' reference list.
-   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.Interface}.
+   * Returns the value of the '<em><b>Super Interface</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Super Interfaces</em>' reference list isn't clear,
+   * If the meaning of the '<em>Super Interface</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Super Interfaces</em>' reference list.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getUncertainInterface_SuperInterfaces()
+   * @return the value of the '<em>Super Interface</em>' reference.
+   * @see #setSuperInterface(Interface)
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getUncertainInterface_SuperInterface()
    * @model
    * @generated
    */
-  EList<Interface> getSuperInterfaces();
+  Interface getSuperInterface();
+
+  /**
+   * Sets the value of the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface#getSuperInterface <em>Super Interface</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Super Interface</em>' reference.
+   * @see #getSuperInterface()
+   * @generated
+   */
+  void setSuperInterface(Interface value);
 
   /**
    * Returns the value of the '<em><b>Altmethods</b></em>' containment reference list.

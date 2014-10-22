@@ -64,24 +64,25 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cInterfaceUncertainKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cU_extendsKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cSuperInterfacesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cSuperInterfacesInterfaceCrossReference_3_0 = (CrossReference)cSuperInterfacesAssignment_3.eContents().get(0);
-		private final RuleCall cSuperInterfacesInterfaceIDTerminalRuleCall_3_0_1 = (RuleCall)cSuperInterfacesInterfaceCrossReference_3_0.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
-		private final Assignment cAltmethodsAssignment_5_0 = (Assignment)cAlternatives_5.eContents().get(0);
-		private final RuleCall cAltmethodsAltMethodParserRuleCall_5_0_0 = (RuleCall)cAltmethodsAssignment_5_0.eContents().get(0);
-		private final Assignment cOptmethodsAssignment_5_1 = (Assignment)cAlternatives_5.eContents().get(1);
-		private final RuleCall cOptmethodsOptMethodParserRuleCall_5_1_0 = (RuleCall)cOptmethodsAssignment_5_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cU_extendsKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cSuperInterfaceAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cSuperInterfaceInterfaceCrossReference_2_1_0 = (CrossReference)cSuperInterfaceAssignment_2_1.eContents().get(0);
+		private final RuleCall cSuperInterfaceInterfaceIDTerminalRuleCall_2_1_0_1 = (RuleCall)cSuperInterfaceInterfaceCrossReference_2_1_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Assignment cAltmethodsAssignment_4_0 = (Assignment)cAlternatives_4.eContents().get(0);
+		private final RuleCall cAltmethodsAltMethodParserRuleCall_4_0_0 = (RuleCall)cAltmethodsAssignment_4_0.eContents().get(0);
+		private final Assignment cOptmethodsAssignment_4_1 = (Assignment)cAlternatives_4.eContents().get(1);
+		private final RuleCall cOptmethodsOptMethodParserRuleCall_4_1_0 = (RuleCall)cOptmethodsAssignment_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//UncertainInterface:
-		//	"interface uncertain" name=ID "u_extends" superInterfaces+=[Interface] "{" (altmethods+=AltMethod |
+		//	"interface uncertain" name=ID ("u_extends" superInterface=[Interface])? "{" (altmethods+=AltMethod |
 		//	optmethods+=OptMethod)* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"interface uncertain" name=ID "u_extends" superInterfaces+=[Interface] "{" (altmethods+=AltMethod |
+		//"interface uncertain" name=ID ("u_extends" superInterface=[Interface])? "{" (altmethods+=AltMethod |
 		//optmethods+=OptMethod)* "}"
 		public Group getGroup() { return cGroup; }
 
@@ -94,38 +95,41 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"u_extends"
-		public Keyword getU_extendsKeyword_2() { return cU_extendsKeyword_2; }
+		//("u_extends" superInterface=[Interface])?
+		public Group getGroup_2() { return cGroup_2; }
 
-		//superInterfaces+=[Interface]
-		public Assignment getSuperInterfacesAssignment_3() { return cSuperInterfacesAssignment_3; }
+		//"u_extends"
+		public Keyword getU_extendsKeyword_2_0() { return cU_extendsKeyword_2_0; }
+
+		//superInterface=[Interface]
+		public Assignment getSuperInterfaceAssignment_2_1() { return cSuperInterfaceAssignment_2_1; }
 
 		//[Interface]
-		public CrossReference getSuperInterfacesInterfaceCrossReference_3_0() { return cSuperInterfacesInterfaceCrossReference_3_0; }
+		public CrossReference getSuperInterfaceInterfaceCrossReference_2_1_0() { return cSuperInterfaceInterfaceCrossReference_2_1_0; }
 
 		//ID
-		public RuleCall getSuperInterfacesInterfaceIDTerminalRuleCall_3_0_1() { return cSuperInterfacesInterfaceIDTerminalRuleCall_3_0_1; }
+		public RuleCall getSuperInterfaceInterfaceIDTerminalRuleCall_2_1_0_1() { return cSuperInterfaceInterfaceIDTerminalRuleCall_2_1_0_1; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//(altmethods+=AltMethod | optmethods+=OptMethod)*
-		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 
 		//altmethods+=AltMethod
-		public Assignment getAltmethodsAssignment_5_0() { return cAltmethodsAssignment_5_0; }
+		public Assignment getAltmethodsAssignment_4_0() { return cAltmethodsAssignment_4_0; }
 
 		//AltMethod
-		public RuleCall getAltmethodsAltMethodParserRuleCall_5_0_0() { return cAltmethodsAltMethodParserRuleCall_5_0_0; }
+		public RuleCall getAltmethodsAltMethodParserRuleCall_4_0_0() { return cAltmethodsAltMethodParserRuleCall_4_0_0; }
 
 		//optmethods+=OptMethod
-		public Assignment getOptmethodsAssignment_5_1() { return cOptmethodsAssignment_5_1; }
+		public Assignment getOptmethodsAssignment_4_1() { return cOptmethodsAssignment_4_1; }
 
 		//OptMethod
-		public RuleCall getOptmethodsOptMethodParserRuleCall_5_1_0() { return cOptmethodsOptMethodParserRuleCall_5_1_0; }
+		public RuleCall getOptmethodsOptMethodParserRuleCall_4_1_0() { return cOptmethodsOptMethodParserRuleCall_4_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class InterfaceElements extends AbstractParserRuleElementFinder {
@@ -678,7 +682,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UncertainInterface:
-	//	"interface uncertain" name=ID "u_extends" superInterfaces+=[Interface] "{" (altmethods+=AltMethod |
+	//	"interface uncertain" name=ID ("u_extends" superInterface=[Interface])? "{" (altmethods+=AltMethod |
 	//	optmethods+=OptMethod)* "}";
 	public UncertainInterfaceElements getUncertainInterfaceAccess() {
 		return (pUncertainInterface != null) ? pUncertainInterface : (pUncertainInterface = new UncertainInterfaceElements());

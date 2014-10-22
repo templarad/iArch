@@ -14,7 +14,7 @@
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//UncertainInterface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//UncertainInterface/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainInterface/superInterfaces"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainInterface/superInterface"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainInterface/altmethods"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainInterface/optmethods"/>
     </genClasses>

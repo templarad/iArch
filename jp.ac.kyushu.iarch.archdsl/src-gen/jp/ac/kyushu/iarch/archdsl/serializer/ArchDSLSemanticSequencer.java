@@ -159,7 +159,7 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (name=ID superInterfaces+=[Interface|ID] (altmethods+=AltMethod | optmethods+=OptMethod)*)
+	 *     (name=ID superInterface=[Interface|ID]? (altmethods+=AltMethod | optmethods+=OptMethod)*)
 	 */
 	protected void sequence_UncertainInterface(EObject context, UncertainInterface semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

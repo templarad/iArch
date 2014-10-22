@@ -61,7 +61,7 @@ public class XMLreader {
 
 	public static void readXMLContent(IProject project) {
 		initial();
-		String FS = File.separator;	//separator for file path(On Windows, this means '\\', and on Mac OS and Linux, this means '/')
+		String FS = File.separator;	//separator for file path(On Windows, this means '\\', and on Mac OS and Linux, this means '/') added by Fukamachi
 		try{
 			SAXReader saxReader = new SAXReader();
 			FileInputStream fis = new FileInputStream(project.getProject().getLocation().toOSString()+FS+"Config.xml");

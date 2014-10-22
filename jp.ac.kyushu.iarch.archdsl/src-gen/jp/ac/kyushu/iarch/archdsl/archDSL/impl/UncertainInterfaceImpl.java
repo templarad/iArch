@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -33,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainInterfaceImpl#getName <em>Name</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainInterfaceImpl#getSuperInterfaces <em>Super Interfaces</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainInterfaceImpl#getSuperInterface <em>Super Interface</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainInterfaceImpl#getAltmethods <em>Altmethods</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainInterfaceImpl#getOptmethods <em>Optmethods</em>}</li>
  * </ul>
@@ -64,14 +63,14 @@ public class UncertainInterfaceImpl extends MinimalEObjectImpl.Container impleme
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSuperInterfaces() <em>Super Interfaces</em>}' reference list.
+   * The cached value of the '{@link #getSuperInterface() <em>Super Interface</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSuperInterfaces()
+   * @see #getSuperInterface()
    * @generated
    * @ordered
    */
-  protected EList<Interface> superInterfaces;
+  protected Interface superInterface;
 
   /**
    * The cached value of the '{@link #getAltmethods() <em>Altmethods</em>}' containment reference list.
@@ -142,13 +141,42 @@ public class UncertainInterfaceImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Interface> getSuperInterfaces()
+  public Interface getSuperInterface()
   {
-    if (superInterfaces == null)
+    if (superInterface != null && superInterface.eIsProxy())
     {
-      superInterfaces = new EObjectResolvingEList<Interface>(Interface.class, this, ArchDSLPackage.UNCERTAIN_INTERFACE__SUPER_INTERFACES);
+      InternalEObject oldSuperInterface = (InternalEObject)superInterface;
+      superInterface = (Interface)eResolveProxy(oldSuperInterface);
+      if (superInterface != oldSuperInterface)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.UNCERTAIN_INTERFACE__SUPER_INTERFACE, oldSuperInterface, superInterface));
+      }
     }
-    return superInterfaces;
+    return superInterface;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Interface basicGetSuperInterface()
+  {
+    return superInterface;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSuperInterface(Interface newSuperInterface)
+  {
+    Interface oldSuperInterface = superInterface;
+    superInterface = newSuperInterface;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.UNCERTAIN_INTERFACE__SUPER_INTERFACE, oldSuperInterface, superInterface));
   }
 
   /**
@@ -209,8 +237,9 @@ public class UncertainInterfaceImpl extends MinimalEObjectImpl.Container impleme
     {
       case ArchDSLPackage.UNCERTAIN_INTERFACE__NAME:
         return getName();
-      case ArchDSLPackage.UNCERTAIN_INTERFACE__SUPER_INTERFACES:
-        return getSuperInterfaces();
+      case ArchDSLPackage.UNCERTAIN_INTERFACE__SUPER_INTERFACE:
+        if (resolve) return getSuperInterface();
+        return basicGetSuperInterface();
       case ArchDSLPackage.UNCERTAIN_INTERFACE__ALTMETHODS:
         return getAltmethods();
       case ArchDSLPackage.UNCERTAIN_INTERFACE__OPTMETHODS:
@@ -233,9 +262,8 @@ public class UncertainInterfaceImpl extends MinimalEObjectImpl.Container impleme
       case ArchDSLPackage.UNCERTAIN_INTERFACE__NAME:
         setName((String)newValue);
         return;
-      case ArchDSLPackage.UNCERTAIN_INTERFACE__SUPER_INTERFACES:
-        getSuperInterfaces().clear();
-        getSuperInterfaces().addAll((Collection<? extends Interface>)newValue);
+      case ArchDSLPackage.UNCERTAIN_INTERFACE__SUPER_INTERFACE:
+        setSuperInterface((Interface)newValue);
         return;
       case ArchDSLPackage.UNCERTAIN_INTERFACE__ALTMETHODS:
         getAltmethods().clear();
@@ -262,8 +290,8 @@ public class UncertainInterfaceImpl extends MinimalEObjectImpl.Container impleme
       case ArchDSLPackage.UNCERTAIN_INTERFACE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ArchDSLPackage.UNCERTAIN_INTERFACE__SUPER_INTERFACES:
-        getSuperInterfaces().clear();
+      case ArchDSLPackage.UNCERTAIN_INTERFACE__SUPER_INTERFACE:
+        setSuperInterface((Interface)null);
         return;
       case ArchDSLPackage.UNCERTAIN_INTERFACE__ALTMETHODS:
         getAltmethods().clear();
@@ -287,8 +315,8 @@ public class UncertainInterfaceImpl extends MinimalEObjectImpl.Container impleme
     {
       case ArchDSLPackage.UNCERTAIN_INTERFACE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ArchDSLPackage.UNCERTAIN_INTERFACE__SUPER_INTERFACES:
-        return superInterfaces != null && !superInterfaces.isEmpty();
+      case ArchDSLPackage.UNCERTAIN_INTERFACE__SUPER_INTERFACE:
+        return superInterface != null;
       case ArchDSLPackage.UNCERTAIN_INTERFACE__ALTMETHODS:
         return altmethods != null && !altmethods.isEmpty();
       case ArchDSLPackage.UNCERTAIN_INTERFACE__OPTMETHODS:

@@ -175,9 +175,9 @@ ruleUncertainInterface returns [EObject current=null]
 	    }
 
 )
-)	otherlv_2='u_extends' 
+)(	otherlv_2='u_extends' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getUncertainInterfaceAccess().getU_extendsKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getUncertainInterfaceAccess().getU_extendsKeyword_2_0());
     }
 (
 (
@@ -188,18 +188,18 @@ ruleUncertainInterface returns [EObject current=null]
         }
 	otherlv_3=RULE_ID
 	{
-		newLeafNode(otherlv_3, grammarAccess.getUncertainInterfaceAccess().getSuperInterfacesInterfaceCrossReference_3_0()); 
+		newLeafNode(otherlv_3, grammarAccess.getUncertainInterfaceAccess().getSuperInterfaceInterfaceCrossReference_2_1_0()); 
 	}
 
 )
-)	otherlv_4='{' 
+))?	otherlv_4='{' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getUncertainInterfaceAccess().getLeftCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_4, grammarAccess.getUncertainInterfaceAccess().getLeftCurlyBracketKeyword_3());
     }
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getUncertainInterfaceAccess().getAltmethodsAltMethodParserRuleCall_5_0_0()); 
+	        newCompositeNode(grammarAccess.getUncertainInterfaceAccess().getAltmethodsAltMethodParserRuleCall_4_0_0()); 
 	    }
 		lv_altmethods_5_0=ruleAltMethod		{
 	        if ($current==null) {
@@ -218,7 +218,7 @@ ruleUncertainInterface returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getUncertainInterfaceAccess().getOptmethodsOptMethodParserRuleCall_5_1_0()); 
+	        newCompositeNode(grammarAccess.getUncertainInterfaceAccess().getOptmethodsOptMethodParserRuleCall_4_1_0()); 
 	    }
 		lv_optmethods_6_0=ruleOptMethod		{
 	        if ($current==null) {
@@ -235,7 +235,7 @@ ruleUncertainInterface returns [EObject current=null]
 )
 ))*	otherlv_7='}' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getUncertainInterfaceAccess().getRightCurlyBracketKeyword_6());
+    	newLeafNode(otherlv_7, grammarAccess.getUncertainInterfaceAccess().getRightCurlyBracketKeyword_5());
     }
 )
 ;

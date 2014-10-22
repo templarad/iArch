@@ -12,8 +12,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UncertainInterface">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="superInterfaces" unique="false"
-        upperBound="-1" eType="#//Interface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superInterface" eType="#//Interface"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="altmethods" upperBound="-1"
         eType="#//AltMethod" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="optmethods" upperBound="-1"

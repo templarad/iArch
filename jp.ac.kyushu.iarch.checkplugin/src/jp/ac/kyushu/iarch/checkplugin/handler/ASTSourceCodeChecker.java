@@ -8,8 +8,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.eclipse.jdt.core.ICompilationUnit;
-
 import jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
@@ -25,6 +23,7 @@ import org.dom4j.Node;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
@@ -41,7 +40,6 @@ import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclarationStatement;
-import org.eclipse.xtext.Alternatives;
 
 public class ASTSourceCodeChecker{
 	public void SourceCodeArchifileChecker(Model archiface,	IJavaProject project){
@@ -223,12 +221,11 @@ public class ASTSourceCodeChecker{
 			certainArchInterfaces.addAll(archiface.getInterfaces());
 			// divide into CertainInterfaces and UncertainInterfaces the archface Interfaces
 			for(UncertainInterface u_interface : archiface.getU_interfaces()){
-				if (!(u_interface.getSuperInterfaces().isEmpty())) {
-					for (Interface superinterface1 : u_interface.getSuperInterfaces()) {
-						if (!(uncertainArchInterfaces.contains(superinterface1))) {
-							uncertainArchInterfaces.add(superinterface1);
-							certainArchInterfaces.remove(superinterface1);
-						}
+				Interface si = u_interface.getSuperInterface();
+				if (si != null) {
+					if (!(uncertainArchInterfaces.contains(si))) {
+						uncertainArchInterfaces.add(si);
+						certainArchInterfaces.remove(si);
 					}
 				}
 			}
@@ -268,41 +265,70 @@ public class ASTSourceCodeChecker{
 			}
 
 			// UncertainInterface check
-			for (UncertainInterface u_interface :archiface.getU_interfaces()) {
-				for (Interface superinterface : u_interface.getSuperInterfaces()) {
-					IResource st2=javaFileIResource.getProject().getFile("/src/"+superinterface.getName()+".java");
-					for(OptMethod o : u_interface.getOptmethods()){
-						String optMethodNameArch = o.getName();
-						String optMethodNameJava = null;
 
-						// optmethods is exist in certainInterface?
-						if (superinterface.getMethods().contains(o)) {
-							// certain methods control
-						} else {
-							// optmethods control
-							for (Element jc : javaClasses) {
-								@SuppressWarnings("unchecked")
-								List<Element> javaMethodList = jc.selectNodes("MethodDeclaration");
+			// constant numbers for checking alternative methods
+			final int UNDEFINED = 0;	// no altmethods in the class
+			final int DEFINED = 1;		// an altmethod is exist in the class
+			final int DUPLICATED = 2;	// altmethods are duplicated in the class
+
+			for (UncertainInterface u_interface :archiface.getU_interfaces()) {
+				Interface superInterface = u_interface.getSuperInterface();
+				if(superInterface != null){
+					IResource st2=javaFileIResource.getProject().getFile("/src/"+superInterface.getName()+".java");
+					for (Element jc : javaClasses) {
+						String javaClassName = jc.attributeValue("name");
+						if(superInterface.getName().equals(javaClassName)){
+							@SuppressWarnings("unchecked")
+							List<Element> javaMethodList = jc.selectNodes("MethodDeclaration");
+							int lineNumberClass = Integer.parseInt(jc.attributeValue("lineNumber").toString());
+
+							//optmethods check
+							for(OptMethod om : u_interface.getOptmethods()){
+								String optMethodNameArch = om.getName();
+								String optMethodNameJava = null;
+								// optmethods control
 								for(Element jm : javaMethodList){
 									optMethodNameJava = jm.attributeValue("name");
 									int lineNumberOptMethod=Integer.parseInt(jm.attributeValue("lineNumber").toString());
 									if (optMethodNameJava.equals(optMethodNameArch)) {
-										ProblemViewManager.addInfo1(st2, "Interface- OptionMethod : " + optMethodNameArch + " is Exist", superinterface.getName(),lineNumberOptMethod);
+										ProblemViewManager.addInfo1(st2, "UncertainInterface- OptionMethod : " + optMethodNameArch + " is Exist", superInterface.getName(),lineNumberOptMethod);
 									}
+								}
+							}
+
+							//altmethods check
+							for (AltMethod am : u_interface.getAltmethods()) {
+								List<String> altMethodNameArch = am.getName();
+								String altMethodNameJava = null;
+								int isDefine = UNDEFINED;
+								// altmethods control
+								for (Element jm : javaMethodList) {
+									altMethodNameJava = jm.attributeValue("name");
+									int lineNumberAltMethod = Integer.parseInt(jm.attributeValue("lineNumber").toString());
+									for (String s : altMethodNameArch) {
+										if (altMethodNameJava.equals(s)) {
+											if (isDefine == UNDEFINED) {
+												ProblemViewManager.addInfo1(st2, "UncertainInterface- AlternativeMethod : " + s + " is Exist", superInterface.getName(), lineNumberAltMethod);
+												isDefine= DEFINED;
+											}else if(isDefine == DEFINED || isDefine == DUPLICATED){
+												ProblemViewManager.addError1(st2, "UncertainInteface- AlternativeMethod : " + s + " is duplicated with other alternativemethod", superInterface.getName(), lineNumberAltMethod);
+												isDefine = DUPLICATED;
+											}
+										}
+									}
+								}
+								if(isDefine == UNDEFINED){
+									String altmethodname_all = "";
+									for(String s : altMethodNameArch){
+										altmethodname_all += s+" ";
+									}
+									ProblemViewManager.addInfo1(st2,"UncertainInterface- AlternativeMethod : AlternativeMethod is not Exist."
+											+ " You can insert an AlternativeMethod in these methods : " + altmethodname_all , jc.getName(),lineNumberClass);
 								}
 							}
 						}
 					}
-
-					for (AltMethod a : u_interface.getAltmethods()) {
-						if (superinterface.getMethods().contains(a)) {
-							// certain methods control
-						} else {
-							// altmethods control
-						}
-					}
 				}
-
 			}
 
 			// behaver
@@ -360,8 +386,8 @@ public class ASTSourceCodeChecker{
 		if (ModifiersNum == 2)
 			modifier = " private";
 		if (ModifiersNum == 4)
+			if (ModifiersNum == 8)
 			modifier = " protective";
-		if (ModifiersNum == 8)
 			modifier = " static";
 		if (ModifiersNum == 0x00000010)
 			modifier = " final";
