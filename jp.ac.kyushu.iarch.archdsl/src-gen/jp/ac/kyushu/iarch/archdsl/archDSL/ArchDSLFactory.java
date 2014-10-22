@@ -32,6 +32,15 @@ public interface ArchDSLFactory extends EFactory
   Model createModel();
 
   /**
+   * Returns a new object of class '<em>Uncertain Interface</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Uncertain Interface</em>'.
+   * @generated
+   */
+  UncertainInterface createUncertainInterface();
+
+  /**
    * Returns a new object of class '<em>Interface</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -48,6 +57,24 @@ public interface ArchDSLFactory extends EFactory
    * @generated
    */
   Method createMethod();
+
+  /**
+   * Returns a new object of class '<em>Alt Method</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Alt Method</em>'.
+   * @generated
+   */
+  AltMethod createAltMethod();
+
+  /**
+   * Returns a new object of class '<em>Opt Method</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Opt Method</em>'.
+   * @generated
+   */
+  OptMethod createOptMethod();
 
   /**
    * Returns a new object of class '<em>Param</em>'.

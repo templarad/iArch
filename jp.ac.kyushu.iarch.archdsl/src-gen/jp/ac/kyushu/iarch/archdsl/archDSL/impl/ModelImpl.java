@@ -8,6 +8,7 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
+import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getInterfaces <em>Interfaces</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getU_interfaces <em>Uinterfaces</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getBehaviors <em>Behaviors</em>}</li>
  * </ul>
  * </p>
@@ -46,6 +48,16 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @ordered
    */
   protected EList<Interface> interfaces;
+
+  /**
+   * The cached value of the '{@link #getU_interfaces() <em>Uinterfaces</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getU_interfaces()
+   * @generated
+   * @ordered
+   */
+  protected EList<UncertainInterface> u_interfaces;
 
   /**
    * The cached value of the '{@link #getBehaviors() <em>Behaviors</em>}' containment reference list.
@@ -97,6 +109,20 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<UncertainInterface> getU_interfaces()
+  {
+    if (u_interfaces == null)
+    {
+      u_interfaces = new EObjectContainmentEList<UncertainInterface>(UncertainInterface.class, this, ArchDSLPackage.MODEL__UINTERFACES);
+    }
+    return u_interfaces;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<Behavior> getBehaviors()
   {
     if (behaviors == null)
@@ -118,6 +144,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ArchDSLPackage.MODEL__INTERFACES:
         return ((InternalEList<?>)getInterfaces()).basicRemove(otherEnd, msgs);
+      case ArchDSLPackage.MODEL__UINTERFACES:
+        return ((InternalEList<?>)getU_interfaces()).basicRemove(otherEnd, msgs);
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return ((InternalEList<?>)getBehaviors()).basicRemove(otherEnd, msgs);
     }
@@ -136,6 +164,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ArchDSLPackage.MODEL__INTERFACES:
         return getInterfaces();
+      case ArchDSLPackage.MODEL__UINTERFACES:
+        return getU_interfaces();
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return getBehaviors();
     }
@@ -156,6 +186,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ArchDSLPackage.MODEL__INTERFACES:
         getInterfaces().clear();
         getInterfaces().addAll((Collection<? extends Interface>)newValue);
+        return;
+      case ArchDSLPackage.MODEL__UINTERFACES:
+        getU_interfaces().clear();
+        getU_interfaces().addAll((Collection<? extends UncertainInterface>)newValue);
         return;
       case ArchDSLPackage.MODEL__BEHAVIORS:
         getBehaviors().clear();
@@ -178,6 +212,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ArchDSLPackage.MODEL__INTERFACES:
         getInterfaces().clear();
         return;
+      case ArchDSLPackage.MODEL__UINTERFACES:
+        getU_interfaces().clear();
+        return;
       case ArchDSLPackage.MODEL__BEHAVIORS:
         getBehaviors().clear();
         return;
@@ -197,6 +234,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ArchDSLPackage.MODEL__INTERFACES:
         return interfaces != null && !interfaces.isEmpty();
+      case ArchDSLPackage.MODEL__UINTERFACES:
+        return u_interfaces != null && !u_interfaces.isEmpty();
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return behaviors != null && !behaviors.isEmpty();
     }

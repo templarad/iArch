@@ -2,12 +2,15 @@ package jp.ac.kyushu.iarch.archdsl.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
+import jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
+import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface;
 import jp.ac.kyushu.iarch.archdsl.services.ArchDSLGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
@@ -29,6 +32,12 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == ArchDSLPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case ArchDSLPackage.ALT_METHOD:
+				if(context == grammarAccess.getAltMethodRule()) {
+					sequence_AltMethod(context, (AltMethod) semanticObject); 
+					return; 
+				}
+				else break;
 			case ArchDSLPackage.BEHAVIOR:
 				if(context == grammarAccess.getBehaviorRule()) {
 					sequence_Behavior(context, (Behavior) semanticObject); 
@@ -53,15 +62,36 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 					return; 
 				}
 				else break;
+			case ArchDSLPackage.OPT_METHOD:
+				if(context == grammarAccess.getOptMethodRule()) {
+					sequence_OptMethod(context, (OptMethod) semanticObject); 
+					return; 
+				}
+				else break;
 			case ArchDSLPackage.PARAM:
 				if(context == grammarAccess.getParamRule()) {
 					sequence_Param(context, (Param) semanticObject); 
 					return; 
 				}
 				else break;
+			case ArchDSLPackage.UNCERTAIN_INTERFACE:
+				if(context == grammarAccess.getUncertainInterfaceRule()) {
+					sequence_UncertainInterface(context, (UncertainInterface) semanticObject); 
+					return; 
+				}
+				else break;
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Constraint:
+	 *     (callInterface=[Interface|ID]? (type+=ID name+=ID (param+=Param param+=Param*)?)* type+=ID name+=ID (param+=Param param+=Param*)?)
+	 */
+	protected void sequence_AltMethod(EObject context, AltMethod semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * Constraint:
@@ -92,9 +122,18 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (interfaces+=Interface* behaviors+=Behavior*)
+	 *     ((interfaces+=Interface | u_interfaces+=UncertainInterface)* behaviors+=Behavior*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (callInterface=[Interface|ID]? type=ID name=ID (param+=Param param+=Param*)?)
+	 */
+	protected void sequence_OptMethod(EObject context, OptMethod semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -115,5 +154,14 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 		feeder.accept(grammarAccess.getParamAccess().getTypeIDTerminalRuleCall_0_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getParamAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID superInterfaces+=[Interface|ID] (altmethods+=AltMethod | optmethods+=OptMethod)*)
+	 */
+	protected void sequence_UncertainInterface(EObject context, UncertainInterface semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 }

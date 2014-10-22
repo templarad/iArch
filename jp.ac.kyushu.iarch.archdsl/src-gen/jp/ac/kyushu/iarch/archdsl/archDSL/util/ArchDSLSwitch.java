@@ -79,6 +79,13 @@ public class ArchDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ArchDSLPackage.UNCERTAIN_INTERFACE:
+      {
+        UncertainInterface uncertainInterface = (UncertainInterface)theEObject;
+        T result = caseUncertainInterface(uncertainInterface);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ArchDSLPackage.INTERFACE:
       {
         Interface interface_ = (Interface)theEObject;
@@ -90,6 +97,20 @@ public class ArchDSLSwitch<T> extends Switch<T>
       {
         Method method = (Method)theEObject;
         T result = caseMethod(method);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.ALT_METHOD:
+      {
+        AltMethod altMethod = (AltMethod)theEObject;
+        T result = caseAltMethod(altMethod);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.OPT_METHOD:
+      {
+        OptMethod optMethod = (OptMethod)theEObject;
+        T result = caseOptMethod(optMethod);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -128,6 +149,22 @@ public class ArchDSLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Uncertain Interface</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Uncertain Interface</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUncertainInterface(UncertainInterface object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Interface</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -155,6 +192,38 @@ public class ArchDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMethod(Method object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Alt Method</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Alt Method</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAltMethod(AltMethod object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Opt Method</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Opt Method</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOptMethod(OptMethod object)
   {
     return null;
   }

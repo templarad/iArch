@@ -80,6 +80,11 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
+      public Adapter caseUncertainInterface(UncertainInterface object)
+      {
+        return createUncertainInterfaceAdapter();
+      }
+      @Override
       public Adapter caseInterface(Interface object)
       {
         return createInterfaceAdapter();
@@ -88,6 +93,16 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseMethod(Method object)
       {
         return createMethodAdapter();
+      }
+      @Override
+      public Adapter caseAltMethod(AltMethod object)
+      {
+        return createAltMethodAdapter();
+      }
+      @Override
+      public Adapter caseOptMethod(OptMethod object)
+      {
+        return createOptMethodAdapter();
       }
       @Override
       public Adapter caseParam(Param object)
@@ -137,6 +152,21 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface <em>Uncertain Interface</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface
+   * @generated
+   */
+  public Adapter createUncertainInterfaceAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Interface <em>Interface</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -162,6 +192,36 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMethodAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod <em>Alt Method</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod
+   * @generated
+   */
+  public Adapter createAltMethodAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod <em>Opt Method</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod
+   * @generated
+   */
+  public Adapter createOptMethodAdapter()
   {
     return null;
   }

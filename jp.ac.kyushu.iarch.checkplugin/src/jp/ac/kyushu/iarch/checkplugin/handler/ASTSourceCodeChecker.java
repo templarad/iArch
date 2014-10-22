@@ -3,14 +3,21 @@ package jp.ac.kyushu.iarch.checkplugin.handler;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
 import org.eclipse.jdt.core.ICompilationUnit;
+
+import jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
+import jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod;
+import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -34,14 +41,16 @@ import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclarationStatement;
+import org.eclipse.xtext.Alternatives;
 
 public class ASTSourceCodeChecker{
 	public void SourceCodeArchifileChecker(Model archiface,	IJavaProject project){
-	
+
 		Document codeXmlDocument = DocumentHelper.createDocument();
-		 ASTParser parser = ASTParser.newParser(AST.JLS4);
+		ASTParser parser = ASTParser.newParser(AST.JLS4);
 		parser.setProject(project);
-		IResource st = null;
+		IResource javaFileIResource = null;
+		// read javafiles and write its info on codeXML.xml
 		try {
 
 			String projectName = project.getElementName();
@@ -65,7 +74,7 @@ public class ASTSourceCodeChecker{
 
 							{
 								parser.setSource(file);
-								st = file.getResource();
+								javaFileIResource = file.getResource();
 								ASTNode rootnode = parser.createAST(null);
 								final CompilationUnit result = (CompilationUnit)rootnode;
 								rootnode.accept(new ASTVisitor(true) {
@@ -85,7 +94,7 @@ public class ASTSourceCodeChecker{
 										classElement = pageElement.addElement(nodeType);
 										String className = node.getName().toString();
 										classElement.addAttribute("name", className);
-										
+
 										List classInterface = node.superInterfaceTypes();
 										if (node.isInterface() != true) {
 											for (Iterator iterator = classInterface.iterator(); iterator.hasNext();) {
@@ -201,40 +210,101 @@ public class ASTSourceCodeChecker{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+			//check with archface
 			Element root = codeXmlDocument.getRootElement();
 			Element test = (Element) root.selectSingleNode("//Package[@name='']");
-			List<Element> testClass = test.selectNodes("Class");
-			// }
+			@SuppressWarnings("unchecked")
+			List<Element> javaClasses = test.selectNodes("Class");	//list of classes in java source code
 
+			List<Interface> certainArchInterfaces = new ArrayList<Interface>();	//interfaces in archface which don't have superinterfaces.
+			List<Interface> uncertainArchInterfaces = new ArrayList<Interface>();	//interfaces in archface which have superinterfaces.
+
+			certainArchInterfaces.addAll(archiface.getInterfaces());
+			// divide into CertainInterfaces and UncertainInterfaces the archface Interfaces
+			for(UncertainInterface u_interface : archiface.getU_interfaces()){
+				if (!(u_interface.getSuperInterfaces().isEmpty())) {
+					for (Interface superinterface1 : u_interface.getSuperInterfaces()) {
+						if (!(uncertainArchInterfaces.contains(superinterface1))) {
+							uncertainArchInterfaces.add(superinterface1);
+							certainArchInterfaces.remove(superinterface1);
+						}
+					}
+				}
+			}
+
+			// Interface check
 			for (Interface archiclass : archiface.getInterfaces()) {
 				String className = archiclass.getName();
-				for (Element a : testClass) {
+				for (Element a : javaClasses) {
 					String className2 = a.attributeValue("name");
 					int lineNumberClass=Integer.parseInt(a.attributeValue("lineNumber").toString());
+					// pick the java methods into JavaMethodList
 					if (className.equals(className2)) {
-						IResource st2=st.getProject().getFile("/src/"+className+".java");
-						ProblemViewManager.addInfo1(st2, "Interface-Class :" + className + " is Exist", st.getName(),lineNumberClass);
+						IResource st2=javaFileIResource.getProject().getFile("/src/"+className+".java");
+						ProblemViewManager.addInfo1(st2, "Interface-Class :" + className + " is Exist", javaFileIResource.getName(),lineNumberClass);
 						@SuppressWarnings("unchecked")
-						List<Element> methodList = a.selectNodes("MethodDeclaration");
+						List<Element> javaMethodList = a.selectNodes("MethodDeclaration");
+						//Method check : m is arch method
 						for (Method m : archiclass.getMethods()) {
 							String methodname = m.getName();
 							String methodname2 = null;
-							boolean flag = false;
-							for (Element b : methodList) {
+							boolean isExist = false;
+							for (Element b : javaMethodList) {
 								methodname2 = b.attributeValue("name");
 								int lineNumberMethod=Integer.parseInt(b.attributeValue("lineNumber").toString());
 								if (methodname2.equals(methodname)) {
 									ProblemViewManager.addInfo1(st2, "Interface- Method : " + methodname+ " is Exist", archiclass.getName(),lineNumberMethod);
-									flag = true;
+									isExist = true;
+									break;
 								}
 							}
-							if (!flag) {
-								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not  Exist", archiclass.getName(),lineNumberClass);
+							if (!isExist) {
+								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not Exist", archiclass.getName(),lineNumberClass);
 							}
 						}
 					}
 				}
 			}
+
+			// UncertainInterface check
+			for (UncertainInterface u_interface :archiface.getU_interfaces()) {
+				for (Interface superinterface : u_interface.getSuperInterfaces()) {
+					IResource st2=javaFileIResource.getProject().getFile("/src/"+superinterface.getName()+".java");
+					for(OptMethod o : u_interface.getOptmethods()){
+						String optMethodNameArch = o.getName();
+						String optMethodNameJava = null;
+
+						// optmethods is exist in certainInterface?
+						if (superinterface.getMethods().contains(o)) {
+							// certain methods control
+						} else {
+							// optmethods control
+							for (Element jc : javaClasses) {
+								@SuppressWarnings("unchecked")
+								List<Element> javaMethodList = jc.selectNodes("MethodDeclaration");
+								for(Element jm : javaMethodList){
+									optMethodNameJava = jm.attributeValue("name");
+									int lineNumberOptMethod=Integer.parseInt(jm.attributeValue("lineNumber").toString());
+									if (optMethodNameJava.equals(optMethodNameArch)) {
+										ProblemViewManager.addInfo1(st2, "Interface- OptionMethod : " + optMethodNameArch + " is Exist", superinterface.getName(),lineNumberOptMethod);
+									}
+								}
+							}
+						}
+					}
+
+					for (AltMethod a : u_interface.getAltmethods()) {
+						if (superinterface.getMethods().contains(a)) {
+							// certain methods control
+						} else {
+							// altmethods control
+						}
+					}
+				}
+
+			}
+
 			// behaver
 			for (Behavior behavior : archiface.getBehaviors()) {
 
@@ -259,7 +329,7 @@ public class ASTSourceCodeChecker{
 						flag2 = (methodDcl.selectSingleNode("MethodInvocation[@name='" + methodName + "']") != null);
 						 lineNumber=Integer.parseInt(((Element) methodDcl).attributeValue("lineNumber").toString());
 						if (!flag2) {
-							IResource st2=st.getProject().getFile("/src/"+classNameL+".java");
+							IResource st2=javaFileIResource.getProject().getFile("/src/"+classNameL+".java");
 							String message = "Behavior  : " + interNameString + " :  " + classNameL + "." + methodNameLaString + " : " + methodName + " " + "is not Exist";
 							ProblemViewManager.addError1(st2, message, classNameString,lineNumber);
 						}
@@ -269,14 +339,15 @@ public class ASTSourceCodeChecker{
 						outString = "Behavior  : " + interNameString + " : " + classNameL + "." + methodNameLaString + " ->" + classNameString + "." + methodName;
 					}
 					if (outString != null) {
-						IResource st2=st.getProject().getFile("/src/"+classNameL+".java");
+						IResource st2=javaFileIResource.getProject().getFile("/src/"+classNameL+".java");
 						ProblemViewManager.addInfo1(st2, outString, classNameL,lineNumber);
 					}
 					classNameL = classNameString;
-					methodNameLaString = methodName;	
+					methodNameLaString = methodName;
 			}
 		}
 	}
+
 
 	private List<String> returnModifiers(int ModifiersNum) {
 		// It is not all
@@ -298,6 +369,7 @@ public class ASTSourceCodeChecker{
 			modifier = "synchronized";
 		if (ModifiersNum == 0x00000040)
 			modifier = "  volatile";
+
 		if (ModifiersNum == 0x00000080)
 			modifier = " transient";
 		if (ModifiersNum == 0x00000100)
@@ -324,6 +396,5 @@ public class ASTSourceCodeChecker{
 
 		return modifiers;
 	}
-	
-}
 
+}

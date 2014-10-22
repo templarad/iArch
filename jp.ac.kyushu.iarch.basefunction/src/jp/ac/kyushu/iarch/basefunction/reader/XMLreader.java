@@ -34,7 +34,7 @@ public class XMLreader {
 		setJavaProject(JavaCore.create(project));
 	}
 
-	
+
 	public boolean isConfigFileExist(IProject project){
 		String ConfigFile=project.getProject().getLocation().toOSString()+"/Config.xml";
 		File myFilePath = new File(ConfigFile);
@@ -44,12 +44,12 @@ public class XMLreader {
 		}
 		return false;
 	}
-	
+
 	public static IResource readIResource(IPath path){
 		IResource re = ResourcesPlugin.getWorkspace().getRoot().findMember(path);
 		return re;
 	}
-	
+
 	private static void initial(){
 		ArchfilePath=null;
 		ClassDiagramPath=null;
@@ -58,27 +58,28 @@ public class XMLreader {
 		ARXMLPath=null;
 	}
 
-	
+
 	public static void readXMLContent(IProject project) {
 		initial();
+		String FS = File.separator;	//separator for file path(On Windows, this means '\\', and on Mac OS and Linux, this means '/')
 		try{
 			SAXReader saxReader = new SAXReader();
-			FileInputStream fis = new FileInputStream(project.getProject().getLocation().toOSString()+"\\Config.xml");
+			FileInputStream fis = new FileInputStream(project.getProject().getLocation().toOSString()+FS+"Config.xml");
 			Document document = saxReader.read(fis);
 			{
 				@SuppressWarnings("unchecked")
-				List<Node> Archfilelist = document.selectNodes("//Archfile/Path/@Attribute");			   
+				List<Node> Archfilelist = document.selectNodes("//Archfile/Path/@Attribute");
 				Attribute attribute=(Attribute) Archfilelist.get(0);
 				setArchfilePath(attribute.getValue());
 			}
-		   
+
 			{
 				@SuppressWarnings("unchecked")
-				List<Node> ClassDiagramlist = document.selectNodes("//ClassDiagram/Path/@Attribute");			   
+				List<Node> ClassDiagramlist = document.selectNodes("//ClassDiagram/Path/@Attribute");
 				Attribute attribute=(Attribute) ClassDiagramlist.get(0);
 				setClassDiagramPath(attribute.getValue());
 			}
-		   
+
 			{
 				@SuppressWarnings("unchecked")
 				List<Node> SequenceDiagramlist = document.selectNodes("//SequenceDiagram/Path/@Attribute");
@@ -88,7 +89,7 @@ public class XMLreader {
 					SequenceDiagramPathes.add(url);
 					}
 				}
-			
+
 			{
 				@SuppressWarnings("unchecked")
 				List<Node> SourceCodelist = document.selectNodes("//SourceCode/Path/@Attribute");
@@ -98,24 +99,24 @@ public class XMLreader {
 					SourceCodePathes.add(url);
 					}
 				}
-			
+
 			{
 				@SuppressWarnings("unchecked")
 				List<Node> ARXMLlist = document.selectNodes("//ARXML/Path/@Attribute");
 				Attribute attribute=(Attribute) ARXMLlist.get(0);
 				setARXMLPath(attribute.getValue());
 				}
-			
+
 		}
 		catch(DocumentException e){
 			System.out.println(e.getMessage());
-		} 
+		}
 		catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		}
-	
+
 
 	/**
 	 * @return the aRXMLResource
@@ -164,7 +165,7 @@ public class XMLreader {
 	public static void setArchfilePath(String archfilePath) {
 		ArchfilePath = archfilePath;
 	}
-	
+
 	/**
 	 * @return the SequenceDiagramResources
 	 */
@@ -173,12 +174,12 @@ public class XMLreader {
 		for(String SequenceDiagramPath:SequenceDiagramPathes){
 			IPath path = new Path(SequenceDiagramPath);
 			IResource SequenceDiagramResource = readIResource(path);
-			SequenceDiagramResources.add(SequenceDiagramResource);			
+			SequenceDiagramResources.add(SequenceDiagramResource);
 		}
-			
+
 		return SequenceDiagramResources;
 	}
-	
+
 	/**
 	 * @return the SourceCodeResources
 	 */
@@ -187,7 +188,7 @@ public class XMLreader {
 		for(String SourceCodePath:SourceCodePathes){
 			IPath path = new Path(SourceCodePath);
 			IResource SourceCodeResource = readIResource(path);
-			SourceCodeResources.add(SourceCodeResource);			
+			SourceCodeResources.add(SourceCodeResource);
 		}
 		return SourceCodeResources;
 	}

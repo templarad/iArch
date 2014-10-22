@@ -9,7 +9,14 @@
       fileExtensions="arch" ecorePackage="ArchDSL.ecore#/">
     <genClasses ecoreClass="ArchDSL.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/interfaces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/u_interfaces"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/behaviors"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchDSL.ecore#//UncertainInterface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//UncertainInterface/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainInterface/superInterfaces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainInterface/altmethods"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainInterface/optmethods"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//Interface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Interface/name"/>
@@ -19,6 +26,18 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Method/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Method/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Method/param"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchDSL.ecore#//AltMethod">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//AltMethod/callInterface"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//AltMethod/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//AltMethod/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//AltMethod/param"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchDSL.ecore#//OptMethod">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//OptMethod/callInterface"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//OptMethod/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//OptMethod/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//OptMethod/param"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//Param">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Param/type"/>

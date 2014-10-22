@@ -2,13 +2,16 @@
  */
 package jp.ac.kyushu.iarch.archdsl.archDSL.impl;
 
+import jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLFactory;
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
+import jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
+import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -37,6 +40,13 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass uncertainInterfaceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass interfaceEClass = null;
 
   /**
@@ -45,6 +55,20 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * @generated
    */
   private EClass methodEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass altMethodEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass optMethodEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -148,9 +172,69 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Behaviors()
+  public EReference getModel_U_interfaces()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModel_Behaviors()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUncertainInterface()
+  {
+    return uncertainInterfaceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getUncertainInterface_Name()
+  {
+    return (EAttribute)uncertainInterfaceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUncertainInterface_SuperInterfaces()
+  {
+    return (EReference)uncertainInterfaceEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUncertainInterface_Altmethods()
+  {
+    return (EReference)uncertainInterfaceEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUncertainInterface_Optmethods()
+  {
+    return (EReference)uncertainInterfaceEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -221,6 +305,106 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
   public EReference getMethod_Param()
   {
     return (EReference)methodEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAltMethod()
+  {
+    return altMethodEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAltMethod_CallInterface()
+  {
+    return (EReference)altMethodEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAltMethod_Type()
+  {
+    return (EAttribute)altMethodEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAltMethod_Name()
+  {
+    return (EAttribute)altMethodEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAltMethod_Param()
+  {
+    return (EReference)altMethodEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getOptMethod()
+  {
+    return optMethodEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOptMethod_CallInterface()
+  {
+    return (EReference)optMethodEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOptMethod_Type()
+  {
+    return (EAttribute)optMethodEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOptMethod_Name()
+  {
+    return (EAttribute)optMethodEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOptMethod_Param()
+  {
+    return (EReference)optMethodEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -325,7 +509,14 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     // Create classes and their features
     modelEClass = createEClass(MODEL);
     createEReference(modelEClass, MODEL__INTERFACES);
+    createEReference(modelEClass, MODEL__UINTERFACES);
     createEReference(modelEClass, MODEL__BEHAVIORS);
+
+    uncertainInterfaceEClass = createEClass(UNCERTAIN_INTERFACE);
+    createEAttribute(uncertainInterfaceEClass, UNCERTAIN_INTERFACE__NAME);
+    createEReference(uncertainInterfaceEClass, UNCERTAIN_INTERFACE__SUPER_INTERFACES);
+    createEReference(uncertainInterfaceEClass, UNCERTAIN_INTERFACE__ALTMETHODS);
+    createEReference(uncertainInterfaceEClass, UNCERTAIN_INTERFACE__OPTMETHODS);
 
     interfaceEClass = createEClass(INTERFACE);
     createEAttribute(interfaceEClass, INTERFACE__NAME);
@@ -335,6 +526,18 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     createEAttribute(methodEClass, METHOD__TYPE);
     createEAttribute(methodEClass, METHOD__NAME);
     createEReference(methodEClass, METHOD__PARAM);
+
+    altMethodEClass = createEClass(ALT_METHOD);
+    createEReference(altMethodEClass, ALT_METHOD__CALL_INTERFACE);
+    createEAttribute(altMethodEClass, ALT_METHOD__TYPE);
+    createEAttribute(altMethodEClass, ALT_METHOD__NAME);
+    createEReference(altMethodEClass, ALT_METHOD__PARAM);
+
+    optMethodEClass = createEClass(OPT_METHOD);
+    createEReference(optMethodEClass, OPT_METHOD__CALL_INTERFACE);
+    createEAttribute(optMethodEClass, OPT_METHOD__TYPE);
+    createEAttribute(optMethodEClass, OPT_METHOD__NAME);
+    createEReference(optMethodEClass, OPT_METHOD__PARAM);
 
     paramEClass = createEClass(PARAM);
     createEAttribute(paramEClass, PARAM__TYPE);
@@ -379,7 +582,14 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getModel_Interfaces(), this.getInterface(), null, "interfaces", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_U_interfaces(), this.getUncertainInterface(), null, "u_interfaces", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Behaviors(), this.getBehavior(), null, "behaviors", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(uncertainInterfaceEClass, UncertainInterface.class, "UncertainInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getUncertainInterface_Name(), ecorePackage.getEString(), "name", null, 0, 1, UncertainInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUncertainInterface_SuperInterfaces(), this.getInterface(), null, "superInterfaces", null, 0, -1, UncertainInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUncertainInterface_Altmethods(), this.getAltMethod(), null, "altmethods", null, 0, -1, UncertainInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUncertainInterface_Optmethods(), this.getOptMethod(), null, "optmethods", null, 0, -1, UncertainInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(interfaceEClass, Interface.class, "Interface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInterface_Name(), ecorePackage.getEString(), "name", null, 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -389,6 +599,18 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     initEAttribute(getMethod_Type(), ecorePackage.getEString(), "type", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethod_Param(), this.getParam(), null, "param", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(altMethodEClass, AltMethod.class, "AltMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAltMethod_CallInterface(), this.getInterface(), null, "callInterface", null, 0, 1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAltMethod_Type(), ecorePackage.getEString(), "type", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAltMethod_Name(), ecorePackage.getEString(), "name", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAltMethod_Param(), this.getParam(), null, "param", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(optMethodEClass, OptMethod.class, "OptMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOptMethod_CallInterface(), this.getInterface(), null, "callInterface", null, 0, 1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOptMethod_Type(), ecorePackage.getEString(), "type", null, 0, 1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOptMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOptMethod_Param(), this.getParam(), null, "param", null, 0, -1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(paramEClass, Param.class, "Param", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getParam_Type(), ecorePackage.getEString(), "type", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
