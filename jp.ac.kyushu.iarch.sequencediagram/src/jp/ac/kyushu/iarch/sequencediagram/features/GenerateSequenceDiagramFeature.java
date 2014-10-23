@@ -45,13 +45,17 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 	 */
 	private List<behavior.Object> objects;
 	/**
-	 * A list of shapes in sequence diagram which is linked with objects.
+	 * A list of shapes in sequence diagram which is linked with '<em><b>Object</b></em>'.
 	 */
 	private List<Shape> shapes;
+	
+	/**
+	 * A list of Connection which is linked with '<em><b>Lifeline</b></em>'. 
+	 */
 	private List<Connection> lifelineConnections;
 	
 	/**
-	 * The start position of auto generated messages.
+	 * The start position information for auto generating messages.
 	 */
 	static private int MESSAGE_START_Y = 120;
 	
@@ -59,7 +63,9 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 	 * The space size between each object.
 	 */
 	static private int OBJECT_SPACE = 120;
-	
+	/**
+	 * A weakHashMap to link the '<em>Object name</em>' with '<em>lifeline Connection</em>'.
+	 */
 	private WeakHashMap<String, Connection> objectlifelineMap = new WeakHashMap<String, Connection>();
 
 	public GenerateSequenceDiagramFeature(IFeatureProvider fp) {
@@ -97,6 +103,12 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
         return "Reflecting change of code to the Sequence diagram.";
     }
 	
+	/**
+	 * Auto generate sequence diagram.
+	 * <br>The main method of the class.
+	 * @param sequenceResource The sequence diagram resource in which the diagram will generate to.
+	 * @param archfaceModel The Archface Model which will be used to generate diagram.
+	 */
 	public void generateSequenceDiagram(Resource sequenceResource, Model archfaceModel ){
 
 		//Add Actor
@@ -159,7 +171,11 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 					}else{	
 						sourceName = ((Interface) behavior.getCall().get(i-1).eContainer() ).getName();
 					}
+					
+					//Add message for each method in archface.
 					addMessage(MESSAGE_START_Y + space, objectlifelineMap.get(sourceName), objectlifelineMap.get(targetName), method.getName());
+					
+					//Layout adjustment: Adjusting space size between each message.
 					if(sourceName.equals(targetName) ){
 						space += 40;
 					}else{
@@ -182,6 +198,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 		for (Shape tempshape : getDiagram().getChildren()) {
 			shapes.add(tempshape);
 		}
+		
 		// Add a lifeline will make a change to getDiagram().getChildren()
 		// You need to make another arraylist point to the old children.
 		for (Shape tempshape : shapes) {
@@ -210,6 +227,10 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 
 	}
 	
+	/**
+	 * Generate all '<em><b>Object</b></em>' into the selected sequence diagram
+	 * <br>based on the '<em><b>Interface</b></em>' of Archface code.
+	 */
 	public void addObject(){
 		int startX = 120;
 		for(behavior.Object obj : objects){
@@ -222,6 +243,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 			if (null != iaddcontext)
 				iaddcontext.execute(addcontext);
 			
+			//Layout adjustment: adjust space size between each object.
 			startX += OBJECT_SPACE;
 
 		}
@@ -232,6 +254,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 	 * @param startY The start position Y of message on the lifeline.
 	 * @param sourcePE The start lifeline '<em><b>Connection</b></em>'.
 	 * @param targetPE The target lifeline '<em><b>Connection</b></em>'.
+	 * @param messageName The <em>name</> of message.
 	 */
 	public void addMessage(final int startY, PictogramElement sourcePE, PictogramElement targetPE, String messageName){
 
