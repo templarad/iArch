@@ -67,6 +67,8 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
         return "Reflecting change of code to the Class diagram.";
     }
     
+	private List<ContainerShape> classShapes = new ArrayList<ContainerShape>();
+	
 	private static final IColorConstant E_CLASS_TEXT_FOREGROUND =
 	        IColorConstant.BLACK;
 
@@ -84,14 +86,47 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 	/**
 	 * The X position of first class to generate.
 	 */
-	private static int STARTX = 40;
+	private static int STARTX = 20;
 	
 	/**
 	 * The Y position of first class to generate.
 	 */
-	private static int STARTY = 70;
+	private static int STARTY = 20;
+	private int LOWESTY;
+	private int LOWCLASSY;	
+	private int RIGHTX;
+	private void initPosition(Resource classResource){
+		EObject o = classResource.getContents().get(0);
+		
+		if(o instanceof Diagram){
+			Diagram targetDiagram = (Diagram) o;
+			for(Shape cs : targetDiagram.getChildren()){
+				if(cs instanceof ContainerShape){
+					classShapes.add((ContainerShape)cs);
+					
+					RIGHTX = cs.getGraphicsAlgorithm().getX()+ cs.getGraphicsAlgorithm().getWidth();
+					
+					int Y = cs.getGraphicsAlgorithm().getY();
+					LOWCLASSY = (Y > LOWCLASSY)?Y:LOWCLASSY;
+					
+					Y += cs.getGraphicsAlgorithm().getHeight();
+					LOWESTY = (Y > LOWESTY)?Y:LOWESTY;
+				}
+					
+			}
+		}
+		
+		if(RIGHTX + 140 > 500){
+			STARTX = 20;
+			STARTY = LOWESTY +20;
+		}else{
+			STARTX = RIGHTX + 20;
+			STARTY = LOWCLASSY;
+		}
+	}
 	
 	public void generateClassDiagram(){
+
 		XMLreader xmlreader = new XMLreader(ProjectReader.getProject());
 		IResource classDiagramIResource = xmlreader.getClassDiagramResource();
 		IResource archfile = xmlreader.getArchfileResource();
@@ -103,10 +138,9 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
     		return;
 		}
 		
+		
 		Resource classResource = GraphitiModelManager.getGraphitiModel(classDiagramIResource);
-		
-		
-		
+		initPosition(classResource);
 		ClassDiagramModel cdm = new ClassDiagramModel(classResource);
 		Model archmodel = archModel.getModel();
 		int i=0;
@@ -115,16 +149,24 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 			umlclass.setArchpoint(true);
 			if(null == cdm.getClass(archclass.getName())){
 				umlclass.setName(archclass.getName());
+						
+				ContainerShape classShape = addClassFeature(classResource,umlclass, STARTX, STARTY);
 				
-			
-				ContainerShape classShape = addClassFeature(classResource,umlclass,STARTX,STARTY + i * 50);
+				//Adjust layout.
+				if(STARTX + 140 < 500){
+					STARTX += 120;
+				}else{
+					STARTY = getLowestClassPosition() + 20;
+					STARTX = 20;
+				}
+				classShapes.add(classShape);
 				List<umlClass.Operation> operations = getOperations(archmodel, archclass);
 				generateOperations(umlclass, operations, classShape);
 				i++;
 				layoutPictogramElement(classShape);
 			    updatePictogramElement(classShape);
 			}else{
-				//Fill the lost operation.
+				//Fill the lost operations.
 				
 			}
 		}
@@ -301,5 +343,21 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 			
 		}
 		return newOperations;
+	}
+	
+	private int getLowestClassPosition(){
+		for(ContainerShape cs : classShapes){
+			int Y = cs.getGraphicsAlgorithm().getY()+ cs.getGraphicsAlgorithm().getHeight();
+			LOWESTY = (Y > LOWESTY)?Y:LOWESTY;
+		}
+		return LOWESTY;
+	}
+	
+	private int getRightestClassPosition(){
+		for(ContainerShape cs : classShapes){
+			int X = cs.getGraphicsAlgorithm().getX()+ cs.getGraphicsAlgorithm().getWidth();
+			RIGHTX = (X > RIGHTX)?X:RIGHTX;
+		}
+		return LOWESTY;
 	}
 }
