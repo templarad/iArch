@@ -1,8 +1,8 @@
 package jp.ac.kyushu.iarch.sequencediagram.features;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.WeakHashMap;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
@@ -34,7 +34,11 @@ import behavior.Actor;
 import behavior.BehaviorFactory;
 import behavior.Lifeline;
 import behavior.Object;
-
+/**
+ * Auto generate sequence diagram feature.
+ * @author Templar
+ *
+ */
 public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 	/**
 	 * A list of objects in sequence diagram.
@@ -56,11 +60,10 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 	 */
 	static private int OBJECT_SPACE = 120;
 	
-	private HashMap<String, Connection> objectlifelineMap = new HashMap<String, Connection>();
+	private WeakHashMap<String, Connection> objectlifelineMap = new WeakHashMap<String, Connection>();
 
 	public GenerateSequenceDiagramFeature(IFeatureProvider fp) {
 		super(fp);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -70,8 +73,6 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 		IResource archfile = xmlreader.getArchfileResource();
 		ArchModel archModel = new ArchModelController(archfile);
 		Model archfaceModel = archModel.getModel();
-		
-		
 		
 		//Generate diagram by each Resource
 		for(IResource sequenceDiagramIResource : sequenceDiagramIResources){
@@ -128,7 +129,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 			if(tempconnection.getLink().getBusinessObjects().get(0) instanceof Lifeline){
 				lifelineConnections.add(tempconnection);
 				
-				//Build a hashmap for inserting message.
+				//Build a weakhashmap for inserting message.
 				java.lang.Object obj = getBusinessObjectForPictogramElement((ContainerShape)tempconnection.getStart().eContainer());
 				if(obj instanceof Actor){
 					objectlifelineMap.put(((Actor)obj).getName(),tempconnection);
@@ -141,8 +142,8 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 				
 			}
 		}
-		//Test
 		
+		//Add message		
 		for(Behavior behavior : archfaceModel.getBehaviors()){
 			int i = 0;
 			int space = 0;
@@ -158,22 +159,21 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 					}else{	
 						sourceName = ((Interface) behavior.getCall().get(i-1).eContainer() ).getName();
 					}
-					addMessage(MESSAGE_START_Y + space, objectlifelineMap.get(sourceName), objectlifelineMap.get(targetName));
+					addMessage(MESSAGE_START_Y + space, objectlifelineMap.get(sourceName), objectlifelineMap.get(targetName), method.getName());
 					if(sourceName.equals(targetName) ){
 						space += 40;
 					}else{
 						space += 25;
 					}
 				}else{
-					//Never should be here.
+					//Never should happen.
 					System.out.println("An unknown Method 'Call' is added in Archface.");
 				}
 				i++;
 			}
-			break;
+			break;//Just use one behavior, maybe need more.
 			
 		}
-		//addMessage(MESSAGE_START_Y + i * 10, objectlifelineMap.get(key), objectlifelineMap.get(key));
 	}
 	
 	public void addLifeLine() {
@@ -227,14 +227,19 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 		}
 		
 	}
-	
-	public void addMessage(final int startY, PictogramElement sourcePE, PictogramElement targetPE){
+	/**
+	 * Add a '<em><b>Message</b></em>' between <b>sourcePE</b> and <b>targetPE</b> from the <b>startY</b>.
+	 * @param startY The start position Y of message on the lifeline.
+	 * @param sourcePE The start lifeline '<em><b>Connection</b></em>'.
+	 * @param targetPE The target lifeline '<em><b>Connection</b></em>'.
+	 */
+	public void addMessage(final int startY, PictogramElement sourcePE, PictogramElement targetPE, String messageName){
 
 		
 		CreateConnectionContext connectioncontext = new CreateConnectionContext();
 		connectioncontext.setSourcePictogramElement(sourcePE);
 		connectioncontext.setTargetPictogramElement(targetPE);
-
+		connectioncontext.putProperty("name", messageName);
 		connectioncontext.setSourceLocation(new ILocation() {
 			
 			@Override
