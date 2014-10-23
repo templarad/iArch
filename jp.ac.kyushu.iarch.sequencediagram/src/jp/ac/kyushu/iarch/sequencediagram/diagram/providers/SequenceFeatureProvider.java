@@ -142,7 +142,8 @@ public class SequenceFeatureProvider extends DefaultFeatureProvider {
      } 
 	@Override
 	public ICustomFeature[] getCustomFeatures(ICustomContext context) {
-	    return new ICustomFeature[] { new RenameMessageFeature(this) };
+	    return new ICustomFeature[] { new RenameMessageFeature(this),
+	    							new GenerateSequenceDiagramFeature(this)};
 	} 
 	@Override
 	public IResizeShapeFeature getResizeShapeFeature(
@@ -162,4 +163,5 @@ public class SequenceFeatureProvider extends DefaultFeatureProvider {
 	    }
 	    return super.getResizeShapeFeature(context);
 	 }
+	
 }

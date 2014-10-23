@@ -23,8 +23,8 @@ public class MoveObjectFeature extends DefaultMoveShapeFeature{
  
     @Override
     public boolean canMoveShape(IMoveShapeContext context) {
-        boolean canMove = super.canMoveShape(context);     	
-        return canMove;
+        
+        return true;
     }
     
     @Override

@@ -34,6 +34,7 @@ public class CreateMessageFeature extends AbstractCreateConnectionFeature {
 		super(fp, "Message", "add Message");
 	}
 	private static final IColorConstant MESSAGE_FOREGROUND = new ColorConstant(0, 0, 0);
+	private String messageName = "newMessage";
 	public boolean canCreate(ICreateConnectionContext context) {
         // return true if both pictogram belong to an Lifeline
 		Lifeline source = getLifeline(context.getSourcePictogramElement());
@@ -48,7 +49,9 @@ public class CreateMessageFeature extends AbstractCreateConnectionFeature {
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		IGaService gaService = Graphiti.getGaService();
 		Connection newConnection = null;
-
+		if(context.getProperty("name")!=null)
+			
+			setMessageName((String)context.getProperty("name"));
 		// get Lifelines which should be connected
 		Lifeline source = getLifeline(context.getSourcePictogramElement());
 		Lifeline target = getLifeline(context.getTargetPictogramElement());
@@ -270,11 +273,25 @@ public class CreateMessageFeature extends AbstractCreateConnectionFeature {
 //			}
 //		}
 		message.setArchpoint(true);
-		message.setName("newMessage");//+i
+		message.setName(getMessageName());//+i
 		//message.setEType(target);
 		//message.setLowerBound(0);
 		//message.setUpperBound(1);
 		//source.getEStructuralFeatures().add(eReference);
 		return message;
 		}
+
+	/**
+	 * @return the messageName
+	 */
+	public String getMessageName() {
+		return messageName;
+	}
+
+	/**
+	 * @param messageName the messageName to set
+	 */
+	public void setMessageName(String messageName) {
+		this.messageName = messageName;
+	}
 }

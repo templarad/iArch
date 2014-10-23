@@ -169,7 +169,7 @@ public class AddMessageFeature extends AbstractAddFeature {
     		Message mginstance = mosinstance.getMessage();
     		mginstance.setMessageOrder(i);//set order information in business model
     		
-    		System.out.println("Message:"+mginstance.getMessageOrder()+" "+ mginstance.getName());
+    		//System.out.println("Message:"+mginstance.getMessageOrder()+" "+ mginstance.getName());
     		i++;
     	}
     	return true;
