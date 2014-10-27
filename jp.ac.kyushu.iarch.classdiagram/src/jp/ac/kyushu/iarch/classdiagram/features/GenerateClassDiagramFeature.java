@@ -1,47 +1,37 @@
 package jp.ac.kyushu.iarch.classdiagram.features;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.WeakHashMap;
 
+import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.basefunction.controller.ArchModelController;
 import jp.ac.kyushu.iarch.basefunction.controller.GraphitiModelManager;
 import jp.ac.kyushu.iarch.basefunction.model.ClassDiagramModel;
 import jp.ac.kyushu.iarch.basefunction.reader.ArchModel;
 import jp.ac.kyushu.iarch.basefunction.reader.ProjectReader;
 import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
-import jp.ac.kyushu.iarch.classdiagram.diagram.DiagramFeatureProvider;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 
 import org.eclipse.core.resources.IResource;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.SWT;
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.graphiti.features.IAddFeature;
-import org.eclipse.graphiti.features.ILayoutFeature;
+import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.context.impl.AddContext;
-import org.eclipse.graphiti.mm.algorithms.Polyline;
-import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
-import org.eclipse.graphiti.mm.algorithms.Text;
+import org.eclipse.graphiti.features.context.impl.CreateConnectionContext;
+import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
 import org.eclipse.graphiti.mm.algorithms.styles.Color;
-import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 import org.eclipse.graphiti.services.Graphiti;
-import org.eclipse.graphiti.services.IGaService;
-import org.eclipse.graphiti.services.IPeCreateService;
-import org.eclipse.graphiti.util.ColorConstant;
 import org.eclipse.graphiti.util.IColorConstant;
-import org.eclipse.graphiti.features.IFeatureProvider;
-import org.eclipse.graphiti.features.context.impl.LayoutContext;
-import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
-import org.eclipse.graphiti.features.impl.AbstractFeature;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.SWT;
 
 import umlClass.Operation;
 import umlClass.UmlClassFactory;
@@ -68,21 +58,6 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
     }
     
 	private List<ContainerShape> classShapes = new ArrayList<ContainerShape>();
-	
-	private static final IColorConstant E_CLASS_TEXT_FOREGROUND =
-	        IColorConstant.BLACK;
-
-	private static final IColorConstant OPERATION_TEXT_FOREGROUND =
-	        IColorConstant.BLACK;
-	
-	private static final IColorConstant E_CLASS_FOREGROUND =
-	        new ColorConstant(98, 131, 167);
-
-	private static final IColorConstant E_CLASS_BACKGROUND =
-	        new ColorConstant(187, 218, 247);
-	
-    private static final IColorConstant OPERATION_FOREGROUND =
-            new ColorConstant(98, 131, 167);
 	/**
 	 * The X position of first class to generate.
 	 */
@@ -92,9 +67,16 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 	 * The Y position of first class to generate.
 	 */
 	private static int STARTY = 20;
+	private static int space = 30;
 	private int LOWESTY;
 	private int LOWCLASSY;	
 	private int RIGHTX;
+	
+	/**
+	 * A weakHashMap to link the '<em>Class name</em>' with '<em>Class ContainerShape</em>'.
+	 */
+	private WeakHashMap<String, ContainerShape> classContainerMap = new WeakHashMap<String, ContainerShape>();
+	
 	private void initPosition(Resource classResource){
 		EObject o = classResource.getContents().get(0);
 		
@@ -116,11 +98,11 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 			}
 		}
 		
-		if(RIGHTX + 140 > 500){
-			STARTX = 20;
-			STARTY = LOWESTY +20;
+		if(RIGHTX + 100 + 2 * space > 500){
+			STARTX = space;
+			STARTY = LOWESTY + space;
 		}else{
-			STARTX = RIGHTX + 20;
+			STARTX = RIGHTX + space;
 			STARTY = LOWCLASSY;
 		}
 	}
@@ -143,119 +125,53 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 		initPosition(classResource);
 		ClassDiagramModel cdm = new ClassDiagramModel(classResource);
 		Model archmodel = archModel.getModel();
-		int i=0;
 		for(Interface archclass : archmodel.getInterfaces()){
 			umlClass.Class umlclass = UmlClassFactory.eINSTANCE.createClass();
 			umlclass.setArchpoint(true);
 			if(null == cdm.getClass(archclass.getName())){
 				umlclass.setName(archclass.getName());
-						
-				ContainerShape classShape = addClassFeature(classResource,umlclass, STARTX, STARTY);
-				
+				addClassFeature(umlclass, STARTX, STARTY);
 				//Adjust layout.
-				if(STARTX + 140 < 500){
-					STARTX += 120;
+				if(STARTX + 100 + 2 * space < 500){
+					STARTX += 100 + space;
 				}else{
-					STARTY = getLowestClassPosition() + 20;
-					STARTX = 20;
+					STARTY = LOWESTY + space;
+					STARTX = space;
 				}
-				classShapes.add(classShape);
+				for(Shape cs : getDiagram().getChildren()){
+					if(cs instanceof ContainerShape){
+						EObject eobj = ((ContainerShape)cs).getLink().getBusinessObjects().get(0);
+						if(eobj instanceof umlClass.Class){
+							String className = ((umlClass.Class)eobj).getName();
+							if(className == archclass.getName())
+							classContainerMap.put(className, (ContainerShape) cs);
+						}
+					}
+				}
 				List<umlClass.Operation> operations = getOperations(archmodel, archclass);
-				generateOperations(umlclass, operations, classShape);
-				i++;
-				layoutPictogramElement(classShape);
-			    updatePictogramElement(classShape);
+				generateOperations(umlclass, operations);
 			}else{
 				//Fill the lost operations.
 				
 			}
 		}
-		try {
-			classResource.save(null);
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-
-		//cdm.getClass(classResource, className)
 
 	}
 	protected Color manageColor(Diagram diagram,IColorConstant colorConstant) {
 		return Graphiti.getGaService().manageColor(diagram, colorConstant);
 	}
 	
-	private ContainerShape addClassFeature(Resource classResource, umlClass.Class addedClass,int startX,int startY){
-		IPeCreateService peCreateService = Graphiti.getPeCreateService();
-		
-		EObject o = classResource.getContents().get(0);
-			
-		if(o instanceof Diagram){
-			Diagram targetDiagram = (Diagram) o;
-			
-			ContainerShape containerShape =
-		             peCreateService.createContainerShape(targetDiagram, true);
-			int width = 100;
-	        int height = 50;
-	        RoundedRectangle roundedRectangle; // need to access it later
-	        IGaService gaService = Graphiti.getGaService();
-	        {
-	            // create and set graphics algorithm
-	            roundedRectangle =
-	                gaService.createRoundedRectangle(containerShape, 5, 5);
-	            roundedRectangle.setForeground(manageColor(targetDiagram,E_CLASS_FOREGROUND));
-	            roundedRectangle.setBackground(manageColor(targetDiagram,E_CLASS_BACKGROUND));
-	            roundedRectangle.setLineWidth(2);
-	            gaService.setLocationAndSize(roundedRectangle,
-	            		startX, startY, width, height);
-	 
-	            // if added Class has no resource we add it to the resource 
-	            // of the diagram
-	            // in a real scenario the business model would have its own resource
+	private void addClassFeature(umlClass.Class addedClass,int startX,int startY){
 
-	            targetDiagram.eResource().getContents().add(addedClass);
-
-	            // create link and wire it
-	            link(containerShape, addedClass);
-	        }
-	        // SHAPE WITH LINE
-	        {
-	            // create shape for line
-	            Shape shape = peCreateService.createShape(containerShape, false);
-	 
-	            // create and set graphics algorithm
-	            Polyline polyline =
-	                gaService.createPolyline(shape, new int[] { 0, 20, width, 20 });
-	            polyline.setForeground(manageColor(E_CLASS_FOREGROUND));
-	            polyline.setLineWidth(2);
-	        }
-	 
-	        // SHAPE WITH TEXT
-	        {
-	            // create shape for text
-	            Shape shape = peCreateService.createShape(containerShape, false);
-	 
-	            // create and set text graphics algorithm
-	            Text text = gaService.createText(shape, addedClass.getName());
-	            text.setForeground(manageColor(E_CLASS_TEXT_FOREGROUND));
-	            text.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER); 
-	            // vertical alignment has as default value "center"
-	            text.setFont(gaService.manageDefaultFont(getDiagram(), false, true));
-	            gaService.setLocationAndSize(text, 0, 0, width, 20);
-	 
-	            // create link and wire it
-	            link(shape, addedClass);
-	        }
-	        peCreateService.createChopboxAnchor(containerShape);
-	        
-	        
-	        
-	       
-	        return containerShape;
-		}
-		else return null;
-		
+		AddContext addcontext = new AddContext();
+		addcontext.setX(startX);
+		addcontext.setY(startY);
+		addcontext.setNewObject(addedClass);
+		addcontext.setTargetContainer(getDiagram());
+		IAddFeature iaddcontext = getFeatureProvider().getAddFeature(addcontext);
+		if (null != iaddcontext){
+			iaddcontext.execute(addcontext);
+		}		
 	}
 	@Override
 	public void execute(ICustomContext context) {
@@ -263,66 +179,18 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 		generateClassDiagram();
 		
 	}
-	
-	private void generateOperations(umlClass.Class targetClass, List<umlClass.Operation> newOperations, ContainerShape containerShape ){
-		//Operation newOperation = UmlClassFactory.eINSTANCE.createOperation();
-		int linenum=0;
-        // define a default size for the shape
-        int height;
-
-		IPeCreateService peCreateService = Graphiti.getPeCreateService();
- 
-        
-        
-        IGaService gaService = Graphiti.getGaService();
-        peCreateService = Graphiti.getPeCreateService();
-        gaService = Graphiti.getGaService();
-        int width=containerShape.getGraphicsAlgorithm().getWidth();
-        int temp = targetClass.getAttribute().size()*20+targetClass.getOwnedOperation().size()*20+32;
-        height = containerShape.getGraphicsAlgorithm().getHeight() <= temp ? temp:
-        															containerShape.getGraphicsAlgorithm().getHeight();
-        gaService.setSize(containerShape.getGraphicsAlgorithm(), width, height) ;
-        int start=targetClass.getAttribute().size()*20+32;
-
-        for(umlClass.Operation newOperation: newOperations)
-        {
-        	
-            if(0 == linenum)
-            // SHAPE WITH LINE
-            {
-                // create shape for line
-                Shape shape = peCreateService.createShape(containerShape, false);
-     
-                // create and set graphics algorithm
-                Polyline polyline =
-                    gaService.createPolyline(shape, new int[] { 0, start, width, start });
-                polyline.setForeground(manageColor(OPERATION_FOREGROUND));
-                polyline.setLineWidth(2);
-            }
-            
-            
-    		newOperation.setArchpoint(true);
-    		targetClass.getOwnedOperation().add(newOperation);
-        	
-            // create shape for operation
-            Shape shape = peCreateService.createShape(containerShape, true);
- 
-            // create and set text graphics algorithm
-          //DataType datetype = addedOperation.getDatatype();
-            //System.out.println(datetype.getName()+"...operation name:"+datetype.getOwnedOperation().get(0).getName());
-            Text text = gaService.createText(shape , newOperation.getName()+"()");
-            text.setForeground(manageColor(OPERATION_TEXT_FOREGROUND));
-            text.setHorizontalAlignment(Orientation.ALIGNMENT_LEFT); 
-            
-            // vertical alignment has as default value "center"
-            text.setFont(gaService.manageDefaultFont(getDiagram(), true, true));
-            gaService.setLocationAndSize(text, 2, start + linenum * 20, containerShape.getGraphicsAlgorithm().getWidth() - 4, 20);
- 
-            // create link and wire it
-            link(shape, newOperation);
-            linenum ++;
-        }
-        
+	private void generateOperations(umlClass.Class targetClass, List<umlClass.Operation> newOperations){
+		for(umlClass.Operation newOperation: newOperations){
+			AddContext addcontext = new AddContext();
+			addcontext.setNewObject(newOperation);
+			addcontext.setTargetContainer(classContainerMap.get(targetClass.getName()));
+			IAddFeature iaddcontext = getFeatureProvider().getAddFeature(addcontext);
+			if (null != iaddcontext){
+				iaddcontext.execute(addcontext);
+			}
+		}
+		updatePictogramElement(classContainerMap.get(targetClass.getName()));
+		layoutPictogramElement(classContainerMap.get(targetClass.getName()));
 		
 	}
 	
@@ -345,19 +213,31 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 		return newOperations;
 	}
 	
-	private int getLowestClassPosition(){
-		for(ContainerShape cs : classShapes){
-			int Y = cs.getGraphicsAlgorithm().getY()+ cs.getGraphicsAlgorithm().getHeight();
-			LOWESTY = (Y > LOWESTY)?Y:LOWESTY;
+	/**
+	 * Get a connection between source class and target class.
+	 * @param sourceClass
+	 * @param targetClass
+	 * @return
+	 */
+	private boolean generateReference(String sourceClass, String targetClass){
+		ContainerShape sourcecs= classContainerMap.get(sourceClass);
+		ContainerShape targetcs= classContainerMap.get(targetClass);
+		if(null == sourcecs || null == targetcs)
+			return false;
+		CreateConnectionContext createconnectioncontext = new CreateConnectionContext();
+		createconnectioncontext.setSourceAnchor(sourcecs.getAnchors().get(0));
+		createconnectioncontext.setTargetAnchor(targetcs.getAnchors().get(0));
+		createconnectioncontext.setSourcePictogramElement(classContainerMap.get("Subject"));
+
+		org.eclipse.graphiti.features.ICreateConnectionFeature icreatecontext = getFeatureProvider().getCreateConnectionFeatures()[0];
+		Assert.isTrue(icreatecontext.getCreateName().equals("Association"));
+		
+		if (null != icreatecontext) {
+			icreatecontext.execute(createconnectioncontext);
+			return true;
 		}
-		return LOWESTY;
+		return false;
+		
 	}
 	
-	private int getRightestClassPosition(){
-		for(ContainerShape cs : classShapes){
-			int X = cs.getGraphicsAlgorithm().getX()+ cs.getGraphicsAlgorithm().getWidth();
-			RIGHTX = (X > RIGHTX)?X:RIGHTX;
-		}
-		return LOWESTY;
-	}
 }
