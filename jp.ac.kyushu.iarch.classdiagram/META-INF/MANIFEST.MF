@@ -18,7 +18,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.graphiti.mm,
  jp.ac.kyushu.iarch.model;bundle-version="0.1.0",
  jp.ac.kyushu.iarch.basefunction;bundle-version="1.0.0",
- jp.ac.kyushu.iarch.archdsl;bundle-version="1.0.0"
+ jp.ac.kyushu.iarch.archdsl;bundle-version="1.0.0",
+ org.junit
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: com.google.inject;version="1.3.0",
