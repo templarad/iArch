@@ -11,6 +11,9 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import umlClass.Class;
+import umlClass.Operation;
+
 //import Dataflow_editor.External_entity;
 
 public class DataflowDiagramChecker {
@@ -23,18 +26,21 @@ public class DataflowDiagramChecker {
 					dataflowDiagram.getContents());
 			if (umlEntity != null) {
 				
-				// check methods
-				// for(Method m : archiclass.getMethods()){
-				// Operation op = findMethod(m, umlClass);
-				// if(op!=null){
-				// //ProblemViewManager.addInfo(classDiagramResource,
-				// "  "+archiclass.getName()+"."+m.getName()+" is valid",
+				// check methods(Process)
+				// for(Method m : archidataflow.getProcess()){
+				// Process pr = findProcess(m, umlProcess);
+				// if(pr!=null){
+			    //ProblemViewManager.addInfo(classDiagramResource,
+				// "  "+archidataflow.getName()+"."+m.getName()+" is valid",
 				// m.getName());
-				// }else{
-				ProblemViewManager.addInfo(dataflowDiagramResource,
-						archidataflow.getName() + " is Exist.",
-						archidataflow.getName());
-			} else {
+				// }
+				// else{				
+				//ProblemViewManager.addInfo(dataflowDiagramResource,
+				//		archidataflow.getName() + " is Exist.",
+				//		archidataflow.getName());
+				// 	 }
+				 }
+				 else {
 				ProblemViewManager.addError(dataflowDiagramResource,
 						archidataflow.getName() + " is not found.",
 						archidataflow.getName());
@@ -57,11 +63,14 @@ public class DataflowDiagramChecker {
 		return null;
 	}
 
-	/*
-	 * private umlClass.Operation findMethod(Method method, Class umlClass) {
-	 * for (Operation op : umlClass.getOwnedOperation()) { if(!op.isArchpoint())
-	 * continue; if
-	 * (op.getName().equals(method.getName())&&umlClass.isArchpoint()) { return
-	 * op; // TODO Parameter/Return Type check. } } return null; }
-	 */
+//	private Dataflow_editor.Process findProcess(Method method, Process umlProcess) {
+//		for (Operation pr : umlClass.getOwnedOperation()) {
+//			if(!pr.isArchpoint()) continue;
+//			if (pr.getName().equals(method.getName())&&umlProcess.isArchpoint()) {
+//				return pr;
+//				// TODO Parameter/Return Type check.
+//			}
+//		}
+//		return null;
+//	}
 }
