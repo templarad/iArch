@@ -40,6 +40,11 @@ public class ConfigurationXMLHandler implements IHandler{
 			PathElement.addAttribute("Attribute", AllDialog.getClassDiagram().getFullPath().toOSString());
 		}
 		
+		final Element DataflowDiagramElement = rootElement.addElement("DataflowDiagram");
+		{			
+			final Element PathElement = DataflowDiagramElement.addElement("Path");
+			PathElement.addAttribute("Attribute", AllDialog.getDataflowDiagram().getFullPath().toOSString());
+		}
 		
 		final Element SequenceDiagramElement = rootElement.addElement("SequenceDiagram");
 		{			

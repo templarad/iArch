@@ -24,6 +24,7 @@ import org.eclipse.jdt.core.JavaCore;
 public class XMLreader {
 	private static String ArchfilePath=null;
 	private static String ClassDiagramPath=null;
+	private static String DataflowDiagramPath=null;
 	private static List<String> SequenceDiagramPathes= new ArrayList<String>();
 	private static List<String> SourceCodePathes = new ArrayList<String>();
 	private static String ARXMLPath=null;
@@ -158,12 +159,32 @@ public class XMLreader {
 		return Archfile;
 	}
 
+	
 	/**
 	 * @param archfilePath the archfilePath to set
 	 */
 	public static void setArchfilePath(String archfilePath) {
 		ArchfilePath = archfilePath;
 	}
+	
+	
+	//2014.10.30
+	/**
+	 * @return the dataflowDiagramResource
+	 */
+	public IResource getDataflowDiagramResource() {
+		IPath path = new Path(DataflowDiagramPath);
+		IResource DataflowDiagramResource = readIResource(path);
+		return DataflowDiagramResource;
+	}
+
+	/**
+	 * @param classDiagramPath the classDiagramPath to set
+	 */
+	public static void setDataflowDiagramPath(String dataflowDiagramPath) {
+		DataflowDiagramPath = dataflowDiagramPath;
+	}
+	
 	
 	/**
 	 * @return the SequenceDiagramResources
