@@ -12,13 +12,11 @@ import java.util.List;
 		return this.state;
 	}
 	public void setState(State state){
-		_notify();
-	}  
-	public void _notify(){
+		this.state = state;
 		for(Observer o : this.observers){
 			o.update();
 		} 
-	} 
+	}
 	public void addObserver(Observer observer){
 		this.observers.add(observer);
 	}
