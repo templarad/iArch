@@ -50,7 +50,9 @@ public class CheckArchfaceHandler implements IHandler {
 			// check archiface
 //			mergeDiagrams(dialog.getClassDiagram(), dialog.getSequenceDiagrams());
 			checkArchifaceValidation(dialog.getArchiface(),
-					dialog.getClassDiagram(), dialog.getSequenceDiagrams());
+					dialog.getClassDiagram(), 
+					dialog.getDataflowDiagram(),
+					dialog.getSequenceDiagrams());
 		}
 
 		return null;
@@ -73,10 +75,15 @@ public class CheckArchfaceHandler implements IHandler {
 */
 	private void checkArchifaceValidation(IResource archifile,
 			IResource classDiagramResource,
+			IResource dataflowDiagramResource,
 			List<IResource> sequenceDiagramResources) {
 		Model archiface = getArchifaceModel(archifile);
+		
 		ClassDiagramChecker classDiagramChecker = new ClassDiagramChecker();
 		classDiagramChecker.checkClassDiagram(archiface, classDiagramResource);
+		
+		DataflowDiagramChecker dataflowDiagramChecker = new DataflowDiagramChecker();
+		dataflowDiagramChecker.checkDataflowDiagram(archiface, dataflowDiagramResource);
 		
 		SequenceDiagramChecker sequenceDiagramChecker = new SequenceDiagramChecker();
 		for(IResource sequenceDiagramResource : sequenceDiagramResources){
