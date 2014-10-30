@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+-->
+
+<plugin>
+<extension
+      point="org.eclipse.graphiti.ui.diagramTypes">
+    <diagramType
+      description="This is the diagram type for Graphiti Dataflow Diagram"
+      id="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramType"
+      name="Graphiti Diagram Type"
+      type="DataflowDiagram">
+    </diagramType>
+  </extension>
+
+
+
+
+  <extension
+      point="org.eclipse.graphiti.ui.diagramTypeProviders">
+    <diagramTypeProvider
+      class="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramTypeProvider"
+      description="This is my editor for the Graphiti test"
+      id="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramTypeProvider"
+      name="Dataflow Diagram">
+      <diagramType
+        id="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramType">
+      </diagramType>     
+      <imageProvider
+      
+id="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramImageProvider">
+      </imageProvider>   
+    </diagramTypeProvider>
+ </extension>
+ 
+ <extension
+         point="org.eclipse.graphiti.ui.imageProviders">
+      <imageProvider
+   
+class="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramImageProvider"
+            
+id="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramImageProvider">
+      </imageProvider>
+   </extension>
+ 
+
+
+
+
+<!-- 2014.8.7 new-->
+
+<extension
+    point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+    <propertyContributor contributorId="DataflowDiagram.PropertyContributor"> 
+        <propertyCategory category="Graphiti"> 
+        </propertyCategory> 
+    </propertyContributor> 
+</extension>
+       
+ <extension
+      point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+    <propertyTabs
+          contributorId="DataflowDiagram.PropertyContributor">
+    <propertyTab
+         category="Graphiti"
+         id="graphiti.main.tab"
+          label="Main">
+    </propertyTab>
+   </propertyTabs>
+</extension>
+
+
+
+ <extension
+      point="org.eclipse.ui.views.properties.tabbed.propertySections">
+    <propertySections
+          contributorId="DataflowDiagram.PropertyContributor">
+        <propertySection
+              class="jp.ac.kyushu.iarch.dataflowdiagram.property.DataflowDiagramSection"
+              filter="jp.ac.kyushu.iarch.dataflowdiagram.property.DataflowDiagramFilter"
+              id="graphiti.main.tab.EMF_Dataflow"
+              tab="graphiti.main.tab">
+        </propertySection>
+    </propertySections>
+ </extension>
+</plugin>
+
+
+
