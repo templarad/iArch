@@ -1,9 +1,15 @@
 package jp.ac.kyushu.iarch.classdiagram.features;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream.PutField;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.WeakHashMap;
 
+import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
@@ -77,6 +83,8 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 	 */
 	private WeakHashMap<String, ContainerShape> classContainerMap = new WeakHashMap<String, ContainerShape>();
 	
+	private WeakHashMap<String, HashMap<String,Boolean>> classReferenceMap = new WeakHashMap<String, HashMap<String,Boolean>>();
+	
 	private void initPosition(Resource classResource){
 		EObject o = classResource.getContents().get(0);
 		
@@ -121,14 +129,19 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 		}
 		
 		
-		Resource classResource = GraphitiModelManager.getGraphitiModel(classDiagramIResource);
+		Resource classResource = getDiagram().eResource();
 		initPosition(classResource);
 		ClassDiagramModel cdm = new ClassDiagramModel(classResource);
 		Model archmodel = archModel.getModel();
 		for(Interface archclass : archmodel.getInterfaces()){
+			//Get operations which is included in the modified class.
+			List<umlClass.Operation> operations = getOperations(archmodel, archclass);
+			
 			umlClass.Class umlclass = UmlClassFactory.eINSTANCE.createClass();
 			umlclass.setArchpoint(true);
+			
 			if(null == cdm.getClass(archclass.getName())){
+				getDiagram().eResource().getContents().add(umlclass);
 				umlclass.setName(archclass.getName());
 				addClassFeature(umlclass, STARTX, STARTY);
 				//Adjust layout.
@@ -143,17 +156,39 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 						EObject eobj = ((ContainerShape)cs).getLink().getBusinessObjects().get(0);
 						if(eobj instanceof umlClass.Class){
 							String className = ((umlClass.Class)eobj).getName();
-							if(className == archclass.getName())
-							classContainerMap.put(className, (ContainerShape) cs);
+							if(className.equals(archclass.getName())){
+								classContainerMap.put(className, (ContainerShape) cs);
+								break;
+							}
 						}
 					}
 				}
-				List<umlClass.Operation> operations = getOperations(archmodel, archclass);
-				generateOperations(umlclass, operations);
-			}else{
-				//Fill the lost operations.
 				
+				generateOperations(umlclass, operations, cdm);
+				//checkReference(archmodel);
+			}else{
+				for(Shape cs : getDiagram().getChildren()){
+					if(cs instanceof ContainerShape){
+						EObject eobj = ((ContainerShape)cs).getLink().getBusinessObjects().get(0);
+						if(eobj instanceof umlClass.Class){
+							String className = ((umlClass.Class)eobj).getName();
+							if(archclass.getName().equals(className)){
+								classContainerMap.put(className, (ContainerShape) cs);
+								break;
+							}
+						}
+					}
+				}
+				//Fill the lost operations.
+				generateOperations(cdm.getClass(archclass.getName()), operations, cdm);
 			}
+		}
+		try {
+			
+			getDiagram().eResource().save(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
@@ -179,15 +214,19 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 		generateClassDiagram();
 		
 	}
-	private void generateOperations(umlClass.Class targetClass, List<umlClass.Operation> newOperations){
+	private void generateOperations(umlClass.Class targetClass, List<umlClass.Operation> newOperations, ClassDiagramModel cdm){
 		for(umlClass.Operation newOperation: newOperations){
-			AddContext addcontext = new AddContext();
-			addcontext.setNewObject(newOperation);
-			addcontext.setTargetContainer(classContainerMap.get(targetClass.getName()));
-			IAddFeature iaddcontext = getFeatureProvider().getAddFeature(addcontext);
-			if (null != iaddcontext){
-				iaddcontext.execute(addcontext);
+			if(cdm.getOperation(newOperation.getName(), targetClass)==null){
+				targetClass.getOwnedOperation().add(newOperation);
+				AddContext addcontext = new AddContext();
+				addcontext.setNewObject(newOperation);
+				addcontext.setTargetContainer(classContainerMap.get(targetClass.getName()));
+				IAddFeature iaddcontext = getFeatureProvider().getAddFeature(addcontext);
+				if (null != iaddcontext){
+					iaddcontext.execute(addcontext);
+				}
 			}
+			
 		}
 		updatePictogramElement(classContainerMap.get(targetClass.getName()));
 		layoutPictogramElement(classContainerMap.get(targetClass.getName()));
@@ -213,6 +252,17 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 		return newOperations;
 	}
 	
+	private boolean checkReference(Model archmodel){
+		for(Behavior behavior : archmodel.getBehaviors()){
+			HashMap<String, Boolean> temp = new HashMap<String, Boolean>();
+			for(Method method : behavior.getCall()){
+				temp.put(((Interface)method.eContainer()).getName(), true);
+				//((Interface)method.eContainer()).getName()), true);
+			}
+			classReferenceMap.put(behavior.getInterface().getName(), temp);
+		}
+		return true;
+	}
 	/**
 	 * Get a connection between source class and target class.
 	 * @param sourceClass

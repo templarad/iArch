@@ -30,4 +30,12 @@ public class ClassDiagramModel {
 		}
 		return null;
 	}
+	public umlClass.Operation getOperation(String oprationName, umlClass.Class umlclass){
+		for(umlClass.Operation op : umlclass.getOwnedOperation()){
+			if(op.getName().equals(oprationName)){
+				return op;
+			}
+		}
+		return null;
+	}
 }
