@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/jp.ac.kyushu.iarch.model/src" editDirectory="/jp.ac.kyushu.iarch.model.edit/src"
+    editorDirectory="/jp.ac.kyushu.iarch.model.editor/src" modelPluginID="jp.ac.kyushu.iarch.model"
+    modelName="EMF_Dataflow" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    editPluginID="jp.ac.kyushu.iarch.model.edit" editorPluginID="jp.ac.kyushu.iarch.model.editor"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>EMF_Dataflow.ecore</foreignModel>
+  <genPackages prefix="Dataflow_editor" disposableProviderFactory="true" ecorePackage="EMF_Dataflow.ecore#/">
+    <genDataTypes ecoreDataType="EMF_Dataflow.ecore#//String"/>
+    <genDataTypes ecoreDataType="EMF_Dataflow.ecore#//Integer"/>
+    <genDataTypes ecoreDataType="EMF_Dataflow.ecore#//Boolean"/>
+    <genClasses ecoreClass="EMF_Dataflow.ecore#//ModelElement"/>
+    <genClasses image="false" ecoreClass="EMF_Dataflow.ecore#//NameSpace">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EMF_Dataflow.ecore#//NameSpace/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EMF_Dataflow.ecore#//NameSpace/Archpoint"/>
+    </genClasses>
+    <genClasses ecoreClass="EMF_Dataflow.ecore#//Classifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EMF_Dataflow.ecore#//Classifier/isAbstract"/>
+    </genClasses>
+    <genClasses ecoreClass="EMF_Dataflow.ecore#//DataStore"/>
+    <genClasses ecoreClass="EMF_Dataflow.ecore#//Process">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EMF_Dataflow.ecore#//Process/ownedOperation"/>
+    </genClasses>
+    <genClasses ecoreClass="EMF_Dataflow.ecore#//DataFlow">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference EMF_Dataflow.ecore#//DataFlow/entity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EMF_Dataflow.ecore#//DataFlow/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EMF_Dataflow.ecore#//DataFlow/target"/>
+    </genClasses>
+    <genClasses ecoreClass="EMF_Dataflow.ecore#//External_entity"/>
+    <genClasses ecoreClass="EMF_Dataflow.ecore#//Operation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference EMF_Dataflow.ecore#//Operation/EReference0"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EMF_Dataflow.ecore#//Operation/isOrdered"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EMF_Dataflow.ecore#//Operation/isUnique"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EMF_Dataflow.ecore#//Operation/lower"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EMF_Dataflow.ecore#//Operation/upper"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
