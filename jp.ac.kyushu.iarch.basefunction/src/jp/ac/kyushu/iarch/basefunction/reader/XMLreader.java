@@ -54,6 +54,7 @@ public class XMLreader {
 	private static void initial(){
 		ArchfilePath=null;
 		ClassDiagramPath=null;
+		DataflowDiagramPath=null;
 		SequenceDiagramPathes.removeAll(SequenceDiagramPathes);
 		SourceCodePathes.removeAll(SourceCodePathes);
 		ARXMLPath=null;
@@ -79,7 +80,14 @@ public class XMLreader {
 				Attribute attribute=(Attribute) ClassDiagramlist.get(0);
 				setClassDiagramPath(attribute.getValue());
 			}
-		   
+            
+			{
+				@SuppressWarnings("unchecked")
+				List<Node> DataflowDiagramlist = document.selectNodes("//DataflowDiagram/Path/@Attribute");			   
+				Attribute attribute=(Attribute) DataflowDiagramlist.get(0);
+				setDataflowDiagramPath(attribute.getValue());
+			}
+			
 			{
 				@SuppressWarnings("unchecked")
 				List<Node> SequenceDiagramlist = document.selectNodes("//SequenceDiagram/Path/@Attribute");
@@ -149,6 +157,24 @@ public class XMLreader {
 	public static void setClassDiagramPath(String classDiagramPath) {
 		ClassDiagramPath = classDiagramPath;
 	}
+	
+	
+	//2014.10.31
+	/**
+	 * @return the dataflowDiagramResource
+	 */
+	public IResource getDataflowDiagramResource() {
+		IPath path = new Path(DataflowDiagramPath);
+		IResource DataflowDiagramResource = readIResource(path);
+		return DataflowDiagramResource;
+	}
+
+	/**
+	 * @param dataflowDiagramPath the dataflowDiagramPath to set
+	 */
+	public static void setDataflowDiagramPath(String dataflowDiagramPath) {
+		DataflowDiagramPath = dataflowDiagramPath;
+	}
 
 	/**
 	 * @return the archfileResource
@@ -166,25 +192,6 @@ public class XMLreader {
 	public static void setArchfilePath(String archfilePath) {
 		ArchfilePath = archfilePath;
 	}
-	
-	
-	//2014.10.30
-	/**
-	 * @return the dataflowDiagramResource
-	 */
-	public IResource getDataflowDiagramResource() {
-		IPath path = new Path(DataflowDiagramPath);
-		IResource DataflowDiagramResource = readIResource(path);
-		return DataflowDiagramResource;
-	}
-
-	/**
-	 * @param classDiagramPath the classDiagramPath to set
-	 */
-	public static void setDataflowDiagramPath(String dataflowDiagramPath) {
-		DataflowDiagramPath = dataflowDiagramPath;
-	}
-	
 	
 	/**
 	 * @return the SequenceDiagramResources

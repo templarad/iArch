@@ -82,7 +82,7 @@ public class SelectDiagramsDialog extends Dialog {
 		Label dataflowLabel = new Label(composite, SWT.NONE);
 		dataflowLabel.setText("Dataflow Diagrams");
 		dataflowTable = new Table(composite, SWT.CHECK|SWT.BORDER|SWT.V_SCROLL);
-		dataflowTable.setLayoutData(new GridData(350, 80));
+		dataflowTable.setLayoutData(new GridData(350, 60));
 		dataflowTable.addSelectionListener(checkboxListener);
 
 		Label sequenceLabel = new Label(composite, SWT.NONE);

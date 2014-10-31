@@ -55,15 +55,17 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.resource.XtextResourceSetProvider;
 import com.google.inject.Injector;
 
-
 public class CheckASTHandler implements IHandler {
-	final private static Injector injector = ArchDSLActivator.getInstance().getInjector(ArchDSLPlugin.getLanguageName());
+	final private static Injector injector = ArchDSLActivator.getInstance()
+			.getInjector(ArchDSLPlugin.getLanguageName());
 
 	@Override
-	public void addHandlerListener(IHandlerListener handlerListener) {}
+	public void addHandlerListener(IHandlerListener handlerListener) {
+	}
 
 	@Override
-	public void dispose() {}
+	public void dispose() {
+	}
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -75,7 +77,7 @@ public class CheckASTHandler implements IHandler {
 			if (ssel.getFirstElement() instanceof IJavaProject) {
 				IJavaProject project = (IJavaProject) ssel.getFirstElement();
 				Document codeXmlDocument = DocumentHelper.createDocument();
-				 ASTParser parser = ASTParser.newParser(AST.JLS4);
+				ASTParser parser = ASTParser.newParser(AST.JLS4);
 				parser.setProject(project);
 
 				try {
@@ -87,29 +89,35 @@ public class CheckASTHandler implements IHandler {
 					for (IJavaElement element : project.getChildren()) {
 						if (element instanceof IPackageFragmentRoot) {
 
-							for (IJavaElement packg : ((IPackageFragmentRoot) element).getChildren()) {
+							for (IJavaElement packg : ((IPackageFragmentRoot) element)
+									.getChildren()) {
 
 								// element
-								final Element pageElement = rootElement.addElement("Package");
-								pageElement.addAttribute("name", packg.getElementName());
+								final Element pageElement = rootElement
+										.addElement("Package");
+								pageElement.addAttribute("name",
+										packg.getElementName());
 
 								if (packg instanceof IPackageFragment)
 
 								{
 									IPackageFragment packagefrag = (IPackageFragment) packg;
-									for (ICompilationUnit file : packagefrag.getCompilationUnits())
+									for (ICompilationUnit file : packagefrag
+											.getCompilationUnits())
 
 									{
 										parser.setSource(file);
 										st = file.getResource();
-										ASTNode rootnode = parser.createAST(null);
-										final CompilationUnit result = (CompilationUnit)rootnode;
+										ASTNode rootnode = parser
+												.createAST(null);
+										final CompilationUnit result = (CompilationUnit) rootnode;
 										rootnode.accept(new ASTVisitor(true) {
 											Element methodElement;
 											Element classElement;
 
 											@Override
-											public boolean visit(TypeDeclaration node) {
+											public boolean visit(
+													TypeDeclaration node) {
 												String nodeType;
 
 												if (node.isInterface() == true) {
@@ -118,99 +126,158 @@ public class CheckASTHandler implements IHandler {
 												} else {
 													nodeType = "Class";
 												}
-												classElement = pageElement.addElement(nodeType);
-												String className = node.getName().toString();
-												classElement.addAttribute("name", className);
-												
-												List classInterface = node.superInterfaceTypes();
+												classElement = pageElement
+														.addElement(nodeType);
+												String className = node
+														.getName().toString();
+												classElement.addAttribute(
+														"name", className);
+
+												List classInterface = node
+														.superInterfaceTypes();
 												if (node.isInterface() != true) {
-													for (Iterator iterator = classInterface.iterator(); iterator.hasNext();) {
-														Type type = (Type) iterator.next();
-														Element superInterfaceElement = classElement.addElement("superInterfaceTypes");
-														superInterfaceElement.addText(type.toString());
+													for (Iterator iterator = classInterface
+															.iterator(); iterator
+															.hasNext();) {
+														Type type = (Type) iterator
+																.next();
+														Element superInterfaceElement = classElement
+																.addElement("superInterfaceTypes");
+														superInterfaceElement.addText(type
+																.toString());
 													}
 												}
-												int lineNumber = result.getLineNumber(node.getStartPosition());
-												classElement.addAttribute("lineNumber", String.valueOf(lineNumber));
-												int classModifiersNum = node.getModifiers();
-												Element modifiersElement = classElement.addElement("ClassModifiers");
+												int lineNumber = result.getLineNumber(node
+														.getStartPosition());
+												classElement.addAttribute(
+														"lineNumber",
+														String.valueOf(lineNumber));
+												int classModifiersNum = node
+														.getModifiers();
+												Element modifiersElement = classElement
+														.addElement("ClassModifiers");
 												List<String> modifiers = returnModifiers(classModifiersNum);
 												for (String str : modifiers) {
-													Element modifierElement = modifiersElement.addElement("modifier");
-													modifierElement.setText(str);
+													Element modifierElement = modifiersElement
+															.addElement("modifier");
+													modifierElement
+															.setText(str);
 												}
 
-												System.out.println("class name:" + className);
-												System.out.println("class Modifiers:" + classModifiersNum);
+												System.out
+														.println("class name:"
+																+ className);
+												System.out
+														.println("class Modifiers:"
+																+ classModifiersNum);
 												return super.visit(node);
 											}
 
 											@Override
-											public boolean visit(TypeDeclarationStatement node) {
+											public boolean visit(
+													TypeDeclarationStatement node) {
 
 												return super.visit(node);
 											}
 
 											@Override
-											public boolean visit(MethodInvocation node) {
+											public boolean visit(
+													MethodInvocation node) {
 
-												Element methodInvocationElement = methodElement.addElement("MethodInvocation");
-												methodInvocationElement.addAttribute("name", node.getName().toString());
-												Element mEElement = methodInvocationElement.addElement("InvocationExpression");
-												System.out.println("Method Invocation:" + node.getName());
-												System.out.println("Method InvocationExpression:" + node.getExpression());
+												Element methodInvocationElement = methodElement
+														.addElement("MethodInvocation");
+												methodInvocationElement
+														.addAttribute(
+																"name",
+																node.getName()
+																		.toString());
+												Element mEElement = methodInvocationElement
+														.addElement("InvocationExpression");
+												System.out.println("Method Invocation:"
+														+ node.getName());
+												System.out.println("Method InvocationExpression:"
+														+ node.getExpression());
 												if ((node.getExpression()) != null)
-													mEElement.addText(node.getExpression().toString());
+													mEElement.addText(node
+															.getExpression()
+															.toString());
 
 												return super.visit(node);
 											}
 
 											// MethodDeclaration
 											@Override
-											public boolean visit(MethodDeclaration node) {
+											public boolean visit(
+													MethodDeclaration node) {
 
-												String methodName = node.getName().toString();
-												Type returnType = node.getReturnType2();
+												String methodName = node
+														.getName().toString();
+												Type returnType = node
+														.getReturnType2();
 												String methodReturnType;
 												if (returnType != null) {
-													methodReturnType = returnType.toString();
+													methodReturnType = returnType
+															.toString();
 												} else {
 													methodReturnType = "";
 												}
 
-												int methodModifiersNum = node.getModifiers();
+												int methodModifiersNum = node
+														.getModifiers();
 												// MethodDeclaration
-												methodElement = classElement.addElement("MethodDeclaration");
-												int lineNumber = result.getLineNumber(node.getStartPosition()) ;
-												methodElement.addAttribute("lineNumber", String.valueOf(lineNumber));
-												methodElement.addAttribute("name", methodName);
+												methodElement = classElement
+														.addElement("MethodDeclaration");
+												int lineNumber = result.getLineNumber(node
+														.getStartPosition());
+												methodElement.addAttribute(
+														"lineNumber",
+														String.valueOf(lineNumber));
+												methodElement.addAttribute(
+														"name", methodName);
 												// Modifiers of
 												// MethodDeclaration
-												Element modifiersElement = methodElement.addElement("MethodModifiers");
+												Element modifiersElement = methodElement
+														.addElement("MethodModifiers");
 												List<String> modifiers = returnModifiers(methodModifiersNum);
-												if (methodReturnType.equals("void") && (!(modifiers.get(0).toString().equals("void"))))
+												if (methodReturnType
+														.equals("void")
+														&& (!(modifiers.get(0)
+																.toString()
+																.equals("void"))))
 													modifiers.add("void");
 												for (String str : modifiers) {
-													Element modifierElement = modifiersElement.addElement("modifier");
-													modifierElement.setText(str);
+													Element modifierElement = modifiersElement
+															.addElement("modifier");
+													modifierElement
+															.setText(str);
 												}
 												// method parameterType
 												if (node.parameters().size() != 0) {
-													List<SingleVariableDeclaration> methodParameters = node.parameters();
-													Element parameterTypeElement = methodElement.addElement("parameterTypeElement");
+													List<SingleVariableDeclaration> methodParameters = node
+															.parameters();
+													Element parameterTypeElement = methodElement
+															.addElement("parameterTypeElement");
 													for (SingleVariableDeclaration methodParameter : methodParameters) {
-														String fType = methodParameter.toString().split(" ")[0];
-														Element parameterType = parameterTypeElement.addElement("parameterType");
-														parameterType.setText(fType);
+														String fType = methodParameter
+																.toString()
+																.split(" ")[0];
+														Element parameterType = parameterTypeElement
+																.addElement("parameterType");
+														parameterType
+																.setText(fType);
 													}
 												}
 
 												// method return type
-												if (!methodReturnType.equals("void")) {
-													Element returnTypeElement = methodElement.addElement("returnType");
-													returnTypeElement.setText(methodReturnType);
+												if (!methodReturnType
+														.equals("void")) {
+													Element returnTypeElement = methodElement
+															.addElement("returnType");
+													returnTypeElement
+															.setText(methodReturnType);
 												}
-												System.out.println("Method Define:" + node.getName());
+												System.out.println("Method Define:"
+														+ node.getName());
 												return super.visit(node);
 											}
 										});
@@ -224,8 +291,10 @@ public class CheckASTHandler implements IHandler {
 
 					try {
 						OutputFormat format = OutputFormat.createPrettyPrint();
-						String projectPath = project.getProject().getLocation().toOSString();
-						XMLWriter output = new XMLWriter(new FileWriter(new File(projectPath + "/codeXML.xml")), format);
+						String projectPath = project.getProject().getLocation()
+								.toOSString();
+						XMLWriter output = new XMLWriter(new FileWriter(
+								new File(projectPath + "/codeXML.xml")), format);
 						codeXmlDocument.setXMLEncoding("utf-8");
 						output.write(codeXmlDocument);
 						output.close();
@@ -239,14 +308,16 @@ public class CheckASTHandler implements IHandler {
 				}
 				IProject project2 = project.getProject();
 
-				SelectArchfile dialog = new SelectArchfile(HandlerUtil.getActiveShell(event), project2);
+				SelectArchfile dialog = new SelectArchfile(
+						HandlerUtil.getActiveShell(event), project2);
 				if (dialog.open() == MessageDialog.OK) {
 					ProblemViewManager.removeAllProblems(project2);
 					// interface
 					Model archiface = getArchifaceModel(dialog.getArchiface());
 					// root
 					Element root = codeXmlDocument.getRootElement();
-					Element test = (Element) root.selectSingleNode("//Package[@name='']");
+					Element test = (Element) root
+							.selectSingleNode("//Package[@name='']");
 					List<Element> testClass = test.selectNodes("Class");
 					// list = root.selectNodes("Project/Package[2]");
 					// List<Element> elementList = root.elements();
@@ -262,26 +333,45 @@ public class CheckASTHandler implements IHandler {
 						String className = archiclass.getName();
 						for (Element a : testClass) {
 							String className2 = a.attributeValue("name");
-							int lineNumberClass=Integer.parseInt(a.attributeValue("lineNumber").toString());
+							int lineNumberClass = Integer.parseInt(a
+									.attributeValue("lineNumber").toString());
 							if (className.equals(className2)) {
-								IResource st2=st.getProject().getFile("/src/"+className+".java");
-								ProblemViewManager.addInfo1(st2, "Interface-Class :" + className + " is Exist", st.getName(),lineNumberClass);
+								IResource st2 = st.getProject().getFile(
+										"/src/" + className + ".java");
+								ProblemViewManager.addInfo1(st2,
+										"Interface-Class :" + className
+												+ " is Exist", st.getName(),
+										lineNumberClass);
 								@SuppressWarnings("unchecked")
-								List<Element> methodList = a.selectNodes("MethodDeclaration");
+								List<Element> methodList = a
+										.selectNodes("MethodDeclaration");
 								for (Method m : archiclass.getMethods()) {
 									String methodname = m.getName();
 									String methodname2 = null;
 									boolean flag = false;
 									for (Element b : methodList) {
 										methodname2 = b.attributeValue("name");
-										int lineNumberMethod=Integer.parseInt(b.attributeValue("lineNumber").toString());
+										int lineNumberMethod = Integer
+												.parseInt(b.attributeValue(
+														"lineNumber")
+														.toString());
 										if (methodname2.equals(methodname)) {
-											ProblemViewManager.addInfo1(st2, "Interface- Method : " + methodname+ " is Exist", archiclass.getName(),lineNumberMethod);
+											ProblemViewManager.addInfo1(st2,
+													"Interface- Method : "
+															+ methodname
+															+ " is Exist",
+													archiclass.getName(),
+													lineNumberMethod);
 											flag = true;
 										}
 									}
 									if (!flag) {
-										ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not  Exist", archiclass.getName(),lineNumberClass);
+										ProblemViewManager.addError1(st2,
+												"Interface- Method :"
+														+ methodname
+														+ " is not  Exist",
+												archiclass.getName(),
+												lineNumberClass);
 									}
 								}
 							}
@@ -290,7 +380,8 @@ public class CheckASTHandler implements IHandler {
 					// behaver
 					for (Behavior behavior : archiface.getBehaviors()) {
 
-						String interNameString = behavior.getInterface().getName();
+						String interNameString = behavior.getInterface()
+								.getName();
 						String methodNameLaString = null;
 						String classNameL = null;
 						String outString = null;
@@ -298,30 +389,51 @@ public class CheckASTHandler implements IHandler {
 							boolean flag2 = false;
 
 							String methodName = methodCall.getName();
-							String classNameString = ((Interface) methodCall.eContainer()).getName();
-							int lineNumber=0;
+							String classNameString = ((Interface) methodCall
+									.eContainer()).getName();
+							int lineNumber = 0;
 							Node classNode = null;
 							if (classNameL != null) {
-								classNode = test.selectSingleNode("Class[@name='" + classNameL + "']");
+								classNode = test
+										.selectSingleNode("Class[@name='"
+												+ classNameL + "']");
 							}
 							if (methodNameLaString != null) {
-								Node methodDcl = classNode.selectSingleNode("MethodDeclaration[@name='" + methodNameLaString + "']");
-								flag2 = (methodDcl.selectSingleNode("MethodInvocation[@name='" + methodName + "']") != null);
-								 lineNumber=Integer.parseInt(((Element) methodDcl).attributeValue("lineNumber").toString());
+								Node methodDcl = classNode
+										.selectSingleNode("MethodDeclaration[@name='"
+												+ methodNameLaString + "']");
+								flag2 = (methodDcl
+										.selectSingleNode("MethodInvocation[@name='"
+												+ methodName + "']") != null);
+								lineNumber = Integer
+										.parseInt(((Element) methodDcl)
+												.attributeValue("lineNumber")
+												.toString());
 								if (!flag2) {
-									IResource st2=st.getProject().getFile("/src/"+classNameL+".java");
-									String message = "Behavior  : " + interNameString + " :  " + classNameL + "." + methodNameLaString + " : " + methodName + " " + "is not Exist";
-									ProblemViewManager.addError1(st2, message, classNameString,lineNumber);
+									IResource st2 = st.getProject().getFile(
+											"/src/" + classNameL + ".java");
+									String message = "Behavior  : "
+											+ interNameString + " :  "
+											+ classNameL + "."
+											+ methodNameLaString + " : "
+											+ methodName + " " + "is not Exist";
+									ProblemViewManager.addError1(st2, message,
+											classNameString, lineNumber);
 								}
 							}
 
 							if (flag2) {
-								outString = "Behavior  : " + interNameString + " : " + classNameL + "." + methodNameLaString + " ->" + classNameString + "." + methodName;
+								outString = "Behavior  : " + interNameString
+										+ " : " + classNameL + "."
+										+ methodNameLaString + " ->"
+										+ classNameString + "." + methodName;
 							}
 							if (outString != null) {
-								IResource st2=st.getProject().getFile("/src/"+classNameL+".java");
+								IResource st2 = st.getProject().getFile(
+										"/src/" + classNameL + ".java");
 								// lineNumberClass=Integer.parseInt(a.attributeValue("lineNumber").toString());
-								ProblemViewManager.addInfo1(st2, outString, classNameL,lineNumber);
+								ProblemViewManager.addInfo1(st2, outString,
+										classNameL, lineNumber);
 							}
 							classNameL = classNameString;
 							methodNameLaString = methodName;
@@ -344,10 +456,12 @@ public class CheckASTHandler implements IHandler {
 	}
 
 	private Model getArchifaceModel(IResource archifile) {
-		XtextResourceSet rs = (XtextResourceSet) injector.getInstance(XtextResourceSetProvider.class).get(archifile.getProject());
+		XtextResourceSet rs = (XtextResourceSet) injector.getInstance(
+				XtextResourceSetProvider.class).get(archifile.getProject());
 		rs.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
 
-		Resource resource = rs.getResource(URI.createPlatformResourceURI(archifile.getFullPath().toString(), true), true);
+		Resource resource = rs.getResource(URI.createPlatformResourceURI(
+				archifile.getFullPath().toString(), true), true);
 		return (Model) resource.getContents().get(0);
 	}
 
@@ -399,5 +513,6 @@ public class CheckASTHandler implements IHandler {
 	}
 
 	@Override
-	public void removeHandlerListener(IHandlerListener handlerListener) {}
+	public void removeHandlerListener(IHandlerListener handlerListener) {
+	}
 }

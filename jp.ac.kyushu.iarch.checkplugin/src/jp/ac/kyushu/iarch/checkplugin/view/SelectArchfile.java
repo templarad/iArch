@@ -105,6 +105,7 @@ public class SelectArchfile extends Dialog {
 		@Override
 		public void widgetSelected(SelectionEvent e) {
 			int cntArchiFiles = 0;
+			int cntDataflowDiagrams = 0;
 			int cntClassDiagrams = 0;
 			int cntSequenceDiagrams = 0;
 			for(TableItem item : archiTable.getItems()){

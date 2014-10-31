@@ -72,6 +72,7 @@ public class SelectAllFileDialog extends Dialog {
 	protected Control createDialogArea(Composite parent) {
 		CheckCheckedStateListener checkboxListener = new CheckCheckedStateListener();
 		Composite composite = (Composite)super.createDialogArea(parent);
+		
 		Label archiLabel = new Label(composite, SWT.NONE);
 		archiLabel.setText("Archiface file");
 		archiTable = new Table(composite, SWT.CHECK|SWT.BORDER | SWT.V_SCROLL);

@@ -44,8 +44,7 @@ public class ArchfaceChecker extends XMLreader {
 		
 		DataflowDiagramChecker dataflowDiagramChecker = new DataflowDiagramChecker();
 		dataflowDiagramChecker.checkDataflowDiagram(archModel, dataflowDiagramResource);
-		
-		
+				
 		SequenceDiagramChecker sequenceDiagramChecker = new SequenceDiagramChecker();
 		for(IResource sequenceDiagramResource : sequenceDiagramResources){
 			sequenceDiagramChecker.checkSequenceDiagram(archModel, sequenceDiagramResource);					
