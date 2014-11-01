@@ -72,7 +72,12 @@ public class XMLreader {
 				Attribute attribute=(Attribute) Archfilelist.get(0);
 				setArchfilePath(attribute.getValue());
 			}
-		   
+			{
+				@SuppressWarnings("unchecked")
+				List<Node> Dataflowlist = document.selectNodes("//DataflowDiagram/Path/@Attribute");			   
+				Attribute attribute=(Attribute) Dataflowlist.get(0);
+				setDataflowDiagramPath(attribute.getValue());
+			}
 			{
 				@SuppressWarnings("unchecked")
 				List<Node> ClassDiagramlist = document.selectNodes("//ClassDiagram/Path/@Attribute");			   
