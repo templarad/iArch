@@ -300,29 +300,24 @@ public class ASTSourceCodeChecker{
 							for (AltMethod am : u_interface.getAltmethods()) {
 								List<String> altMethodNameArch = am.getName();
 								String altMethodNameJava = null;
-								int isDefine = UNDEFINED;
+								boolean isDefine = false;
 								// altmethods control
 								for (Element jm : javaMethodList) {
 									altMethodNameJava = jm.attributeValue("name");
 									int lineNumberAltMethod = Integer.parseInt(jm.attributeValue("lineNumber").toString());
 									for (String s : altMethodNameArch) {
 										if (altMethodNameJava.equals(s)) {
-											if (isDefine == UNDEFINED) {
 												ProblemViewManager.addInfo1(st2, "UncertainInterface- AlternativeMethod : " + s + " is Exist", superInterface.getName(), lineNumberAltMethod);
-												isDefine= DEFINED;
-											}else if(isDefine == DEFINED || isDefine == DUPLICATED){
-												ProblemViewManager.addError1(st2, "UncertainInteface- AlternativeMethod : " + s + " is duplicated with other alternativemethod", superInterface.getName(), lineNumberAltMethod);
-												isDefine = DUPLICATED;
-											}
+												isDefine= true;
 										}
 									}
 								}
-								if(isDefine == UNDEFINED){
+								if(isDefine == false){
 									String altmethodname_all = "";
 									for(String s : altMethodNameArch){
 										altmethodname_all += s+" ";
 									}
-									ProblemViewManager.addInfo1(st2,"UncertainInterface- AlternativeMethod : AlternativeMethod is not Exist."
+									ProblemViewManager.addError1(st2,"UncertainInterface- AlternativeMethod : AlternativeMethod is not Exist."
 											+ " You can insert an AlternativeMethod in these methods : " + altmethodname_all , jc.getName(),lineNumberClass);
 								}
 							}

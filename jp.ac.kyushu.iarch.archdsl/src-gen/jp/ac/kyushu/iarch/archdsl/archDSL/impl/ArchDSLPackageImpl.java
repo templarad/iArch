@@ -322,19 +322,9 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAltMethod_CallInterface()
-  {
-    return (EReference)altMethodEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getAltMethod_Type()
   {
-    return (EAttribute)altMethodEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)altMethodEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -344,7 +334,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    */
   public EAttribute getAltMethod_Name()
   {
-    return (EAttribute)altMethodEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)altMethodEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -354,7 +344,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    */
   public EReference getAltMethod_Param()
   {
-    return (EReference)altMethodEClass.getEStructuralFeatures().get(3);
+    return (EReference)altMethodEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -372,19 +362,9 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOptMethod_CallInterface()
-  {
-    return (EReference)optMethodEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getOptMethod_Type()
   {
-    return (EAttribute)optMethodEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)optMethodEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -394,7 +374,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    */
   public EAttribute getOptMethod_Name()
   {
-    return (EAttribute)optMethodEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)optMethodEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -404,7 +384,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    */
   public EReference getOptMethod_Param()
   {
-    return (EReference)optMethodEClass.getEStructuralFeatures().get(3);
+    return (EReference)optMethodEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -528,13 +508,11 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     createEReference(methodEClass, METHOD__PARAM);
 
     altMethodEClass = createEClass(ALT_METHOD);
-    createEReference(altMethodEClass, ALT_METHOD__CALL_INTERFACE);
     createEAttribute(altMethodEClass, ALT_METHOD__TYPE);
     createEAttribute(altMethodEClass, ALT_METHOD__NAME);
     createEReference(altMethodEClass, ALT_METHOD__PARAM);
 
     optMethodEClass = createEClass(OPT_METHOD);
-    createEReference(optMethodEClass, OPT_METHOD__CALL_INTERFACE);
     createEAttribute(optMethodEClass, OPT_METHOD__TYPE);
     createEAttribute(optMethodEClass, OPT_METHOD__NAME);
     createEReference(optMethodEClass, OPT_METHOD__PARAM);
@@ -601,13 +579,11 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     initEReference(getMethod_Param(), this.getParam(), null, "param", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(altMethodEClass, AltMethod.class, "AltMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAltMethod_CallInterface(), this.getInterface(), null, "callInterface", null, 0, 1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAltMethod_Type(), ecorePackage.getEString(), "type", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAltMethod_Name(), ecorePackage.getEString(), "name", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAltMethod_Param(), this.getParam(), null, "param", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(optMethodEClass, OptMethod.class, "OptMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOptMethod_CallInterface(), this.getInterface(), null, "callInterface", null, 0, 1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptMethod_Type(), ecorePackage.getEString(), "type", null, 0, 1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOptMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOptMethod_Param(), this.getParam(), null, "param", null, 0, -1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

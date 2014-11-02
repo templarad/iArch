@@ -251,22 +251,13 @@ public interface ArchDSLPackage extends EPackage
   int ALT_METHOD = 4;
 
   /**
-   * The feature id for the '<em><b>Call Interface</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ALT_METHOD__CALL_INTERFACE = 0;
-
-  /**
    * The feature id for the '<em><b>Type</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ALT_METHOD__TYPE = 1;
+  int ALT_METHOD__TYPE = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute list.
@@ -275,7 +266,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALT_METHOD__NAME = 2;
+  int ALT_METHOD__NAME = 1;
 
   /**
    * The feature id for the '<em><b>Param</b></em>' containment reference list.
@@ -284,7 +275,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALT_METHOD__PARAM = 3;
+  int ALT_METHOD__PARAM = 2;
 
   /**
    * The number of structural features of the '<em>Alt Method</em>' class.
@@ -293,7 +284,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALT_METHOD_FEATURE_COUNT = 4;
+  int ALT_METHOD_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptMethodImpl <em>Opt Method</em>}' class.
@@ -306,22 +297,13 @@ public interface ArchDSLPackage extends EPackage
   int OPT_METHOD = 5;
 
   /**
-   * The feature id for the '<em><b>Call Interface</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPT_METHOD__CALL_INTERFACE = 0;
-
-  /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPT_METHOD__TYPE = 1;
+  int OPT_METHOD__TYPE = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -330,7 +312,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPT_METHOD__NAME = 2;
+  int OPT_METHOD__NAME = 1;
 
   /**
    * The feature id for the '<em><b>Param</b></em>' containment reference list.
@@ -339,7 +321,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPT_METHOD__PARAM = 3;
+  int OPT_METHOD__PARAM = 2;
 
   /**
    * The number of structural features of the '<em>Opt Method</em>' class.
@@ -348,7 +330,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPT_METHOD_FEATURE_COUNT = 4;
+  int OPT_METHOD_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ParamImpl <em>Param</em>}' class.
@@ -617,17 +599,6 @@ public interface ArchDSLPackage extends EPackage
   EClass getAltMethod();
 
   /**
-   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getCallInterface <em>Call Interface</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Call Interface</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getCallInterface()
-   * @see #getAltMethod()
-   * @generated
-   */
-  EReference getAltMethod_CallInterface();
-
-  /**
    * Returns the meta object for the attribute list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -669,17 +640,6 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    */
   EClass getOptMethod();
-
-  /**
-   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getCallInterface <em>Call Interface</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Call Interface</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getCallInterface()
-   * @see #getOptMethod()
-   * @generated
-   */
-  EReference getOptMethod_CallInterface();
 
   /**
    * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getType <em>Type</em>}'.
@@ -959,14 +919,6 @@ public interface ArchDSLPackage extends EPackage
     EClass ALT_METHOD = eINSTANCE.getAltMethod();
 
     /**
-     * The meta object literal for the '<em><b>Call Interface</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ALT_METHOD__CALL_INTERFACE = eINSTANCE.getAltMethod_CallInterface();
-
-    /**
      * The meta object literal for the '<em><b>Type</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -999,14 +951,6 @@ public interface ArchDSLPackage extends EPackage
      * @generated
      */
     EClass OPT_METHOD = eINSTANCE.getOptMethod();
-
-    /**
-     * The meta object literal for the '<em><b>Call Interface</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPT_METHOD__CALL_INTERFACE = eINSTANCE.getOptMethod_CallInterface();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' attribute feature.

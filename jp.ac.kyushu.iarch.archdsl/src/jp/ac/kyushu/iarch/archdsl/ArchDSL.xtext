@@ -3,40 +3,40 @@ grammar jp.ac.kyushu.iarch.archdsl.ArchDSL with org.eclipse.xtext.common.Termina
 generate archDSL "http://www.ac.jp/kyushu/iarch/archdsl/ArchDSL"
 
 Model:
-    (interfaces+=Interface |
-    u_interfaces+=UncertainInterface)*
-    behaviors+=Behavior*;
+	(interfaces+=Interface |
+	u_interfaces+=UncertainInterface)*
+	behaviors+=Behavior*;
 
 UncertainInterface:
-    "interface uncertain" name=ID ("u_extends" superInterface=[Interface])? "{"
-    (altmethods+=AltMethod |
-    optmethods+=OptMethod)*
-    "}";
+	"interface uncertain" name=ID ("extends" superInterface=[Interface])? "{"
+	(altmethods+=AltMethod |
+	optmethods+=OptMethod)*
+	"}";
 
 Interface:
-    "interface component" name=ID "{"
-    methods+=Method*
-    "}";
+	"interface component" name=ID "{"
+	methods+=Method*
+	"}";
 
 Method:
-    type=ID name=ID "(" (param+=Param ("," param+=Param)*)? ");";
+	type=ID name=ID "(" (param+=Param ("," param+=Param)*)? ");";
 
 AltMethod:
-    (callInterface=[Interface] ".")? "{"
-    (type+=ID name+=ID "(" (param+=Param ("," param+=Param)*)? "),")* type+=ID name+=ID "(" (param+=Param (","
-    param+=Param)*)? ")"
-    "};";
+	"{"
+	(type+=ID name+=ID "(" (param+=Param ("," param+=Param)*)? "),")* type+=ID name+=ID "(" (param+=Param (","
+	param+=Param)*)? ")"
+	"};";
 
 OptMethod:
-    (callInterface=[Interface] ".")? "["
-    type=ID name=ID "(" (param+=Param ("," param+=Param)*)? ");"
-    "]";
+	"["
+	type=ID name=ID "(" (param+=Param ("," param+=Param)*)? ");"
+	"]";
 
 Param:
-    type=ID name=ID;
+	type=ID name=ID;
 
 Behavior:
-    interface=[Interface] "=" "(" (call+=[Method|FQN] ("->" call+=[Method|FQN])* "->" end=[Interface])? ");";
+	interface=[Interface] "=" "(" (call+=[Method|FQN] ("->" call+=[Method|FQN])* "->" end=[Interface])? ");";
 
 FQN:
-    ID ("." ID)*;
+	ID ("." ID)*;

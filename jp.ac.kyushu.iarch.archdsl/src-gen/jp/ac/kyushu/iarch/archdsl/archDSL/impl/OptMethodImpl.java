@@ -5,7 +5,6 @@ package jp.ac.kyushu.iarch.archdsl.archDSL.impl;
 import java.util.Collection;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
 
@@ -30,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptMethodImpl#getCallInterface <em>Call Interface</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptMethodImpl#getType <em>Type</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptMethodImpl#getName <em>Name</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptMethodImpl#getParam <em>Param</em>}</li>
@@ -41,16 +39,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class OptMethodImpl extends MinimalEObjectImpl.Container implements OptMethod
 {
-  /**
-   * The cached value of the '{@link #getCallInterface() <em>Call Interface</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCallInterface()
-   * @generated
-   * @ordered
-   */
-  protected Interface callInterface;
-
   /**
    * The default value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -120,49 +108,6 @@ public class OptMethodImpl extends MinimalEObjectImpl.Container implements OptMe
   protected EClass eStaticClass()
   {
     return ArchDSLPackage.Literals.OPT_METHOD;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Interface getCallInterface()
-  {
-    if (callInterface != null && callInterface.eIsProxy())
-    {
-      InternalEObject oldCallInterface = (InternalEObject)callInterface;
-      callInterface = (Interface)eResolveProxy(oldCallInterface);
-      if (callInterface != oldCallInterface)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.OPT_METHOD__CALL_INTERFACE, oldCallInterface, callInterface));
-      }
-    }
-    return callInterface;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Interface basicGetCallInterface()
-  {
-    return callInterface;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setCallInterface(Interface newCallInterface)
-  {
-    Interface oldCallInterface = callInterface;
-    callInterface = newCallInterface;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.OPT_METHOD__CALL_INTERFACE, oldCallInterface, callInterface));
   }
 
   /**
@@ -251,9 +196,6 @@ public class OptMethodImpl extends MinimalEObjectImpl.Container implements OptMe
   {
     switch (featureID)
     {
-      case ArchDSLPackage.OPT_METHOD__CALL_INTERFACE:
-        if (resolve) return getCallInterface();
-        return basicGetCallInterface();
       case ArchDSLPackage.OPT_METHOD__TYPE:
         return getType();
       case ArchDSLPackage.OPT_METHOD__NAME:
@@ -275,9 +217,6 @@ public class OptMethodImpl extends MinimalEObjectImpl.Container implements OptMe
   {
     switch (featureID)
     {
-      case ArchDSLPackage.OPT_METHOD__CALL_INTERFACE:
-        setCallInterface((Interface)newValue);
-        return;
       case ArchDSLPackage.OPT_METHOD__TYPE:
         setType((String)newValue);
         return;
@@ -302,9 +241,6 @@ public class OptMethodImpl extends MinimalEObjectImpl.Container implements OptMe
   {
     switch (featureID)
     {
-      case ArchDSLPackage.OPT_METHOD__CALL_INTERFACE:
-        setCallInterface((Interface)null);
-        return;
       case ArchDSLPackage.OPT_METHOD__TYPE:
         setType(TYPE_EDEFAULT);
         return;
@@ -328,8 +264,6 @@ public class OptMethodImpl extends MinimalEObjectImpl.Container implements OptMe
   {
     switch (featureID)
     {
-      case ArchDSLPackage.OPT_METHOD__CALL_INTERFACE:
-        return callInterface != null;
       case ArchDSLPackage.OPT_METHOD__TYPE:
         return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case ArchDSLPackage.OPT_METHOD__NAME:

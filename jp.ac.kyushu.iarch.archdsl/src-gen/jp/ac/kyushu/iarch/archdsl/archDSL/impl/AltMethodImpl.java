@@ -6,10 +6,8 @@ import java.util.Collection;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
@@ -31,7 +28,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl#getCallInterface <em>Call Interface</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl#getType <em>Type</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl#getName <em>Name</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl#getParam <em>Param</em>}</li>
@@ -42,16 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMethod
 {
-  /**
-   * The cached value of the '{@link #getCallInterface() <em>Call Interface</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCallInterface()
-   * @generated
-   * @ordered
-   */
-  protected Interface callInterface;
-
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' attribute list.
    * <!-- begin-user-doc -->
@@ -101,49 +87,6 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
   protected EClass eStaticClass()
   {
     return ArchDSLPackage.Literals.ALT_METHOD;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Interface getCallInterface()
-  {
-    if (callInterface != null && callInterface.eIsProxy())
-    {
-      InternalEObject oldCallInterface = (InternalEObject)callInterface;
-      callInterface = (Interface)eResolveProxy(oldCallInterface);
-      if (callInterface != oldCallInterface)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.ALT_METHOD__CALL_INTERFACE, oldCallInterface, callInterface));
-      }
-    }
-    return callInterface;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Interface basicGetCallInterface()
-  {
-    return callInterface;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setCallInterface(Interface newCallInterface)
-  {
-    Interface oldCallInterface = callInterface;
-    callInterface = newCallInterface;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.ALT_METHOD__CALL_INTERFACE, oldCallInterface, callInterface));
   }
 
   /**
@@ -214,9 +157,6 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
   {
     switch (featureID)
     {
-      case ArchDSLPackage.ALT_METHOD__CALL_INTERFACE:
-        if (resolve) return getCallInterface();
-        return basicGetCallInterface();
       case ArchDSLPackage.ALT_METHOD__TYPE:
         return getType();
       case ArchDSLPackage.ALT_METHOD__NAME:
@@ -238,9 +178,6 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
   {
     switch (featureID)
     {
-      case ArchDSLPackage.ALT_METHOD__CALL_INTERFACE:
-        setCallInterface((Interface)newValue);
-        return;
       case ArchDSLPackage.ALT_METHOD__TYPE:
         getType().clear();
         getType().addAll((Collection<? extends String>)newValue);
@@ -267,9 +204,6 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
   {
     switch (featureID)
     {
-      case ArchDSLPackage.ALT_METHOD__CALL_INTERFACE:
-        setCallInterface((Interface)null);
-        return;
       case ArchDSLPackage.ALT_METHOD__TYPE:
         getType().clear();
         return;
@@ -293,8 +227,6 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
   {
     switch (featureID)
     {
-      case ArchDSLPackage.ALT_METHOD__CALL_INTERFACE:
-        return callInterface != null;
       case ArchDSLPackage.ALT_METHOD__TYPE:
         return type != null && !type.isEmpty();
       case ArchDSLPackage.ALT_METHOD__NAME:

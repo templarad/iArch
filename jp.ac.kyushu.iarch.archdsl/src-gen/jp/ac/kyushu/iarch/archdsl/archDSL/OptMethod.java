@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getCallInterface <em>Call Interface</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getType <em>Type</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getName <em>Name</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getParam <em>Param</em>}</li>
@@ -27,32 +26,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface OptMethod extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Call Interface</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Call Interface</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Call Interface</em>' reference.
-   * @see #setCallInterface(Interface)
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getOptMethod_CallInterface()
-   * @model
-   * @generated
-   */
-  Interface getCallInterface();
-
-  /**
-   * Sets the value of the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getCallInterface <em>Call Interface</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Call Interface</em>' reference.
-   * @see #getCallInterface()
-   * @generated
-   */
-  void setCallInterface(Interface value);
-
   /**
    * Returns the value of the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->

@@ -4,7 +4,7 @@
     editorDirectory="/jp.ac.kyushu.iarch.archdsl.editor/src" modelPluginID="jp.ac.kyushu.iarch.archdsl"
     forceOverwrite="true" modelName="ArchDSL" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="jp.ac.kyushu.iarch.archdsl.edit"
-    editorPluginID="jp.ac.kyushu.iarch.archdsl.editor" runtimeVersion="2.9">
+    editorPluginID="jp.ac.kyushu.iarch.archdsl.editor" runtimeVersion="2.10">
   <genPackages prefix="ArchDSL" basePackage="jp.ac.kyushu.iarch.archdsl" disposableProviderFactory="true"
       fileExtensions="arch" ecorePackage="ArchDSL.ecore#/">
     <genClasses ecoreClass="ArchDSL.ecore#//Model">
@@ -28,13 +28,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Method/param"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//AltMethod">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//AltMethod/callInterface"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//AltMethod/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//AltMethod/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//AltMethod/param"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//OptMethod">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//OptMethod/callInterface"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//OptMethod/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//OptMethod/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//OptMethod/param"/>

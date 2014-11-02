@@ -86,7 +86,7 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (callInterface=[Interface|ID]? (type+=ID name+=ID (param+=Param param+=Param*)?)* type+=ID name+=ID (param+=Param param+=Param*)?)
+	 *     ((type+=ID name+=ID (param+=Param param+=Param*)?)* type+=ID name+=ID (param+=Param param+=Param*)?)
 	 */
 	protected void sequence_AltMethod(EObject context, AltMethod semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -131,7 +131,7 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (callInterface=[Interface|ID]? type=ID name=ID (param+=Param param+=Param*)?)
+	 *     (type=ID name=ID (param+=Param param+=Param*)?)
 	 */
 	protected void sequence_OptMethod(EObject context, OptMethod semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
