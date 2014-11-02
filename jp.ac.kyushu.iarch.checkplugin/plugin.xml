@@ -33,6 +33,10 @@
          id="jp.ac.kyushu.iarch.checkPlugin.checkARCommand"
          name="Check AR">
    </command>
+   <command
+         id="jp.ac.kyushu.iarch.checkplugin.codeToArchface"
+         name="codeToArchface">
+   </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -76,6 +80,11 @@
                   mnemonic="D"
                   style="push">
             </command>
+   <command
+         commandId="jp.ac.kyushu.iarch.checkplugin.codeToArchface"
+         label="codeToArchface"
+         style="push">
+   </command>
          </menu>
       </menuContribution>
    </extension>
@@ -101,6 +110,10 @@
             class="jp.ac.kyushu.iarch.checkplugin.handler.GenerateArchCode"
             commandId="jp.ac.kyushu.iarch.checkPlugin.generateArch">
       </handler>
+   <handler
+         class="jp.ac.kyushu.iarch.checkplugin.handler.codeToArchface"
+         commandId="jp.ac.kyushu.iarch.checkplugin.codeToArchface">
+   </handler>
    </extension>
    <extension
          point="org.eclipse.ui.views">
