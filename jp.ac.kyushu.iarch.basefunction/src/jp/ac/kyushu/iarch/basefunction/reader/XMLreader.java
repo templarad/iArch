@@ -22,12 +22,13 @@ import org.eclipse.jdt.core.JavaCore;
  * @author Templar
  */
 public class XMLreader {
-	private static String ArchfilePath=null;
-	private static String ClassDiagramPath=null;
+	private static String ArchfilePath = null;
+	private static String ClassDiagramPath = null;
+	private static String DataflowDiagramPath = null;
 	private static List<String> SequenceDiagramPathes= new ArrayList<String>();
 	private static List<String> SourceCodePathes = new ArrayList<String>();
-	private static String ARXMLPath=null;
-	private static IJavaProject JavaProject=null;
+	private static String ARXMLPath = null;
+	private static IJavaProject JavaProject = null;
 
 	public XMLreader(IProject project){
 		readXMLContent(project);
@@ -51,11 +52,12 @@ public class XMLreader {
 	}
 	
 	private static void initial(){
-		ArchfilePath=null;
-		ClassDiagramPath=null;
+		ArchfilePath = null;
+		ClassDiagramPath = null;
+		DataflowDiagramPath = null;
 		SequenceDiagramPathes.removeAll(SequenceDiagramPathes);
 		SourceCodePathes.removeAll(SourceCodePathes);
-		ARXMLPath=null;
+		ARXMLPath = null;
 	}
 
 	
@@ -71,7 +73,16 @@ public class XMLreader {
 				Attribute attribute=(Attribute) Archfilelist.get(0);
 				setArchfilePath(attribute.getValue());
 			}
-		   
+			
+			{
+				@SuppressWarnings("unchecked")
+				List<Node> Dataflowlist = document.selectNodes("//DataflowDiagram/Path/@Attribute");
+				if(Dataflowlist.size()!=0){
+					Attribute attribute=(Attribute) Dataflowlist.get(0);
+					setDataflowDiagramPath(attribute.getValue());
+				}
+			}
+			
 			{
 				@SuppressWarnings("unchecked")
 				List<Node> ClassDiagramlist = document.selectNodes("//ClassDiagram/Path/@Attribute");			   
@@ -87,7 +98,7 @@ public class XMLreader {
 					String url = attribute.getValue();
 					SequenceDiagramPathes.add(url);
 					}
-				}
+			}
 			
 			{
 				@SuppressWarnings("unchecked")
@@ -97,14 +108,14 @@ public class XMLreader {
 					String url = attribute.getValue();
 					SourceCodePathes.add(url);
 					}
-				}
+			}
 			
 			{
 				@SuppressWarnings("unchecked")
 				List<Node> ARXMLlist = document.selectNodes("//ARXML/Path/@Attribute");
 				Attribute attribute=(Attribute) ARXMLlist.get(0);
 				setARXMLPath(attribute.getValue());
-				}
+			}
 			
 		}
 		catch(DocumentException e){
@@ -114,7 +125,7 @@ public class XMLreader {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		}
+	}
 	
 
 	/**
@@ -158,12 +169,32 @@ public class XMLreader {
 		return Archfile;
 	}
 
+	
 	/**
 	 * @param archfilePath the archfilePath to set
 	 */
 	public static void setArchfilePath(String archfilePath) {
 		ArchfilePath = archfilePath;
 	}
+	
+	
+	//2014.10.30
+	/**
+	 * @return the dataflowDiagramResource
+	 */
+	public IResource getDataflowDiagramResource() {
+		IPath path = new Path(DataflowDiagramPath);
+		IResource DataflowDiagramResource = readIResource(path);
+		return DataflowDiagramResource;
+	}
+
+	/**
+	 * @param classDiagramPath the classDiagramPath to set
+	 */
+	public static void setDataflowDiagramPath(String dataflowDiagramPath) {
+		DataflowDiagramPath = dataflowDiagramPath;
+	}
+	
 	
 	/**
 	 * @return the SequenceDiagramResources
