@@ -39,6 +39,7 @@ import org.eclipse.graphiti.util.IColorConstant;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 
+import umlClass.Association;
 import umlClass.Operation;
 import umlClass.UmlClassFactory;
 
@@ -189,14 +190,15 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 		getReference(archmodel);
 		for(Interface archclass : archmodel.getInterfaces()){
 			for(Interface archclassX : archmodel.getInterfaces()){
-				if(!archclass.getName().equals(archclassX.getName())){
-					if(isReference(archclass.getName(), archclassX.getName())){
+				String sourceClassName = archclass.getName();
+				String targetClassName = archclassX.getName();
+				if(!sourceClassName.equals(targetClassName)){
+					if(isReference(sourceClassName, targetClassName) && !isGenerated(sourceClassName, targetClassName)){
 						generateReference(archclass.getName(), archclassX.getName());
 					}
 				}
 			}
 		}
-		
 		try {
 			
 			getDiagram().eResource().save(null);
@@ -211,7 +213,6 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 	}
 	
 	private void addClassFeature(umlClass.Class addedClass,int startX,int startY){
-
 		AddContext addcontext = new AddContext();
 		addcontext.setX(startX);
 		addcontext.setY(startY);
@@ -275,7 +276,6 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 			HashMap<String, Boolean> temp = new HashMap<String, Boolean>();
 			for(Method method : behavior.getCall()){
 				temp.put(((Interface)method.eContainer()).getName(), true);
-				//((Interface)method.eContainer()).getName()), true);
 			}
 			classReferenceMap.put(behavior.getInterface().getName(), temp);
 		}
@@ -293,7 +293,24 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 			return true;
 		return false;
 	}
-	
+	/**
+	 * Check if an Reference from 'className' to 'targetName' is generated. <br>
+	 * This method is considered to prevent regenerate Reference.
+	 * @param className The <b>name</b> of a class which should be instance of <em>umlClass</em>.
+	 * @param targetName The <b>name</b> of a class which should be instance of <em>umlClass</em>.
+	 * @return 'true' if the reference is already generated.
+	 */
+	private boolean isGenerated(String className, String targetName){
+		for(EObject eobj : getDiagram().eResource().getContents()){
+			if (eobj instanceof Association){
+				Association ass = (Association) eobj;
+				if(ass.getTarget().getName().equals(targetName) && ((umlClass.Class)ass.getOwner()).getName().equals(className)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	/**
 	 * Get a connection between source class and target class.
 	 * @param sourceClass
