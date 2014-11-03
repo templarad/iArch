@@ -76,9 +76,11 @@ public class XMLreader {
 			
 			{
 				@SuppressWarnings("unchecked")
-				List<Node> Dataflowlist = document.selectNodes("//DataflowDiagram/Path/@Attribute");			   
-				Attribute attribute=(Attribute) Dataflowlist.get(0);
-				setDataflowDiagramPath(attribute.getValue());
+				List<Node> Dataflowlist = document.selectNodes("//DataflowDiagram/Path/@Attribute");
+				if(Dataflowlist.size()!=0){
+					Attribute attribute=(Attribute) Dataflowlist.get(0);
+					setDataflowDiagramPath(attribute.getValue());
+				}
 			}
 			
 			{
