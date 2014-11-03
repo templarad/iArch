@@ -54,6 +54,8 @@ public Connection create(ICreateConnectionContext context) {
          new AddConnectionContext(context.getSourceAnchor(), context
              .getTargetAnchor());
      addContext.setNewObject(eReference);
+     eReference.setTarget(target);
+     eReference.setOwner(source);
      newConnection =
          (Connection) getFeatureProvider().addIfPossible(addContext);
      getFeatureProvider().getDirectEditingInfo().setActive(true);

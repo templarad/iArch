@@ -195,7 +195,7 @@ public class SelectAllFileDialog extends Dialog {
 				if(item.getChecked()) cnxml++;
 			}
 
-			if(cntArchiFiles==1&&cntClassDiagrams==1&&cntDataflowDiagrams==1&&cntSequenceDiagrams>0&&cntSourceCode>0&&cnxml==1){
+			if(cntArchiFiles==1&&cntClassDiagrams==1&&cntDataflowDiagrams>=0&&cntSequenceDiagrams>0&&cntSourceCode>0&&cnxml==1){
 				okButton.setEnabled(true);
 			}else{
 				okButton.setEnabled(false);
