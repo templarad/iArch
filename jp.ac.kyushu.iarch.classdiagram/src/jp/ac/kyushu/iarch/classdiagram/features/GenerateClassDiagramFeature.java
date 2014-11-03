@@ -83,6 +83,9 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 	 */
 	private WeakHashMap<String, ContainerShape> classContainerMap = new WeakHashMap<String, ContainerShape>();
 	
+	/**
+	 * A weakHashMap to link the '<em>Class name</em>' with its reference classes HashMap.
+	 */
 	private WeakHashMap<String, HashMap<String,Boolean>> classReferenceMap = new WeakHashMap<String, HashMap<String,Boolean>>();
 	
 	private void initPosition(Resource classResource){
@@ -183,6 +186,17 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 				generateOperations(cdm.getClass(archclass.getName()), operations, cdm);
 			}
 		}
+		getReference(archmodel);
+		for(Interface archclass : archmodel.getInterfaces()){
+			for(Interface archclassX : archmodel.getInterfaces()){
+				if(!archclass.getName().equals(archclassX.getName())){
+					if(isReference(archclass.getName(), archclassX.getName())){
+						generateReference(archclass.getName(), archclassX.getName());
+					}
+				}
+			}
+		}
+		
 		try {
 			
 			getDiagram().eResource().save(null);
@@ -252,7 +266,11 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 		return newOperations;
 	}
 	
-	private boolean checkReference(Model archmodel){
+	/**
+	 * Get the reference information from Arch code model.
+	 * @param archmodel the '<em>Model</em>' from Arch code.
+	 */
+	private void getReference(Model archmodel){
 		for(Behavior behavior : archmodel.getBehaviors()){
 			HashMap<String, Boolean> temp = new HashMap<String, Boolean>();
 			for(Method method : behavior.getCall()){
@@ -261,14 +279,28 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 			}
 			classReferenceMap.put(behavior.getInterface().getName(), temp);
 		}
-		return true;
 	}
+	
+	/**
+	 * Check if a <em>class</em> have a reference to the target class.
+	 * @param className The class which is to check.
+	 * @param targetName The reference target class.
+	 * @return 'true' if they have reference
+	 */
+	private boolean isReference(String className, String targetName){
+		HashMap<String, Boolean> referenceMap = classReferenceMap.get(className);
+		if(referenceMap.get(targetName))
+			return true;
+		return false;
+	}
+	
 	/**
 	 * Get a connection between source class and target class.
 	 * @param sourceClass
 	 * @param targetClass
-	 * @return
+	 * @return 'true' if generate success.
 	 */
+	@SuppressWarnings("unused")
 	private boolean generateReference(String sourceClass, String targetClass){
 		ContainerShape sourcecs= classContainerMap.get(sourceClass);
 		ContainerShape targetcs= classContainerMap.get(targetClass);
@@ -287,7 +319,6 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 			return true;
 		}
 		return false;
-		
 	}
 	
 }
