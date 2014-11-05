@@ -25,4 +25,6 @@ Bundle-ClassPath: .,
  lib/jaxen-1.1.6.jar
 Export-Package: jp.ac.kyushu.iarch.checkplugin.handler
 Import-Package: jp.ac.kyushu.iarch.basefunction.controller,
- jp.ac.kyushu.iarch.basefunction.reader
+ jp.ac.kyushu.iarch.basefunction.reader,
+ org.eclipse.debug.core,
+ org.eclipse.debug.core.model

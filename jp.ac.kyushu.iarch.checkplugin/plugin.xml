@@ -37,6 +37,10 @@
          id="jp.ac.kyushu.iarch.checkplugin.codeToArchface"
          name="codeToArchface">
    </command>
+      <command
+            id="jp.ac.kyushu.iarch.checkplugin.SelectPoint1"
+            name="SelectPoint">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -85,6 +89,11 @@
          label="codeToArchface"
          style="push">
    </command>
+   <command
+         commandId="jp.ac.kyushu.iarch.checkplugin.SelectPoint"
+         label="SelectPoint"
+         style="push">
+   </command>
          </menu>
       </menuContribution>
    </extension>
@@ -113,6 +122,10 @@
    <handler
          class="jp.ac.kyushu.iarch.checkplugin.handler.codeToArchface"
          commandId="jp.ac.kyushu.iarch.checkplugin.codeToArchface">
+   </handler>
+   <handler
+         class="jp.ac.kyushu.iarch.checkplugin.handler.SlectPoint"
+         commandId="jp.ac.kyushu.iarch.checkplugin.SelectPoint">
    </handler>
    </extension>
    <extension
