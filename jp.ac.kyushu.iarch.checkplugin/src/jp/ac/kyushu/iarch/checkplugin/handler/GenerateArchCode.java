@@ -50,7 +50,7 @@ public class GenerateArchCode implements IHandler {
 //			ProblemViewManager.removeAllProblems(project);
 			
 			// Generate archiface code
-			GenerateArchifaceCode(dialog.getArchiface(),
+			GenerateArchifaceCode(
 					dialog.getClassDiagram(), dialog.getSequenceDiagrams());
 		}
 
@@ -61,7 +61,7 @@ public class GenerateArchCode implements IHandler {
 	 * Gen the Archiface Code
 	 *
 	 */
-	private void GenerateArchifaceCode(IResource archifile,
+	private void GenerateArchifaceCode(
 			IResource classDiagramResource,
 			List<IResource> sequenceDiagramResources) {
 
@@ -72,7 +72,7 @@ public class GenerateArchCode implements IHandler {
 		Code+= findClass(classDiagram.getContents());//Gen Class Code
 		Code+= "\n";
 		Code+= getSequenceCode(sequenceDiagramResources);//Gen Squence Code
-		String projectPath = archifile.getProject().getLocation().toOSString();
+		String projectPath = classDiagramResource.getProject().getLocation().toOSString();
 		String ArchiCodeFile=projectPath +"/Gen-Arch.arch";
 		File myFilePath = new File(ArchiCodeFile);
 		try {
