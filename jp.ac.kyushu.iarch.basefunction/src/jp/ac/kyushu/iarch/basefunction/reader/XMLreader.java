@@ -85,19 +85,23 @@ public class XMLreader {
 			
 			{
 				@SuppressWarnings("unchecked")
-				List<Node> ClassDiagramlist = document.selectNodes("//ClassDiagram/Path/@Attribute");			   
-				Attribute attribute=(Attribute) ClassDiagramlist.get(0);
-				setClassDiagramPath(attribute.getValue());
+				List<Node> ClassDiagramlist = document.selectNodes("//ClassDiagram/Path/@Attribute");	
+				if(ClassDiagramlist.size()!=0){
+					Attribute attribute=(Attribute) ClassDiagramlist.get(0);
+					setClassDiagramPath(attribute.getValue());
+				}
 			}
 		   
 			{
 				@SuppressWarnings("unchecked")
 				List<Node> SequenceDiagramlist = document.selectNodes("//SequenceDiagram/Path/@Attribute");
-				for (Iterator<Node> iter = SequenceDiagramlist.iterator(); iter.hasNext(); ) {
-					Attribute attribute = (Attribute) iter.next();
-					String url = attribute.getValue();
-					SequenceDiagramPathes.add(url);
+				if(SequenceDiagramlist.size()!=0){
+					for (Iterator<Node> iter = SequenceDiagramlist.iterator(); iter.hasNext(); ) {
+						Attribute attribute = (Attribute) iter.next();
+						String url = attribute.getValue();
+						SequenceDiagramPathes.add(url);
 					}
+				}
 			}
 			
 			{
@@ -148,6 +152,8 @@ public class XMLreader {
 	 * @return the classDiagramResource
 	 */
 	public IResource getClassDiagramResource() {
+		if(ClassDiagramPath == null)
+			return null;
 		IPath path = new Path(ClassDiagramPath);
 		IResource ClassDiagramResource = readIResource(path);
 		return ClassDiagramResource;
@@ -183,6 +189,8 @@ public class XMLreader {
 	 * @return the dataflowDiagramResource
 	 */
 	public IResource getDataflowDiagramResource() {
+		if(DataflowDiagramPath == null)
+			return null;
 		IPath path = new Path(DataflowDiagramPath);
 		IResource DataflowDiagramResource = readIResource(path);
 		return DataflowDiagramResource;
@@ -200,6 +208,8 @@ public class XMLreader {
 	 * @return the SequenceDiagramResources
 	 */
 	public List<IResource> getSequenceDiagramResource(){
+		if(SequenceDiagramPathes.size() == 0)
+			return new ArrayList<IResource>();
 		List<IResource> SequenceDiagramResources = new ArrayList<IResource>();
 		for(String SequenceDiagramPath:SequenceDiagramPathes){
 			IPath path = new Path(SequenceDiagramPath);
