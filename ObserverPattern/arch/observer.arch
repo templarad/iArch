@@ -1,7 +1,6 @@
 interface component Subject {
 	void addObserver(Observer observer);
 	void removeObserver(Observer observer);
-	void _notify();
 	String getState();
 	void setState(String state);
 }
@@ -10,7 +9,7 @@ interface component Observer {
 	void update(); 
 }
  
-Subject = (Subject.setState->Subject._notify->
+Subject = (Subject.setState->
 	Observer.update->Subject.getState->Subject
 );            
 Observer = (Observer.update->Subject.getState

@@ -39,6 +39,7 @@ import org.eclipse.graphiti.util.IColorConstant;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 
+import umlClass.Association;
 import umlClass.Operation;
 import umlClass.UmlClassFactory;
 
@@ -83,6 +84,9 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 	 */
 	private WeakHashMap<String, ContainerShape> classContainerMap = new WeakHashMap<String, ContainerShape>();
 	
+	/**
+	 * A weakHashMap to link the '<em>Class name</em>' with its reference classes HashMap.
+	 */
 	private WeakHashMap<String, HashMap<String,Boolean>> classReferenceMap = new WeakHashMap<String, HashMap<String,Boolean>>();
 	
 	private void initPosition(Resource classResource){
@@ -183,6 +187,18 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 				generateOperations(cdm.getClass(archclass.getName()), operations, cdm);
 			}
 		}
+		getReference(archmodel);
+		for(Interface archclass : archmodel.getInterfaces()){
+			for(Interface archclassX : archmodel.getInterfaces()){
+				String sourceClassName = archclass.getName();
+				String targetClassName = archclassX.getName();
+				if(!sourceClassName.equals(targetClassName)){
+					if(isReference(sourceClassName, targetClassName) && !isGenerated(sourceClassName, targetClassName)){
+						generateReference(archclass.getName(), archclassX.getName());
+					}
+				}
+			}
+		}
 		try {
 			
 			getDiagram().eResource().save(null);
@@ -197,7 +213,6 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 	}
 	
 	private void addClassFeature(umlClass.Class addedClass,int startX,int startY){
-
 		AddContext addcontext = new AddContext();
 		addcontext.setX(startX);
 		addcontext.setY(startY);
@@ -252,23 +267,57 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 		return newOperations;
 	}
 	
-	private boolean checkReference(Model archmodel){
+	/**
+	 * Get the reference information from Arch code model.
+	 * @param archmodel the '<em>Model</em>' from Arch code.
+	 */
+	private void getReference(Model archmodel){
 		for(Behavior behavior : archmodel.getBehaviors()){
 			HashMap<String, Boolean> temp = new HashMap<String, Boolean>();
 			for(Method method : behavior.getCall()){
 				temp.put(((Interface)method.eContainer()).getName(), true);
-				//((Interface)method.eContainer()).getName()), true);
 			}
 			classReferenceMap.put(behavior.getInterface().getName(), temp);
 		}
-		return true;
+	}
+	
+	/**
+	 * Check if a <em>class</em> have a reference to the target class.
+	 * @param className The class which is to check.
+	 * @param targetName The reference target class.
+	 * @return 'true' if they have reference
+	 */
+	private boolean isReference(String className, String targetName){
+		HashMap<String, Boolean> referenceMap = classReferenceMap.get(className);
+		if(referenceMap.get(targetName))
+			return true;
+		return false;
+	}
+	/**
+	 * Check if an Reference from 'className' to 'targetName' is generated. <br>
+	 * This method is considered to prevent regenerate Reference.
+	 * @param className The <b>name</b> of a class which should be instance of <em>umlClass</em>.
+	 * @param targetName The <b>name</b> of a class which should be instance of <em>umlClass</em>.
+	 * @return 'true' if the reference is already generated.
+	 */
+	private boolean isGenerated(String className, String targetName){
+		for(EObject eobj : getDiagram().eResource().getContents()){
+			if (eobj instanceof Association){
+				Association ass = (Association) eobj;
+				if(ass.getTarget().getName().equals(targetName) && ((umlClass.Class)ass.getOwner()).getName().equals(className)){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	/**
 	 * Get a connection between source class and target class.
 	 * @param sourceClass
 	 * @param targetClass
-	 * @return
+	 * @return 'true' if generate success.
 	 */
+	@SuppressWarnings("unused")
 	private boolean generateReference(String sourceClass, String targetClass){
 		ContainerShape sourcecs= classContainerMap.get(sourceClass);
 		ContainerShape targetcs= classContainerMap.get(targetClass);
@@ -287,7 +336,6 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 			return true;
 		}
 		return false;
-		
 	}
 	
 }

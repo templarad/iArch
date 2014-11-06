@@ -58,8 +58,7 @@ public class AddAssociationFeature extends AbstractAddFeature {
         text.setValue(eReference.getName());
     
         // add static graphical decorator (composition and navigable)
-        ConnectionDecorator cd;
-        cd = peCreateService
+        ConnectionDecorator cd = peCreateService
               .createConnectionDecorator(connection, false, 1.0, true);
         createArrow(cd);
         return connection;
