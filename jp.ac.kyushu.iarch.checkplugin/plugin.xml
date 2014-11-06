@@ -18,6 +18,10 @@
             id="jp.ac.kyushu.iarch.checkPlugin.generateArch"
             name="Generate ArchCode">
       </command>
+      <command
+            id="jp.ac.kyushu.iarch.checkplugin.SelectPoint1"
+            name="SelectPoint">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -41,19 +45,28 @@
                   mnemonic="D"
                   style="push">
             </command>
+            <command
+		         commandId="jp.ac.kyushu.iarch.checkplugin.SelectPoint"
+		         label="SelectPoint"
+		         style="push">
+			</command>
          </menu>
       </menuContribution>
    </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="jp.ac.kyushu.iarch.checkplugin.handler.ConfigurationXMLHandler"
+	<extension
+    	point="org.eclipse.ui.handlers">
+		<handler
+        	class="jp.ac.kyushu.iarch.checkplugin.handler.ConfigurationXMLHandler"
             commandId="jp.ac.kyushu.iarch.checkPlugin.configurationCommand">
-      </handler>
-	  <handler
-            class="jp.ac.kyushu.iarch.checkplugin.handler.GenerateArchCode"
-            commandId="jp.ac.kyushu.iarch.checkPlugin.generateArch">
-      </handler>
+		</handler>
+		<handler
+			class="jp.ac.kyushu.iarch.checkplugin.handler.GenerateArchCode"
+			commandId="jp.ac.kyushu.iarch.checkPlugin.generateArch">
+		</handler>
+		<handler
+			class="jp.ac.kyushu.iarch.checkplugin.handler.SlectPoint"
+			commandId="jp.ac.kyushu.iarch.checkplugin.SelectPoint">
+		</handler>
    </extension>
    <extension
          point="org.eclipse.ui.views">
