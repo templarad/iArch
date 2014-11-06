@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.TableItem;
 public class SelectAllFileDialog extends Dialog {
 	private Table archiTable;
 	private Table classTable;
+	private Table dataflowTable;
 	private Table sequenceTable;
 	private Table sourceTable;
 	private Table xmlTable;
@@ -36,6 +37,7 @@ public class SelectAllFileDialog extends Dialog {
 	private Button okButton;
 	private IResource archiface;
 	private IResource classDiagram;
+	private IResource dataflowDiagram;
 	private IResource xml;
 	private List<IResource> sequenceDiagrams;
 	private List<IResource> sourceCode;
@@ -81,6 +83,12 @@ public class SelectAllFileDialog extends Dialog {
 		classTable = new Table(composite, SWT.CHECK|SWT.BORDER|SWT.V_SCROLL);
 		classTable.setLayoutData(new GridData(400, 50));
 		classTable.addSelectionListener(checkboxListener);
+		
+		Label dataflowLabel = new Label(composite, SWT.NONE);
+		dataflowLabel.setText("Dataflow Diagram");
+		dataflowTable = new Table(composite, SWT.CHECK|SWT.BORDER|SWT.V_SCROLL);
+		dataflowTable.setLayoutData(new GridData(400, 50));
+		dataflowTable.addSelectionListener(checkboxListener);
 
 		Label sequenceLabel = new Label(composite, SWT.NONE);
 		sequenceLabel.setText("Sequence Diagrams");
@@ -129,6 +137,13 @@ public class SelectAllFileDialog extends Dialog {
 				classDiagram = (IResource)item.getData();
 			}
 		}
+		
+		for(TableItem item : dataflowTable.getItems()){
+			if(item.getChecked()){
+				dataflowDiagram = (IResource)item.getData();
+			}
+		}
+		
 		for(TableItem item : sequenceTable.getItems()){
 			if(item.getChecked()){
 				sequenceDiagrams.add((IResource)item.getData());
@@ -157,6 +172,7 @@ public class SelectAllFileDialog extends Dialog {
 		public void widgetSelected(SelectionEvent e) {
 			int cntArchiFiles = 0;
 			int cntClassDiagrams = 0;
+			int cntDataflowDiagrams = 0;
 			int cntSequenceDiagrams = 0;
 			int cntSourceCode = 0;
 			int cnxml = 0;
@@ -165,6 +181,9 @@ public class SelectAllFileDialog extends Dialog {
 			}
 			for(TableItem item : classTable.getItems()){
 				if(item.getChecked()) cntClassDiagrams++;
+			}
+			for(TableItem item : dataflowTable.getItems()){
+				if(item.getChecked()) cntDataflowDiagrams++;
 			}
 			for(TableItem item : sequenceTable.getItems()){
 				if(item.getChecked()) cntSequenceDiagrams++;
@@ -176,7 +195,7 @@ public class SelectAllFileDialog extends Dialog {
 				if(item.getChecked()) cnxml++;
 			}
 
-			if(cntArchiFiles==1&&cntClassDiagrams==1&&cntSequenceDiagrams>0&&cntSourceCode>0&&cnxml==1){
+			if(cntArchiFiles==1&&cntClassDiagrams>=0&&cntDataflowDiagrams>=0&&cntSequenceDiagrams>=0&&cntSourceCode>0&&cnxml==1){
 				okButton.setEnabled(true);
 			}else{
 				okButton.setEnabled(false);
@@ -211,6 +230,11 @@ public class SelectAllFileDialog extends Dialog {
 							TableItem citem = new TableItem(classTable, SWT.CHECK);
 							citem.setText(resource.getName());
 							citem.setData(resource);
+							citem.setChecked(true);
+						}else if("DataflowDiagram".equals(o.getDiagramTypeId())){
+							TableItem citem = new TableItem(dataflowTable, SWT.CHECK);
+							citem.setText(resource.getName());
+							citem.setData(resource);							
 							citem.setChecked(true);
 						}else if("SequenceDiagram".equals(o.getDiagramTypeId())){
 							TableItem sitem = new TableItem(sequenceTable, SWT.CHECK);
@@ -255,6 +279,10 @@ public class SelectAllFileDialog extends Dialog {
 	
 	public IResource getClassDiagram(){
 		return classDiagram;
+	}
+	
+	public IResource getDataflowDiagram(){
+		return dataflowDiagram;
 	}
 	
 	public List<IResource> getSequenceDiagrams(){

@@ -25,12 +25,13 @@ public class ArchfaceChecker extends XMLreader {
 //		return archfacechecker;
 //	}
 	public void checkProject(){		
-		checkProjectValidation(getArchfileResource(),getClassDiagramResource(),
+		checkProjectValidation(getArchfileResource(),getClassDiagramResource(),getDataflowDiagramResource(),
 				getSequenceDiagramResource(),getSourceCodeResource(),getARXMLResource());
 	}
 	
 	public void checkProjectValidation(IResource archfile, 
 			IResource classDiagramResource, 
+			IResource dataflowDiagramResource,
 			List<IResource> sequenceDiagramResources,
 			List<IResource> sourceCodeResources,
 			IResource aRXMLResource){
@@ -38,12 +39,22 @@ public class ArchfaceChecker extends XMLreader {
 		
 		Model archModel = archmodel.getModel();
 		//check diagram
-		ClassDiagramChecker classDiagramChecker = new ClassDiagramChecker();
-		classDiagramChecker.checkClassDiagram(archModel, classDiagramResource);
+		if(classDiagramResource != null){
+			ClassDiagramChecker classDiagramChecker = new ClassDiagramChecker();
+			classDiagramChecker.checkClassDiagram(archModel, classDiagramResource);
+		}
 		
-		SequenceDiagramChecker sequenceDiagramChecker = new SequenceDiagramChecker();
-		for(IResource sequenceDiagramResource : sequenceDiagramResources){
-			sequenceDiagramChecker.checkSequenceDiagram(archModel, sequenceDiagramResource);					
+		if(sequenceDiagramResources.size() > 0){
+			SequenceDiagramChecker sequenceDiagramChecker = new SequenceDiagramChecker();
+			for(IResource sequenceDiagramResource : sequenceDiagramResources){
+				sequenceDiagramChecker.checkSequenceDiagram(archModel, sequenceDiagramResource);					
+			}
+		}
+		
+		//check dataflow diagram
+		if(dataflowDiagramResource != null){
+			DataflowDiagramChecker dataflowDiagramChecker = new DataflowDiagramChecker();
+			dataflowDiagramChecker.checkDataflowDiagram(archModel, dataflowDiagramResource);
 		}
 		
 		//Check source code

@@ -12,7 +12,10 @@ Export-Package: behavior,
  behavior.util,
  umlClass,
  umlClass.impl,
- umlClass.util
+ umlClass.util,
+ Dataflow_editor,
+ Dataflow_editor.impl,
+ Dataflow_editor.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore
+ org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
