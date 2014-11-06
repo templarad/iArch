@@ -12,14 +12,19 @@ import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
+/**
+ * Control the function :<br>
+ * Count abstraction ratio.
+ * Show abstraction ratio in UI.
+ * @author Templar
+ *
+ */
 public class AbstractionRatioController {
 	
 	private String CSVpath = "/absRatioHistory.csv";
 	
 	public void checkAR(IResource archfile,IResource xml){
 		AbstractionRatioChecker absRatioChecker = new AbstractionRatioChecker();
-		
 		absRatioChecker.execute(archfile, xml);		
 		showAR(absRatioChecker);
 		saveARToCSV(absRatioChecker,archfile);
@@ -37,7 +42,6 @@ public class AbstractionRatioController {
 	private void showAR(AbstractionRatioChecker checker){
 		AbstractionRatioViewPart absRatioView = null;
 		IWorkbenchWindow[] views = PlatformUI.getWorkbench().getWorkbenchWindows();
-		//for(IViewReference view :PlatformUI.getWorkbench().getActiveWorkbenchWindows().getActivePage().getViewReferences()){
 		for(IViewReference view :views[0].getActivePage().getViewReferences()){
 			if(view.getId().equals(AbstractionRatioViewPart.ID)){
 				absRatioView = (AbstractionRatioViewPart)view.getView(true);
