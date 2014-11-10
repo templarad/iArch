@@ -1,5 +1,6 @@
 package jp.ac.kyushu.iarch.sequencediagram.features;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,6 +18,7 @@ import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.graphiti.datatypes.ILocation;
@@ -31,6 +33,7 @@ import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
+import org.eclipse.graphiti.mm.pictograms.PictogramLink;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 
 import behavior.Actor;
@@ -92,7 +95,6 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 			Resource sequenceResource = GraphitiModelManager.getGraphitiModel(sequenceDiagramIResource);
 			generateSequenceDiagram(sequenceResource, archfaceModel);
 		}
-
 	}
 
 	@Override
@@ -123,17 +125,29 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 	public void generateSequenceDiagram(Resource sequenceResource,
 			Model archfaceModel) {
 
-		Iterator<EObject> iter = getDiagram().eResource().getContents()
-				.iterator();
-
-		for (EObject eobj : getDiagram().eResource().getContents()) {
-			while (iter.hasNext()) {
-				EObject nextobj = iter.next();
-				if (nextobj instanceof Diagram) {
-				} else {
-					iter.remove();
-				}
+		Diagram da = getDiagram();
+		Iterator<EObject> eobjectIter = getDiagram().eResource().getContents().iterator();
+		while (eobjectIter.hasNext()) {
+			EObject nextobj = eobjectIter.next();
+			if (nextobj instanceof Diagram) {
+			} else {
+				eobjectIter.remove();
 			}
+		}
+		Iterator<Shape> shapeIter = getDiagram().getChildren().iterator();
+		while (shapeIter.hasNext()) {
+			shapeIter.next();
+			shapeIter.remove();
+		}
+		Iterator<Connection> connectionIter = getDiagram().getConnections().iterator();
+		while (connectionIter.hasNext()) {
+			connectionIter.next();
+			connectionIter.remove();
+		}
+		Iterator<PictogramLink> ptlintIter = getDiagram().getPictogramLinks().iterator();
+		while (ptlintIter.hasNext()) {
+			ptlintIter.next();
+			ptlintIter.remove();
 		}
 		// Add Actor
 		{
@@ -148,6 +162,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 
 			if (null != iaddcontext)
 				iaddcontext.execute(addcontext);
+			getDiagram().eResource().getContents().add(actor);
 		}
 		//
 		// Initialize objects
@@ -222,6 +237,13 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 			break;// Just use one behavior, maybe need more.
 
 		}
+		Resource eobj = getDiagram().eResource();
+		try {
+			getDiagram().eResource().save(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -232,7 +254,8 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 		Shape shape = null;
 		shapes = new ArrayList<Shape>();
 		for (Shape tempshape : getDiagram().getChildren()) {
-			shapes.add(tempshape);
+			if(tempshape instanceof ContainerShape)
+				shapes.add(tempshape);
 		}
 
 		// Add a lifeline will make a change to getDiagram().getChildren()
@@ -279,7 +302,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 
 			if (null != iaddcontext)
 				iaddcontext.execute(addcontext);
-
+			getDiagram().eResource().getContents().add(obj);
 			// Layout adjustment: adjust space size between each object.
 			startX += OBJECT_SPACE;
 

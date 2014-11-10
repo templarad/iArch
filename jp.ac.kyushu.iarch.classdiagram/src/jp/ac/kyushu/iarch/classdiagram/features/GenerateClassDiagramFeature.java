@@ -289,7 +289,9 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 	 */
 	private boolean isReference(String className, String targetName){
 		HashMap<String, Boolean> referenceMap = classReferenceMap.get(className);
-		if(referenceMap.get(targetName))
+		if(referenceMap.isEmpty())
+			return false;
+		if(referenceMap.get(targetName) != null)
 			return true;
 		return false;
 	}
