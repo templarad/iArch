@@ -159,7 +159,7 @@ public class GenerateArchCode implements IHandler {
 	private String findMethod(umlClass.Class umlClass){
 		String Code="";
 		for(Operation operation:umlClass.getOwnedOperation()){
-			Code+="\tvoid "+operation.getName()+"() :\n";//+"\t\t"+"execution(void "+operation.getName()+"()) ;\n"
+			Code+="\tvoid "+operation.getName()+"();\n";//+"\t\t"+"execution(void "+operation.getName()+"()) ;\n"
 		}
 		return Code;
 	}
