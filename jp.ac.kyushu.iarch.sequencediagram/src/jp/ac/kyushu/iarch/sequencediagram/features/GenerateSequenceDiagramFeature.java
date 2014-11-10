@@ -1,6 +1,7 @@
 package jp.ac.kyushu.iarch.sequencediagram.features;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.WeakHashMap;
 
@@ -16,6 +17,8 @@ import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.graphiti.datatypes.ILocation;
 import org.eclipse.graphiti.features.IAddFeature;
@@ -27,6 +30,7 @@ import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
 import org.eclipse.graphiti.mm.pictograms.Anchor;
 import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
+import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 
@@ -111,6 +115,18 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature{
 	 */
 	public void generateSequenceDiagram(Resource sequenceResource, Model archfaceModel ){
 
+		Iterator<EObject> iter = getDiagram().eResource().getContents().iterator();
+		
+		for(EObject eobj : getDiagram().eResource().getContents()){
+			 while(iter.hasNext()){
+		            EObject nextobj = iter.next();
+		            //接頭辞が「堀北」以外は除外
+		            if(nextobj instanceof Diagram){
+		            }else{
+		            	iter.remove();
+		            }
+		        }
+		}
 		//Add Actor
 		{
 		behavior.Actor actor = BehaviorFactory.eINSTANCE.createActor();
