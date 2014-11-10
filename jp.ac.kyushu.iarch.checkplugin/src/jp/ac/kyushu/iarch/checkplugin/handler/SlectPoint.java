@@ -85,6 +85,8 @@ public class SlectPoint implements IHandler {
 					e.printStackTrace();
 				}
 				int num1, num2 = 0, flag = 0;
+				String behaviorString = "", behaviorString2 = null;
+				String interfaceString1="",interfaceString2="";
 				for (Behavior behavior : archiface.getBehaviors()) {
 					String se = behavior.getInterface().getName();
 
