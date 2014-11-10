@@ -64,7 +64,7 @@ public class SlectPoint implements IHandler {
 		IJavaProject project = (IJavaProject) ssel.getFirstElement();
 		IProject project2 = project.getProject();
 		mgr.getBreakpoints();
-		String archCodeString="";
+		String archCodeString="", interfaceString = "";
 		String className=null;
 		IBreakpoint[] breakPointList = mgr.getBreakpoints();
 		for (int i = 0; i < breakPointList.length; i++) {
@@ -86,10 +86,10 @@ public class SlectPoint implements IHandler {
 				}
 				int num1, num2 = 0, flag = 0;
 				String behaviorString = "", behaviorString2 = null;
-				String interfaceString1="",interfaceString2="";
+				String interfaceString1="interface component "+className+"{",interfaceString2="", interfaceStringole="";
 				for (Behavior behavior : archiface.getBehaviors()) {
 					String se = behavior.getInterface().getName();
-
+					;
 					if (se.equals(className)) {
 
 						for (Method methodCall : behavior.getCall()) {
@@ -101,6 +101,8 @@ public class SlectPoint implements IHandler {
 						}
 						num1 = 0;
 						behaviorString = "";
+						 interfaceString1="interface component "+className+"{";interfaceString2="";
+						 interfaceStringole="";
 						for (Method methodCall : behavior.getCall()) {
 
 							if (flag == 1) {
@@ -113,17 +115,40 @@ public class SlectPoint implements IHandler {
 											+ methodName2 + "->";
 									num1 += 1;
 									//add component
+									if (classNameString.equals(className)) {
+										String paramString="";
+										if (!methodCall.getParam().isEmpty()) {
+											paramString=methodCall.getParam().get(0).getType()+" "+methodCall.getParam().get(0).getName();
+										}
+										interfaceString1+="\n"+methodCall.getType()+" "+methodCall.getName()+" ("+paramString+")"+";";
+										
+									}
+									else if (!classNameString.equals(className)) {
+										if (interfaceString2.equals("")) {
+											interfaceString2="interface component "+className+"{";
+										}
+										String paramString="";
+										if (!methodCall.getParam().isEmpty()) {
+											paramString=methodCall.getParam().get(0).getType()+" "+methodCall.getParam().get(0).getName();
+										}
+										interfaceString2+="\n"+methodCall.getType()+" "+methodCall.getName()+" ("+paramString+")"+";";
+										
+										
+									}
+									
 								}
 							}
 						}
+						interfaceStringole=interfaceString1+"}"+"\n"+interfaceString2+"}";
 						if (num1 > num2) {
 							num2 = num1;
 							behaviorString2 = behaviorString;
+							interfaceString=interfaceStringole;
 						}
 					}
 				}
 				archCodeString += className + "=" + "(" + behaviorString2
-						+ className + ")" + ";" + "\n";
+						+ className + ")" + ";" ;
 			}
 			
 		}
@@ -138,7 +163,7 @@ public class SlectPoint implements IHandler {
 				}
 			FileWriter resultFile = new FileWriter(myFilePath);
 			PrintWriter myFile = new PrintWriter(resultFile);
-			myFile.println(archCodeString);
+			myFile.println(interfaceString+"\n"+archCodeString);
 			resultFile.close();
 			}
 		catch (Exception e) {

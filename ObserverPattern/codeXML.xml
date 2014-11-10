@@ -15,14 +15,14 @@
         <parameterTypeElement>
           <parameterType>String[]</parameterType>
         </parameterTypeElement>
-        <MethodInvocation name="addObserver" type="Subject" class="Subject">
-          <InvocationExpression/>
+        <MethodInvocation name="addObserver">
+          <InvocationExpression>subject</InvocationExpression>
         </MethodInvocation>
-        <MethodInvocation name="setState" type="Subject" class="Subject">
-          <InvocationExpression/>
+        <MethodInvocation name="setState">
+          <InvocationExpression>subject</InvocationExpression>
         </MethodInvocation>
-        <MethodInvocation name="setState" type="Subject" class="Subject">
-          <InvocationExpression/>
+        <MethodInvocation name="setState">
+          <InvocationExpression>subject</InvocationExpression>
         </MethodInvocation>
       </MethodDeclaration>
     </Class>
@@ -50,20 +50,11 @@
         <parameterTypeElement>
           <parameterType>State</parameterType>
         </parameterTypeElement>
-        <MethodInvocation name="_notify" class="Subject">
-          <InvocationExpression/>
+        <MethodInvocation name="update">
+          <InvocationExpression>o</InvocationExpression>
         </MethodInvocation>
       </MethodDeclaration>
-      <MethodDeclaration lineNumber="17" name="_notify">
-        <MethodModifiers>
-          <modifier>public</modifier>
-          <modifier>void</modifier>
-        </MethodModifiers>
-        <MethodInvocation name="update" type="Observer" class="Observer">
-          <InvocationExpression/>
-        </MethodInvocation>
-      </MethodDeclaration>
-      <MethodDeclaration lineNumber="22" name="addObserver">
+      <MethodDeclaration lineNumber="20" name="addObserver">
         <MethodModifiers>
           <modifier>public</modifier>
           <modifier>void</modifier>
@@ -71,11 +62,11 @@
         <parameterTypeElement>
           <parameterType>Observer</parameterType>
         </parameterTypeElement>
-        <MethodInvocation name="add" type="List&lt;Observer&gt;" class="List&lt;Observer&gt;">
-          <InvocationExpression/>
+        <MethodInvocation name="add">
+          <InvocationExpression>this.observers</InvocationExpression>
         </MethodInvocation>
       </MethodDeclaration>
-      <MethodDeclaration lineNumber="25" name="removeObserver">
+      <MethodDeclaration lineNumber="23" name="removeObserver">
         <MethodModifiers>
           <modifier>public</modifier>
           <modifier>void</modifier>
@@ -83,8 +74,8 @@
         <parameterTypeElement>
           <parameterType>Observer</parameterType>
         </parameterTypeElement>
-        <MethodInvocation name="remove" type="List&lt;Observer&gt;" class="List&lt;Observer&gt;">
-          <InvocationExpression/>
+        <MethodInvocation name="remove">
+          <InvocationExpression>this.observers</InvocationExpression>
         </MethodInvocation>
       </MethodDeclaration>
     </Class>
@@ -106,11 +97,11 @@
           <modifier>public</modifier>
           <modifier>void</modifier>
         </MethodModifiers>
-        <MethodInvocation name="println" type="PrintStream" class="PrintStream">
-          <InvocationExpression/>
+        <MethodInvocation name="println">
+          <InvocationExpression>System.out</InvocationExpression>
         </MethodInvocation>
-        <MethodInvocation name="getState" type="Subject" class="Subject">
-          <InvocationExpression/>
+        <MethodInvocation name="getState">
+          <InvocationExpression>subject</InvocationExpression>
         </MethodInvocation>
       </MethodDeclaration>
     </Class>
