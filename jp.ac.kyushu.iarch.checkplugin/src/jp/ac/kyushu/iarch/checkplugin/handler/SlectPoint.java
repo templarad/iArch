@@ -6,11 +6,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import jp.ac.kyushu.iarch.archdsl.ArchDSLPlugin;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
+
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
@@ -37,6 +39,7 @@ import com.google.inject.Injector;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.ui.internal.ArchDSLActivator;
+import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
 
 public class SlectPoint implements IHandler {
 	final private static Injector injector = ArchDSLActivator.getInstance().getInjector(ArchDSLPlugin.getLanguageName());
@@ -56,7 +59,7 @@ public class SlectPoint implements IHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		// TODO Auto-generated method stub
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
-		IBreakpointManager mgr = DebugPlugin.getDefault().getBreakpointManager();
+		 IBreakpointManager mgr = DebugPlugin.getDefault().getBreakpointManager();
 		IStructuredSelection ssel = (IStructuredSelection)selection;
 		IJavaProject project = (IJavaProject) ssel.getFirstElement();
 		IProject project2 = project.getProject();
@@ -65,60 +68,68 @@ public class SlectPoint implements IHandler {
 		String className=null;
 		IBreakpoint[] breakPointList = mgr.getBreakpoints();
 		for (int i = 0; i < breakPointList.length; i++) {
-			@SuppressWarnings("restriction")
-			JavaMethodBreakpoint a=(JavaMethodBreakpoint) breakPointList[i];
-			String methodName=a.getMethodName().toString();
 			
-			try {
-				className = a.getTypeName().toString();
-			} catch (CoreException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			File file1 = new File("/ObserverPattern/Generated Archface.arch");
-			IResource re = ResourcesPlugin.getWorkspace().getRoot().findMember("/ObserverPattern/Generated Archface.arch");
+			IResource re = ResourcesPlugin.getWorkspace().getRoot()
+					.findMember("/ObserverPattern/Generated Archface.arch");
 			Model archiface = getArchifaceModel(re);
-			int num1,num2=0,flag=0;String behaviorString="",behaviorString2=null;
-			
-			for (Behavior behavior : archiface.getBehaviors()) {
-				String se=behavior.getInterface().getName();
-				
-				if (se.equals(className)) {
-					
-					for (Method methodCall : behavior.getCall()) {
-						
-						String methodName2 = methodCall.getName();
-						   if (methodName.equals(methodName2)) {
-							   flag=1;
-						   }
-						}
-					num1=0;
-					behaviorString="";
-					for (Method methodCall : behavior.getCall()) {
-						
-					if (flag==1) {
-						if (!(methodCall.getName()==null)) {
+			if (breakPointList[i] instanceof JavaMethodBreakpoint) {
+
+				@SuppressWarnings("restriction")
+				JavaMethodBreakpoint a = (JavaMethodBreakpoint) breakPointList[i];
+				String methodName = a.getMethodName().toString();
+
+				try {
+					className = a.getTypeName().toString();
+				} catch (CoreException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				int num1, num2 = 0, flag = 0;
+				for (Behavior behavior : archiface.getBehaviors()) {
+					String se = behavior.getInterface().getName();
+
+					if (se.equals(className)) {
+
+						for (Method methodCall : behavior.getCall()) {
+
 							String methodName2 = methodCall.getName();
-						String classNameString = ((Interface) methodCall.eContainer()).getName();
-						behaviorString+=classNameString+"."+methodName2+"->";
-						num1+=1;
-							
-				      }
+							if (methodName.equals(methodName2)) {
+								flag = 1;
+							}
+						}
+						num1 = 0;
+						behaviorString = "";
+						for (Method methodCall : behavior.getCall()) {
+
+							if (flag == 1) {
+								
+								if (!(methodCall.getName() == null)) {
+									String methodName2 = methodCall.getName();
+									String classNameString = ((Interface) methodCall
+											.eContainer()).getName();
+									behaviorString += classNameString + "."
+											+ methodName2 + "->";
+									num1 += 1;
+									//add component
+								}
+							}
+						}
+						if (num1 > num2) {
+							num2 = num1;
+							behaviorString2 = behaviorString;
+						}
 					}
-				  }
-					if (num1>num2) {
-								num2=num1;
-						        behaviorString2=behaviorString;
-									}
-		        }
+				}
+				archCodeString += className + "=" + "(" + behaviorString2
+						+ className + ")" + ";" + "\n";
 			}
-			archCodeString+=className+"="+"("+behaviorString2+className+")"+";"+"\n";
 			
 		}
-		String projectPath = project.getProject().getLocation().toOSString();
-		String ArchCodeFile= projectPath+"/ObserverPattern/swlectedArchface.arch";
-		File myFilePath = new File(ArchCodeFile);
+		
+		XMLreader sr=new XMLreader(project2);
+		String ar=sr.getArchfileResource().getLocation().toOSString();
+		
+		File myFilePath = new File(ar);
 		try {
 			if (!myFilePath.exists()) {
 				myFilePath.createNewFile();   
@@ -134,7 +145,7 @@ public class SlectPoint implements IHandler {
 			}
 		return null;
 	}
-
+	
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub

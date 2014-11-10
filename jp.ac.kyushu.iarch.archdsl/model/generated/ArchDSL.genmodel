@@ -4,7 +4,7 @@
     editorDirectory="/jp.ac.kyushu.iarch.archdsl.editor/src" modelPluginID="jp.ac.kyushu.iarch.archdsl"
     forceOverwrite="true" modelName="ArchDSL" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="jp.ac.kyushu.iarch.archdsl.edit"
-    editorPluginID="jp.ac.kyushu.iarch.archdsl.editor" runtimeVersion="2.9">
+    editorPluginID="jp.ac.kyushu.iarch.archdsl.editor" runtimeVersion="2.10">
   <genPackages prefix="ArchDSL" basePackage="jp.ac.kyushu.iarch.archdsl" disposableProviderFactory="true"
       fileExtensions="arch" ecorePackage="ArchDSL.ecore#/">
     <genClasses ecoreClass="ArchDSL.ecore#//Model">

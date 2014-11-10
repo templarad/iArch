@@ -295,22 +295,28 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private ModelElements pModel;
-	private InterfaceElements pInterface;
-	private MethodElements pMethod;
-	private ParamElements pParam;
-	private BehaviorElements pBehavior;
-	private FQNElements pFQN;
+	private final ModelElements pModel;
+	private final InterfaceElements pInterface;
+	private final MethodElements pMethod;
+	private final ParamElements pParam;
+	private final BehaviorElements pBehavior;
+	private final FQNElements pFQN;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public ArchDSLGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pModel = new ModelElements();
+		this.pInterface = new InterfaceElements();
+		this.pMethod = new MethodElements();
+		this.pParam = new ParamElements();
+		this.pBehavior = new BehaviorElements();
+		this.pFQN = new FQNElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -343,7 +349,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//Model:
 	//	interfaces+=Interface* behaviors+=Behavior*;
 	public ModelElements getModelAccess() {
-		return (pModel != null) ? pModel : (pModel = new ModelElements());
+		return pModel;
 	}
 	
 	public ParserRule getModelRule() {
@@ -353,7 +359,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//Interface:
 	//	"interface component" name=ID "{" methods+=Method* "}";
 	public InterfaceElements getInterfaceAccess() {
-		return (pInterface != null) ? pInterface : (pInterface = new InterfaceElements());
+		return pInterface;
 	}
 	
 	public ParserRule getInterfaceRule() {
@@ -363,7 +369,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//Method:
 	//	type=ID name=ID "(" (param+=Param ("," param+=Param)*)? ");";
 	public MethodElements getMethodAccess() {
-		return (pMethod != null) ? pMethod : (pMethod = new MethodElements());
+		return pMethod;
 	}
 	
 	public ParserRule getMethodRule() {
@@ -373,7 +379,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//Param:
 	//	type=ID name=ID;
 	public ParamElements getParamAccess() {
-		return (pParam != null) ? pParam : (pParam = new ParamElements());
+		return pParam;
 	}
 	
 	public ParserRule getParamRule() {
@@ -383,7 +389,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//Behavior:
 	//	interface=[Interface] "=" "(" (call+=[Method|FQN] ("->" call+=[Method|FQN])* "->" end=[Interface])? ");";
 	public BehaviorElements getBehaviorAccess() {
-		return (pBehavior != null) ? pBehavior : (pBehavior = new BehaviorElements());
+		return pBehavior;
 	}
 	
 	public ParserRule getBehaviorRule() {
@@ -393,7 +399,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//FQN:
 	//	ID ("." ID)*;
 	public FQNElements getFQNAccess() {
-		return (pFQN != null) ? pFQN : (pFQN = new FQNElements());
+		return pFQN;
 	}
 	
 	public ParserRule getFQNRule() {
@@ -413,8 +419,8 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
+	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 

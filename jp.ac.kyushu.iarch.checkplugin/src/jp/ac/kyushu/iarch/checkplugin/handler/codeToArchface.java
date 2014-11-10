@@ -6,13 +6,17 @@ import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.commands.IHandlerListener;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
+
+import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.checkplugin.utils.ProjectSelectionUtils;
 import jp.ac.kyushu.iarch.checkplugin.view.SelectSourceCodeFile;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -66,6 +70,8 @@ public class codeToArchface implements IHandler {
 	
 	Element test=null;
 	private void GenerateArchifaceCode(IResource xmlfile) throws DocumentException { 
+		Model newarchfile=null;
+		
 		String archfaceString="";
 	SAXReader reader = new SAXReader();
 	 Document XMLdocument = reader.read(xmlfile.getLocation().toString());
@@ -106,7 +112,6 @@ public class codeToArchface implements IHandler {
 	 }
 	 
 	 //behavior list
-	 archfaceString="";
 	 for (Iterator classIterator = test.elementIterator(); classIterator.hasNext();) { 
          Element classXML = (Element) classIterator.next();
          String ClassName = classXML.attributeValue("name"); 
