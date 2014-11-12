@@ -1,5 +1,5 @@
 interface component  Main {
-	void main  (String []);
+	void main  (String string);
 }
 interface component  Subject {
 	void Subject  ();
@@ -13,6 +13,7 @@ interface component  Observer {
 	void Observer  (Subject subjet);
 	void update  ();
 }
+
 Main= (Main.main->Subject.addObserver->List_Observer.add->Subject.setState->Subject._notify->Observer.update->PrintStream.println->Subject.getState->Subject.setState->Subject._notify->Observer.update->PrintStream.println->Subject.getState->Main);
 
 Subject= (Subject.Subject->Subject);

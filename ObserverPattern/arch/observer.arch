@@ -1,5 +1,4 @@
-interface component Observer{
-void update ();}
-interface component Observer{
-State getState ();}
-Observer=(Observer.update->Subject.getState->Observer);
+interface component Subject{
+void addObserver (Observer observer);}
+
+Subject=(Subject.addObserver->Subject);

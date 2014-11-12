@@ -125,13 +125,13 @@ public class SlectPoint implements IHandler {
 									}
 									else if (!classNameString.equals(className)) {
 										if (interfaceString2.equals("")) {
-											interfaceString2="interface component "+className+"{";
+											interfaceString2="interface component "+classNameString+"{";
 										}
 										String paramString="";
 										if (!methodCall.getParam().isEmpty()) {
 											paramString=methodCall.getParam().get(0).getType()+" "+methodCall.getParam().get(0).getName();
 										}
-										interfaceString2+="\n"+methodCall.getType()+" "+methodCall.getName()+" ("+paramString+")"+";";
+										interfaceString2+="\n"+methodCall.getType()+" "+methodCall.getName()+" ("+paramString+")"+";"+"}";
 										
 										
 									}
@@ -139,7 +139,7 @@ public class SlectPoint implements IHandler {
 								}
 							}
 						}
-						interfaceStringole=interfaceString1+"}"+"\n"+interfaceString2+"}";
+						interfaceStringole=interfaceString1+"}"+"\n"+interfaceString2;
 						if (num1 > num2) {
 							num2 = num1;
 							behaviorString2 = behaviorString;
