@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt.core;bundle-version="3.8.3",
  jp.ac.kyushu.iarch.classdiagram;bundle-version="1.0.0",
  jp.ac.kyushu.iarch.model;bundle-version="0.1.0",
- org.apache.xerces;bundle-version="2.9.0"
+ org.apache.xerces;bundle-version="2.9.0",
+ org.eclipse.jdt.debug
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
@@ -25,4 +26,6 @@ Bundle-ClassPath: .,
  lib/jaxen-1.1.6.jar
 Export-Package: jp.ac.kyushu.iarch.checkplugin.handler
 Import-Package: jp.ac.kyushu.iarch.basefunction.controller,
- jp.ac.kyushu.iarch.basefunction.reader
+ jp.ac.kyushu.iarch.basefunction.reader,
+ org.eclipse.debug.core,
+ org.eclipse.debug.core.model

@@ -1,16 +1,4 @@
-interface component Subject {
-	void addObserver(Observer observer);
-	void removeObserver(Observer observer);
-	String getState();
-	void setState(String state);
-}
+interface component Subject{
+void addObserver (Observer observer);}
 
-interface component Observer {
-	void update(); 
-}
- 
-Subject = (Subject.setState->
-	Observer.update->Subject.getState->Subject
-);            
-Observer = (Observer.update->Subject.getState
-	->Observer);
+Subject=(Subject.addObserver->Subject);
