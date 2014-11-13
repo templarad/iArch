@@ -33,7 +33,6 @@ import org.eclipse.graphiti.mm.pictograms.Anchor;
 import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
-import org.eclipse.graphiti.mm.pictograms.FreeFormConnection;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.PictogramLink;
 import org.eclipse.graphiti.mm.pictograms.Shape;
@@ -177,7 +176,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 			}
 		}
 
-		boolean actorMessageExist = false;
+		boolean actorMessageExist = false;//The message from actor will be generated only one time.
 		List<Behavior> behaviorList = findFirstBehavior(archfaceModel.getBehaviors());
 		// Add message
 		for (Behavior behavior : behaviorList) {
@@ -384,6 +383,11 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 		}
 	}
 	
+	/**
+	 * Check if a method has been generated in the diagram.
+	 * @param methodName The name of method to check.
+	 * @return <b>true</b> if exist.
+	 */
 	private boolean messageExist(String methodName){
 		for (EObject eobj : getDiagram().eResource().getContents()){
 			if (eobj instanceof Message){
@@ -411,6 +415,8 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 		for(Behavior behavior : behaviorList){
 			newbehaviorList.add(behavior);
 		}
+		//Check the first method in each behavior, if there is a method in other behavior the same as it.
+		//If no method exist, swap the behavior to the first one, and return.
 		for (int i = 0 ; i< newbehaviorList.size() ; i++){
 			Method tofindMethod = newbehaviorList.get(i).getCall().get(0);
 			
@@ -449,11 +455,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 				}
 				behaviorNo ++;
 			}
-			
-			
 		}
-		
-		//behaviorList.set(arg0, arg1);
 		return newbehaviorList;
 	}
 }
