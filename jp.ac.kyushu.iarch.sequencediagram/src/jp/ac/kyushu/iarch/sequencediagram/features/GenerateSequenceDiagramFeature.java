@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.WeakHashMap;
+import java.util.logging.Logger;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
@@ -18,11 +19,11 @@ import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Assert;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.graphiti.datatypes.ILocation;
 import org.eclipse.graphiti.features.IAddFeature;
+import org.eclipse.graphiti.features.ICreateConnectionFeature;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.context.impl.AddContext;
@@ -32,6 +33,7 @@ import org.eclipse.graphiti.mm.pictograms.Anchor;
 import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
+import org.eclipse.graphiti.mm.pictograms.FreeFormConnection;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.PictogramLink;
 import org.eclipse.graphiti.mm.pictograms.Shape;
@@ -39,6 +41,7 @@ import org.eclipse.graphiti.mm.pictograms.Shape;
 import behavior.Actor;
 import behavior.BehaviorFactory;
 import behavior.Lifeline;
+import behavior.Message;
 import behavior.Object;
 
 /**
@@ -48,6 +51,7 @@ import behavior.Object;
  *
  */
 public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
+	Logger logger = Logger.getGlobal();
 	/**
 	 * A list of '<em><b>object</b></em>' in sequence diagram.
 	 */
@@ -173,8 +177,10 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 			}
 		}
 
+		boolean actorMessageExist = false;
+		List<Behavior> behaviorList = findFirstBehavior(archfaceModel.getBehaviors());
 		// Add message
-		for (Behavior behavior : archfaceModel.getBehaviors()) {
+		for (Behavior behavior : behaviorList) {
 			int i = 0;
 			int space = 0;
 			for (Method method : behavior.getCall()) {
@@ -182,22 +188,33 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 					String targetName = ((Interface) method.eContainer())
 							.getName();
 					String sourceName = targetName;
-					if (0 == i) {
+					if (i == 0 && !actorMessageExist) {
 						sourceName = "Actor";
+						
 					} else if (i == behavior.getCall().size() - 1) {
 						sourceName = ((Interface) behavior.getCall().get(i - 1)
 								.eContainer()).getName();
 						targetName = behavior.getEnd().getName();
+					} else if (i == 0 && actorMessageExist) {
+						i ++;
+						continue;
 					} else {
 						sourceName = ((Interface) behavior.getCall().get(i - 1)
 								.eContainer()).getName();
 					}
 
+					//When generating message from actor, there is no need to check message existence.
+					if(actorMessageExist){
+						if(messageExist(method.getName())){
+							continue;
+						}
+					}
 					// Add message for each method in archface.
 					addMessage(MESSAGE_START_Y + space,
 							objectlifelineMap.get(sourceName),
 							objectlifelineMap.get(targetName), method.getName());
 
+					actorMessageExist = true;
 					// Layout adjustment: Adjusting space size between each
 					// message.
 					if (sourceName.equals(targetName)) {
@@ -211,10 +228,8 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 				}
 				i++;
 			}
-			break;// Just use one behavior, maybe need more.
 
 		}
-		Resource eobj = getDiagram().eResource();
 		try {
 			getDiagram().eResource().save(null);
 		} catch (IOException e) {
@@ -334,7 +349,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 			}
 		});
 
-		org.eclipse.graphiti.features.ICreateConnectionFeature icreatecontext = getFeatureProvider()
+		ICreateConnectionFeature icreatecontext = getFeatureProvider()
 				.getCreateConnectionFeatures()[1];
 		Assert.isTrue(icreatecontext.getCreateName().equals("Message"));
 		icreatecontext.execute(connectioncontext);
@@ -368,5 +383,77 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 			ptlintIter.remove();
 		}
 	}
+	
+	private boolean messageExist(String methodName){
+		for (EObject eobj : getDiagram().eResource().getContents()){
+			if (eobj instanceof Message){
+				if(((Message)eobj).getName().equals(methodName)){
+					return true;
+				}
+				
+			}
+		}
+		return false;
+	}
 
+	/**
+	 * Find the first message for Actor.<br>
+	 * Usually there are several behaviors in the Archcode.
+	 * @param behaviorList the <b>Behavior List</b> from ArchModel.
+	 * @return A new Behavior List
+	 */
+	private List<Behavior> findFirstBehavior(List<Behavior> behaviorList){
+		if(behaviorList.size() <= 1){
+			return behaviorList;
+		}
+		List<Behavior> newbehaviorList = new ArrayList<Behavior>();
+		//Copy to a new list.
+		for(Behavior behavior : behaviorList){
+			newbehaviorList.add(behavior);
+		}
+		for (int i = 0 ; i< newbehaviorList.size() ; i++){
+			Method tofindMethod = newbehaviorList.get(i).getCall().get(0);
+			
+			if(i == newbehaviorList.size()){
+				Behavior temp = newbehaviorList.get(0);
+				//exchange the first behavior and behavior(i)
+				newbehaviorList.set(0, newbehaviorList.get(i));
+				newbehaviorList.set(i, temp);
+				return newbehaviorList;
+			}
+			int behaviorNo = 0;
+			for(Behavior behavior : newbehaviorList){
+				int methodNo = 0;//for logger;
+				int breaktime = 0;
+				if(newbehaviorList.get(i).equals(behavior)){
+					behaviorNo ++;
+					continue;
+				}
+				for (Method method : behavior.getCall()) {
+					String name = ((Interface)method.eContainer()).getName()+"."+method.getName();
+					if(name.equals(((Interface)tofindMethod.eContainer()).getName()+"."+tofindMethod.getName())){
+						logger.info("Find: ["+((Interface)tofindMethod.eContainer()).getName()+"."+tofindMethod.getName()+"] in behavior["+ behaviorNo +"] method["+methodNo+"]");
+						breaktime ++;
+						break;
+					}
+					methodNo ++;
+				}
+				//Never break, means no method is the same as the tofindMethod.
+				if(breaktime == 0){
+					Behavior temp = newbehaviorList.get(0);
+					//exchange the first behavior and behavior(i)
+					newbehaviorList.set(0, newbehaviorList.get(i));
+					newbehaviorList.set(i, temp);
+					logger.info("Find: ["+((Interface)tofindMethod.eContainer()).getName()+"] : no result in other behavior, swap to [0]");
+					return newbehaviorList;
+				}
+				behaviorNo ++;
+			}
+			
+			
+		}
+		
+		//behaviorList.set(arg0, arg1);
+		return newbehaviorList;
+	}
 }

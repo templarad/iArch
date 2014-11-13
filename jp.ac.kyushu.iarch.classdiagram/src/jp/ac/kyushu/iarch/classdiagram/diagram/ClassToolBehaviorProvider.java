@@ -44,7 +44,9 @@ public class ClassToolBehaviorProvider extends DefaultToolBehaviorProvider{
 
 	@Override
 	public IContextMenuEntry[] getContextMenu(ICustomContext context) {
-	    // create a sub-menu for all custom features
+		ICustomFeature[] customFeatures = getFeatureProvider().getCustomFeatures(context);
+		ContextMenuEntry mainmenuEntry = null;
+		// create a sub-menu for all custom features
 	    ContextMenuEntry subMenu = new ContextMenuEntry(null, context);
 	    subMenu.setText("Refactor");
 	    subMenu.setDescription("Refactor features submenu");
@@ -52,16 +54,20 @@ public class ClassToolBehaviorProvider extends DefaultToolBehaviorProvider{
 	    subMenu.setSubmenu(true);
 
 	    // create a menu-entry in the sub-menu for each custom feature
-	    ICustomFeature[] customFeatures = getFeatureProvider().getCustomFeatures(context);
 	    for (int i = 0; i < customFeatures.length; i++) {
-	         ICustomFeature customFeature = customFeatures[i];
-	         if (customFeature.isAvailable(context)) {
-	             ContextMenuEntry menuEntry = new ContextMenuEntry(customFeature, context);
-	             subMenu.add(menuEntry);
-	         }
-	     }
+			ICustomFeature customFeature = customFeatures[i];
+			if (customFeature.isAvailable(context)
+					&& !customFeature.getName().equals("Generate All Classes")) {
+				ContextMenuEntry menuEntry = new ContextMenuEntry(
+						customFeature, context);
+				subMenu.add(menuEntry);
+			}
+			if (customFeature.getName().equals("Generate All Classes")) {
+				mainmenuEntry = new ContextMenuEntry(customFeature, context);
+			}
+		}
 
-	     IContextMenuEntry ret[] = new IContextMenuEntry[] { subMenu };
-	     return ret;
+		IContextMenuEntry ret[] = new IContextMenuEntry[] { mainmenuEntry, subMenu };
+		return ret;
 	}
 }
