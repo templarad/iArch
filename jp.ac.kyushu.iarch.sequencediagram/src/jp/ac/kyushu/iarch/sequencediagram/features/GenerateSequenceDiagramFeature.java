@@ -444,7 +444,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 					//exchange the first behavior and behavior(i)
 					newbehaviorList.set(0, newbehaviorList.get(i));
 					newbehaviorList.set(i, temp);
-					logger.info("Find: ["+((Interface)tofindMethod.eContainer()).getName()+"] : no result in other behavior, swap to [0]");
+					logger.info("Find: ["+((Interface)tofindMethod.eContainer()).getName()+"."+tofindMethod.getName()+"] : no result in other behavior, swap to [0]");
 					return newbehaviorList;
 				}
 				behaviorNo ++;
