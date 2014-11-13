@@ -1,12 +1,9 @@
 package jp.ac.kyushu.iarch.classdiagram.features;
 
 import java.io.IOException;
-import java.io.ObjectOutputStream.PutField;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 import java.util.WeakHashMap;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
@@ -14,7 +11,6 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.basefunction.controller.ArchModelController;
-import jp.ac.kyushu.iarch.basefunction.controller.GraphitiModelManager;
 import jp.ac.kyushu.iarch.basefunction.model.ClassDiagramModel;
 import jp.ac.kyushu.iarch.basefunction.reader.ArchModel;
 import jp.ac.kyushu.iarch.basefunction.reader.ProjectReader;
@@ -289,7 +285,9 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 	 */
 	private boolean isReference(String className, String targetName){
 		HashMap<String, Boolean> referenceMap = classReferenceMap.get(className);
-		if(referenceMap.get(targetName))
+		if(referenceMap.isEmpty())
+			return false;
+		if(referenceMap.get(targetName) != null)
 			return true;
 		return false;
 	}
