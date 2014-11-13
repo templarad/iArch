@@ -47,7 +47,7 @@ public class GenerateClassDiagramFeature extends AbstractCustomFeature{
 	}
 	@Override
     public String getName() {
-        return "Generate All Class";
+        return "Generate All Classes";
     }
  
     @Override
