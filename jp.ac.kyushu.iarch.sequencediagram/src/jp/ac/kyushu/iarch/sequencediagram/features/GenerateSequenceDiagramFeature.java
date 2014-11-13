@@ -125,30 +125,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 	public void generateSequenceDiagram(Resource sequenceResource,
 			Model archfaceModel) {
 
-		Diagram da = getDiagram();
-		Iterator<EObject> eobjectIter = getDiagram().eResource().getContents().iterator();
-		while (eobjectIter.hasNext()) {
-			EObject nextobj = eobjectIter.next();
-			if (nextobj instanceof Diagram) {
-			} else {
-				eobjectIter.remove();
-			}
-		}
-		Iterator<Shape> shapeIter = getDiagram().getChildren().iterator();
-		while (shapeIter.hasNext()) {
-			shapeIter.next();
-			shapeIter.remove();
-		}
-		Iterator<Connection> connectionIter = getDiagram().getConnections().iterator();
-		while (connectionIter.hasNext()) {
-			connectionIter.next();
-			connectionIter.remove();
-		}
-		Iterator<PictogramLink> ptlintIter = getDiagram().getPictogramLinks().iterator();
-		while (ptlintIter.hasNext()) {
-			ptlintIter.next();
-			ptlintIter.remove();
-		}
+		cleanAllResource();
 		// Add Actor
 		{
 			behavior.Actor actor = BehaviorFactory.eINSTANCE.createActor();
@@ -361,6 +338,35 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 				.getCreateConnectionFeatures()[1];
 		Assert.isTrue(icreatecontext.getCreateName().equals("Message"));
 		icreatecontext.execute(connectioncontext);
+	}
+	/**
+	 * Clean all resource in the sequence diagram,<br>
+	 * before regenerating a new diagram.
+	 */
+	private void cleanAllResource(){
+		Iterator<EObject> eobjectIter = getDiagram().eResource().getContents().iterator();
+		while (eobjectIter.hasNext()) {
+			EObject nextobj = eobjectIter.next();
+			if (nextobj instanceof Diagram) {
+			} else {
+				eobjectIter.remove();
+			}
+		}
+		Iterator<Shape> shapeIter = getDiagram().getChildren().iterator();
+		while (shapeIter.hasNext()) {
+			shapeIter.next();
+			shapeIter.remove();
+		}
+		Iterator<Connection> connectionIter = getDiagram().getConnections().iterator();
+		while (connectionIter.hasNext()) {
+			connectionIter.next();
+			connectionIter.remove();
+		}
+		Iterator<PictogramLink> ptlintIter = getDiagram().getPictogramLinks().iterator();
+		while (ptlintIter.hasNext()) {
+			ptlintIter.next();
+			ptlintIter.remove();
+		}
 	}
 
 }
