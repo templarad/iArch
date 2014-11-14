@@ -1,0 +1,26 @@
+interface component  Main {
+	void main  (String[])
+}
+interface component  Subject {
+	 Subject  ()
+	State getState  ()
+	void setState  (State)
+	void addObserver  (Observer)
+	void removeObserver  (Observer)
+}
+interface component  Observer {
+	 Observer  (Subject)
+	void update  ()
+}
+Main= {Main.main->Subject.addObserver->List<Observer>.add->Subject.setState->Observer.update->PrintStream.println->Subject.getState->PrintStream.println->Subject.setState->Observer.update->PrintStream.println->Subject.getState->PrintStream.println->Main}
+
+Subject= {Subject.Subject->Subject}
+Subject= {Subject.getState->Subject}
+Subject= {Subject.setState->Observer.update->PrintStream.println->Subject.getState->PrintStream.println->Subject}
+Subject= {Subject.addObserver->List<Observer>.add->Subject}
+Subject= {Subject.removeObserver->List<Observer>.remove->Subject}
+
+Observer= {Observer.Observer->Observer}
+Observer= {Observer.update->PrintStream.println->Subject.getState->PrintStream.println->Observer}
+
+
