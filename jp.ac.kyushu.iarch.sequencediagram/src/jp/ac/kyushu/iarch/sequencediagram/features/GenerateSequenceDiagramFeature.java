@@ -179,9 +179,9 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 		boolean actorMessageExist = false;//The message from actor will be generated only one time.
 		List<Behavior> behaviorList = findFirstBehavior(archfaceModel.getBehaviors());
 		// Add message
+		int space = 0;
 		for (Behavior behavior : behaviorList) {
 			int i = 0;
-			int space = 0;
 			for (Method method : behavior.getCall()) {
 				if (method.eContainer() instanceof Interface) {
 					String targetName = ((Interface) method.eContainer())
@@ -190,7 +190,9 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 					if (i == 0 && !actorMessageExist) {
 						sourceName = "Actor";
 						
-					} else if (i == behavior.getCall().size() - 1) {
+					}else if (behavior.getCall().size() == 1){
+						targetName = behavior.getEnd().getName();
+					} else if (i > 1 && i == behavior.getCall().size() - 1) {
 						sourceName = ((Interface) behavior.getCall().get(i - 1)
 								.eContainer()).getName();
 						targetName = behavior.getEnd().getName();
@@ -217,9 +219,9 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 					// Layout adjustment: Adjusting space size between each
 					// message.
 					if (sourceName.equals(targetName)) {
-						space += 40;
+						space += 45;
 					} else {
-						space += 25;
+						space += 30;
 					}
 				} else {
 					// Never should happen.

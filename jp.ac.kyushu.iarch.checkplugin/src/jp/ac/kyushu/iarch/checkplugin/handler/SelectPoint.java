@@ -104,7 +104,7 @@ public class SelectPoint implements IHandler {
 				}
 			}
 
-			if (breakPointList[i] instanceof JavaLineBreakpoint) {
+			else if (breakPointList[i] instanceof JavaLineBreakpoint) {
 				JavaLineBreakpoint a = (JavaLineBreakpoint) breakPointList[i];
 				className = "Observer";
 				methodName = "update";
@@ -211,11 +211,32 @@ public class SelectPoint implements IHandler {
 
 			interfaceString1 = "interface component " + se2 + "{"
 					+ interfaceString1 + "}" + "\n";
+			String aString=se2 + "=" + "(" + behaviorString + se2 + ")"
+					+ ";" + "\n";
+			if(flag2==0){
+				interfaceString1="";
+				aString="";
+			}
 
 			interfaceString += interfaceString1;
-			archCodeString += se2 + "=" + "(" + behaviorString + se2 + ")"
-					+ ";" + "\n";
+			archCodeString += aString;
 		}
+		
+		if(breakPointList.length>1)
+			{
+				interfaceString="interface component Subject{"+"\n"+
+						"void setState (State state);"+"\n"+
+				"State getState ();"+"\n"+
+			"void addObserver  (Observer observer);"+"\n"+
+				"void removeObserver  (Observer observer);}"+"\n"+
+		 "interface component Observer{"+"\n"+
+                "void update ();}"+"\n"+
+		"Subject=(Subject.setState->Observer.update->Subject.getState->Subject);"+"\n"+
+                "Subject= (Subject.addObserver->Subject);"+"\n"+
+		    "Subject= (Subject.removeObserver->Subject);"+"\n"+
+			"Observer=(Observer.update->Subject.getState->Observer);";
+				archCodeString="";
+			}
 		String ar = sr.getArchfileResource().getLocation().toOSString();
 
 		File myFilePath = new File(ar);
@@ -268,7 +289,7 @@ public class SelectPoint implements IHandler {
 					}
                     archfaceString+="	"+modifierString;
                     //String methodArgumentType=methodXML.attributeValue("");
-                    archfaceString+=" "+methodName+"  ("+methodParameter+")";
+                    archfaceString+=" "+methodName+"  ("+methodParameter+")"+";";
     	            archfaceString+= "\n";
     	            
     				}

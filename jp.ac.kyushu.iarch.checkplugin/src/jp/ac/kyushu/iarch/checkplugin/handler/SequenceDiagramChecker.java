@@ -63,17 +63,18 @@ public class SequenceDiagramChecker {
 	}
 	
 	private boolean checkMessageOrder(Behavior behavior, List<Message> diagramMessages){
-		int diagOrderCount = 0;
 		int messageOrderCount = 0;
 		for(Method methodCall : behavior.getCall()){
 
 			//System.out.println("in "+methodCall.getName());
 			if(methodCall.getName()==null)continue;//in case of "no declaration in Archface component"
 			
-			for(diagOrderCount=0;;diagOrderCount++){
+			for(int diagOrderCount=0;;diagOrderCount++){
+				
 				if(diagOrderCount>=diagramMessages.size()){
 					return false;
 				}
+				if(diagramMessages.get(diagOrderCount).getReceiveEvent()==null)continue;
 				//System.out.println(" c :"+diagramMessages.get(diagOrderCount));
 				String Actorname = ((MessageOccurrenceSpecification)diagramMessages.get(diagOrderCount).getReceiveEvent())
 						.getCovered().get(0).getActor().getName();
