@@ -132,6 +132,12 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
             		if (deleteFeature!=null)
             			deleteFeature.delete(ctx);
                     updatePictogramElement(((Shape) pes[0]).getContainer());
+                    try {
+            			getDiagram().eResource().save(null);
+            		} catch (IOException e) {
+            			// TODO Auto-generated catch block
+            			e.printStackTrace();
+            		}
                 
             }
         }
