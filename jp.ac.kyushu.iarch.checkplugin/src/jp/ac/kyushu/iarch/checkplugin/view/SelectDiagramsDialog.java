@@ -25,19 +25,20 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
-
+/**
+ * Used only for generate Arch code from diagrams.
+ * Based on {@link SelectAllFileDialog} 
+ * @author Templar
+ * 
+ */
 public class SelectDiagramsDialog extends Dialog {
-	private Table archiTable;
 	private Table classTable;
-	private Table dataflowTable;
 	private Table sequenceTable;
 	private IProject project;
 	private Button okButton;
-	private IResource archiface;
 	private IResource classDiagram;
-	private IResource dataflowDiagram;
 	private List<IResource> sequenceDiagrams;
-	
+	boolean classSelected = false;
 	/**
 	 * Constructor
 	 * @param parentShell
@@ -67,23 +68,12 @@ public class SelectDiagramsDialog extends Dialog {
 	protected Control createDialogArea(Composite parent) {
 		CheckCheckedStateListener checkboxListener = new CheckCheckedStateListener();
 		Composite composite = (Composite)super.createDialogArea(parent);
-		Label archiLabel = new Label(composite, SWT.NONE);
-		archiLabel.setText("Archiface files");
-		archiTable = new Table(composite, SWT.CHECK|SWT.BORDER | SWT.V_SCROLL);
-		archiTable.setLayoutData(new GridData(350, 60));
-		archiTable.addSelectionListener(checkboxListener);
 
 		Label classLabel = new Label(composite, SWT.NONE);
-		classLabel.setText("Class Diagrams");
+		classLabel.setText("Class Diagram (only one)");
 		classTable = new Table(composite, SWT.CHECK|SWT.BORDER|SWT.V_SCROLL);
 		classTable.setLayoutData(new GridData(350, 60));
 		classTable.addSelectionListener(checkboxListener);
-		
-		Label dataflowLabel = new Label(composite, SWT.NONE);
-		dataflowLabel.setText("Dataflow Diagrams");
-		dataflowTable = new Table(composite, SWT.CHECK|SWT.BORDER|SWT.V_SCROLL);
-		dataflowTable.setLayoutData(new GridData(350, 80));
-		dataflowTable.addSelectionListener(checkboxListener);
 
 		Label sequenceLabel = new Label(composite, SWT.NONE);
 		sequenceLabel.setText("Sequence Diagrams");
@@ -111,19 +101,9 @@ public class SelectDiagramsDialog extends Dialog {
 	 */
 	@Override
 	protected void okPressed() {
-		for(TableItem item : archiTable.getItems()){
-			if(item.getChecked()){
-				archiface = (IResource)item.getData();
-			}
-		}
 		for(TableItem item : classTable.getItems()){
 			if(item.getChecked()){
 				classDiagram = (IResource)item.getData();
-			}
-		}
-		for(TableItem item : dataflowTable.getItems()){
-			if(item.getChecked()){
-				dataflowDiagram = (IResource)item.getData();
 			}
 		}
 		for(TableItem item : sequenceTable.getItems()){
@@ -136,29 +116,22 @@ public class SelectDiagramsDialog extends Dialog {
 	}
 	
 	/**
-	 * @author hosoai
 	 * Selection validation
+	 * @author hosoai
+	 * 
 	 */
 	class CheckCheckedStateListener implements SelectionListener{
 		@Override
 		public void widgetSelected(SelectionEvent e) {
-			int cntArchiFiles = 0;
 			int cntClassDiagrams = 0;
-			int cntDataflowDiagrams = 0;
 			int cntSequenceDiagrams = 0;
-			for(TableItem item : archiTable.getItems()){
-				if(item.getChecked()) cntArchiFiles++;
-			}
 			for(TableItem item : classTable.getItems()){
-				if(item.getChecked()) cntClassDiagrams++;
-			}
-			for(TableItem item : dataflowTable.getItems()){
-				if(item.getChecked()) cntDataflowDiagrams++;
+				if(item.getChecked()) cntClassDiagrams ++;
 			}
 			for(TableItem item : sequenceTable.getItems()){
-				if(item.getChecked()) cntSequenceDiagrams++;
+				if(item.getChecked()) cntSequenceDiagrams ++;
 			}
-			if(cntArchiFiles==1&&cntClassDiagrams==1&&cntDataflowDiagrams==1&&cntSequenceDiagrams>0){
+			if(cntClassDiagrams == 1 && cntSequenceDiagrams > 0){
 				okButton.setEnabled(true);
 			}else{
 				okButton.setEnabled(false);
@@ -172,37 +145,30 @@ public class SelectDiagramsDialog extends Dialog {
 	 * Set archiface file and diagram files to table.
 	 */
 	private void setInitialItems() {
+		
 		try {
 			project.accept(new IResourceVisitor() {
 				@Override
 				public boolean visit(IResource resource) throws CoreException {
 					String ext = resource.getFileExtension();
-					if(ext==null) return true;
+					if(ext == null) return true;
 					switch(ext){
-					case "arch":
-						TableItem aitem = new TableItem(archiTable, SWT.CHECK);
-						aitem.setText(resource.getName());
-						aitem.setData(resource);
-						aitem.setChecked(true);
-
-						break;
 					case "diagram":
 						Resource model = GraphitiModelManager.getGraphitiModel(resource);
 						Diagram o = (Diagram)model.getContents().get(0);
 						if("ClassDiagram".equals(o.getDiagramTypeId())){
-							TableItem citem = new TableItem(classTable, SWT.CHECK);
+							TableItem citem = new TableItem(classTable, SWT.SINGLE);
 							citem.setText(resource.getName());
 							citem.setData(resource);
-							citem.setChecked(true);							
-						}else if("DataflowDiagram".equals(o.getDiagramTypeId())){
-							TableItem citem = new TableItem(dataflowTable, SWT.CHECK);
-							citem.setText(resource.getName());
-							citem.setData(resource);							
-							citem.setChecked(true);
+							if(!classSelected){
+								citem.setChecked(true);
+								classSelected = true;
+							}else
+								citem.setChecked(false);
 						}else if("SequenceDiagram".equals(o.getDiagramTypeId())){
 							TableItem sitem = new TableItem(sequenceTable, SWT.CHECK);
 							sitem.setText(resource.getName());
-							sitem.setData(resource);							
+							sitem.setData(resource);		
 							sitem.setChecked(true);
 						}else{
 							System.err.println("undefine diagram types");
@@ -220,18 +186,10 @@ public class SelectDiagramsDialog extends Dialog {
 	}
 	
 	/*Accessors*/
-	public IResource getArchiface(){
-		return archiface;
-	}
-	
 	public IResource getClassDiagram(){
 		return classDiagram;
 	}
-	
-	public IResource getDataflowDiagram(){
-		return dataflowDiagram;
-	}
-	
+		
 	public List<IResource> getSequenceDiagrams(){
 		return sequenceDiagrams;
 	}	

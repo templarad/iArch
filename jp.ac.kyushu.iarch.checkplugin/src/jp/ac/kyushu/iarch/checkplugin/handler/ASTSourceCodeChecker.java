@@ -266,11 +266,6 @@ public class ASTSourceCodeChecker{
 
 			// UncertainInterface check
 
-			// constant numbers for checking alternative methods
-			final int UNDEFINED = 0;	// no altmethods in the class
-			final int DEFINED = 1;		// an altmethod is exist in the class
-			final int DUPLICATED = 2;	// altmethods are duplicated in the class
-
 			for (UncertainInterface u_interface :archiface.getU_interfaces()) {
 				Interface superInterface = u_interface.getSuperInterface();
 				if(superInterface != null){
