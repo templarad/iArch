@@ -1,5 +1,9 @@
 package jp.ac.kyushu.iarch.checkplugin.model;
-
+/**
+ * The model of Abstraction Ratio
+ * @author Templar
+ *
+ */
 public class AbstractionRatio {
 	private int arch_method_num;
 	private int arch_class_num;

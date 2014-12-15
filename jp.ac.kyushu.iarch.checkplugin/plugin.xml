@@ -8,31 +8,20 @@
             id="jp.ac.kyushu.iarch.checkPlugin.configurationCommand"
             name="Check Archface Configuration">
       </command>
-      <command
-            categoryId="jp.ac.kyushu.iarch.checkPlugin.iarchcategory"
-            id="jp.ac.kyushu.iarch.checkPlugin.checkArchfaceCommand"
-            name="Check Archface Command">
-      </command>
       <category
             description="iArch Category"
             id="jp.ac.kyushu.iarch.checkPlugin.iarchcategory"
             name="iArch Category">
       </category>
-      <command
-            categoryId="jp.ac.kyushu.iarch.checkPlugin.iarchcategory"
-            id="jp.ac.kyushu.iarch.checkPlugin.checkASTCommand"
-            name="Check AST">
-      </command>
 	  <command
             categoryId="jp.ac.kyushu.iarch.checkPlugin.iarchcategory"
             id="jp.ac.kyushu.iarch.checkPlugin.generateArch"
             name="Generate ArchCode">
       </command>
-   <command
-         categoryId="jp.ac.kyushu.iarch.checkPlugin.iarchcategory"
-         id="jp.ac.kyushu.iarch.checkPlugin.checkARCommand"
-         name="Check AR">
-   </command>
+      <command
+            id="jp.ac.kyushu.iarch.checkplugin.SelectPoint1"
+            name="SelectPoint">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -49,26 +38,6 @@
                   mnemonic="C"
                   style="push">
             </command>
-            <command
-                  commandId="jp.ac.kyushu.iarch.checkPlugin.checkArchfaceCommand"
-                  id="jp.ac.kyushu.iarch.checkPlugin.checkArchfaceCommandMenu"
-                  label="Check Archface"
-                  mnemonic="C"
-                  style="push">
-            </command>
-            <command
-                  commandId="jp.ac.kyushu.iarch.checkPlugin.checkASTCommand"
-                  id="jp.ac.kyushu.iarch.checkPlugin.checkAstCommandMenu"
-                  label="Check AST"
-                  mnemonic="A"
-                  style="push">
-            </command>
-            <command
-                  commandId="jp.ac.kyushu.iarch.checkPlugin.checkARCommand"
-                  id="jp.ac.kyushu.iarch.checkPlugin.checkARCommandMenu"
-                  label="Check AR"
-                  style="push">
-            </command>
 			<command
                   commandId="jp.ac.kyushu.iarch.checkPlugin.generateArch"
                   id="jp.ac.kyushu.iarch.checkPlugin.generateArchCode"
@@ -76,31 +45,28 @@
                   mnemonic="D"
                   style="push">
             </command>
+            <command
+		         commandId="jp.ac.kyushu.iarch.checkplugin.SelectPoint"
+		         label="SelectPoint"
+		         style="push">
+			</command>
          </menu>
       </menuContribution>
    </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="jp.ac.kyushu.iarch.checkplugin.handler.ConfigurationXMLHandler"
+	<extension
+    	point="org.eclipse.ui.handlers">
+		<handler
+        	class="jp.ac.kyushu.iarch.checkplugin.handler.ConfigurationXMLHandler"
             commandId="jp.ac.kyushu.iarch.checkPlugin.configurationCommand">
-      </handler>
-      <handler
-            class="jp.ac.kyushu.iarch.checkplugin.handler.CheckArchfaceHandler"
-            commandId="jp.ac.kyushu.iarch.checkPlugin.checkArchfaceCommand">
-      </handler>
-            <handler
-            class="jp.ac.kyushu.iarch.checkplugin.handler.CheckARHandler"
-            commandId="jp.ac.kyushu.iarch.checkPlugin.checkARCommand">
-      </handler>
-      <handler
-            class="jp.ac.kyushu.iarch.checkplugin.handler.CheckASTHandler"
-            commandId="jp.ac.kyushu.iarch.checkPlugin.checkASTCommand">
-      </handler>
-	  <handler
-            class="jp.ac.kyushu.iarch.checkplugin.handler.GenerateArchCode"
-            commandId="jp.ac.kyushu.iarch.checkPlugin.generateArch">
-      </handler>
+		</handler>
+		<handler
+			class="jp.ac.kyushu.iarch.checkplugin.handler.GenerateArchCode"
+			commandId="jp.ac.kyushu.iarch.checkPlugin.generateArch">
+		</handler>
+		<handler
+			class="jp.ac.kyushu.iarch.checkplugin.handler.SlectPoint"
+			commandId="jp.ac.kyushu.iarch.checkplugin.SelectPoint">
+		</handler>
    </extension>
    <extension
          point="org.eclipse.ui.views">
@@ -111,7 +77,7 @@
             restorable="true">
       </view>
       <view
-            class="jp.ac.kyushu.iarch.checkplugin.view.UncertainViewPart"
+            class="jp.ac.kyushu.iarch.checkplugin.view.UncertainMethodViewPart"
             id="jp.ac.kyushu.iarch.checkplugin.view1"
             name="Uncertain Methods"
             restorable="true">
