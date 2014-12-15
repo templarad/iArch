@@ -41,7 +41,7 @@ import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclarationStatement;
 
-public class ASTSourceCodeChecker{
+public class ASTSourceCodeChecker {
 	public void SourceCodeArchifileChecker(Model archiface,	IJavaProject project){
 
 		Document codeXmlDocument = DocumentHelper.createDocument();
@@ -230,47 +230,8 @@ public class ASTSourceCodeChecker{
 				}
 			}
 
-			// Interface check
-			for (Interface archiclass : archiface.getInterfaces()) {
-				String className = archiclass.getName();
-				for (Element a : javaClasses) {
-					String className2 = a.attributeValue("name");
-					int lineNumberClass=Integer.parseInt(a.attributeValue("lineNumber").toString());
-					// pick the java methods into JavaMethodList
-					if (className.equals(className2)) {
-						IResource st2=javaFileIResource.getProject().getFile("/src/"+className+".java");
-						ProblemViewManager.addInfo1(st2, "Interface-Class :" + className + " is Exist", javaFileIResource.getName(),lineNumberClass);
-						@SuppressWarnings("unchecked")
-						List<Element> javaMethodList = a.selectNodes("MethodDeclaration");
-						//Method check : m is arch method
-						for (Method m : archiclass.getMethods()) {
-							String methodname = m.getName();
-							String methodname2 = null;
-							boolean isExist = false;
-							for (Element b : javaMethodList) {
-								methodname2 = b.attributeValue("name");
-								int lineNumberMethod=Integer.parseInt(b.attributeValue("lineNumber").toString());
-								if (methodname2.equals(methodname)) {
-									ProblemViewManager.addInfo1(st2, "Interface- Method : " + methodname+ " is Exist", archiclass.getName(),lineNumberMethod);
-									isExist = true;
-									break;
-								}
-							}
-							if (!isExist) {
-								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not Exist", archiclass.getName(),lineNumberClass);
-							}
-						}
-					}
-				}
-			}
 
 			// UncertainInterface check
-
-			// constant numbers for checking alternative methods
-			final int UNDEFINED = 0;	// no altmethods in the class
-			final int DEFINED = 1;		// an altmethod is exist in the class
-			final int DUPLICATED = 2;	// altmethods are duplicated in the class
-
 			for (UncertainInterface u_interface :archiface.getU_interfaces()) {
 				Interface superInterface = u_interface.getSuperInterface();
 				if(superInterface != null){
@@ -326,6 +287,42 @@ public class ASTSourceCodeChecker{
 				}
 			}
 
+
+			// Interface check
+			for (Interface archiclass : archiface.getInterfaces()) {
+				String className = archiclass.getName();
+				for (Element a : javaClasses) {
+					String className2 = a.attributeValue("name");
+					int lineNumberClass=Integer.parseInt(a.attributeValue("lineNumber").toString());
+					// pick the java methods into JavaMethodList
+					if (className.equals(className2)) {
+						IResource st2=javaFileIResource.getProject().getFile("/src/"+className+".java");
+						ProblemViewManager.addInfo1(st2, "Interface-Class :" + className + " is Exist", javaFileIResource.getName(),lineNumberClass);
+						@SuppressWarnings("unchecked")
+						List<Element> javaMethodList = a.selectNodes("MethodDeclaration");
+						//Method check : m is arch method
+						for (Method m : archiclass.getMethods()) {
+							String methodname = m.getName();
+							String methodname2 = null;
+							boolean isExist = false;
+							for (Element b : javaMethodList) {
+								methodname2 = b.attributeValue("name");
+								int lineNumberMethod=Integer.parseInt(b.attributeValue("lineNumber").toString());
+								if (methodname2.equals(methodname)) {
+									ProblemViewManager.addInfo1(st2, "Interface- Method : " + methodname+ " is Exist", archiclass.getName(),lineNumberMethod);
+									isExist = true;
+									break;
+								}
+							}
+							if (!isExist) {
+								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not Exist", archiclass.getName(),lineNumberClass);
+							}
+						}
+					}
+				}
+			}
+
+
 			// behaver
 			for (Behavior behavior : archiface.getBehaviors()) {
 
@@ -369,7 +366,6 @@ public class ASTSourceCodeChecker{
 		}
 	}
 
-
 	private List<String> returnModifiers(int ModifiersNum) {
 		// It is not all
 		List<String> modifiers = new LinkedList<String>();
@@ -382,8 +378,8 @@ public class ASTSourceCodeChecker{
 			modifier = " private";
 		if (ModifiersNum == 4)
 			if (ModifiersNum == 8)
-			modifier = " protective";
-			modifier = " static";
+				modifier = " protective";
+		modifier = " static";
 		if (ModifiersNum == 0x00000010)
 			modifier = " final";
 		if (ModifiersNum == 0x00000020)

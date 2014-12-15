@@ -110,6 +110,12 @@
             name="Abstraction Ratio View"
             restorable="true">
       </view>
+      <view
+            class="jp.ac.kyushu.iarch.checkplugin.view.UncertainViewPart"
+            id="jp.ac.kyushu.iarch.checkplugin.view1"
+            name="Uncertain Methods"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.core.resources.fileModificationValidator">
