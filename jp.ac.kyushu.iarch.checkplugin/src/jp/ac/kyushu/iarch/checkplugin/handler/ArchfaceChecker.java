@@ -33,7 +33,7 @@ public class ArchfaceChecker extends XMLreader {
 				getSequenceDiagramResource(),getSourceCodeResource(),getARXMLResource());
 	}
 	
-	public void checkProjectValidation(IResource archfile, 
+	public synchronized void checkProjectValidation(IResource archfile, 
 			IResource classDiagramResource, 
 			IResource dataflowDiagramResource,
 			List<IResource> sequenceDiagramResources,

@@ -2,6 +2,7 @@ package jp.ac.kyushu.iarch.basefunction.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IResource;
@@ -94,13 +95,15 @@ public class SequenceDiagramModelController {
 		return changed;
 	}
 	
-	public boolean removeMethod(IResource sequenceResource,String actorName, String currentName){
+	public synchronized boolean removeMethod(IResource sequenceResource,String actorName, String currentName){
 		boolean changed = false;
 		Resource sequenceDiagram = GraphitiModelManager.getGraphitiModel(sequenceResource);
 		List<behavior.Message> objects = getMessages(sequenceDiagram, actorName);
-		for (behavior.Message msg : objects){
+		Iterator<behavior.Message> iter = objects.iterator();
+		while(iter.hasNext()){
+			behavior.Message msg = iter.next();
 			if(msg.getName().equals(currentName)){
-				objects.remove(msg);
+				iter.remove();
 				changed = true;
 			}
 		}

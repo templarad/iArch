@@ -1,6 +1,7 @@
 package jp.ac.kyushu.iarch.basefunction.controller;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 import org.eclipse.core.resources.IResource;
 
@@ -112,32 +113,31 @@ public class ArchModelController extends ArchModel {
 		boolean changed = false;
 		Model model = (Model) resource.getContents().get(0);
 		
-		int i=0;
         for(Interface interfc :model.getInterfaces()){
         	
         	if(interfc.getName().equals(className)){
-        		int j = 0;
-        		for(Method method: interfc.getMethods()){
-        			if(currentAttri.equals(method.getName()) ){
-        				model.getInterfaces().get(i).getMethods().remove(j);
+        		Iterator<Method> itMethod = interfc.getMethods().iterator();
+        		while(itMethod.hasNext()){
+                	Method method = itMethod.next();
+                	if(currentAttri.equals(method.getName()) ){
+                		itMethod.remove();
         				changed=true;
                 		break;
         			}
-        			j++;
-        		}        		
+                }
         	}
-        	i++;
         }
-        
-        for(Behavior behvior:model.getBehaviors()){
-        	i = 0;
+        Iterator<Behavior> itbehavior = model.getBehaviors().iterator();
+        while(itbehavior.hasNext()){
+        	Behavior behvior = itbehavior.next();
         	for(Method method : behvior.getCall()){
         		if(method.getName().equals(currentAttri)){
-        			behvior.getCall().remove(i);
-        			i--;
+        			behvior.getCall().remove(method);
         			break;
         		}
-        		i++;
+        	}
+        	if(behvior.getCall().size() == 0){
+        		itbehavior.remove();
         	}
         }
         
