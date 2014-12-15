@@ -4,20 +4,17 @@ import java.io.IOException;
 import java.util.List;
 
 import jp.ac.kyushu.iarch.basefunction.controller.ArchModelController;
-import jp.ac.kyushu.iarch.basefunction.controller.GraphitiModelManager;
 import jp.ac.kyushu.iarch.basefunction.controller.SequenceDiagramModelController;
 import jp.ac.kyushu.iarch.basefunction.reader.ProjectReader;
 import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.graphiti.features.IDeleteFeature;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.context.impl.DeleteContext;
 import org.eclipse.graphiti.features.context.impl.MultiDeleteInfo;
-import org.eclipse.graphiti.features.context.impl.RemoveContext;
 import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
