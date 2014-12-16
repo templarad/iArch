@@ -352,6 +352,16 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getAltMethod_A_name()
+  {
+    return (EAttribute)altMethodEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getOptMethod()
   {
     return optMethodEClass;
@@ -511,6 +521,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     createEAttribute(altMethodEClass, ALT_METHOD__TYPE);
     createEAttribute(altMethodEClass, ALT_METHOD__NAME);
     createEReference(altMethodEClass, ALT_METHOD__PARAM);
+    createEAttribute(altMethodEClass, ALT_METHOD__ANAME);
 
     optMethodEClass = createEClass(OPT_METHOD);
     createEAttribute(optMethodEClass, OPT_METHOD__TYPE);
@@ -580,8 +591,9 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
 
     initEClass(altMethodEClass, AltMethod.class, "AltMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAltMethod_Type(), ecorePackage.getEString(), "type", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAltMethod_Name(), ecorePackage.getEString(), "name", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAltMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAltMethod_Param(), this.getParam(), null, "param", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAltMethod_A_name(), ecorePackage.getEString(), "a_name", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(optMethodEClass, OptMethod.class, "OptMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOptMethod_Type(), ecorePackage.getEString(), "type", null, 0, 1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

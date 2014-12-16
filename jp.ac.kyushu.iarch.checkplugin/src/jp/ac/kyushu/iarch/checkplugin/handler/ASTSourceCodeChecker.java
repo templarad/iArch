@@ -215,21 +215,6 @@ public class ASTSourceCodeChecker{
 			@SuppressWarnings("unchecked")
 			List<Element> javaClasses = test.selectNodes("Class");	//list of classes in java source code
 
-			List<Interface> certainArchInterfaces = new ArrayList<Interface>();	//interfaces in archface which don't have superinterfaces.
-			List<Interface> uncertainArchInterfaces = new ArrayList<Interface>();	//interfaces in archface which have superinterfaces.
-
-			certainArchInterfaces.addAll(archiface.getInterfaces());
-			// divide into CertainInterfaces and UncertainInterfaces the archface Interfaces
-			for(UncertainInterface u_interface : archiface.getU_interfaces()){
-				Interface si = u_interface.getSuperInterface();
-				if (si != null) {
-					if (!(uncertainArchInterfaces.contains(si))) {
-						uncertainArchInterfaces.add(si);
-						certainArchInterfaces.remove(si);
-					}
-				}
-			}
-
 			// Interface check
 			for (Interface archiclass : archiface.getInterfaces()) {
 				String className = archiclass.getName();
@@ -293,7 +278,9 @@ public class ASTSourceCodeChecker{
 
 							//altmethods check
 							for (AltMethod am : u_interface.getAltmethods()) {
-								List<String> altMethodNameArch = am.getName();
+								List<String> altMethodNameArch = new ArrayList<String>();
+								altMethodNameArch.add(am.getName());
+								altMethodNameArch.addAll(am.getA_name());
 								String altMethodNameJava = null;
 								boolean isDefine = false;
 								// altmethods control
@@ -360,8 +347,24 @@ public class ASTSourceCodeChecker{
 					}
 					classNameL = classNameString;
 					methodNameLaString = methodName;
+				}
 			}
-		}
+			
+			//Uncertain Behaviors Check
+//			for (UncertainBehavior u_behavior : archiface.getU_behaviors()) {
+//				
+//				String uncertainInterfaceName = u_behavior.getName();
+//				String superInterfaceName = u_behavior.getInterface().getName();
+//				String lastClassName = null;
+//				String lastMethodName = null;
+//				String outputMsg = null;
+//				
+//				for (SuperMethod methodCall : u_behavior.getCall()) {
+//					boolean isMethodInvocationExist = false;
+//					String typeOfCall = methodCall.getClass().getSimpleName();
+//					System.out.println(typeOfCall);
+//				}
+//			}
 	}
 
 

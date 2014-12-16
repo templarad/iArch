@@ -8,6 +8,7 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -15,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
@@ -31,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl#getType <em>Type</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl#getName <em>Name</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl#getParam <em>Param</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl#getA_name <em>Aname</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,14 +52,24 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
   protected EList<String> type;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<String> name;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getParam() <em>Param</em>}' containment reference list.
@@ -67,6 +80,16 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
    * @ordered
    */
   protected EList<Param> param;
+
+  /**
+   * The cached value of the '{@link #getA_name() <em>Aname</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getA_name()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> a_name;
 
   /**
    * <!-- begin-user-doc -->
@@ -108,13 +131,22 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getName()
+  public String getName()
   {
-    if (name == null)
-    {
-      name = new EDataTypeEList<String>(String.class, this, ArchDSLPackage.ALT_METHOD__NAME);
-    }
     return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.ALT_METHOD__NAME, oldName, name));
   }
 
   /**
@@ -129,6 +161,20 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
       param = new EObjectContainmentEList<Param>(Param.class, this, ArchDSLPackage.ALT_METHOD__PARAM);
     }
     return param;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<String> getA_name()
+  {
+    if (a_name == null)
+    {
+      a_name = new EDataTypeEList<String>(String.class, this, ArchDSLPackage.ALT_METHOD__ANAME);
+    }
+    return a_name;
   }
 
   /**
@@ -163,6 +209,8 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
         return getName();
       case ArchDSLPackage.ALT_METHOD__PARAM:
         return getParam();
+      case ArchDSLPackage.ALT_METHOD__ANAME:
+        return getA_name();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -183,12 +231,15 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
         getType().addAll((Collection<? extends String>)newValue);
         return;
       case ArchDSLPackage.ALT_METHOD__NAME:
-        getName().clear();
-        getName().addAll((Collection<? extends String>)newValue);
+        setName((String)newValue);
         return;
       case ArchDSLPackage.ALT_METHOD__PARAM:
         getParam().clear();
         getParam().addAll((Collection<? extends Param>)newValue);
+        return;
+      case ArchDSLPackage.ALT_METHOD__ANAME:
+        getA_name().clear();
+        getA_name().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -208,10 +259,13 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
         getType().clear();
         return;
       case ArchDSLPackage.ALT_METHOD__NAME:
-        getName().clear();
+        setName(NAME_EDEFAULT);
         return;
       case ArchDSLPackage.ALT_METHOD__PARAM:
         getParam().clear();
+        return;
+      case ArchDSLPackage.ALT_METHOD__ANAME:
+        getA_name().clear();
         return;
     }
     super.eUnset(featureID);
@@ -230,9 +284,11 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
       case ArchDSLPackage.ALT_METHOD__TYPE:
         return type != null && !type.isEmpty();
       case ArchDSLPackage.ALT_METHOD__NAME:
-        return name != null && !name.isEmpty();
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ArchDSLPackage.ALT_METHOD__PARAM:
         return param != null && !param.isEmpty();
+      case ArchDSLPackage.ALT_METHOD__ANAME:
+        return a_name != null && !a_name.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -252,6 +308,8 @@ public class AltMethodImpl extends MinimalEObjectImpl.Container implements AltMe
     result.append(type);
     result.append(", name: ");
     result.append(name);
+    result.append(", a_name: ");
+    result.append(a_name);
     result.append(')');
     return result.toString();
   }

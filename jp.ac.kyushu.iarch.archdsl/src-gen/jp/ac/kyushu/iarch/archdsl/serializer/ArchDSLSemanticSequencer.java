@@ -86,7 +86,7 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     ((type+=ID name+=ID (param+=Param param+=Param*)?)* type+=ID name+=ID (param+=Param param+=Param*)?)
+	 *     (type+=ID name=ID (param+=Param param+=Param*)? (type+=ID a_name+=ID (param+=Param param+=Param*)?)*)
 	 */
 	protected void sequence_AltMethod(EObject context, AltMethod semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

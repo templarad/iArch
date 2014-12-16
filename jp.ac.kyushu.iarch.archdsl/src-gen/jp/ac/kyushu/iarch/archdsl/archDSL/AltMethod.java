@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getType <em>Type</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getName <em>Name</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getParam <em>Param</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getA_name <em>Aname</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,20 +44,30 @@ public interface AltMethod extends EObject
   EList<String> getType();
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute list.
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
    * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getAltMethod_Name()
-   * @model unique="false"
+   * @model
    * @generated
    */
-  EList<String> getName();
+  String getName();
+
+  /**
+   * Sets the value of the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Param</b></em>' containment reference list.
@@ -73,5 +84,21 @@ public interface AltMethod extends EObject
    * @generated
    */
   EList<Param> getParam();
+
+  /**
+   * Returns the value of the '<em><b>Aname</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Aname</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Aname</em>' attribute list.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getAltMethod_A_name()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getA_name();
 
 } // AltMethod

@@ -23,8 +23,8 @@ Method:
 
 AltMethod:
 	"{"
-	(type+=ID name+=ID "(" (param+=Param ("," param+=Param)*)? "),")* type+=ID name+=ID "(" (param+=Param (","
-	param+=Param)*)? ")"
+	type+=ID name=ID "(" (param+=Param ("," param+=Param)*)? ")" ("," type+=ID a_name+=ID "(" (param+=Param (","
+	param+=Param)*)? ")")*
 	"};";
 
 OptMethod:

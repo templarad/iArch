@@ -31,6 +31,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//AltMethod/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//AltMethod/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//AltMethod/param"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//AltMethod/a_name"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//OptMethod">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//OptMethod/type"/>

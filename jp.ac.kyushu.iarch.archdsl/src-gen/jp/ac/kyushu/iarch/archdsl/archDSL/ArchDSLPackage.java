@@ -260,7 +260,7 @@ public interface ArchDSLPackage extends EPackage
   int ALT_METHOD__TYPE = 0;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute list.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -278,13 +278,22 @@ public interface ArchDSLPackage extends EPackage
   int ALT_METHOD__PARAM = 2;
 
   /**
+   * The feature id for the '<em><b>Aname</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALT_METHOD__ANAME = 3;
+
+  /**
    * The number of structural features of the '<em>Alt Method</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ALT_METHOD_FEATURE_COUNT = 3;
+  int ALT_METHOD_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptMethodImpl <em>Opt Method</em>}' class.
@@ -610,10 +619,10 @@ public interface ArchDSLPackage extends EPackage
   EAttribute getAltMethod_Type();
 
   /**
-   * Returns the meta object for the attribute list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Name</em>'.
+   * @return the meta object for the attribute '<em>Name</em>'.
    * @see jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getName()
    * @see #getAltMethod()
    * @generated
@@ -630,6 +639,17 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    */
   EReference getAltMethod_Param();
+
+  /**
+   * Returns the meta object for the attribute list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getA_name <em>Aname</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Aname</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getA_name()
+   * @see #getAltMethod()
+   * @generated
+   */
+  EAttribute getAltMethod_A_name();
 
   /**
    * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod <em>Opt Method</em>}'.
@@ -927,7 +947,7 @@ public interface ArchDSLPackage extends EPackage
     EAttribute ALT_METHOD__TYPE = eINSTANCE.getAltMethod_Type();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -941,6 +961,14 @@ public interface ArchDSLPackage extends EPackage
      * @generated
      */
     EReference ALT_METHOD__PARAM = eINSTANCE.getAltMethod_Param();
+
+    /**
+     * The meta object literal for the '<em><b>Aname</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ALT_METHOD__ANAME = eINSTANCE.getAltMethod_A_name();
 
     /**
      * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptMethodImpl <em>Opt Method</em>}' class.
