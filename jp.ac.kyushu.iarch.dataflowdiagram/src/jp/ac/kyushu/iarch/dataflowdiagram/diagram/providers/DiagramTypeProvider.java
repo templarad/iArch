@@ -1,4 +1,4 @@
-package jp.ac.kyushu.iarch.dataflowdiagram.diagram; 
+package jp.ac.kyushu.iarch.dataflowdiagram.diagram.providers; 
 
 import org.eclipse.graphiti.dt.AbstractDiagramTypeProvider; 
 import org.eclipse.graphiti.tb.IToolBehaviorProvider;

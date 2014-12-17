@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:behavior="http://behavior/1.0" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
-  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="SequenceDiagram" name="Sequence_Valid" snapToGrid="true" pictogramLinks="/0/@children.0/@link /0/@children.0/@children.0/@link /0/@children.0/@children.1/@link /0/@children.0/@children.2/@link /0/@children.0/@children.3/@link /0/@children.0/@children.4/@link /0/@children.0/@children.5/@link /0/@children.1/@link /0/@children.1/@children.0/@link /0/@children.2/@link /0/@children.2/@children.0/@link /0/@children.3/@link /0/@connections.0/@link /0/@children.4/@link /0/@connections.1/@link /0/@children.5/@link /0/@connections.2/@link /0/@children.6/@link /0/@children.7/@link /0/@children.8/@link /0/@children.9/@link /0/@connections.3/@link /0/@children.10/@link /0/@children.11/@link /0/@children.12/@link /0/@connections.4/@link /0/@children.13/@link /0/@children.14/@link /0/@children.15/@link /0/@connections.5/@link /0/@children.16/@link /0/@children.17/@link /0/@connections.6/@link" version="0.10.0">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="SequenceDiagram" name="Sequence_Valid" snapToGrid="true" pictogramLinks="/0/@children.0/@link /0/@children.0/@children.0/@link /0/@children.0/@children.1/@link /0/@children.0/@children.2/@link /0/@children.0/@children.3/@link /0/@children.0/@children.4/@link /0/@children.0/@children.5/@link /0/@children.1/@link /0/@children.1/@children.0/@link /0/@children.2/@link /0/@children.2/@children.0/@link /0/@children.3/@link /0/@connections.0/@link /0/@children.4/@link /0/@connections.1/@link /0/@children.5/@link /0/@connections.2/@link /0/@children.6/@link /0/@children.7/@link /0/@children.8/@link /0/@children.9/@link /0/@connections.3/@link /0/@children.10/@link /0/@children.11/@link /0/@children.12/@link /0/@connections.4/@link /0/@children.13/@link /0/@children.14/@link /0/@children.15/@link /0/@connections.5/@link /0/@children.16/@link /0/@children.17/@link /0/@connections.6/@link" version="0.11.0">
     <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <graphicsAlgorithm xsi:type="al:Rectangle" foreground="/0/@colors.1" lineWidth="1" filled="false" transparency="0.0" width="50" height="65" x="5" y="30"/>
@@ -257,4 +257,7 @@
   <behavior:Message name="getState" Archpoint="true" receiveEvent="/21" sendEvent="/20" MessageOrder="3"/>
   <behavior:MessageOccurrenceSpecification covered="/8" message="/19"/>
   <behavior:MessageOccurrenceSpecification covered="/6" message="/19"/>
+  <behavior:Lifeline/>
+  <behavior:Lifeline/>
+  <behavior:Lifeline/>
 </xmi:XMI>

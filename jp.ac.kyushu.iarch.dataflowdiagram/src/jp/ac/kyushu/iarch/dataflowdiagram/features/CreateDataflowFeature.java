@@ -28,8 +28,8 @@ public boolean canCreate(ICreateConnectionContext context) {
     	return true;
 	}
 }
-	/*below new adding!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-	/*add DataStore!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+	/*--------below new adding--------*/
+	/*--------add DataStore--------*/
 	/*From DataStore -> DataStore*/
 {
 	Dataflow_editor.DataStore source = getDataStore(context.getSourceAnchor());
@@ -115,12 +115,10 @@ if (getExternal_entity(context.getSourceAnchor()) != null) {
      return true;
  }
 // return true if start anchor belongs to a DataStore
- /*below new adding!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
- /*below new adding!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 if (getDataStore(context.getSourceAnchor()) != null) {
      return true;
  }
- /*add Process!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+ /*add Process*/
 if (getProcess(context.getSourceAnchor()) != null) {
      return true;
  }
@@ -132,190 +130,207 @@ if (getProcess(context.getSourceAnchor()) != null) {
 
 
 
-/* get Classes which should be connected*/
-public Connection create(ICreateConnectionContext context) {
- Connection newConnection = null;
+	/* get Classes which should be connected */
+	public Connection create(ICreateConnectionContext context) {
+		DataFlow newdataflow = null;
+		Connection newConnection = null;
 
- 
- // get Classes which should be connected
- Dataflow_editor.External_entity EtE_source = getExternal_entity(context.getSourceAnchor());
- Dataflow_editor.External_entity EtE_target = getExternal_entity(context.getTargetAnchor());
- 
- if (EtE_source != null && EtE_target != null) {
-     // create new business object 
-	 DataFlow EtE_Reference =  EtE_createDataFlow(EtE_source, EtE_target);
-	 
-	 EtE_Reference.setArchpoint(true);//2014.8.7 new
-        
-     // add connection for business object
-     AddConnectionContext addContext =
-         new AddConnectionContext(context.getSourceAnchor(), context
-             .getTargetAnchor());
-     addContext.setNewObject(EtE_Reference);
-     newConnection =
-         (Connection) getFeatureProvider().addIfPossible(addContext);
-     getFeatureProvider().getDirectEditingInfo().setActive(true);
- 	}
- 
+		// get elements which should be connected
+		Dataflow_editor.External_entity EtE_source = getExternal_entity(context
+				.getSourceAnchor());
+		Dataflow_editor.External_entity EtE_target = getExternal_entity(context
+				.getTargetAnchor());
 
- /*below new adding!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
- /*below new adding!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
- Dataflow_editor.DataStore DStDS_source = getDataStore(context.getSourceAnchor());
- Dataflow_editor.DataStore DStDS_target = getDataStore(context.getTargetAnchor());
- 
-if (DStDS_source != null && DStDS_target != null) {
-     // create new business object 
-	 DataFlow DStDS_Reference =  DStDS_createDataFlow(DStDS_source, DStDS_target);   
-	 
-	 DStDS_Reference.setArchpoint(true);//2014.8.7 new
-	 
-     // add connection for business object
-     AddConnectionContext addContext =
-         new AddConnectionContext(context.getSourceAnchor(), context
-             .getTargetAnchor());
-     addContext.setNewObject(DStDS_Reference);
-     newConnection =
-         (Connection) getFeatureProvider().addIfPossible(addContext);
-     getFeatureProvider().getDirectEditingInfo().setActive(true);
- 	}
- 
- 
- 
- 
-/*add Process!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-Dataflow_editor.Process PtP_source = getProcess(context.getSourceAnchor());
-Dataflow_editor.Process PtP_target = getProcess(context.getTargetAnchor());
- /*add Process!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-if (PtP_source != null && PtP_target != null) {
-     // create new business object 
-	 DataFlow PtP_Reference = PtP_createDataFlow(PtP_source, PtP_target); 
-	 
-	 PtP_Reference.setArchpoint(true);//2014.8.7 new
-	 
-     // add connection for business object
-     AddConnectionContext addContext =
-         new AddConnectionContext(context.getSourceAnchor(), context
-             .getTargetAnchor());
-     addContext.setNewObject(PtP_Reference);
-     newConnection =
-         (Connection) getFeatureProvider().addIfPossible(addContext);
-     getFeatureProvider().getDirectEditingInfo().setActive(true);
- 	}
+		if (EtE_source != null && EtE_target != null) {
+			// create new business object
+			newdataflow = EtE_createDataFlow(EtE_source, EtE_target);
 
-/*add PtDS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-Dataflow_editor.Process PtDS_source = getProcess(context.getSourceAnchor());
-Dataflow_editor.DataStore PtDS_target = getDataStore(context.getTargetAnchor());
+			newdataflow.setArchpoint(true);// 2014.8.7 new
 
-if (PtDS_source != null && PtDS_target != null) {
-     // create new business object 
-	 DataFlow PtDS_Reference = PtDS_createDataFlow(PtDS_source, PtDS_target);  
-	 
-	 PtDS_Reference.setArchpoint(true);//2014.8.7 new
-	 
-     // add connection for business object
-     AddConnectionContext addContext =
-         new AddConnectionContext(context.getSourceAnchor(), context
-             .getTargetAnchor());
-     addContext.setNewObject(PtDS_Reference);
-     newConnection =
-         (Connection) getFeatureProvider().addIfPossible(addContext);
-     getFeatureProvider().getDirectEditingInfo().setActive(true);
- 	} 
+			// add connection for business object
+			AddConnectionContext addContext = new AddConnectionContext(
+					context.getSourceAnchor(), context.getTargetAnchor());
+			addContext.setNewObject(newdataflow);
+			newConnection = (Connection) getFeatureProvider().addIfPossible(
+					addContext);
+			getFeatureProvider().getDirectEditingInfo().setActive(true);
+		}
 
-/*add DStP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-Dataflow_editor.DataStore DStP_source = getDataStore(context.getSourceAnchor());
-Dataflow_editor.Process DStP_target = getProcess(context.getTargetAnchor());
+		/* below new adding */
+		Dataflow_editor.DataStore DStDS_source = getDataStore(context
+				.getSourceAnchor());
+		Dataflow_editor.DataStore DStDS_target = getDataStore(context
+				.getTargetAnchor());
 
-if (DStP_source != null && DStP_target != null) {
-     // create new business object 
-	 DataFlow DStP_Reference = DStP_createDataFlow(DStP_source, DStP_target);  
-	 
-	 DStP_Reference.setArchpoint(true);//2014.8.7 new
-	 
-     // add connection for business object
-     AddConnectionContext addContext =
-         new AddConnectionContext(context.getSourceAnchor(), context
-             .getTargetAnchor());
-     addContext.setNewObject(DStP_Reference);
-     newConnection =
-         (Connection) getFeatureProvider().addIfPossible(addContext);
-     getFeatureProvider().getDirectEditingInfo().setActive(true);
- 	} 
+		if (DStDS_source != null && DStDS_target != null) {
+			// create new business object
+			newdataflow = DStDS_createDataFlow(DStDS_source,
+					DStDS_target);
 
-/*add Process to External_entity!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-Dataflow_editor.Process PtE_source = getProcess(context.getSourceAnchor());
-Dataflow_editor.External_entity PtE_target = getExternal_entity(context.getTargetAnchor());
+			newdataflow.setArchpoint(true);// 2014.8.7 new
 
-if (PtE_source != null && PtE_target != null) {
-     // create new business object 
-	 DataFlow PtE_Reference = PtE_createDataFlow(PtE_source, PtE_target);  
-	 
-	 PtE_Reference.setArchpoint(true);//2014.8.7 new
-	 
-	 // add connection for business object
-     AddConnectionContext addContext =
-         new AddConnectionContext(context.getSourceAnchor(), context
-             .getTargetAnchor());
-     addContext.setNewObject(PtE_Reference);
-     newConnection =
-         (Connection) getFeatureProvider().addIfPossible(addContext);
-     getFeatureProvider().getDirectEditingInfo().setActive(true);
- 	} 
+			// add connection for business object
+			AddConnectionContext addContext = new AddConnectionContext(
+					context.getSourceAnchor(), context.getTargetAnchor());
+			addContext.setNewObject(newdataflow);
+			newConnection = (Connection) getFeatureProvider().addIfPossible(
+					addContext);
+			getFeatureProvider().getDirectEditingInfo().setActive(true);
+		}
 
-/*add   External_entity -> Process */
-Dataflow_editor.External_entity EtP_source = getExternal_entity(context.getSourceAnchor());
-Dataflow_editor.Process EtP_target = getProcess(context.getTargetAnchor());
+		/* add Process */
+		Dataflow_editor.Process PtP_source = getProcess(context
+				.getSourceAnchor());
+		Dataflow_editor.Process PtP_target = getProcess(context
+				.getTargetAnchor());
+		/* add Process */
+		if (PtP_source != null && PtP_target != null) {
+			// create new business object
+			newdataflow = PtP_createDataFlow(PtP_source, PtP_target);
 
-if (EtP_source != null && EtP_target != null) {
-     // create new business object 
-	 DataFlow EtP_Reference = EtP_createDataFlow(EtP_source, EtP_target);   
-     // add connection for business object
-     AddConnectionContext addContext =
-         new AddConnectionContext(context.getSourceAnchor(), context
-             .getTargetAnchor());
-     addContext.setNewObject(EtP_Reference);
-     newConnection =
-         (Connection) getFeatureProvider().addIfPossible(addContext);
-     getFeatureProvider().getDirectEditingInfo().setActive(true);
- 	} 
+			newdataflow.setArchpoint(true);// 2014.8.7 new
 
-/*add  External_entity -> DataStore */
-Dataflow_editor.External_entity EtDS_source = getExternal_entity(context.getSourceAnchor());
-Dataflow_editor.DataStore EtDS_target = getDataStore(context.getTargetAnchor());
+			// add connection for business object
+			AddConnectionContext addContext = new AddConnectionContext(
+					context.getSourceAnchor(), context.getTargetAnchor());
+			addContext.setNewObject(newdataflow);
+			newConnection = (Connection) getFeatureProvider().addIfPossible(
+					addContext);
+			getFeatureProvider().getDirectEditingInfo().setActive(true);
+		}
 
-if (EtDS_source != null && EtDS_target != null) {
-     // create new business object 
-	 DataFlow EtDS_Reference = EtDS_createDataFlow(EtDS_source, EtDS_target);   
-     // add connection for business object
-     AddConnectionContext addContext =
-         new AddConnectionContext(context.getSourceAnchor(), context
-             .getTargetAnchor());
-     addContext.setNewObject(EtDS_Reference);
-     newConnection =
-         (Connection) getFeatureProvider().addIfPossible(addContext);
-     getFeatureProvider().getDirectEditingInfo().setActive(true);
- 	} 
+		/*------------------add PtDS----------------------*/
+		Dataflow_editor.Process PtDS_source = getProcess(context
+				.getSourceAnchor());
+		Dataflow_editor.DataStore PtDS_target = getDataStore(context
+				.getTargetAnchor());
 
-/*add DataStore -> External_entity */
-Dataflow_editor.DataStore DStE_source = getDataStore(context.getSourceAnchor());
-Dataflow_editor.External_entity DStE_target = getExternal_entity(context.getTargetAnchor());
+		if (PtDS_source != null && PtDS_target != null) {
+			// create new business object
+			newdataflow = PtDS_createDataFlow(PtDS_source,
+					PtDS_target);
 
-if (DStE_source != null && DStE_target != null) {
-     // create new business object 
-	 DataFlow DStE_Reference = DStE_createDataFlow(DStE_source, DStE_target);   
-     // add connection for business object
-     AddConnectionContext addContext =
-         new AddConnectionContext(context.getSourceAnchor(), context
-             .getTargetAnchor());
-     addContext.setNewObject(DStE_Reference);
-     newConnection =
-         (Connection) getFeatureProvider().addIfPossible(addContext);
-     getFeatureProvider().getDirectEditingInfo().setActive(true);
- 	} 
+			newdataflow.setArchpoint(true);// 2014.8.7 new
 
+			// add connection for business object
+			AddConnectionContext addContext = new AddConnectionContext(
+					context.getSourceAnchor(), context.getTargetAnchor());
+			addContext.setNewObject(newdataflow);
+			newConnection = (Connection) getFeatureProvider().addIfPossible(
+					addContext);
+			getFeatureProvider().getDirectEditingInfo().setActive(true);
+		}
 
- return newConnection;
-}
+		/* add DStP */
+		Dataflow_editor.DataStore DStP_source = getDataStore(context
+				.getSourceAnchor());
+		Dataflow_editor.Process DStP_target = getProcess(context
+				.getTargetAnchor());
+
+		if (DStP_source != null && DStP_target != null) {
+			// create new business object
+			newdataflow = DStP_createDataFlow(DStP_source,
+					DStP_target);
+
+			//dataflow.setArchpoint(true);// 2014.8.7 new
+
+			// add connection for business object
+			AddConnectionContext addContext = new AddConnectionContext(
+					context.getSourceAnchor(), context.getTargetAnchor());
+			addContext.setNewObject(newdataflow);
+			newConnection = (Connection) getFeatureProvider().addIfPossible(
+					addContext);
+			getFeatureProvider().getDirectEditingInfo().setActive(true);
+		}
+
+		/* add Process to External_entity */
+		Dataflow_editor.Process PtE_source = getProcess(context
+				.getSourceAnchor());
+		Dataflow_editor.External_entity PtE_target = getExternal_entity(context
+				.getTargetAnchor());
+
+		if (PtE_source != null && PtE_target != null) {
+			// create new business object
+			/* !!"createDataFlow"->"PtE_createDataFlow" line398 changed,too !! */
+			newdataflow = PtE_createDataFlow(PtE_source, PtE_target);
+
+			//dataflow.setArchpoint(true);// 2014.8.7 new
+
+			// add connection for business object
+			AddConnectionContext addContext = new AddConnectionContext(
+					context.getSourceAnchor(), context.getTargetAnchor());
+			addContext.setNewObject(newdataflow);
+			newConnection = (Connection) getFeatureProvider().addIfPossible(
+					addContext);
+			getFeatureProvider().getDirectEditingInfo().setActive(true);
+		}
+
+		/* add External_entity -> Process */
+		Dataflow_editor.External_entity EtP_source = getExternal_entity(context
+				.getSourceAnchor());
+		Dataflow_editor.Process EtP_target = getProcess(context
+				.getTargetAnchor());
+
+		if (EtP_source != null && EtP_target != null) {
+			// create new business object
+			newdataflow = EtP_createDataFlow(EtP_source, EtP_target);
+			// add connection for business object
+			AddConnectionContext addContext = new AddConnectionContext(
+					context.getSourceAnchor(), context.getTargetAnchor());
+			addContext.setNewObject(newdataflow);
+			newConnection = (Connection) getFeatureProvider().addIfPossible(
+					addContext);
+			getFeatureProvider().getDirectEditingInfo().setActive(true);
+		}
+
+		/* add External_entity -> DataStore */
+		Dataflow_editor.External_entity EtDS_source = getExternal_entity(context
+				.getSourceAnchor());
+		Dataflow_editor.DataStore EtDS_target = getDataStore(context
+				.getTargetAnchor());
+
+		if (EtDS_source != null && EtDS_target != null) {
+			// create new business object
+			newdataflow = EtDS_createDataFlow(EtDS_source,
+					EtDS_target);
+			// add connection for business object
+			AddConnectionContext addContext = new AddConnectionContext(
+					context.getSourceAnchor(), context.getTargetAnchor());
+			addContext.setNewObject(newdataflow);
+			newConnection = (Connection) getFeatureProvider().addIfPossible(
+					addContext);
+			getFeatureProvider().getDirectEditingInfo().setActive(true);
+		}
+
+		/* add DataStore -> External_entity */
+		Dataflow_editor.DataStore DStE_source = getDataStore(context
+				.getSourceAnchor());
+		Dataflow_editor.External_entity DStE_target = getExternal_entity(context
+				.getTargetAnchor());
+
+		if (DStE_source != null && DStE_target != null) {
+			// create new business object
+			newdataflow = DStE_createDataFlow(DStE_source,
+					DStE_target);
+			// add connection for business object
+			AddConnectionContext addContext = new AddConnectionContext(
+					context.getSourceAnchor(), context.getTargetAnchor());
+			addContext.setNewObject(newdataflow);
+			newConnection = (Connection) getFeatureProvider().addIfPossible(
+					addContext);
+			getFeatureProvider().getDirectEditingInfo().setActive(true);
+
+			//getDiagram().eResource().getContents().add(dataflow);
+
+		}
+
+		if(newdataflow == null){
+			
+		}else{
+			getDiagram().eResource().getContents().add(newdataflow);
+		}
+		return newConnection;
+	}
 
 
 
@@ -324,38 +339,37 @@ if (DStE_source != null && DStE_target != null) {
 /**
 * Returns the Class belonging to the anchor, or null if not available.
 */
-private Dataflow_editor.External_entity getExternal_entity(Anchor anchor) {
- if (anchor != null) {
-     Object object =
-         getBusinessObjectForPictogramElement(anchor.getParent());
-     if (object instanceof Dataflow_editor.External_entity) {
-         return (Dataflow_editor.External_entity) object;      
+private Dataflow_editor.External_entity getExternal_entity(Anchor anchor_e) {
+ if (anchor_e != null) {
+     Object object_e =
+         getBusinessObjectForPictogramElement(anchor_e.getParent());
+     if (object_e instanceof Dataflow_editor.External_entity) {
+         return (Dataflow_editor.External_entity) object_e;      
      }    
  }
  return null;
 }
 
-/*below new adding!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-/*below new adding!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-/*below new private class!!!!!!!!!!!!!*/
-private Dataflow_editor.DataStore getDataStore(Anchor anchor) {
-	 if (anchor != null) {
-	     Object object =
-	         getBusinessObjectForPictogramElement(anchor.getParent());
-	     if (object instanceof Dataflow_editor.DataStore) {
-	         return (Dataflow_editor.DataStore) object;      
+/*below new adding*/
+/*below new private class*/
+private Dataflow_editor.DataStore getDataStore(Anchor anchor_ds) {
+	 if (anchor_ds != null) {
+	     Object object_ds =
+	         getBusinessObjectForPictogramElement(anchor_ds.getParent());
+	     if (object_ds instanceof Dataflow_editor.DataStore) {
+	         return (Dataflow_editor.DataStore) object_ds;      
 	     } 
  }
  return null;
 }
-/*below new private class!!!!!!!!!!!!!*/
-/*add Process!!!!!!!!!!!!!*/
-private Dataflow_editor.Process getProcess(Anchor anchor) {
-	 if (anchor != null) {
-	     Object object =
-	         getBusinessObjectForPictogramElement(anchor.getParent());
-	     if (object instanceof Dataflow_editor.Process) {
-	         return (Dataflow_editor.Process) object;      
+/*below new private class*/
+/*add Process*/
+private Dataflow_editor.Process getProcess(Anchor anchor_p) {
+	 if (anchor_p != null) {
+	     Object object_p =
+	         getBusinessObjectForPictogramElement(anchor_p.getParent());
+	     if (object_p instanceof Dataflow_editor.Process) {
+	         return (Dataflow_editor.Process) object_p;      
 	     }  
  }
 return null;
@@ -363,7 +377,7 @@ return null;
 
 
 /**
-* Creates a Reference between two Classes(or element).
+* Creates a Reference between two element.
 */
 private DataFlow EtE_createDataFlow(Dataflow_editor.External_entity EtE_source, Dataflow_editor.External_entity EtE_target) {
 	DataFlow EtE_Reference = Dataflow_editorFactory.eINSTANCE.createDataFlow();
@@ -397,15 +411,16 @@ private DataFlow DStP_createDataFlow(Dataflow_editor.DataStore DStP_source, Data
 	return  DStP_Reference;
 	}
 
+/*2014.12.15 new "createDataFlow"->"PtE_createDataFlow"    line249 changed,too*/
 private DataFlow PtE_createDataFlow(Dataflow_editor.Process PtE_source, Dataflow_editor.External_entity PtE_target) {
 	DataFlow PtE_Reference = Dataflow_editorFactory.eINSTANCE.createDataFlow();
-	PtE_Reference.setName("newDataflow");
+	PtE_Reference.setName("output");
 	return  PtE_Reference;
 	}
 
 private DataFlow EtP_createDataFlow(Dataflow_editor.External_entity EtP_source, Dataflow_editor.Process EtP_target) {
 	DataFlow EtP_Reference = Dataflow_editorFactory.eINSTANCE.createDataFlow();
-	EtP_Reference.setName("newDataflow");
+	EtP_Reference.setName("input");
 	return  EtP_Reference;
 	}
 

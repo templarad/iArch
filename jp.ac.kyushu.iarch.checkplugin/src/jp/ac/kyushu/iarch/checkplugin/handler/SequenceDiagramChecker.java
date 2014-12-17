@@ -9,6 +9,7 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.basefunction.controller.GraphitiModelManager;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -17,11 +18,18 @@ import behavior.Message;
 import behavior.MessageOccurrenceSpecification;
 
 public class SequenceDiagramChecker {
+	private static final Logger logger = Logger.getLogger(SequenceDiagramChecker.class);
 	public boolean checkSequenceDiagram(Model archiface, IResource sequenceResource){
 		Resource sequenceDiagram = GraphitiModelManager.getGraphitiModel(sequenceResource);
 		List<Message> diagramMessages = getMassageSequence(sequenceDiagram);
 
 		for(Behavior behavior : archiface.getBehaviors()){
+		
+	   //2014.12.15 newly
+			logger.info("!!!behavior name!!!");	
+			logger.info(behavior.getInterface().getName());	
+		
+		
 			if(checkMessageOrder(behavior, diagramMessages)){
 				//ProblemViewManager.addInfo(sequenceResource, behavior.getInterface().getName()+
 				//" sequence order is valid",behavior.getInterface().getName());

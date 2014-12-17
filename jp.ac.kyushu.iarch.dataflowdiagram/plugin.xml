@@ -21,7 +21,7 @@
   <extension
       point="org.eclipse.graphiti.ui.diagramTypeProviders">
     <diagramTypeProvider
-      class="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramTypeProvider"
+      class="jp.ac.kyushu.iarch.dataflowdiagram.diagram.providers.DiagramTypeProvider"
       description="This is my editor for the Graphiti test"
       id="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramTypeProvider"
       name="Dataflow Diagram">
@@ -39,7 +39,7 @@ id="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramImageProvider">
          point="org.eclipse.graphiti.ui.imageProviders">
       <imageProvider
    
-class="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramImageProvider"
+class="jp.ac.kyushu.iarch.dataflowdiagram.diagram.providers.DiagramImageProvider"
             
 id="jp.ac.kyushu.iarch.dataflowdiagram.diagram.DiagramImageProvider">
       </imageProvider>

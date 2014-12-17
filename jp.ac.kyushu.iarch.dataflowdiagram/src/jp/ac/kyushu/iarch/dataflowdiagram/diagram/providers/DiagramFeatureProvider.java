@@ -1,4 +1,4 @@
-package jp.ac.kyushu.iarch.dataflowdiagram.diagram;
+package jp.ac.kyushu.iarch.dataflowdiagram.diagram.providers;
 
 import jp.ac.kyushu.iarch.dataflowdiagram.features.DirectEditDataflowFeature;
 import jp.ac.kyushu.iarch.dataflowdiagram.features.DirectEditDatastoreFeature;

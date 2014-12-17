@@ -14,3 +14,5 @@ Subject = (Subject.setState->
 );            
 Observer = (Observer.update->Subject.getState
 	->Observer);
+	
+    

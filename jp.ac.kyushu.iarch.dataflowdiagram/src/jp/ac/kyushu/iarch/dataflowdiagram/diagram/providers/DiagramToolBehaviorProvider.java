@@ -1,4 +1,4 @@
-package jp.ac.kyushu.iarch.dataflowdiagram.diagram;
+package jp.ac.kyushu.iarch.dataflowdiagram.diagram.providers;
 
 import org.eclipse.graphiti.dt.IDiagramTypeProvider;
 import org.eclipse.graphiti.features.ICreateFeature;
@@ -17,20 +17,19 @@ public class DiagramToolBehaviorProvider extends DefaultToolBehaviorProvider {
 
 
 	public IPaletteCompartmentEntry[] getPalette() {
-		// 共三个compartments
+		
 		IPaletteCompartmentEntry compartments[] = super.getPalette();
 
 		for (IPaletteCompartmentEntry compartment : compartments) {
-			// 为所有EMF模型提供图片
+			
 			if (compartment.getLabel().equals("Objects")) {
-				// 首先清除默认的所有条目
+				
 				compartment.getToolEntries().clear();
 
-				// 获取4个创建特征
+				
 				for (ICreateFeature feature : getFeatureProvider()
 						.getCreateFeatures()) {
-					// addImageFilePath(TERMINAL_IMAGE,
-					// realPath)做了id到图片路径的映射，提供id即可
+					
 					String id = feature.getCreateName();
 
 					IToolEntry newEntry = new ObjectCreationToolEntry(

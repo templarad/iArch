@@ -125,7 +125,7 @@ public class SelectDiagramsDialogAR extends Dialog {
 			for(TableItem item : archiTable.getItems()){
 				if(item.getChecked()) cntArchiFiles++;
 			}
-			if(cntArchiFiles==1&&cntClassDiagrams==1&&cntDataflowDiagrams==1&&cntSequenceDiagrams>0){
+			if(cntArchiFiles==1&&cntClassDiagrams==1&&cntDataflowDiagrams>=0&&cntSequenceDiagrams>0){
 				okButton.setEnabled(true);
 			}else{
 				okButton.setEnabled(false);

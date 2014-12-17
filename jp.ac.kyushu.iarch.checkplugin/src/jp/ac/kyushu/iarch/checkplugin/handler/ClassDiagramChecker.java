@@ -20,7 +20,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import umlClass.Class;
 import umlClass.Operation;
 
+  
 public class ClassDiagramChecker{
+	
 	public void checkClassDiagram(Model archiface, IResource classDiagramResource){
 		Resource classDiagram = GraphitiModelManager
 				.getGraphitiModel(classDiagramResource);
@@ -33,6 +35,7 @@ public class ClassDiagramChecker{
 				//check methods
 				for(Method m : archiclass.getMethods()){
 					Operation op = findMethod(m, umlClass);
+					
 					if(op!=null){
 						//ProblemViewManager.addInfo(classDiagramResource, "  "+archiclass.getName()+"."+m.getName()+" is valid", m.getName());						
 					}else{

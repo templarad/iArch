@@ -158,7 +158,7 @@ public class SelectDiagramsDialog extends Dialog {
 			for(TableItem item : sequenceTable.getItems()){
 				if(item.getChecked()) cntSequenceDiagrams++;
 			}
-			if(cntArchiFiles==1&&cntClassDiagrams==1&&cntDataflowDiagrams==1&&cntSequenceDiagrams>0){
+			if(cntArchiFiles==1&&cntClassDiagrams==1&&cntDataflowDiagrams>=0&&cntSequenceDiagrams>0){
 				okButton.setEnabled(true);
 			}else{
 				okButton.setEnabled(false);

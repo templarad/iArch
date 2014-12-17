@@ -7,6 +7,9 @@
   <ClassDiagram>
     <Path Attribute="\ObserverPattern\diagrams\Class.diagram"/>
   </ClassDiagram>
+  <DataflowDiagram>
+    <Path Attribute="\ObserverPattern\diagrams\Dataflow.diagram"/>
+  </DataflowDiagram>
   <SequenceDiagram>
     <Path Attribute="\ObserverPattern\diagrams\Sequence_Valid.diagram"/>
   </SequenceDiagram>
