@@ -1,16 +1,15 @@
 package jp.ac.kyushu.iarch.classdiagram.features;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
-import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
-import org.eclipse.graphiti.mm.pictograms.Shape;
 
 public class RefactoringRemoveClass extends AbstractCustomFeature{
 
-	private static final Logger logger = Logger.getLogger(RefactoringRemoveClass.class);
+	private static final Logger logger = LogManager.getLogger(RefactoringRemoveClass.class);
 	
 	public RefactoringRemoveClass(IFeatureProvider fp) {
 		super(fp);
@@ -45,13 +44,12 @@ public class RefactoringRemoveClass extends AbstractCustomFeature{
     }
 	@Override
 	public void execute(ICustomContext context) {
-		logger.debug("Start Refactoring : Remove class.");
 		PictogramElement[] pes = context.getPictogramElements();
 		for(PictogramElement pe : pes){
 			Object bo = getBusinessObjectForPictogramElement(pe);
 			umlClass.Class umlClass = (umlClass.Class) bo;
-			umlClass.getName();
-			logger.debug("Start Refactoring : Remove class.= {}", umlClass.getName());
+			String removeClassName = umlClass.getName();
+			logger.info("Start Refactoring : Remove class.= {}", removeClassName);
 		}
 		
 	}
