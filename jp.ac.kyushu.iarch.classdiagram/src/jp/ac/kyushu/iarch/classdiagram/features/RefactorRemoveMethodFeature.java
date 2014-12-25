@@ -20,6 +20,8 @@ import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import umlClass.Operation;
 /**
@@ -30,6 +32,7 @@ import umlClass.Operation;
  */
 public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
 
+	private static final Logger logger = LoggerFactory.getLogger(RefactorRemoveMethodFeature.class);
 	private boolean hasDoneChanges = false;
 	
 	public RefactorRemoveMethodFeature(IFeatureProvider fp) {
@@ -90,12 +93,7 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
                 	{
                     	
                     	ArchModelController archmodel = new ArchModelController(xx.getArchfileResource());
-//                    	try {
-//    						project.getMarker(0).getAttribute(IMarker.PROBLEM);
-//    					} catch (CoreException e) {
-//    						// TODO Auto-generated catch block
-//    						e.printStackTrace();
-//    					}
+                    	logger.debug("Get Archface model success!");
                     	
                     	archmodel.removeMethod(owenClass.getName(),currentName);
                     	List<IResource> sqDiagrams = xx.getSequenceDiagramResource();
@@ -106,15 +104,6 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
                     	}
                     	if(!changed)
                     		System.out.println("Refactoring: Can't find the same object("+ owenClass.getName()+") in sequence diagram.");
-
-
-//                		try {
-//    						((Operation) bo).eContainer().eResource().save(null);
-//    					} catch (IOException e) {
-//    						// TODO Auto-generated catch block
-//    						e.printStackTrace();
-//        					
-//                    	}
                 	}
                 	//End refactoring
                 	
@@ -131,6 +120,7 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+						logger.error("Refactoring saving fail.");
 					}
                     
             }
