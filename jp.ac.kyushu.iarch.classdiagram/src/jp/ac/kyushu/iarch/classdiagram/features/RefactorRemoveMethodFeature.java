@@ -93,8 +93,6 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
                 	{
                     	
                     	ArchModelController archmodel = new ArchModelController(xx.getArchfileResource());
-                    	logger.debug("Get Archface model success!");
-                    	
                     	archmodel.removeMethod(owenClass.getName(),currentName);
                     	List<IResource> sqDiagrams = xx.getSequenceDiagramResource();
                     	boolean changed = false;
@@ -102,9 +100,9 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
                     		SequenceDiagramModelController sdmh = new SequenceDiagramModelController();
                     		changed = sdmh.removeMethod(sqDiagram, owenClass.getName(), currentName);
                     	}
-                    	logger.debug("Removed method.");
-                    	if(!changed)
-                    		System.out.println("Refactoring: Can't find the same object("+ owenClass.getName()+") in sequence diagram.");
+                    	if(!changed){
+                    		logger.debug("Refactoring - Can't find the same object({}) in sequence diagram.", owenClass.getName());
+                    	}
                 	}
                 	//End refactoring
                 	
@@ -113,15 +111,16 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
             		DeleteContext ctx = new DeleteContext(shape);
             		ctx.setMultiDeleteInfo(new MultiDeleteInfo(false, false, 2));
             		IDeleteFeature deleteFeature = getFeatureProvider().getDeleteFeature(ctx);
-            		if (deleteFeature!=null)
+            		if (deleteFeature!=null){
             			deleteFeature.execute(ctx);
+            		}
             		updatePictogramElement(shape.getContainer());
                     try {
                     	getDiagram().eResource().save(null);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-						logger.error("Refactoring saving fail.");
+						logger.error("Refactoring - Saving diagram failed : {}", getDiagram().getName());
 					}
                     
             }

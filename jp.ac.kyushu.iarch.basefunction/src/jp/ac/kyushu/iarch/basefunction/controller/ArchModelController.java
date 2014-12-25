@@ -149,22 +149,15 @@ public class ArchModelController extends ArchModel {
 	/**
 	 * Remove the specific class from Arch model resource.
 	 * @param className The name of class to be removed.
-	 * 
+	 * @return <b>true</b> If removed something and saved success.
+	 * <br><b>false</b> If nothing changed of saved resource failed.
 	 */
-	public void removeClass(String className){
+	public boolean removeClass(String className){
 		if(null == resource){
-			return;
+			return false;
 		}
 		boolean changed = false;
 		Model model = (Model) resource.getContents().get(0);
-		Iterator<Interface> interfaceIt = model.getInterfaces().iterator();
-		while(interfaceIt.hasNext()){
-			Interface interfc = interfaceIt.next();
-			if(interfc.getName().equals(className)){
-				interfaceIt.remove();
-				changed = true;
-			}
-		}
 		
 		Iterator<Behavior> behaviorIt = model.getBehaviors().iterator();
 		while(behaviorIt.hasNext()){
@@ -172,15 +165,35 @@ public class ArchModelController extends ArchModel {
 			if(behaviorfc.getInterface().getName().equals(className)){
 				behaviorIt.remove();
 				changed = true;
+			}else{
+				Iterator<Method> methodIt = behaviorfc.getCall().iterator();
+				while(methodIt.hasNext()){
+					Method call = methodIt.next();
+					String objectName = ((Interface) call.eContainer()).getName();
+					if(objectName.equals(className)){
+						methodIt.remove();
+					}
+				}
 			}
 		}
+		
+		for(Interface interfc :model.getInterfaces()){
+        	if(interfc.getName().equals(className)){
+        		model.getInterfaces().remove(interfc);
+        		changed = true;
+        		break;
+        	}
+        }
 		if(!changed){
-        	return;
+        	return changed;
 		}
 		try {
 			resource.save(null);
+			resource.unload();
+			return changed;
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 }

@@ -1,6 +1,7 @@
 package jp.ac.kyushu.iarch.classdiagram.features;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,13 +11,21 @@ import jp.ac.kyushu.iarch.basefunction.reader.ProjectReader;
 import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.graphiti.features.IDeleteFeature;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
+import org.eclipse.graphiti.features.context.impl.DeleteContext;
+import org.eclipse.graphiti.features.context.impl.MultiDeleteInfo;
 import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
+import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**Haven't completed yet:<br>
+ * Refactoring pattern : Remove Class
+ * @author Templar
+ *
+ */
 public class RefactoringRemoveClass extends AbstractCustomFeature{
 
 	private static final Logger logger = LoggerFactory.getLogger(RefactoringRemoveClass.class);
@@ -54,24 +63,52 @@ public class RefactoringRemoveClass extends AbstractCustomFeature{
     }
 	@Override
 	public void execute(ICustomContext context) {
-		logger.debug("Start Refactoring : Remove class.");
+		logger.info("Refactoring - Start removing class.");
 		IProject project = ProjectReader.getProject();
 		XMLreader xx= new XMLreader(project);
 		ArchModelController archmodel = new ArchModelController(xx.getArchfileResource());
-		List<String> removeClasses = new ArrayList<String>(); 
+		List<String> removeClasses = new ArrayList<String>();
+		List<ContainerShape> classShape = new ArrayList<ContainerShape>();
 		PictogramElement[] pes = context.getPictogramElements();
 		for(PictogramElement pe : pes){
 			Object bo = getBusinessObjectForPictogramElement(pe);
 			umlClass.Class umlClass = (umlClass.Class) bo;
 			String removeClassName = umlClass.getName();
 			removeClasses.add(removeClassName);
+			classShape.add((ContainerShape)pe);
 		}
+		int removedClassSize = removeClasses.size();
+		int classShapeSize = classShape.size();
+		
+		//Remove classes' from Arch code.
 		Iterator<String> classIt = removeClasses.iterator();
 		while(classIt.hasNext()){
 			String removeClassName = classIt.next();
-			archmodel.removeClass(removeClassName);
+			if(!archmodel.removeClass(removeClassName)){
+				logger.debug("Refactoring - Remove class failed - {}", removeClassName);
+			}
 		}
-		logger.debug("Remove class num = {}", removeClasses.size());
+		logger.debug("Remove classes success. Num = {}", removedClassSize - removeClasses.size());
+		
+		//Remove classes' container from diagram.
+		Iterator<ContainerShape> csIt = classShape.iterator();
+		while(csIt.hasNext()){
+			ContainerShape shape = csIt.next();
+			DeleteContext ctx = new DeleteContext(shape);
+			ctx.setMultiDeleteInfo(new MultiDeleteInfo(false, false, 2));
+			IDeleteFeature deleteFeature = getFeatureProvider().getDeleteFeature(ctx);
+			if (deleteFeature!=null){
+				deleteFeature.execute(ctx);
+			}
+			updatePictogramElement(shape);
+		}
+		logger.debug("Removed ContainerShapes from diagram. Num = {}", classShapeSize - classShape.size());
+        try {
+        	getDiagram().eResource().save(null);
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.error("Refactoring - Saving diagram failed : {}", getDiagram().getName());
+		}
 	}
 
 }
