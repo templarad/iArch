@@ -102,6 +102,7 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
                     		SequenceDiagramModelController sdmh = new SequenceDiagramModelController();
                     		changed = sdmh.removeMethod(sqDiagram, owenClass.getName(), currentName);
                     	}
+                    	logger.debug("Removed method.");
                     	if(!changed)
                     		System.out.println("Refactoring: Can't find the same object("+ owenClass.getName()+") in sequence diagram.");
                 	}

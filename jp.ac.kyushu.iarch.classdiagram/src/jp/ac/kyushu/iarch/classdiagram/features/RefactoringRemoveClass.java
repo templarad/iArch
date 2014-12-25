@@ -1,6 +1,15 @@
 package jp.ac.kyushu.iarch.classdiagram.features;
 
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import jp.ac.kyushu.iarch.basefunction.controller.ArchModelController;
+import jp.ac.kyushu.iarch.basefunction.reader.ProjectReader;
+import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
+
+import org.eclipse.core.resources.IProject;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
@@ -45,14 +54,24 @@ public class RefactoringRemoveClass extends AbstractCustomFeature{
     }
 	@Override
 	public void execute(ICustomContext context) {
+		logger.debug("Start Refactoring : Remove class.");
+		IProject project = ProjectReader.getProject();
+		XMLreader xx= new XMLreader(project);
+		ArchModelController archmodel = new ArchModelController(xx.getArchfileResource());
+		List<String> removeClasses = new ArrayList<String>(); 
 		PictogramElement[] pes = context.getPictogramElements();
 		for(PictogramElement pe : pes){
 			Object bo = getBusinessObjectForPictogramElement(pe);
 			umlClass.Class umlClass = (umlClass.Class) bo;
 			String removeClassName = umlClass.getName();
-			logger.debug("Start Refactoring : Remove class = {}", removeClassName);
+			removeClasses.add(removeClassName);
 		}
-		
+		Iterator<String> classIt = removeClasses.iterator();
+		while(classIt.hasNext()){
+			String removeClassName = classIt.next();
+			archmodel.removeClass(removeClassName);
+		}
+		logger.debug("Remove class num = {}", removeClasses.size());
 	}
 
 }

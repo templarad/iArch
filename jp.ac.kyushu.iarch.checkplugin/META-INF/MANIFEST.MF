@@ -23,7 +23,10 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
  lib/dom4j-1.6.1.jar,
- lib/jaxen-1.1.6.jar
+ lib/jaxen-1.1.6.jar,
+ lib/slf4j-api-1.7.9.jar,
+ lib/logback-classic-1.0.13.jar,
+ lib/logback-core-1.0.13.jar
 Export-Package: jp.ac.kyushu.iarch.checkplugin.handler
 Import-Package: jp.ac.kyushu.iarch.basefunction.controller,
  jp.ac.kyushu.iarch.basefunction.reader,

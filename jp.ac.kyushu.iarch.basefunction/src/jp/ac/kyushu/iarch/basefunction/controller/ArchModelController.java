@@ -48,7 +48,6 @@ public class ArchModelController extends ArchModel {
 		try {
 			resource.save(null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -86,7 +85,6 @@ public class ArchModelController extends ArchModel {
 		try {
 			resource.save(null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -102,7 +100,6 @@ public class ArchModelController extends ArchModel {
 		try {
 			resource.save(null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -146,7 +143,43 @@ public class ArchModelController extends ArchModel {
 		try {
 			resource.save(null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * Remove the specific class from Arch model resource.
+	 * @param className The name of class to be removed.
+	 * 
+	 */
+	public void removeClass(String className){
+		if(null == resource){
+			return;
+		}
+		boolean changed = false;
+		Model model = (Model) resource.getContents().get(0);
+		Iterator<Interface> interfaceIt = model.getInterfaces().iterator();
+		while(interfaceIt.hasNext()){
+			Interface interfc = interfaceIt.next();
+			if(interfc.getName().equals(className)){
+				interfaceIt.remove();
+				changed = true;
+			}
+		}
+		
+		Iterator<Behavior> behaviorIt = model.getBehaviors().iterator();
+		while(behaviorIt.hasNext()){
+			Behavior behaviorfc = behaviorIt.next();
+			if(behaviorfc.getInterface().getName().equals(className)){
+				behaviorIt.remove();
+				changed = true;
+			}
+		}
+		if(!changed){
+        	return;
+		}
+		try {
+			resource.save(null);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
