@@ -23,47 +23,49 @@ public class DataflowDiagramChecker {
 		Resource dataflowDiagram = GraphitiModelManager
 				.getGraphitiModel(dataflowDiagramResource);
 		
-		/*    //Check Dataflow /*2014.12.15
+		    //Check Dataflow 
+		 //2014.12.15
+		
 		
 		for (Interface archiDF : archiface.getInterfaces()) {
 			Dataflow_editor.DataFlow umlDataflow = findDataflow(
 					archiDF, dataflowDiagram.getContents());
 			
-			if (umlDataflow != null) {       //if entity name equals to "Subject" or "Observer"
+			if (umlDataflow == null) {       //if dataflow name equals to "State"
 
-				ProblemViewManager.addInfo(dataflowDiagramResource,
-						archiDF.getName() + " is Exist.",
-						archiDF.getName());
+			//	ProblemViewManager.addInfo(dataflowDiagramResource,
+			//			archiDF.getName() + " is Exist.",
+			//			archiDF.getName());
 				
 				
 			} 
-			//else {
-			//	ProblemViewManager.addError(dataflowDiagramResource,
-			//			archiDF.getName() + "Å@is not found.",
-			//			archiDF.getName());				
-			//}
+			else {   
+				ProblemViewManager.addError(dataflowDiagramResource,
+						"DataflowÅ@is Invalid(dataflow error).",
+						archiDF.getName());				
+			}
 		}
-		*/
 		
-			//Check Entity
-		for (Interface archientity : archiface.getInterfaces()) {
-			Dataflow_editor.External_entity umlEntity = findEntity(
-					archientity, dataflowDiagram.getContents());
-			if (umlEntity != null) {       //if entity name equals to "Subject" or "Observer"
+		
+			//Check Datastore
+		for (Interface archidatastore : archiface.getInterfaces()) {
+			Dataflow_editor.DataStore umlDatastore = findDatastore(
+					archidatastore, dataflowDiagram.getContents());
+			if (umlDatastore != null) {       //if entity name equals to "Subject" or "Observer"
 				flag++;
 				ProblemViewManager.addInfo(dataflowDiagramResource,
-						archientity.getName() + " is Exist.",
-						archientity.getName());
+						archidatastore.getName() + " is Exist.",
+						archidatastore.getName());
 				
-				if(archientity.getName().equals("Subject"))
+				if(archidatastore.getName().equals("Subject"))
 					 entity_Sub_exist = true;
-				else if(archientity.getName().equals("Observer"))
+				else if(archidatastore.getName().equals("Observer"))
 					 entity_Ob_exist = true;
 				
 			} else {
 				ProblemViewManager.addError(dataflowDiagramResource,
-						archientity.getName() + " is not found.",
-						archientity.getName());
+						archidatastore.getName() + " is not found.",
+						archidatastore.getName());
 				
 			}
 		}
@@ -163,7 +165,8 @@ public class DataflowDiagramChecker {
 		
 	}
 	
-	/*2014.12.15
+	
+	//2014.12.15
 	
 	//find Dataflow
 	Dataflow_editor.DataFlow findDataflow(Interface archdataflow,
@@ -171,27 +174,27 @@ public class DataflowDiagramChecker {
 		for (EObject obj : umlDataflows) {
 			if (obj instanceof Dataflow_editor.DataFlow) {
 				Dataflow_editor.DataFlow umlDataflow = (Dataflow_editor.DataFlow) obj;
-				if (!umlDataflow.isArchpoint())
-					continue;
-				if (umlDataflow.getName().equals(archdataflow.getName())) {
-					return umlDataflow;
+		//		if (!umlDataflow.isArchpoint())
+		//			continue;
+				if (!umlDataflow.getName().equals("State")) {  //if one of dataflow arrows' name is not "State"Å@
+					return umlDataflow;   //error is found
 				}
 			}
 		}
 		return null;
 	}
-	*/
+	
 
 	//find Entity
-	Dataflow_editor.External_entity findEntity(Interface archdataflow,
-			List<EObject> umlEntities) {
-		for (EObject obj : umlEntities) {
+	Dataflow_editor.DataStore findDatastore(Interface archdataflow,
+			List<EObject> umlDatastores) {
+		for (EObject obj : umlDatastores) {
 			if (obj instanceof Dataflow_editor.External_entity) {
-				Dataflow_editor.External_entity umlEntity = (Dataflow_editor.External_entity) obj;
-				if (!umlEntity.isArchpoint())
+				Dataflow_editor.DataStore umlDatastore = (Dataflow_editor.DataStore) obj;
+				if (!umlDatastore.isArchpoint())
 					continue;
-				if (umlEntity.getName().equals(archdataflow.getName())) {
-					return umlEntity;
+				if (umlDatastore.getName().equals(archdataflow.getName())) {
+					return umlDatastore;
 				}
 			}
 		}
