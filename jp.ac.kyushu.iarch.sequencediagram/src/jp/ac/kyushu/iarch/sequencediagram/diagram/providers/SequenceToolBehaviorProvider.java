@@ -19,7 +19,8 @@ public class SequenceToolBehaviorProvider extends DefaultToolBehaviorProvider{
         super(dtp);
     }
     
-    @Override
+    @SuppressWarnings("unused")
+	@Override
     public IDecorator[] getDecorators(PictogramElement pe) {
     	
     	IFeatureProvider featureProvider = getFeatureProvider();

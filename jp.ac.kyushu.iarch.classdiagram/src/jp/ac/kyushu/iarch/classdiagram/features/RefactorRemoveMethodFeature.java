@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 
 import umlClass.Operation;
 /**
- * Haven't completed yet:<br>
+ * Haven't completed part:<br>
  * Modify sequence diagram function.
  * @author Templar
  *
@@ -90,38 +90,38 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
                 umlClass.Class owenClass = eOperation.getClass_();
                 IProject project = ProjectReader.getProject();
             	XMLreader xx= new XMLreader(project);
-                	{
-                    	
-                    	ArchModelController archmodel = new ArchModelController(xx.getArchfileResource());
-                    	archmodel.removeMethod(owenClass.getName(),currentName);
-                    	List<IResource> sqDiagrams = xx.getSequenceDiagramResource();
-                    	boolean changed = false;
-                    	for (IResource sqDiagram:sqDiagrams){
-                    		SequenceDiagramModelController sdmh = new SequenceDiagramModelController();
-                    		changed = sdmh.removeMethod(sqDiagram, owenClass.getName(), currentName);
-                    	}
-                    	if(!changed){
-                    		logger.debug("Refactoring - Can't find the same object({}) in sequence diagram.", owenClass.getName());
-                    	}
-                	}
-                	//End refactoring
+            	{
                 	
-                    this.hasDoneChanges = true;
-                    Shape shape = (Shape) context.getPictogramElements()[0];
-            		DeleteContext ctx = new DeleteContext(shape);
-            		ctx.setMultiDeleteInfo(new MultiDeleteInfo(false, false, 2));
-            		IDeleteFeature deleteFeature = getFeatureProvider().getDeleteFeature(ctx);
-            		if (deleteFeature!=null){
-            			deleteFeature.execute(ctx);
-            		}
-            		updatePictogramElement(shape.getContainer());
-                    try {
-                    	getDiagram().eResource().save(null);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						logger.error("Refactoring - Saving diagram failed : {}", getDiagram().getName());
-					}
+                	ArchModelController archmodel = new ArchModelController(xx.getArchfileResource());
+                	archmodel.removeMethod(owenClass.getName(),currentName);
+                	List<IResource> sqDiagrams = xx.getSequenceDiagramResource();
+                	boolean changed = false;
+                	for (IResource sqDiagram:sqDiagrams){
+                		SequenceDiagramModelController sdmh = new SequenceDiagramModelController();
+                		changed = sdmh.removeMethod(sqDiagram, owenClass.getName(), currentName);
+                	}
+                	if(!changed){
+                		logger.debug("Refactoring - Can't find the same object({}) in sequence diagram.", owenClass.getName());
+                	}
+            	}
+            	//End refactoring
+            	
+                this.hasDoneChanges = true;
+                Shape shape = (Shape) context.getPictogramElements()[0];
+        		DeleteContext ctx = new DeleteContext(shape);
+        		ctx.setMultiDeleteInfo(new MultiDeleteInfo(false, false, 2));
+        		IDeleteFeature deleteFeature = getFeatureProvider().getDeleteFeature(ctx);
+        		if (deleteFeature!=null){
+        			deleteFeature.execute(ctx);
+        		}
+        		updatePictogramElement(shape.getContainer());
+                try {
+                	getDiagram().eResource().save(null);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					logger.error("Refactoring - Saving diagram failed : {}", getDiagram().getName());
+				}
                     
             }
         }
