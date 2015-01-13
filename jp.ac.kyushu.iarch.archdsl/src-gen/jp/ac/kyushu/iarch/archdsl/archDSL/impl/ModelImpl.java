@@ -6,6 +6,9 @@ import java.util.Collection;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Dfa;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Dflow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 
@@ -30,6 +33,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getInterfaces <em>Interfaces</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getBehaviors <em>Behaviors</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getDflows <em>Dflows</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getDfas <em>Dfas</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getDataflows <em>Dataflows</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,6 +62,36 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @ordered
    */
   protected EList<Behavior> behaviors;
+
+  /**
+   * The cached value of the '{@link #getDflows() <em>Dflows</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDflows()
+   * @generated
+   * @ordered
+   */
+  protected EList<Dflow> dflows;
+
+  /**
+   * The cached value of the '{@link #getDfas() <em>Dfas</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDfas()
+   * @generated
+   * @ordered
+   */
+  protected EList<Dfa> dfas;
+
+  /**
+   * The cached value of the '{@link #getDataflows() <em>Dataflows</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDataflows()
+   * @generated
+   * @ordered
+   */
+  protected EList<Dataflow> dataflows;
 
   /**
    * <!-- begin-user-doc -->
@@ -111,6 +147,48 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Dflow> getDflows()
+  {
+    if (dflows == null)
+    {
+      dflows = new EObjectContainmentEList<Dflow>(Dflow.class, this, ArchDSLPackage.MODEL__DFLOWS);
+    }
+    return dflows;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Dfa> getDfas()
+  {
+    if (dfas == null)
+    {
+      dfas = new EObjectContainmentEList<Dfa>(Dfa.class, this, ArchDSLPackage.MODEL__DFAS);
+    }
+    return dfas;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Dataflow> getDataflows()
+  {
+    if (dataflows == null)
+    {
+      dataflows = new EObjectContainmentEList<Dataflow>(Dataflow.class, this, ArchDSLPackage.MODEL__DATAFLOWS);
+    }
+    return dataflows;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -120,6 +198,12 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return ((InternalEList<?>)getInterfaces()).basicRemove(otherEnd, msgs);
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return ((InternalEList<?>)getBehaviors()).basicRemove(otherEnd, msgs);
+      case ArchDSLPackage.MODEL__DFLOWS:
+        return ((InternalEList<?>)getDflows()).basicRemove(otherEnd, msgs);
+      case ArchDSLPackage.MODEL__DFAS:
+        return ((InternalEList<?>)getDfas()).basicRemove(otherEnd, msgs);
+      case ArchDSLPackage.MODEL__DATAFLOWS:
+        return ((InternalEList<?>)getDataflows()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -138,6 +222,12 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return getInterfaces();
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return getBehaviors();
+      case ArchDSLPackage.MODEL__DFLOWS:
+        return getDflows();
+      case ArchDSLPackage.MODEL__DFAS:
+        return getDfas();
+      case ArchDSLPackage.MODEL__DATAFLOWS:
+        return getDataflows();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -161,6 +251,18 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         getBehaviors().clear();
         getBehaviors().addAll((Collection<? extends Behavior>)newValue);
         return;
+      case ArchDSLPackage.MODEL__DFLOWS:
+        getDflows().clear();
+        getDflows().addAll((Collection<? extends Dflow>)newValue);
+        return;
+      case ArchDSLPackage.MODEL__DFAS:
+        getDfas().clear();
+        getDfas().addAll((Collection<? extends Dfa>)newValue);
+        return;
+      case ArchDSLPackage.MODEL__DATAFLOWS:
+        getDataflows().clear();
+        getDataflows().addAll((Collection<? extends Dataflow>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -181,6 +283,15 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ArchDSLPackage.MODEL__BEHAVIORS:
         getBehaviors().clear();
         return;
+      case ArchDSLPackage.MODEL__DFLOWS:
+        getDflows().clear();
+        return;
+      case ArchDSLPackage.MODEL__DFAS:
+        getDfas().clear();
+        return;
+      case ArchDSLPackage.MODEL__DATAFLOWS:
+        getDataflows().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -199,6 +310,12 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return interfaces != null && !interfaces.isEmpty();
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return behaviors != null && !behaviors.isEmpty();
+      case ArchDSLPackage.MODEL__DFLOWS:
+        return dflows != null && !dflows.isEmpty();
+      case ArchDSLPackage.MODEL__DFAS:
+        return dfas != null && !dfas.isEmpty();
+      case ArchDSLPackage.MODEL__DATAFLOWS:
+        return dataflows != null && !dataflows.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -4,6 +4,9 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Dfa;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Dflow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
@@ -32,6 +35,24 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case ArchDSLPackage.BEHAVIOR:
 				if(context == grammarAccess.getBehaviorRule()) {
 					sequence_Behavior(context, (Behavior) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchDSLPackage.DATAFLOW:
+				if(context == grammarAccess.getDataflowRule()) {
+					sequence_Dataflow(context, (Dataflow) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchDSLPackage.DFA:
+				if(context == grammarAccess.getDfaRule()) {
+					sequence_Dfa(context, (Dfa) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchDSLPackage.DFLOW:
+				if(context == grammarAccess.getDflowRule()) {
+					sequence_Dflow(context, (Dflow) semanticObject); 
 					return; 
 				}
 				else break;
@@ -74,6 +95,47 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
+	 *     (dfa=[Dfa|ID] ((getflow+=[Dflow|ID] call+=[Method|FQN])* end=[Interface|ID])?)
+	 */
+	protected void sequence_Dataflow(EObject context, Dataflow semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_Dfa(EObject context, Dfa semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ArchDSLPackage.Literals.DFA__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchDSLPackage.Literals.DFA__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getDfaAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_Dflow(EObject context, Dflow semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ArchDSLPackage.Literals.DFLOW__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchDSLPackage.Literals.DFLOW__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getDflowAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (name=ID methods+=Method*)
 	 */
 	protected void sequence_Interface(EObject context, Interface semanticObject) {
@@ -92,7 +154,7 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (interfaces+=Interface* behaviors+=Behavior*)
+	 *     (interfaces+=Interface* behaviors+=Behavior* dflows+=Dflow* dfas+=Dfa* dataflows+=Dataflow*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -113,6 +113,60 @@ ruleModel returns [EObject current=null]
 	    }
 
 )
+)*(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getModelAccess().getDflowsDflowParserRuleCall_2_0()); 
+	    }
+		lv_dflows_2_0=ruleDflow		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getModelRule());
+	        }
+       		add(
+       			$current, 
+       			"dflows",
+        		lv_dflows_2_0, 
+        		"Dflow");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getModelAccess().getDfasDfaParserRuleCall_3_0()); 
+	    }
+		lv_dfas_3_0=ruleDfa		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getModelRule());
+	        }
+       		add(
+       			$current, 
+       			"dfas",
+        		lv_dfas_3_0, 
+        		"Dfa");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getModelAccess().getDataflowsDataflowParserRuleCall_4_0()); 
+	    }
+		lv_dataflows_4_0=ruleDataflow		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getModelRule());
+	        }
+       		add(
+       			$current, 
+       			"dataflows",
+        		lv_dataflows_4_0, 
+        		"Dataflow");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
 )*)
 ;
 
@@ -448,6 +502,199 @@ ruleBehavior returns [EObject current=null]
 
 
 
+// Entry rule entryRuleDflow
+entryRuleDflow returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDflowRule()); }
+	 iv_ruleDflow=ruleDflow 
+	 { $current=$iv_ruleDflow.current; } 
+	 EOF 
+;
+
+// Rule Dflow
+ruleDflow returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='Dflow data' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getDflowAccess().getDflowDataKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getDflowAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDflowRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_2=';' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDflowAccess().getSemicolonKeyword_2());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDfa
+entryRuleDfa returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDfaRule()); }
+	 iv_ruleDfa=ruleDfa 
+	 { $current=$iv_ruleDfa.current; } 
+	 EOF 
+;
+
+// Rule Dfa
+ruleDfa returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='Dfa' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getDfaAccess().getDfaKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getDfaAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDfaRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_2=';' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDfaAccess().getSemicolonKeyword_2());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDataflow
+entryRuleDataflow returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDataflowRule()); }
+	 iv_ruleDataflow=ruleDataflow 
+	 { $current=$iv_ruleDataflow.current; } 
+	 EOF 
+;
+
+// Rule Dataflow
+ruleDataflow returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDataflowRule());
+	        }
+        }
+	otherlv_0=RULE_ID
+	{
+		newLeafNode(otherlv_0, grammarAccess.getDataflowAccess().getDfaDfaCrossReference_0_0()); 
+	}
+
+)
+)	otherlv_1='=' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getDataflowAccess().getEqualsSignKeyword_1());
+    }
+((	otherlv_2='|' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDataflowAccess().getVerticalLineKeyword_2_0_0());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDataflowRule());
+	        }
+        }
+	otherlv_3=RULE_ID
+	{
+		newLeafNode(otherlv_3, grammarAccess.getDataflowAccess().getGetflowDflowCrossReference_2_0_1_0()); 
+	}
+
+)
+)	otherlv_4='|->>' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getDataflowAccess().getVerticalLineHyphenMinusGreaterThanSignGreaterThanSignKeyword_2_0_2());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDataflowRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getDataflowAccess().getCallMethodCrossReference_2_0_3_0()); 
+	    }
+		ruleFQN		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_6='->>' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_2_0_4());
+    }
+)*(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDataflowRule());
+	        }
+        }
+	otherlv_7=RULE_ID
+	{
+		newLeafNode(otherlv_7, grammarAccess.getDataflowAccess().getEndInterfaceCrossReference_2_1_0()); 
+	}
+
+)
+))?	otherlv_8=';' 
+    {
+    	newLeafNode(otherlv_8, grammarAccess.getDataflowAccess().getSemicolonKeyword_3());
+    }
+	otherlv_9='];' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getDataflowAccess().getRightSquareBracketSemicolonKeyword_4());
+    }
+)
+;
+
+
+
+
+
 // Entry rule entryRuleFQN
 entryRuleFQN returns [String current=null] 
 	:
@@ -493,7 +740,7 @@ RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
 RULE_INT : ('0'..'9')+;
 
-RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
+RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 

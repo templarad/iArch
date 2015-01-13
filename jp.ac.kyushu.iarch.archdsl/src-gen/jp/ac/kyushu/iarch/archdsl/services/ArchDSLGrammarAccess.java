@@ -25,12 +25,18 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cInterfacesInterfaceParserRuleCall_0_0 = (RuleCall)cInterfacesAssignment_0.eContents().get(0);
 		private final Assignment cBehaviorsAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cBehaviorsBehaviorParserRuleCall_1_0 = (RuleCall)cBehaviorsAssignment_1.eContents().get(0);
+		private final Assignment cDflowsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cDflowsDflowParserRuleCall_2_0 = (RuleCall)cDflowsAssignment_2.eContents().get(0);
+		private final Assignment cDfasAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDfasDfaParserRuleCall_3_0 = (RuleCall)cDfasAssignment_3.eContents().get(0);
+		private final Assignment cDataflowsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cDataflowsDataflowParserRuleCall_4_0 = (RuleCall)cDataflowsAssignment_4.eContents().get(0);
 		
 		//Model:
-		//	interfaces+=Interface* behaviors+=Behavior*;
+		//	interfaces+=Interface* behaviors+=Behavior* dflows+=Dflow* dfas+=Dfa* dataflows+=Dataflow*;
 		public ParserRule getRule() { return rule; }
 
-		//interfaces+=Interface* behaviors+=Behavior*
+		//interfaces+=Interface* behaviors+=Behavior* dflows+=Dflow* dfas+=Dfa* dataflows+=Dataflow*
 		public Group getGroup() { return cGroup; }
 
 		//interfaces+=Interface*
@@ -44,6 +50,24 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//Behavior
 		public RuleCall getBehaviorsBehaviorParserRuleCall_1_0() { return cBehaviorsBehaviorParserRuleCall_1_0; }
+
+		//dflows+=Dflow*
+		public Assignment getDflowsAssignment_2() { return cDflowsAssignment_2; }
+
+		//Dflow
+		public RuleCall getDflowsDflowParserRuleCall_2_0() { return cDflowsDflowParserRuleCall_2_0; }
+
+		//dfas+=Dfa*
+		public Assignment getDfasAssignment_3() { return cDfasAssignment_3; }
+
+		//Dfa
+		public RuleCall getDfasDfaParserRuleCall_3_0() { return cDfasDfaParserRuleCall_3_0; }
+
+		//dataflows+=Dataflow*
+		public Assignment getDataflowsAssignment_4() { return cDataflowsAssignment_4; }
+
+		//Dataflow
+		public RuleCall getDataflowsDataflowParserRuleCall_4_0() { return cDataflowsDataflowParserRuleCall_4_0; }
 	}
 
 	public class InterfaceElements extends AbstractParserRuleElementFinder {
@@ -266,6 +290,159 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightParenthesisSemicolonKeyword_4() { return cRightParenthesisSemicolonKeyword_4; }
 	}
 
+	public class DflowElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Dflow");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cDflowDataKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		////'description' description = STRING  
+		//Dflow:
+		//	"Dflow data" name=ID //description of dataflow element "|state|
+		//	";";
+		public ParserRule getRule() { return rule; }
+
+		//"Dflow data" name=ID //description of dataflow element "|state|
+		//";"
+		public Group getGroup() { return cGroup; }
+
+		//"Dflow data"
+		public Keyword getDflowDataKeyword_0() { return cDflowDataKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		////description of dataflow element "|state|
+		//";"
+		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
+	}
+
+	public class DfaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Dfa");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cDfaKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		////  'define' definition = STRING      //define "$Dataflow"
+		//Dfa:
+		//	"Dfa" name=ID ";";
+		public ParserRule getRule() { return rule; }
+
+		//"Dfa" name=ID ";"
+		public Group getGroup() { return cGroup; }
+
+		//"Dfa"
+		public Keyword getDfaKeyword_0() { return cDfaKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//";"
+		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
+	}
+
+	public class DataflowElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Dataflow");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cDfaAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cDfaDfaCrossReference_0_0 = (CrossReference)cDfaAssignment_0.eContents().get(0);
+		private final RuleCall cDfaDfaIDTerminalRuleCall_0_0_1 = (RuleCall)cDfaDfaCrossReference_0_0.eContents().get(1);
+		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cGroup_2.eContents().get(0);
+		private final Keyword cVerticalLineKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Assignment cGetflowAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
+		private final CrossReference cGetflowDflowCrossReference_2_0_1_0 = (CrossReference)cGetflowAssignment_2_0_1.eContents().get(0);
+		private final RuleCall cGetflowDflowIDTerminalRuleCall_2_0_1_0_1 = (RuleCall)cGetflowDflowCrossReference_2_0_1_0.eContents().get(1);
+		private final Keyword cVerticalLineHyphenMinusGreaterThanSignGreaterThanSignKeyword_2_0_2 = (Keyword)cGroup_2_0.eContents().get(2);
+		private final Assignment cCallAssignment_2_0_3 = (Assignment)cGroup_2_0.eContents().get(3);
+		private final CrossReference cCallMethodCrossReference_2_0_3_0 = (CrossReference)cCallAssignment_2_0_3.eContents().get(0);
+		private final RuleCall cCallMethodFQNParserRuleCall_2_0_3_0_1 = (RuleCall)cCallMethodCrossReference_2_0_3_0.eContents().get(1);
+		private final Keyword cHyphenMinusGreaterThanSignGreaterThanSignKeyword_2_0_4 = (Keyword)cGroup_2_0.eContents().get(4);
+		private final Assignment cEndAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cEndInterfaceCrossReference_2_1_0 = (CrossReference)cEndAssignment_2_1.eContents().get(0);
+		private final RuleCall cEndInterfaceIDTerminalRuleCall_2_1_0_1 = (RuleCall)cEndInterfaceCrossReference_2_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cRightSquareBracketSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//Dataflow:
+		//	dfa=[Dfa] "=" (("|" getflow+=[Dflow] "|->>" call+=[Method|FQN] "->>")* end=[Interface])? ";" "];";
+		public ParserRule getRule() { return rule; }
+
+		//dfa=[Dfa] "=" (("|" getflow+=[Dflow] "|->>" call+=[Method|FQN] "->>")* end=[Interface])? ";" "];"
+		public Group getGroup() { return cGroup; }
+
+		//dfa=[Dfa]
+		public Assignment getDfaAssignment_0() { return cDfaAssignment_0; }
+
+		//[Dfa]
+		public CrossReference getDfaDfaCrossReference_0_0() { return cDfaDfaCrossReference_0_0; }
+
+		//ID
+		public RuleCall getDfaDfaIDTerminalRuleCall_0_0_1() { return cDfaDfaIDTerminalRuleCall_0_0_1; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+
+		//(("|" getflow+=[Dflow] "|->>" call+=[Method|FQN] "->>")* end=[Interface])?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//("|" getflow+=[Dflow] "|->>" call+=[Method|FQN] "->>")*
+		public Group getGroup_2_0() { return cGroup_2_0; }
+
+		//"|"
+		public Keyword getVerticalLineKeyword_2_0_0() { return cVerticalLineKeyword_2_0_0; }
+
+		//getflow+=[Dflow]
+		public Assignment getGetflowAssignment_2_0_1() { return cGetflowAssignment_2_0_1; }
+
+		//[Dflow]
+		public CrossReference getGetflowDflowCrossReference_2_0_1_0() { return cGetflowDflowCrossReference_2_0_1_0; }
+
+		//ID
+		public RuleCall getGetflowDflowIDTerminalRuleCall_2_0_1_0_1() { return cGetflowDflowIDTerminalRuleCall_2_0_1_0_1; }
+
+		//"|->>"
+		public Keyword getVerticalLineHyphenMinusGreaterThanSignGreaterThanSignKeyword_2_0_2() { return cVerticalLineHyphenMinusGreaterThanSignGreaterThanSignKeyword_2_0_2; }
+
+		//call+=[Method|FQN]
+		public Assignment getCallAssignment_2_0_3() { return cCallAssignment_2_0_3; }
+
+		//[Method|FQN]
+		public CrossReference getCallMethodCrossReference_2_0_3_0() { return cCallMethodCrossReference_2_0_3_0; }
+
+		//FQN
+		public RuleCall getCallMethodFQNParserRuleCall_2_0_3_0_1() { return cCallMethodFQNParserRuleCall_2_0_3_0_1; }
+
+		//"->>"
+		public Keyword getHyphenMinusGreaterThanSignGreaterThanSignKeyword_2_0_4() { return cHyphenMinusGreaterThanSignGreaterThanSignKeyword_2_0_4; }
+
+		//end=[Interface]
+		public Assignment getEndAssignment_2_1() { return cEndAssignment_2_1; }
+
+		//[Interface]
+		public CrossReference getEndInterfaceCrossReference_2_1_0() { return cEndInterfaceCrossReference_2_1_0; }
+
+		//ID
+		public RuleCall getEndInterfaceIDTerminalRuleCall_2_1_0_1() { return cEndInterfaceIDTerminalRuleCall_2_1_0_1; }
+
+		//";"
+		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+
+		//"];"
+		public Keyword getRightSquareBracketSemicolonKeyword_4() { return cRightSquareBracketSemicolonKeyword_4; }
+	}
+
 	public class FQNElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FQN");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -295,22 +472,34 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private ModelElements pModel;
-	private InterfaceElements pInterface;
-	private MethodElements pMethod;
-	private ParamElements pParam;
-	private BehaviorElements pBehavior;
-	private FQNElements pFQN;
+	private final ModelElements pModel;
+	private final InterfaceElements pInterface;
+	private final MethodElements pMethod;
+	private final ParamElements pParam;
+	private final BehaviorElements pBehavior;
+	private final DflowElements pDflow;
+	private final DfaElements pDfa;
+	private final DataflowElements pDataflow;
+	private final FQNElements pFQN;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public ArchDSLGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pModel = new ModelElements();
+		this.pInterface = new InterfaceElements();
+		this.pMethod = new MethodElements();
+		this.pParam = new ParamElements();
+		this.pBehavior = new BehaviorElements();
+		this.pDflow = new DflowElements();
+		this.pDfa = new DfaElements();
+		this.pDataflow = new DataflowElements();
+		this.pFQN = new FQNElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -341,9 +530,9 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
-	//	interfaces+=Interface* behaviors+=Behavior*;
+	//	interfaces+=Interface* behaviors+=Behavior* dflows+=Dflow* dfas+=Dfa* dataflows+=Dataflow*;
 	public ModelElements getModelAccess() {
-		return (pModel != null) ? pModel : (pModel = new ModelElements());
+		return pModel;
 	}
 	
 	public ParserRule getModelRule() {
@@ -353,7 +542,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//Interface:
 	//	"interface component" name=ID "{" methods+=Method* "}";
 	public InterfaceElements getInterfaceAccess() {
-		return (pInterface != null) ? pInterface : (pInterface = new InterfaceElements());
+		return pInterface;
 	}
 	
 	public ParserRule getInterfaceRule() {
@@ -363,7 +552,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//Method:
 	//	type=ID name=ID "(" (param+=Param ("," param+=Param)*)? ");";
 	public MethodElements getMethodAccess() {
-		return (pMethod != null) ? pMethod : (pMethod = new MethodElements());
+		return pMethod;
 	}
 	
 	public ParserRule getMethodRule() {
@@ -373,7 +562,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//Param:
 	//	type=ID name=ID;
 	public ParamElements getParamAccess() {
-		return (pParam != null) ? pParam : (pParam = new ParamElements());
+		return pParam;
 	}
 	
 	public ParserRule getParamRule() {
@@ -383,17 +572,50 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//Behavior:
 	//	interface=[Interface] "=" "(" (call+=[Method|FQN] ("->" call+=[Method|FQN])* "->" end=[Interface])? ");";
 	public BehaviorElements getBehaviorAccess() {
-		return (pBehavior != null) ? pBehavior : (pBehavior = new BehaviorElements());
+		return pBehavior;
 	}
 	
 	public ParserRule getBehaviorRule() {
 		return getBehaviorAccess().getRule();
 	}
 
+	////'description' description = STRING  
+	//Dflow:
+	//	"Dflow data" name=ID //description of dataflow element "|state|
+	//	";";
+	public DflowElements getDflowAccess() {
+		return pDflow;
+	}
+	
+	public ParserRule getDflowRule() {
+		return getDflowAccess().getRule();
+	}
+
+	////  'define' definition = STRING      //define "$Dataflow"
+	//Dfa:
+	//	"Dfa" name=ID ";";
+	public DfaElements getDfaAccess() {
+		return pDfa;
+	}
+	
+	public ParserRule getDfaRule() {
+		return getDfaAccess().getRule();
+	}
+
+	//Dataflow:
+	//	dfa=[Dfa] "=" (("|" getflow+=[Dflow] "|->>" call+=[Method|FQN] "->>")* end=[Interface])? ";" "];";
+	public DataflowElements getDataflowAccess() {
+		return pDataflow;
+	}
+	
+	public ParserRule getDataflowRule() {
+		return getDataflowAccess().getRule();
+	}
+
 	//FQN:
 	//	ID ("." ID)*;
 	public FQNElements getFQNAccess() {
-		return (pFQN != null) ? pFQN : (pFQN = new FQNElements());
+		return pFQN;
 	}
 	
 	public ParserRule getFQNRule() {
@@ -413,8 +635,8 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
+	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 

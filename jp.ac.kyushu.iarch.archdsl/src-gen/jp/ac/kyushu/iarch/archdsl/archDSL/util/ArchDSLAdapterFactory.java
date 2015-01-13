@@ -100,6 +100,21 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
         return createBehaviorAdapter();
       }
       @Override
+      public Adapter caseDflow(Dflow object)
+      {
+        return createDflowAdapter();
+      }
+      @Override
+      public Adapter caseDfa(Dfa object)
+      {
+        return createDfaAdapter();
+      }
+      @Override
+      public Adapter caseDataflow(Dataflow object)
+      {
+        return createDataflowAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -192,6 +207,51 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBehaviorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dflow <em>Dflow</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dflow
+   * @generated
+   */
+  public Adapter createDflowAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dfa <em>Dfa</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dfa
+   * @generated
+   */
+  public Adapter createDfaAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow <em>Dataflow</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow
+   * @generated
+   */
+  public Adapter createDataflowAdapter()
   {
     return null;
   }

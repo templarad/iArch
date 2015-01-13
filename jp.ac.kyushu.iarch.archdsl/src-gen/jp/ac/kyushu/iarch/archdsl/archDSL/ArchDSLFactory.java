@@ -68,6 +68,33 @@ public interface ArchDSLFactory extends EFactory
   Behavior createBehavior();
 
   /**
+   * Returns a new object of class '<em>Dflow</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Dflow</em>'.
+   * @generated
+   */
+  Dflow createDflow();
+
+  /**
+   * Returns a new object of class '<em>Dfa</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Dfa</em>'.
+   * @generated
+   */
+  Dfa createDfa();
+
+  /**
+   * Returns a new object of class '<em>Dataflow</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Dataflow</em>'.
+   * @generated
+   */
+  Dataflow createDataflow();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

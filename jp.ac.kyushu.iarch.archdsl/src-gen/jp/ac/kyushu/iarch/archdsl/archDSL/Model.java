@@ -16,6 +16,9 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getInterfaces <em>Interfaces</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getBehaviors <em>Behaviors</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getDflows <em>Dflows</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getDfas <em>Dfas</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getDataflows <em>Dataflows</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,5 +59,53 @@ public interface Model extends EObject
    * @generated
    */
   EList<Behavior> getBehaviors();
+
+  /**
+   * Returns the value of the '<em><b>Dflows</b></em>' containment reference list.
+   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.Dflow}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Dflows</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Dflows</em>' containment reference list.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getModel_Dflows()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Dflow> getDflows();
+
+  /**
+   * Returns the value of the '<em><b>Dfas</b></em>' containment reference list.
+   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.Dfa}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Dfas</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Dfas</em>' containment reference list.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getModel_Dfas()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Dfa> getDfas();
+
+  /**
+   * Returns the value of the '<em><b>Dataflows</b></em>' containment reference list.
+   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Dataflows</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Dataflows</em>' containment reference list.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getModel_Dataflows()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Dataflow> getDataflows();
 
 } // Model

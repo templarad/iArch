@@ -46,10 +46,18 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBehaviorAccess().getGroup(), "rule__Behavior__Group__0");
 					put(grammarAccess.getBehaviorAccess().getGroup_3(), "rule__Behavior__Group_3__0");
 					put(grammarAccess.getBehaviorAccess().getGroup_3_1(), "rule__Behavior__Group_3_1__0");
+					put(grammarAccess.getDflowAccess().getGroup(), "rule__Dflow__Group__0");
+					put(grammarAccess.getDfaAccess().getGroup(), "rule__Dfa__Group__0");
+					put(grammarAccess.getDataflowAccess().getGroup(), "rule__Dataflow__Group__0");
+					put(grammarAccess.getDataflowAccess().getGroup_2(), "rule__Dataflow__Group_2__0");
+					put(grammarAccess.getDataflowAccess().getGroup_2_0(), "rule__Dataflow__Group_2_0__0");
 					put(grammarAccess.getFQNAccess().getGroup(), "rule__FQN__Group__0");
 					put(grammarAccess.getFQNAccess().getGroup_1(), "rule__FQN__Group_1__0");
 					put(grammarAccess.getModelAccess().getInterfacesAssignment_0(), "rule__Model__InterfacesAssignment_0");
 					put(grammarAccess.getModelAccess().getBehaviorsAssignment_1(), "rule__Model__BehaviorsAssignment_1");
+					put(grammarAccess.getModelAccess().getDflowsAssignment_2(), "rule__Model__DflowsAssignment_2");
+					put(grammarAccess.getModelAccess().getDfasAssignment_3(), "rule__Model__DfasAssignment_3");
+					put(grammarAccess.getModelAccess().getDataflowsAssignment_4(), "rule__Model__DataflowsAssignment_4");
 					put(grammarAccess.getInterfaceAccess().getNameAssignment_1(), "rule__Interface__NameAssignment_1");
 					put(grammarAccess.getInterfaceAccess().getMethodsAssignment_3(), "rule__Interface__MethodsAssignment_3");
 					put(grammarAccess.getMethodAccess().getTypeAssignment_0(), "rule__Method__TypeAssignment_0");
@@ -62,6 +70,12 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBehaviorAccess().getCallAssignment_3_0(), "rule__Behavior__CallAssignment_3_0");
 					put(grammarAccess.getBehaviorAccess().getCallAssignment_3_1_1(), "rule__Behavior__CallAssignment_3_1_1");
 					put(grammarAccess.getBehaviorAccess().getEndAssignment_3_3(), "rule__Behavior__EndAssignment_3_3");
+					put(grammarAccess.getDflowAccess().getNameAssignment_1(), "rule__Dflow__NameAssignment_1");
+					put(grammarAccess.getDfaAccess().getNameAssignment_1(), "rule__Dfa__NameAssignment_1");
+					put(grammarAccess.getDataflowAccess().getDfaAssignment_0(), "rule__Dataflow__DfaAssignment_0");
+					put(grammarAccess.getDataflowAccess().getGetflowAssignment_2_0_1(), "rule__Dataflow__GetflowAssignment_2_0_1");
+					put(grammarAccess.getDataflowAccess().getCallAssignment_2_0_3(), "rule__Dataflow__CallAssignment_2_0_3");
+					put(grammarAccess.getDataflowAccess().getEndAssignment_2_1(), "rule__Dataflow__EndAssignment_2_1");
 				}
 			};
 		}

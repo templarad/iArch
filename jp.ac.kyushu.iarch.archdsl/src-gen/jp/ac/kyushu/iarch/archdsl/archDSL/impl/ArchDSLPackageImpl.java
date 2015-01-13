@@ -5,6 +5,9 @@ package jp.ac.kyushu.iarch.archdsl.archDSL.impl;
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLFactory;
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Dfa;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Dflow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
@@ -59,6 +62,27 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * @generated
    */
   private EClass behaviorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dflowEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dfaEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dataflowEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -151,6 +175,36 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
   public EReference getModel_Behaviors()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModel_Dflows()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModel_Dfas()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModel_Dataflows()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -298,6 +352,96 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getDflow()
+  {
+    return dflowEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDflow_Name()
+  {
+    return (EAttribute)dflowEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDfa()
+  {
+    return dfaEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDfa_Name()
+  {
+    return (EAttribute)dfaEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDataflow()
+  {
+    return dataflowEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDataflow_Dfa()
+  {
+    return (EReference)dataflowEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDataflow_Getflow()
+  {
+    return (EReference)dataflowEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDataflow_Call()
+  {
+    return (EReference)dataflowEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDataflow_End()
+  {
+    return (EReference)dataflowEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ArchDSLFactory getArchDSLFactory()
   {
     return (ArchDSLFactory)getEFactoryInstance();
@@ -326,6 +470,9 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     modelEClass = createEClass(MODEL);
     createEReference(modelEClass, MODEL__INTERFACES);
     createEReference(modelEClass, MODEL__BEHAVIORS);
+    createEReference(modelEClass, MODEL__DFLOWS);
+    createEReference(modelEClass, MODEL__DFAS);
+    createEReference(modelEClass, MODEL__DATAFLOWS);
 
     interfaceEClass = createEClass(INTERFACE);
     createEAttribute(interfaceEClass, INTERFACE__NAME);
@@ -344,6 +491,18 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     createEReference(behaviorEClass, BEHAVIOR__INTERFACE);
     createEReference(behaviorEClass, BEHAVIOR__CALL);
     createEReference(behaviorEClass, BEHAVIOR__END);
+
+    dflowEClass = createEClass(DFLOW);
+    createEAttribute(dflowEClass, DFLOW__NAME);
+
+    dfaEClass = createEClass(DFA);
+    createEAttribute(dfaEClass, DFA__NAME);
+
+    dataflowEClass = createEClass(DATAFLOW);
+    createEReference(dataflowEClass, DATAFLOW__DFA);
+    createEReference(dataflowEClass, DATAFLOW__GETFLOW);
+    createEReference(dataflowEClass, DATAFLOW__CALL);
+    createEReference(dataflowEClass, DATAFLOW__END);
   }
 
   /**
@@ -380,6 +539,9 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getModel_Interfaces(), this.getInterface(), null, "interfaces", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Behaviors(), this.getBehavior(), null, "behaviors", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Dflows(), this.getDflow(), null, "dflows", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Dfas(), this.getDfa(), null, "dfas", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Dataflows(), this.getDataflow(), null, "dataflows", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(interfaceEClass, Interface.class, "Interface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInterface_Name(), ecorePackage.getEString(), "name", null, 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -398,6 +560,18 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     initEReference(getBehavior_Interface(), this.getInterface(), null, "interface", null, 0, 1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBehavior_Call(), this.getMethod(), null, "call", null, 0, -1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBehavior_End(), this.getInterface(), null, "end", null, 0, 1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dflowEClass, Dflow.class, "Dflow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDflow_Name(), ecorePackage.getEString(), "name", null, 0, 1, Dflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dfaEClass, Dfa.class, "Dfa", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDfa_Name(), ecorePackage.getEString(), "name", null, 0, 1, Dfa.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dataflowEClass, Dataflow.class, "Dataflow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDataflow_Dfa(), this.getDfa(), null, "dfa", null, 0, 1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDataflow_Getflow(), this.getDflow(), null, "getflow", null, 0, -1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDataflow_Call(), this.getMethod(), null, "call", null, 0, -1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDataflow_End(), this.getInterface(), null, "end", null, 0, 1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

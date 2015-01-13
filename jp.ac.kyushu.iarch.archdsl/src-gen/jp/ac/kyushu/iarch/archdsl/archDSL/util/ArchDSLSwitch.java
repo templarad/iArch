@@ -107,6 +107,27 @@ public class ArchDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ArchDSLPackage.DFLOW:
+      {
+        Dflow dflow = (Dflow)theEObject;
+        T result = caseDflow(dflow);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.DFA:
+      {
+        Dfa dfa = (Dfa)theEObject;
+        T result = caseDfa(dfa);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.DATAFLOW:
+      {
+        Dataflow dataflow = (Dataflow)theEObject;
+        T result = caseDataflow(dataflow);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -187,6 +208,54 @@ public class ArchDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBehavior(Behavior object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Dflow</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Dflow</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDflow(Dflow object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Dfa</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Dfa</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDfa(Dfa object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Dataflow</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Dataflow</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDataflow(Dataflow object)
   {
     return null;
   }

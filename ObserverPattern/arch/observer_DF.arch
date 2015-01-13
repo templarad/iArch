@@ -1,6 +1,4 @@
 interface component Subject {
-	void addObserver(Observer observer);
-	void removeObserver(Observer observer);
 	String getState();
 	void setState(String state);
 }
@@ -8,12 +6,23 @@ interface component Subject {
 interface component Observer {
 	void update(); 
 }
- 
- 
+
+/* 
 Subject = (Subject.setState->
 	Observer.update->Subject.getState->Subject
 );            
 Observer = (Observer.update->Subject.getState
-	->Observer);
+	->Observer);	
+*/
 
-    
+Dflow data state;
+	
+Dfa Dataflow;
+
+Dataflow = |state|->>Subject.setState->>|state|->>
+	Subject.getState->>Subject;
+
+/* 
+Dataflow = |state|->>Subject.setState->>|state|->>Subject->>
+|state|->>Subject.getState->>|state|->>Observer;
+*/
