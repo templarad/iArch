@@ -1,15 +1,18 @@
 package jp.ac.kyushu.iarch.classdiagram.features;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import jp.ac.kyushu.iarch.basefunction.controller.ArchModelController;
+import jp.ac.kyushu.iarch.basefunction.controller.GraphitiModelManager;
 import jp.ac.kyushu.iarch.basefunction.controller.SequenceDiagramModelController;
 import jp.ac.kyushu.iarch.basefunction.reader.ProjectReader;
 import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.graphiti.features.IDeleteFeature;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
@@ -105,7 +108,7 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
                 	}
             	}
             	//End refactoring
-            	
+            	//Delete element from class diagram
                 this.hasDoneChanges = true;
                 Shape shape = (Shape) context.getPictogramElements()[0];
         		DeleteContext ctx = new DeleteContext(shape);
@@ -122,7 +125,8 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
 					e.printStackTrace();
 					logger.error("Refactoring - Saving diagram failed : {}", getDiagram().getName());
 				}
-                    
+                //Delete element from sequence diagram
+                removeMessageFromSequenceDiagram(xx, owenClass.getName(), currentName);
             }
         }
 	}
@@ -130,5 +134,22 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
     @Override
     public boolean hasDoneChanges() {
            return this.hasDoneChanges;
+    }
+    //重新生成？or改Resource
+    public boolean removeMessageFromSequenceDiagram(XMLreader xml,String objectName, String messageName){
+    	List<IResource> sqList = xml.getSequenceDiagramResource();
+    	if(sqList.isEmpty()){
+    		logger.warn("Refactoring - Remove from sequence : no sequence diagram exsit");
+    		return false;
+    	}
+    	Iterator<IResource> sqIt = sqList.iterator();
+    	while(sqIt.hasNext()){
+    		IResource sqRescource = sqIt.next();
+    		Resource sequenceDiagram = GraphitiModelManager.getGraphitiModel(sqRescource);
+    		
+    		logger.warn("Refactoring - Remove from sequence : no sequence diagram exsit");
+    		System.out.println("ok");
+    	}
+    	return true;
     }
 }
