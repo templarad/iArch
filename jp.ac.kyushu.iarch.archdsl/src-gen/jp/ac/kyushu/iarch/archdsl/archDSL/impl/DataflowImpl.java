@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getDfa <em>Dfa</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getGetflow <em>Getflow</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getCall <em>Call</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getGetIf <em>Get If</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getEnd <em>End</em>}</li>
  * </ul>
  * </p>
@@ -71,16 +70,6 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * @ordered
    */
   protected EList<Method> call;
-
-  /**
-   * The cached value of the '{@link #getGetIf() <em>Get If</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGetIf()
-   * @generated
-   * @ordered
-   */
-  protected EList<Interface> getIf;
 
   /**
    * The cached value of the '{@link #getEnd() <em>End</em>}' reference.
@@ -189,20 +178,6 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Interface> getGetIf()
-  {
-    if (getIf == null)
-    {
-      getIf = new EObjectResolvingEList<Interface>(Interface.class, this, ArchDSLPackage.DATAFLOW__GET_IF);
-    }
-    return getIf;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Interface getEnd()
   {
     if (end != null && end.eIsProxy())
@@ -258,8 +233,6 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
         return getGetflow();
       case ArchDSLPackage.DATAFLOW__CALL:
         return getCall();
-      case ArchDSLPackage.DATAFLOW__GET_IF:
-        return getGetIf();
       case ArchDSLPackage.DATAFLOW__END:
         if (resolve) return getEnd();
         return basicGetEnd();
@@ -289,10 +262,6 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
         getCall().clear();
         getCall().addAll((Collection<? extends Method>)newValue);
         return;
-      case ArchDSLPackage.DATAFLOW__GET_IF:
-        getGetIf().clear();
-        getGetIf().addAll((Collection<? extends Interface>)newValue);
-        return;
       case ArchDSLPackage.DATAFLOW__END:
         setEnd((Interface)newValue);
         return;
@@ -319,9 +288,6 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
       case ArchDSLPackage.DATAFLOW__CALL:
         getCall().clear();
         return;
-      case ArchDSLPackage.DATAFLOW__GET_IF:
-        getGetIf().clear();
-        return;
       case ArchDSLPackage.DATAFLOW__END:
         setEnd((Interface)null);
         return;
@@ -345,8 +311,6 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
         return getflow != null && !getflow.isEmpty();
       case ArchDSLPackage.DATAFLOW__CALL:
         return call != null && !call.isEmpty();
-      case ArchDSLPackage.DATAFLOW__GET_IF:
-        return getIf != null && !getIf.isEmpty();
       case ArchDSLPackage.DATAFLOW__END:
         return end != null;
     }

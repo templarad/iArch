@@ -380,22 +380,13 @@ public interface ArchDSLPackage extends EPackage
   int DATAFLOW__CALL = 2;
 
   /**
-   * The feature id for the '<em><b>Get If</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATAFLOW__GET_IF = 3;
-
-  /**
    * The feature id for the '<em><b>End</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DATAFLOW__END = 4;
+  int DATAFLOW__END = 3;
 
   /**
    * The number of structural features of the '<em>Dataflow</em>' class.
@@ -404,7 +395,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATAFLOW_FEATURE_COUNT = 5;
+  int DATAFLOW_FEATURE_COUNT = 4;
 
 
   /**
@@ -708,17 +699,6 @@ public interface ArchDSLPackage extends EPackage
   EReference getDataflow_Call();
 
   /**
-   * Returns the meta object for the reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetIf <em>Get If</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Get If</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetIf()
-   * @see #getDataflow()
-   * @generated
-   */
-  EReference getDataflow_GetIf();
-
-  /**
    * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getEnd <em>End</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -991,14 +971,6 @@ public interface ArchDSLPackage extends EPackage
      * @generated
      */
     EReference DATAFLOW__CALL = eINSTANCE.getDataflow_Call();
-
-    /**
-     * The meta object literal for the '<em><b>Get If</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DATAFLOW__GET_IF = eINSTANCE.getDataflow_GetIf();
 
     /**
      * The meta object literal for the '<em><b>End</b></em>' reference feature.

@@ -37,7 +37,6 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getDataflowAccess().getAlternatives_3_3_0_1(), "rule__Dataflow__Alternatives_3_3_0_1");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getInterfaceAccess().getGroup(), "rule__Interface__Group__0");
 					put(grammarAccess.getMethodAccess().getGroup(), "rule__Method__Group__0");
@@ -51,9 +50,7 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBehaviorAccess().getGroup_3_1(), "rule__Behavior__Group_3_1__0");
 					put(grammarAccess.getDataflowAccess().getGroup(), "rule__Dataflow__Group__0");
 					put(grammarAccess.getDataflowAccess().getGroup_3(), "rule__Dataflow__Group_3__0");
-					put(grammarAccess.getDataflowAccess().getGroup_3_3(), "rule__Dataflow__Group_3_3__0");
-					put(grammarAccess.getDataflowAccess().getGroup_3_3_0(), "rule__Dataflow__Group_3_3_0__0");
-					put(grammarAccess.getDataflowAccess().getGroup_3_3_1(), "rule__Dataflow__Group_3_3_1__0");
+					put(grammarAccess.getDataflowAccess().getGroup_3_0(), "rule__Dataflow__Group_3_0__0");
 					put(grammarAccess.getFQNAccess().getGroup(), "rule__FQN__Group__0");
 					put(grammarAccess.getFQNAccess().getGroup_1(), "rule__FQN__Group_1__0");
 					put(grammarAccess.getModelAccess().getInterfacesAssignment_0(), "rule__Model__InterfacesAssignment_0");
@@ -76,11 +73,9 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBehaviorAccess().getCallAssignment_3_1_1(), "rule__Behavior__CallAssignment_3_1_1");
 					put(grammarAccess.getBehaviorAccess().getEndAssignment_3_3(), "rule__Behavior__EndAssignment_3_3");
 					put(grammarAccess.getDataflowAccess().getDfaAssignment_0(), "rule__Dataflow__DfaAssignment_0");
-					put(grammarAccess.getDataflowAccess().getGetflowAssignment_3_1(), "rule__Dataflow__GetflowAssignment_3_1");
-					put(grammarAccess.getDataflowAccess().getCallAssignment_3_3_0_1_0(), "rule__Dataflow__CallAssignment_3_3_0_1_0");
-					put(grammarAccess.getDataflowAccess().getGetIfAssignment_3_3_0_1_1(), "rule__Dataflow__GetIfAssignment_3_3_0_1_1");
-					put(grammarAccess.getDataflowAccess().getGetflowAssignment_3_3_1_2(), "rule__Dataflow__GetflowAssignment_3_3_1_2");
-					put(grammarAccess.getDataflowAccess().getEndAssignment_3_5(), "rule__Dataflow__EndAssignment_3_5");
+					put(grammarAccess.getDataflowAccess().getGetflowAssignment_3_0_1(), "rule__Dataflow__GetflowAssignment_3_0_1");
+					put(grammarAccess.getDataflowAccess().getCallAssignment_3_0_3(), "rule__Dataflow__CallAssignment_3_0_3");
+					put(grammarAccess.getDataflowAccess().getEndAssignment_3_1(), "rule__Dataflow__EndAssignment_3_1");
 				}
 			};
 		}

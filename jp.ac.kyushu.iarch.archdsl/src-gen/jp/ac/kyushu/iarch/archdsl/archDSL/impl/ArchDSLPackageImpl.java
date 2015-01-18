@@ -432,19 +432,9 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDataflow_GetIf()
-  {
-    return (EReference)dataflowEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getDataflow_End()
   {
-    return (EReference)dataflowEClass.getEStructuralFeatures().get(4);
+    return (EReference)dataflowEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -512,7 +502,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     createEReference(dataflowEClass, DATAFLOW__DFA);
     createEReference(dataflowEClass, DATAFLOW__GETFLOW);
     createEReference(dataflowEClass, DATAFLOW__CALL);
-    createEReference(dataflowEClass, DATAFLOW__GET_IF);
     createEReference(dataflowEClass, DATAFLOW__END);
   }
 
@@ -582,7 +571,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     initEReference(getDataflow_Dfa(), this.getDfa(), null, "dfa", null, 0, 1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDataflow_Getflow(), this.getDflow(), null, "getflow", null, 0, -1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDataflow_Call(), this.getMethod(), null, "call", null, 0, -1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDataflow_GetIf(), this.getInterface(), null, "getIf", null, 0, -1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDataflow_End(), this.getInterface(), null, "end", null, 0, 1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
