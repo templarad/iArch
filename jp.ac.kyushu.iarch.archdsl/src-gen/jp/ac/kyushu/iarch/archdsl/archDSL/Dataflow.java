@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getDfa <em>Dfa</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetflow <em>Getflow</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getCall <em>Call</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetIf <em>Get If</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getEnd <em>End</em>}</li>
  * </ul>
  * </p>
@@ -84,6 +85,22 @@ public interface Dataflow extends EObject
    * @generated
    */
   EList<Method> getCall();
+
+  /**
+   * Returns the value of the '<em><b>Get If</b></em>' reference list.
+   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.Interface}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Get If</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Get If</em>' reference list.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getDataflow_GetIf()
+   * @model
+   * @generated
+   */
+  EList<Interface> getGetIf();
 
   /**
    * Returns the value of the '<em><b>End</b></em>' reference.

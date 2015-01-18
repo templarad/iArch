@@ -360,33 +360,69 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Group cGroup_3_0 = (Group)cGroup_3.eContents().get(0);
-		private final Keyword cVerticalLineKeyword_3_0_0 = (Keyword)cGroup_3_0.eContents().get(0);
-		private final Assignment cGetflowAssignment_3_0_1 = (Assignment)cGroup_3_0.eContents().get(1);
-		private final CrossReference cGetflowDflowCrossReference_3_0_1_0 = (CrossReference)cGetflowAssignment_3_0_1.eContents().get(0);
-		private final RuleCall cGetflowDflowIDTerminalRuleCall_3_0_1_0_1 = (RuleCall)cGetflowDflowCrossReference_3_0_1_0.eContents().get(1);
-		private final Keyword cVerticalLineHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_0_2 = (Keyword)cGroup_3_0.eContents().get(2);
-		private final Assignment cCallAssignment_3_0_3 = (Assignment)cGroup_3_0.eContents().get(3);
-		private final CrossReference cCallMethodCrossReference_3_0_3_0 = (CrossReference)cCallAssignment_3_0_3.eContents().get(0);
-		private final RuleCall cCallMethodFQNParserRuleCall_3_0_3_0_1 = (RuleCall)cCallMethodCrossReference_3_0_3_0.eContents().get(1);
-		private final Keyword cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_0_4 = (Keyword)cGroup_3_0.eContents().get(4);
-		private final Assignment cEndAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final CrossReference cEndInterfaceCrossReference_3_1_0 = (CrossReference)cEndAssignment_3_1.eContents().get(0);
-		private final RuleCall cEndInterfaceIDTerminalRuleCall_3_1_0_1 = (RuleCall)cEndInterfaceCrossReference_3_1_0.eContents().get(1);
+		private final Keyword cVerticalLineKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cGetflowAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cGetflowDflowCrossReference_3_1_0 = (CrossReference)cGetflowAssignment_3_1.eContents().get(0);
+		private final RuleCall cGetflowDflowIDTerminalRuleCall_3_1_0_1 = (RuleCall)cGetflowDflowCrossReference_3_1_0.eContents().get(1);
+		private final Keyword cVerticalLineKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
+		private final Keyword cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
+		private final Assignment cCallAssignment_3_3_1 = (Assignment)cGroup_3_3.eContents().get(1);
+		private final CrossReference cCallMethodCrossReference_3_3_1_0 = (CrossReference)cCallAssignment_3_3_1.eContents().get(0);
+		private final RuleCall cCallMethodFQNParserRuleCall_3_3_1_0_1 = (RuleCall)cCallMethodCrossReference_3_3_1_0.eContents().get(1);
+		private final Group cGroup_3_3_2 = (Group)cGroup_3_3.eContents().get(2);
+		private final Keyword cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_3_2_0 = (Keyword)cGroup_3_3_2.eContents().get(0);
+		private final Keyword cVerticalLineKeyword_3_3_2_1 = (Keyword)cGroup_3_3_2.eContents().get(1);
+		private final Assignment cGetflowAssignment_3_3_2_2 = (Assignment)cGroup_3_3_2.eContents().get(2);
+		private final CrossReference cGetflowDflowCrossReference_3_3_2_2_0 = (CrossReference)cGetflowAssignment_3_3_2_2.eContents().get(0);
+		private final RuleCall cGetflowDflowIDTerminalRuleCall_3_3_2_2_0_1 = (RuleCall)cGetflowDflowCrossReference_3_3_2_2_0.eContents().get(1);
+		private final Keyword cVerticalLineKeyword_3_3_2_3 = (Keyword)cGroup_3_3_2.eContents().get(3);
+		private final Group cGroup_3_4 = (Group)cGroup_3.eContents().get(4);
+		private final Keyword cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_4_0 = (Keyword)cGroup_3_4.eContents().get(0);
+		private final Assignment cGetIfAssignment_3_4_1 = (Assignment)cGroup_3_4.eContents().get(1);
+		private final CrossReference cGetIfInterfaceCrossReference_3_4_1_0 = (CrossReference)cGetIfAssignment_3_4_1.eContents().get(0);
+		private final RuleCall cGetIfInterfaceIDTerminalRuleCall_3_4_1_0_1 = (RuleCall)cGetIfInterfaceCrossReference_3_4_1_0.eContents().get(1);
+		private final Group cGroup_3_4_2 = (Group)cGroup_3_4.eContents().get(2);
+		private final Keyword cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_4_2_0 = (Keyword)cGroup_3_4_2.eContents().get(0);
+		private final Keyword cVerticalLineKeyword_3_4_2_1 = (Keyword)cGroup_3_4_2.eContents().get(1);
+		private final Assignment cGetflowAssignment_3_4_2_2 = (Assignment)cGroup_3_4_2.eContents().get(2);
+		private final CrossReference cGetflowDflowCrossReference_3_4_2_2_0 = (CrossReference)cGetflowAssignment_3_4_2_2.eContents().get(0);
+		private final RuleCall cGetflowDflowIDTerminalRuleCall_3_4_2_2_0_1 = (RuleCall)cGetflowDflowCrossReference_3_4_2_2_0.eContents().get(1);
+		private final Keyword cVerticalLineKeyword_3_4_2_3 = (Keyword)cGroup_3_4_2.eContents().get(3);
+		private final Group cGroup_3_5 = (Group)cGroup_3.eContents().get(5);
+		private final Keyword cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_5_0 = (Keyword)cGroup_3_5.eContents().get(0);
+		private final Assignment cCallAssignment_3_5_1 = (Assignment)cGroup_3_5.eContents().get(1);
+		private final CrossReference cCallMethodCrossReference_3_5_1_0 = (CrossReference)cCallAssignment_3_5_1.eContents().get(0);
+		private final RuleCall cCallMethodFQNParserRuleCall_3_5_1_0_1 = (RuleCall)cCallMethodCrossReference_3_5_1_0.eContents().get(1);
+		private final Group cGroup_3_5_2 = (Group)cGroup_3_5.eContents().get(2);
+		private final Keyword cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_5_2_0 = (Keyword)cGroup_3_5_2.eContents().get(0);
+		private final Keyword cVerticalLineKeyword_3_5_2_1 = (Keyword)cGroup_3_5_2.eContents().get(1);
+		private final Assignment cGetflowAssignment_3_5_2_2 = (Assignment)cGroup_3_5_2.eContents().get(2);
+		private final CrossReference cGetflowDflowCrossReference_3_5_2_2_0 = (CrossReference)cGetflowAssignment_3_5_2_2.eContents().get(0);
+		private final RuleCall cGetflowDflowIDTerminalRuleCall_3_5_2_2_0_1 = (RuleCall)cGetflowDflowCrossReference_3_5_2_2_0.eContents().get(1);
+		private final Keyword cVerticalLineKeyword_3_5_2_3 = (Keyword)cGroup_3_5_2.eContents().get(3);
+		private final Keyword cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_6 = (Keyword)cGroup_3.eContents().get(6);
+		private final Assignment cEndAssignment_3_7 = (Assignment)cGroup_3.eContents().get(7);
+		private final CrossReference cEndInterfaceCrossReference_3_7_0 = (CrossReference)cEndAssignment_3_7.eContents().get(0);
+		private final RuleCall cEndInterfaceIDTerminalRuleCall_3_7_0_1 = (RuleCall)cEndInterfaceCrossReference_3_7_0.eContents().get(1);
 		private final Keyword cRightSquareBracketSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//Dataflow: //	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"(("->>"((call+=[Method|FQN])|(getIf+=[Interface])))
-		////	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];"  
-		//	dfa=[Dfa] "=" "[" (("|" getflow+=[Dflow] "|->>" call+=[Method|FQN] "->>")* end=[Interface])? "];";
+		//Dataflow: //	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
+		//// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];" 
+		//	dfa=[Dfa] "=" "[" ("|" getflow+=[Dflow] "|" ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")) ("->>"
+		//	getIf+=[Interface] ("->>" "|" getflow+=[Dflow] "|")) ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|"))
+		//	"->>" end=[Interface])? "];";
 		public ParserRule getRule() { return rule; }
 
-		////	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"(("->>"((call+=[Method|FQN])|(getIf+=[Interface])))
-		////	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];"  
-		//dfa=[Dfa] "=" "[" (("|" getflow+=[Dflow] "|->>" call+=[Method|FQN] "->>")* end=[Interface])? "];"
+		////	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
+		//// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];" 
+		//dfa=[Dfa] "=" "[" ("|" getflow+=[Dflow] "|" ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")) ("->>"
+		//getIf+=[Interface] ("->>" "|" getflow+=[Dflow] "|")) ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")) "->>"
+		//end=[Interface])? "];"
 		public Group getGroup() { return cGroup; }
 
-		////	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"(("->>"((call+=[Method|FQN])|(getIf+=[Interface])))
-		////	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];"  
+		////	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
+		//// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];" 
 		//dfa=[Dfa]
 		public Assignment getDfaAssignment_0() { return cDfaAssignment_0; }
 
@@ -402,47 +438,144 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//"["
 		public Keyword getLeftSquareBracketKeyword_2() { return cLeftSquareBracketKeyword_2; }
 
-		//(("|" getflow+=[Dflow] "|->>" call+=[Method|FQN] "->>")* end=[Interface])?
+		//("|" getflow+=[Dflow] "|" ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")) ("->>" getIf+=[Interface] ("->>"
+		//"|" getflow+=[Dflow] "|")) ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")) "->>" end=[Interface])?
 		public Group getGroup_3() { return cGroup_3; }
 
-		//("|" getflow+=[Dflow] "|->>" call+=[Method|FQN] "->>")*
-		public Group getGroup_3_0() { return cGroup_3_0; }
-
 		//"|"
-		public Keyword getVerticalLineKeyword_3_0_0() { return cVerticalLineKeyword_3_0_0; }
+		public Keyword getVerticalLineKeyword_3_0() { return cVerticalLineKeyword_3_0; }
 
 		//getflow+=[Dflow]
-		public Assignment getGetflowAssignment_3_0_1() { return cGetflowAssignment_3_0_1; }
+		public Assignment getGetflowAssignment_3_1() { return cGetflowAssignment_3_1; }
 
 		//[Dflow]
-		public CrossReference getGetflowDflowCrossReference_3_0_1_0() { return cGetflowDflowCrossReference_3_0_1_0; }
+		public CrossReference getGetflowDflowCrossReference_3_1_0() { return cGetflowDflowCrossReference_3_1_0; }
 
 		//ID
-		public RuleCall getGetflowDflowIDTerminalRuleCall_3_0_1_0_1() { return cGetflowDflowIDTerminalRuleCall_3_0_1_0_1; }
+		public RuleCall getGetflowDflowIDTerminalRuleCall_3_1_0_1() { return cGetflowDflowIDTerminalRuleCall_3_1_0_1; }
 
-		//"|->>"
-		public Keyword getVerticalLineHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_0_2() { return cVerticalLineHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_0_2; }
+		//"|"
+		public Keyword getVerticalLineKeyword_3_2() { return cVerticalLineKeyword_3_2; }
 
-		//call+=[Method|FQN]
-		public Assignment getCallAssignment_3_0_3() { return cCallAssignment_3_0_3; }
-
-		//[Method|FQN]
-		public CrossReference getCallMethodCrossReference_3_0_3_0() { return cCallMethodCrossReference_3_0_3_0; }
-
-		//FQN
-		public RuleCall getCallMethodFQNParserRuleCall_3_0_3_0_1() { return cCallMethodFQNParserRuleCall_3_0_3_0_1; }
+		//"->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")
+		public Group getGroup_3_3() { return cGroup_3_3; }
 
 		//"->>"
-		public Keyword getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_0_4() { return cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_0_4; }
+		public Keyword getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_3_0() { return cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_3_0; }
 
-		//end=[Interface]
-		public Assignment getEndAssignment_3_1() { return cEndAssignment_3_1; }
+		//call+=[Method|FQN]
+		public Assignment getCallAssignment_3_3_1() { return cCallAssignment_3_3_1; }
 
-		//[Interface]
-		public CrossReference getEndInterfaceCrossReference_3_1_0() { return cEndInterfaceCrossReference_3_1_0; }
+		//[Method|FQN]
+		public CrossReference getCallMethodCrossReference_3_3_1_0() { return cCallMethodCrossReference_3_3_1_0; }
+
+		//FQN
+		public RuleCall getCallMethodFQNParserRuleCall_3_3_1_0_1() { return cCallMethodFQNParserRuleCall_3_3_1_0_1; }
+
+		//"->>" "|" getflow+=[Dflow] "|"
+		public Group getGroup_3_3_2() { return cGroup_3_3_2; }
+
+		//"->>"
+		public Keyword getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_3_2_0() { return cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_3_2_0; }
+
+		//"|"
+		public Keyword getVerticalLineKeyword_3_3_2_1() { return cVerticalLineKeyword_3_3_2_1; }
+
+		//getflow+=[Dflow]
+		public Assignment getGetflowAssignment_3_3_2_2() { return cGetflowAssignment_3_3_2_2; }
+
+		//[Dflow]
+		public CrossReference getGetflowDflowCrossReference_3_3_2_2_0() { return cGetflowDflowCrossReference_3_3_2_2_0; }
 
 		//ID
-		public RuleCall getEndInterfaceIDTerminalRuleCall_3_1_0_1() { return cEndInterfaceIDTerminalRuleCall_3_1_0_1; }
+		public RuleCall getGetflowDflowIDTerminalRuleCall_3_3_2_2_0_1() { return cGetflowDflowIDTerminalRuleCall_3_3_2_2_0_1; }
+
+		//"|"
+		public Keyword getVerticalLineKeyword_3_3_2_3() { return cVerticalLineKeyword_3_3_2_3; }
+
+		//"->>" getIf+=[Interface] ("->>" "|" getflow+=[Dflow] "|")
+		public Group getGroup_3_4() { return cGroup_3_4; }
+
+		//"->>"
+		public Keyword getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_4_0() { return cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_4_0; }
+
+		//getIf+=[Interface]
+		public Assignment getGetIfAssignment_3_4_1() { return cGetIfAssignment_3_4_1; }
+
+		//[Interface]
+		public CrossReference getGetIfInterfaceCrossReference_3_4_1_0() { return cGetIfInterfaceCrossReference_3_4_1_0; }
+
+		//ID
+		public RuleCall getGetIfInterfaceIDTerminalRuleCall_3_4_1_0_1() { return cGetIfInterfaceIDTerminalRuleCall_3_4_1_0_1; }
+
+		//"->>" "|" getflow+=[Dflow] "|"
+		public Group getGroup_3_4_2() { return cGroup_3_4_2; }
+
+		//"->>"
+		public Keyword getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_4_2_0() { return cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_4_2_0; }
+
+		//"|"
+		public Keyword getVerticalLineKeyword_3_4_2_1() { return cVerticalLineKeyword_3_4_2_1; }
+
+		//getflow+=[Dflow]
+		public Assignment getGetflowAssignment_3_4_2_2() { return cGetflowAssignment_3_4_2_2; }
+
+		//[Dflow]
+		public CrossReference getGetflowDflowCrossReference_3_4_2_2_0() { return cGetflowDflowCrossReference_3_4_2_2_0; }
+
+		//ID
+		public RuleCall getGetflowDflowIDTerminalRuleCall_3_4_2_2_0_1() { return cGetflowDflowIDTerminalRuleCall_3_4_2_2_0_1; }
+
+		//"|"
+		public Keyword getVerticalLineKeyword_3_4_2_3() { return cVerticalLineKeyword_3_4_2_3; }
+
+		//"->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")
+		public Group getGroup_3_5() { return cGroup_3_5; }
+
+		//"->>"
+		public Keyword getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_5_0() { return cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_5_0; }
+
+		//call+=[Method|FQN]
+		public Assignment getCallAssignment_3_5_1() { return cCallAssignment_3_5_1; }
+
+		//[Method|FQN]
+		public CrossReference getCallMethodCrossReference_3_5_1_0() { return cCallMethodCrossReference_3_5_1_0; }
+
+		//FQN
+		public RuleCall getCallMethodFQNParserRuleCall_3_5_1_0_1() { return cCallMethodFQNParserRuleCall_3_5_1_0_1; }
+
+		//"->>" "|" getflow+=[Dflow] "|"
+		public Group getGroup_3_5_2() { return cGroup_3_5_2; }
+
+		//"->>"
+		public Keyword getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_5_2_0() { return cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_5_2_0; }
+
+		//"|"
+		public Keyword getVerticalLineKeyword_3_5_2_1() { return cVerticalLineKeyword_3_5_2_1; }
+
+		//getflow+=[Dflow]
+		public Assignment getGetflowAssignment_3_5_2_2() { return cGetflowAssignment_3_5_2_2; }
+
+		//[Dflow]
+		public CrossReference getGetflowDflowCrossReference_3_5_2_2_0() { return cGetflowDflowCrossReference_3_5_2_2_0; }
+
+		//ID
+		public RuleCall getGetflowDflowIDTerminalRuleCall_3_5_2_2_0_1() { return cGetflowDflowIDTerminalRuleCall_3_5_2_2_0_1; }
+
+		//"|"
+		public Keyword getVerticalLineKeyword_3_5_2_3() { return cVerticalLineKeyword_3_5_2_3; }
+
+		//"->>"
+		public Keyword getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_6() { return cHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_6; }
+
+		//end=[Interface]
+		public Assignment getEndAssignment_3_7() { return cEndAssignment_3_7; }
+
+		//[Interface]
+		public CrossReference getEndInterfaceCrossReference_3_7_0() { return cEndInterfaceCrossReference_3_7_0; }
+
+		//ID
+		public RuleCall getEndInterfaceIDTerminalRuleCall_3_7_0_1() { return cEndInterfaceIDTerminalRuleCall_3_7_0_1; }
 
 		//"];"
 		public Keyword getRightSquareBracketSemicolonKeyword_4() { return cRightSquareBracketSemicolonKeyword_4; }
@@ -466,7 +599,13 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		////dfa=[Dfa] "=" "["(("|"getflow+=[Dflow]"|->>"call+=[Method|FQN]"->>")*end=[Interface])?"];"
 		//// interface=[Interface] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");" 
 		//// dfa=[Dfa] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");"   
-		// * / FQN:
+		// * / //errors report
+		////
+		/// * 
+		// * dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"(("->>"((call+=[Method|FQN])|(getIf+=[Interface])))
+		// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];"   
+		// * 
+		// * * / FQN:
 		//	ID ("." ID)*;
 		public ParserRule getRule() { return rule; }
 
@@ -617,9 +756,11 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getBehaviorAccess().getRule();
 	}
 
-	//Dataflow: //	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"(("->>"((call+=[Method|FQN])|(getIf+=[Interface])))
-	////	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];"  
-	//	dfa=[Dfa] "=" "[" (("|" getflow+=[Dflow] "|->>" call+=[Method|FQN] "->>")* end=[Interface])? "];";
+	//Dataflow: //	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
+	//// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];" 
+	//	dfa=[Dfa] "=" "[" ("|" getflow+=[Dflow] "|" ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")) ("->>"
+	//	getIf+=[Interface] ("->>" "|" getflow+=[Dflow] "|")) ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|"))
+	//	"->>" end=[Interface])? "];";
 	public DataflowElements getDataflowAccess() {
 		return pDataflow;
 	}
@@ -638,7 +779,13 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	////dfa=[Dfa] "=" "["(("|"getflow+=[Dflow]"|->>"call+=[Method|FQN]"->>")*end=[Interface])?"];"
 	//// interface=[Interface] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");" 
 	//// dfa=[Dfa] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");"   
-	// * / FQN:
+	// * / //errors report
+	////
+	/// * 
+	// * dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"(("->>"((call+=[Method|FQN])|(getIf+=[Interface])))
+	// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];"   
+	// * 
+	// * * / FQN:
 	//	ID ("." ID)*;
 	public FQNElements getFQNAccess() {
 		return pFQN;

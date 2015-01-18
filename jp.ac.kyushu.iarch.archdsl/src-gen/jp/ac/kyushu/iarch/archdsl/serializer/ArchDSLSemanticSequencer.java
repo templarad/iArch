@@ -95,7 +95,19 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (dfa=[Dfa|ID] ((getflow+=[Dflow|ID] call+=[Method|FQN])* end=[Interface|ID])?)
+	 *     (
+	 *         dfa=[Dfa|ID] 
+	 *         (
+	 *             getflow+=[Dflow|ID] 
+	 *             call+=[Method|FQN] 
+	 *             getflow+=[Dflow|ID] 
+	 *             getIf+=[Interface|ID] 
+	 *             getflow+=[Dflow|ID] 
+	 *             call+=[Method|FQN] 
+	 *             getflow+=[Dflow|ID] 
+	 *             end=[Interface|ID]
+	 *         )?
+	 *     )
 	 */
 	protected void sequence_Dataflow(EObject context, Dataflow semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

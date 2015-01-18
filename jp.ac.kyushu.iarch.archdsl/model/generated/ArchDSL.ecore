@@ -47,6 +47,8 @@
         upperBound="-1" eType="#//Dflow"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="call" unique="false" upperBound="-1"
         eType="#//Method"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="getIf" unique="false" upperBound="-1"
+        eType="#//Interface"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Interface"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -2,7 +2,7 @@
 
 <Project name="ObserverPattern">
   <Archfile>
-    <Path Attribute="\ObserverPattern\arch\observer.arch"/>
+    <Path Attribute="\ObserverPattern\arch\observer_DF.arch"/>
   </Archfile>
   <ClassDiagram>
     <Path Attribute="\ObserverPattern\diagrams\Class.diagram"/>

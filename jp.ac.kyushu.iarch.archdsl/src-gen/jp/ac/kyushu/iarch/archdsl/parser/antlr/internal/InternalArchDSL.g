@@ -631,9 +631,9 @@ ruleDataflow returns [EObject current=null]
     {
     	newLeafNode(otherlv_2, grammarAccess.getDataflowAccess().getLeftSquareBracketKeyword_2());
     }
-((	otherlv_3='|' 
+(	otherlv_3='|' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getDataflowAccess().getVerticalLineKeyword_3_0_0());
+    	newLeafNode(otherlv_3, grammarAccess.getDataflowAccess().getVerticalLineKeyword_3_0());
     }
 (
 (
@@ -644,13 +644,17 @@ ruleDataflow returns [EObject current=null]
         }
 	otherlv_4=RULE_ID
 	{
-		newLeafNode(otherlv_4, grammarAccess.getDataflowAccess().getGetflowDflowCrossReference_3_0_1_0()); 
+		newLeafNode(otherlv_4, grammarAccess.getDataflowAccess().getGetflowDflowCrossReference_3_1_0()); 
 	}
 
 )
-)	otherlv_5='|->>' 
+)	otherlv_5='|' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getDataflowAccess().getVerticalLineHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_0_2());
+    	newLeafNode(otherlv_5, grammarAccess.getDataflowAccess().getVerticalLineKeyword_3_2());
+    }
+(	otherlv_6='->>' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_3_0());
     }
 (
 (
@@ -660,33 +664,144 @@ ruleDataflow returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getDataflowAccess().getCallMethodCrossReference_3_0_3_0()); 
+	        newCompositeNode(grammarAccess.getDataflowAccess().getCallMethodCrossReference_3_3_1_0()); 
 	    }
 		ruleFQN		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_7='->>' 
+)(	otherlv_8='->>' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_0_4());
+    	newLeafNode(otherlv_8, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_3_2_0());
     }
-)*(
+	otherlv_9='|' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getDataflowAccess().getVerticalLineKeyword_3_3_2_1());
+    }
+(
 (
 		{
 			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getDataflowRule());
 	        }
         }
-	otherlv_8=RULE_ID
+	otherlv_10=RULE_ID
 	{
-		newLeafNode(otherlv_8, grammarAccess.getDataflowAccess().getEndInterfaceCrossReference_3_1_0()); 
+		newLeafNode(otherlv_10, grammarAccess.getDataflowAccess().getGetflowDflowCrossReference_3_3_2_2_0()); 
 	}
 
 )
-))?	otherlv_9='];' 
+)	otherlv_11='|' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getDataflowAccess().getRightSquareBracketSemicolonKeyword_4());
+    	newLeafNode(otherlv_11, grammarAccess.getDataflowAccess().getVerticalLineKeyword_3_3_2_3());
+    }
+))(	otherlv_12='->>' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_4_0());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDataflowRule());
+	        }
+        }
+	otherlv_13=RULE_ID
+	{
+		newLeafNode(otherlv_13, grammarAccess.getDataflowAccess().getGetIfInterfaceCrossReference_3_4_1_0()); 
+	}
+
+)
+)(	otherlv_14='->>' 
+    {
+    	newLeafNode(otherlv_14, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_4_2_0());
+    }
+	otherlv_15='|' 
+    {
+    	newLeafNode(otherlv_15, grammarAccess.getDataflowAccess().getVerticalLineKeyword_3_4_2_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDataflowRule());
+	        }
+        }
+	otherlv_16=RULE_ID
+	{
+		newLeafNode(otherlv_16, grammarAccess.getDataflowAccess().getGetflowDflowCrossReference_3_4_2_2_0()); 
+	}
+
+)
+)	otherlv_17='|' 
+    {
+    	newLeafNode(otherlv_17, grammarAccess.getDataflowAccess().getVerticalLineKeyword_3_4_2_3());
+    }
+))(	otherlv_18='->>' 
+    {
+    	newLeafNode(otherlv_18, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_5_0());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDataflowRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getDataflowAccess().getCallMethodCrossReference_3_5_1_0()); 
+	    }
+		ruleFQN		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_20='->>' 
+    {
+    	newLeafNode(otherlv_20, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_5_2_0());
+    }
+	otherlv_21='|' 
+    {
+    	newLeafNode(otherlv_21, grammarAccess.getDataflowAccess().getVerticalLineKeyword_3_5_2_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDataflowRule());
+	        }
+        }
+	otherlv_22=RULE_ID
+	{
+		newLeafNode(otherlv_22, grammarAccess.getDataflowAccess().getGetflowDflowCrossReference_3_5_2_2_0()); 
+	}
+
+)
+)	otherlv_23='|' 
+    {
+    	newLeafNode(otherlv_23, grammarAccess.getDataflowAccess().getVerticalLineKeyword_3_5_2_3());
+    }
+))	otherlv_24='->>' 
+    {
+    	newLeafNode(otherlv_24, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_6());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDataflowRule());
+	        }
+        }
+	otherlv_25=RULE_ID
+	{
+		newLeafNode(otherlv_25, grammarAccess.getDataflowAccess().getEndInterfaceCrossReference_3_7_0()); 
+	}
+
+)
+))?	otherlv_26='];' 
+    {
+    	newLeafNode(otherlv_26, grammarAccess.getDataflowAccess().getRightSquareBracketSemicolonKeyword_4());
     }
 )
 ;

@@ -38,10 +38,17 @@ Behavior:
 	interface=[Interface] "=" "(" (call+=[Method|FQN]("->"call+=[Method|FQN])*"->"end=[Interface])?");"
 ;
 	
-Dataflow:	
-//	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"(("->>"((call+=[Method|FQN])|(getIf+=[Interface])))
-//	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];"  
-dfa=[Dfa] "=" "["(("|"getflow+=[Dflow]"|->>"call+=[Method|FQN]"->>")*end=[Interface])?"];"                
+Dataflow:
+	
+//	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
+// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];" 
+ 	   
+	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"
+		("->>"call+=[Method|FQN]("->>""|"getflow+=[Dflow]"|"))
+		("->>"getIf+=[Interface]("->>""|"getflow+=[Dflow]"|"))
+		("->>"call+=[Method|FQN]("->>""|"getflow+=[Dflow]"|"))
+		"->>"end=[Interface])?"];"     
+	         
 ;
 
 /* some definition Directions
@@ -62,3 +69,12 @@ FQN:
 // interface=[Interface] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");" 
 // dfa=[Dfa] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");"   
  */
+ 
+ 
+//errors report
+//
+/* 
+ * dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"(("->>"((call+=[Method|FQN])|(getIf+=[Interface])))
+ 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];"   
+ * 
+ * */

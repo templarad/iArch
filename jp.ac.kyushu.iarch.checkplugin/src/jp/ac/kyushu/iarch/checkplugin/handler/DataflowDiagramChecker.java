@@ -176,7 +176,7 @@ public class DataflowDiagramChecker {
 				Dataflow_editor.DataFlow umlDataflow = (Dataflow_editor.DataFlow) obj;
 		//		if (!umlDataflow.isArchpoint())
 		//			continue;
-				if (!umlDataflow.getName().equals("State")) {  //if one of dataflow arrows' name is not "State"Å@
+				if (!umlDataflow.getName().equals("state")) {  //if one of dataflow arrows' name is not "state"Å@
 					return umlDataflow;   //error is found
 				}
 			}
