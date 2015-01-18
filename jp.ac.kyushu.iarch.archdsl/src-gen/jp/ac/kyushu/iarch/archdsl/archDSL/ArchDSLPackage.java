@@ -353,13 +353,22 @@ public interface ArchDSLPackage extends EPackage
   int DATAFLOW = 7;
 
   /**
-   * The feature id for the '<em><b>Interface</b></em>' reference.
+   * The feature id for the '<em><b>Dfa</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DATAFLOW__INTERFACE = 0;
+  int DATAFLOW__DFA = 0;
+
+  /**
+   * The feature id for the '<em><b>Getflow</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATAFLOW__GETFLOW = 1;
 
   /**
    * The feature id for the '<em><b>Call</b></em>' reference list.
@@ -368,7 +377,16 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATAFLOW__CALL = 1;
+  int DATAFLOW__CALL = 2;
+
+  /**
+   * The feature id for the '<em><b>Get If</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATAFLOW__GET_IF = 3;
 
   /**
    * The feature id for the '<em><b>End</b></em>' reference.
@@ -377,7 +395,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATAFLOW__END = 2;
+  int DATAFLOW__END = 4;
 
   /**
    * The number of structural features of the '<em>Dataflow</em>' class.
@@ -386,7 +404,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATAFLOW_FEATURE_COUNT = 3;
+  int DATAFLOW_FEATURE_COUNT = 5;
 
 
   /**
@@ -657,15 +675,26 @@ public interface ArchDSLPackage extends EPackage
   EClass getDataflow();
 
   /**
-   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getInterface <em>Interface</em>}'.
+   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getDfa <em>Dfa</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Interface</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getInterface()
+   * @return the meta object for the reference '<em>Dfa</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getDfa()
    * @see #getDataflow()
    * @generated
    */
-  EReference getDataflow_Interface();
+  EReference getDataflow_Dfa();
+
+  /**
+   * Returns the meta object for the reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetflow <em>Getflow</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Getflow</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetflow()
+   * @see #getDataflow()
+   * @generated
+   */
+  EReference getDataflow_Getflow();
 
   /**
    * Returns the meta object for the reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getCall <em>Call</em>}'.
@@ -677,6 +706,17 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    */
   EReference getDataflow_Call();
+
+  /**
+   * Returns the meta object for the reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetIf <em>Get If</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Get If</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetIf()
+   * @see #getDataflow()
+   * @generated
+   */
+  EReference getDataflow_GetIf();
 
   /**
    * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getEnd <em>End</em>}'.
@@ -929,12 +969,20 @@ public interface ArchDSLPackage extends EPackage
     EClass DATAFLOW = eINSTANCE.getDataflow();
 
     /**
-     * The meta object literal for the '<em><b>Interface</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Dfa</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DATAFLOW__INTERFACE = eINSTANCE.getDataflow_Interface();
+    EReference DATAFLOW__DFA = eINSTANCE.getDataflow_Dfa();
+
+    /**
+     * The meta object literal for the '<em><b>Getflow</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DATAFLOW__GETFLOW = eINSTANCE.getDataflow_Getflow();
 
     /**
      * The meta object literal for the '<em><b>Call</b></em>' reference list feature.
@@ -943,6 +991,14 @@ public interface ArchDSLPackage extends EPackage
      * @generated
      */
     EReference DATAFLOW__CALL = eINSTANCE.getDataflow_Call();
+
+    /**
+     * The meta object literal for the '<em><b>Get If</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DATAFLOW__GET_IF = eINSTANCE.getDataflow_GetIf();
 
     /**
      * The meta object literal for the '<em><b>End</b></em>' reference feature.

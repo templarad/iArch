@@ -4,12 +4,10 @@ generate archDSL "http://www.ac.jp/kyushu/iarch/archdsl/ArchDSL"
 
 Model:
 	interfaces+=Interface*
-	behaviors+=Behavior*
-	/* 
+	behaviors+=Behavior* 
 	dflows+=Dflow*
 	dfas+=Dfa*
 	dataflows+=Dataflow*
-	*/
 ;
 
 Interface:
@@ -25,11 +23,7 @@ Method:
 Param :
 	type=ID name=ID
 ;
-
-
-
-
-/* 
+ 
 Dflow:
 	"Dflow data" name=ID";" //description of dataflow element "|state|
 		//'description' description = STRING  
@@ -39,19 +33,31 @@ Dfa:
 	"Dfa" name=ID";"
 	  //  'define' definition = STRING      //define "$Dataflow"
 ;
-*/
 
 Behavior:
 	interface=[Interface] "=" "(" (call+=[Method|FQN]("->"call+=[Method|FQN])*"->"end=[Interface])?");"
 ;
 	
-/* 
-Dataflow:
-	//dfa=[Dfa] "=" "["(("|"getflow+=[Dflow]"|->>"call+=[Method|FQN]"->>")*end=[Interface])?"];"
-	 interface=[Interface] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");"                    
+Dataflow:	
+	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"(("->>"((call+=[Method|FQN])|(getIf+=[Interface])))
+	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];"                  
 ;
+
+/* some definition Directions
+* 
+* "getflow"-> get flow_name (for instance:"state"), 
+* "call"-> get Method_name (for instance:"getState" and so on), 
+* "getIf"-> get Interface_name (for instance:"Subject" or "Observer").
 */
 
 FQN:
 	ID ("."ID)*
 ;
+
+
+//others
+/* 
+//dfa=[Dfa] "=" "["(("|"getflow+=[Dflow]"|->>"call+=[Method|FQN]"->>")*end=[Interface])?"];"
+// interface=[Interface] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");" 
+// dfa=[Dfa] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");"   
+ */

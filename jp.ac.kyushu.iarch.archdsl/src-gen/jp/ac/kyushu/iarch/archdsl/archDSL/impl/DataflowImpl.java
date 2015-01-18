@@ -6,6 +6,8 @@ import java.util.Collection;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Dfa;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Dflow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 
@@ -28,8 +30,10 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getInterface <em>Interface</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getDfa <em>Dfa</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getGetflow <em>Getflow</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getCall <em>Call</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getGetIf <em>Get If</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getEnd <em>End</em>}</li>
  * </ul>
  * </p>
@@ -39,14 +43,24 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 public class DataflowImpl extends MinimalEObjectImpl.Container implements Dataflow
 {
   /**
-   * The cached value of the '{@link #getInterface() <em>Interface</em>}' reference.
+   * The cached value of the '{@link #getDfa() <em>Dfa</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInterface()
+   * @see #getDfa()
    * @generated
    * @ordered
    */
-  protected Interface interface_;
+  protected Dfa dfa;
+
+  /**
+   * The cached value of the '{@link #getGetflow() <em>Getflow</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGetflow()
+   * @generated
+   * @ordered
+   */
+  protected EList<Dflow> getflow;
 
   /**
    * The cached value of the '{@link #getCall() <em>Call</em>}' reference list.
@@ -57,6 +71,16 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * @ordered
    */
   protected EList<Method> call;
+
+  /**
+   * The cached value of the '{@link #getGetIf() <em>Get If</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGetIf()
+   * @generated
+   * @ordered
+   */
+  protected EList<Interface> getIf;
 
   /**
    * The cached value of the '{@link #getEnd() <em>End</em>}' reference.
@@ -94,19 +118,19 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * <!-- end-user-doc -->
    * @generated
    */
-  public Interface getInterface()
+  public Dfa getDfa()
   {
-    if (interface_ != null && interface_.eIsProxy())
+    if (dfa != null && dfa.eIsProxy())
     {
-      InternalEObject oldInterface = (InternalEObject)interface_;
-      interface_ = (Interface)eResolveProxy(oldInterface);
-      if (interface_ != oldInterface)
+      InternalEObject oldDfa = (InternalEObject)dfa;
+      dfa = (Dfa)eResolveProxy(oldDfa);
+      if (dfa != oldDfa)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.DATAFLOW__INTERFACE, oldInterface, interface_));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.DATAFLOW__DFA, oldDfa, dfa));
       }
     }
-    return interface_;
+    return dfa;
   }
 
   /**
@@ -114,9 +138,9 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * <!-- end-user-doc -->
    * @generated
    */
-  public Interface basicGetInterface()
+  public Dfa basicGetDfa()
   {
-    return interface_;
+    return dfa;
   }
 
   /**
@@ -124,12 +148,26 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setInterface(Interface newInterface)
+  public void setDfa(Dfa newDfa)
   {
-    Interface oldInterface = interface_;
-    interface_ = newInterface;
+    Dfa oldDfa = dfa;
+    dfa = newDfa;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.DATAFLOW__INTERFACE, oldInterface, interface_));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.DATAFLOW__DFA, oldDfa, dfa));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Dflow> getGetflow()
+  {
+    if (getflow == null)
+    {
+      getflow = new EObjectResolvingEList<Dflow>(Dflow.class, this, ArchDSLPackage.DATAFLOW__GETFLOW);
+    }
+    return getflow;
   }
 
   /**
@@ -144,6 +182,20 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
       call = new EObjectResolvingEList<Method>(Method.class, this, ArchDSLPackage.DATAFLOW__CALL);
     }
     return call;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Interface> getGetIf()
+  {
+    if (getIf == null)
+    {
+      getIf = new EObjectResolvingEList<Interface>(Interface.class, this, ArchDSLPackage.DATAFLOW__GET_IF);
+    }
+    return getIf;
   }
 
   /**
@@ -199,11 +251,15 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DATAFLOW__INTERFACE:
-        if (resolve) return getInterface();
-        return basicGetInterface();
+      case ArchDSLPackage.DATAFLOW__DFA:
+        if (resolve) return getDfa();
+        return basicGetDfa();
+      case ArchDSLPackage.DATAFLOW__GETFLOW:
+        return getGetflow();
       case ArchDSLPackage.DATAFLOW__CALL:
         return getCall();
+      case ArchDSLPackage.DATAFLOW__GET_IF:
+        return getGetIf();
       case ArchDSLPackage.DATAFLOW__END:
         if (resolve) return getEnd();
         return basicGetEnd();
@@ -222,12 +278,20 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DATAFLOW__INTERFACE:
-        setInterface((Interface)newValue);
+      case ArchDSLPackage.DATAFLOW__DFA:
+        setDfa((Dfa)newValue);
+        return;
+      case ArchDSLPackage.DATAFLOW__GETFLOW:
+        getGetflow().clear();
+        getGetflow().addAll((Collection<? extends Dflow>)newValue);
         return;
       case ArchDSLPackage.DATAFLOW__CALL:
         getCall().clear();
         getCall().addAll((Collection<? extends Method>)newValue);
+        return;
+      case ArchDSLPackage.DATAFLOW__GET_IF:
+        getGetIf().clear();
+        getGetIf().addAll((Collection<? extends Interface>)newValue);
         return;
       case ArchDSLPackage.DATAFLOW__END:
         setEnd((Interface)newValue);
@@ -246,11 +310,17 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DATAFLOW__INTERFACE:
-        setInterface((Interface)null);
+      case ArchDSLPackage.DATAFLOW__DFA:
+        setDfa((Dfa)null);
+        return;
+      case ArchDSLPackage.DATAFLOW__GETFLOW:
+        getGetflow().clear();
         return;
       case ArchDSLPackage.DATAFLOW__CALL:
         getCall().clear();
+        return;
+      case ArchDSLPackage.DATAFLOW__GET_IF:
+        getGetIf().clear();
         return;
       case ArchDSLPackage.DATAFLOW__END:
         setEnd((Interface)null);
@@ -269,10 +339,14 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DATAFLOW__INTERFACE:
-        return interface_ != null;
+      case ArchDSLPackage.DATAFLOW__DFA:
+        return dfa != null;
+      case ArchDSLPackage.DATAFLOW__GETFLOW:
+        return getflow != null && !getflow.isEmpty();
       case ArchDSLPackage.DATAFLOW__CALL:
         return call != null && !call.isEmpty();
+      case ArchDSLPackage.DATAFLOW__GET_IF:
+        return getIf != null && !getIf.isEmpty();
       case ArchDSLPackage.DATAFLOW__END:
         return end != null;
     }
