@@ -185,11 +185,11 @@ public class DataflowDiagramChecker {
 	}
 	
 
-	//find Entity
+	//find Datastore
 	Dataflow_editor.DataStore findDatastore(Interface archdataflow,
 			List<EObject> umlDatastores) {
 		for (EObject obj : umlDatastores) {
-			if (obj instanceof Dataflow_editor.External_entity) {
+			if (obj instanceof Dataflow_editor.DataStore) {
 				Dataflow_editor.DataStore umlDatastore = (Dataflow_editor.DataStore) obj;
 				if (!umlDatastore.isArchpoint())
 					continue;

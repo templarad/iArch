@@ -8,12 +8,9 @@ interface component Subject {
 interface component Observer {
 	void update(); 
 }
- 
- 
+
 Subject = (Subject.setState->
 	Observer.update->Subject.getState->Subject
 );            
 Observer = (Observer.update->Subject.getState
 	->Observer);
-
-    

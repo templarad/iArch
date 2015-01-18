@@ -68,9 +68,9 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
       case ArchDSLPackage.INTERFACE: return createInterface();
       case ArchDSLPackage.METHOD: return createMethod();
       case ArchDSLPackage.PARAM: return createParam();
-      case ArchDSLPackage.BEHAVIOR: return createBehavior();
       case ArchDSLPackage.DFLOW: return createDflow();
       case ArchDSLPackage.DFA: return createDfa();
+      case ArchDSLPackage.BEHAVIOR: return createBehavior();
       case ArchDSLPackage.DATAFLOW: return createDataflow();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -126,17 +126,6 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Behavior createBehavior()
-  {
-    BehaviorImpl behavior = new BehaviorImpl();
-    return behavior;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Dflow createDflow()
   {
     DflowImpl dflow = new DflowImpl();
@@ -152,6 +141,17 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
   {
     DfaImpl dfa = new DfaImpl();
     return dfa;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Behavior createBehavior()
+  {
+    BehaviorImpl behavior = new BehaviorImpl();
+    return behavior;
   }
 
   /**

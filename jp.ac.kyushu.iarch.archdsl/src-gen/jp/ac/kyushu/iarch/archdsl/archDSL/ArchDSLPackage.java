@@ -241,6 +241,62 @@ public interface ArchDSLPackage extends EPackage
   int PARAM_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DflowImpl <em>Dflow</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.DflowImpl
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getDflow()
+   * @generated
+   */
+  int DFLOW = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DFLOW__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Dflow</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DFLOW_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DfaImpl <em>Dfa</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.DfaImpl
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getDfa()
+   * @generated
+   */
+  int DFA = 5;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DFA__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Dfa</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DFA_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.BehaviorImpl <em>Behavior</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -248,7 +304,7 @@ public interface ArchDSLPackage extends EPackage
    * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getBehavior()
    * @generated
    */
-  int BEHAVIOR = 4;
+  int BEHAVIOR = 6;
 
   /**
    * The feature id for the '<em><b>Interface</b></em>' reference.
@@ -287,62 +343,6 @@ public interface ArchDSLPackage extends EPackage
   int BEHAVIOR_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DflowImpl <em>Dflow</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.DflowImpl
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getDflow()
-   * @generated
-   */
-  int DFLOW = 5;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DFLOW__NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Dflow</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DFLOW_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DfaImpl <em>Dfa</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.DfaImpl
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getDfa()
-   * @generated
-   */
-  int DFA = 6;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DFA__NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Dfa</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DFA_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl <em>Dataflow</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -353,22 +353,13 @@ public interface ArchDSLPackage extends EPackage
   int DATAFLOW = 7;
 
   /**
-   * The feature id for the '<em><b>Dfa</b></em>' reference.
+   * The feature id for the '<em><b>Interface</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DATAFLOW__DFA = 0;
-
-  /**
-   * The feature id for the '<em><b>Getflow</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATAFLOW__GETFLOW = 1;
+  int DATAFLOW__INTERFACE = 0;
 
   /**
    * The feature id for the '<em><b>Call</b></em>' reference list.
@@ -377,7 +368,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATAFLOW__CALL = 2;
+  int DATAFLOW__CALL = 1;
 
   /**
    * The feature id for the '<em><b>End</b></em>' reference.
@@ -386,7 +377,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATAFLOW__END = 3;
+  int DATAFLOW__END = 2;
 
   /**
    * The number of structural features of the '<em>Dataflow</em>' class.
@@ -395,7 +386,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATAFLOW_FEATURE_COUNT = 4;
+  int DATAFLOW_FEATURE_COUNT = 3;
 
 
   /**
@@ -571,6 +562,48 @@ public interface ArchDSLPackage extends EPackage
   EAttribute getParam_Name();
 
   /**
+   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dflow <em>Dflow</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Dflow</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dflow
+   * @generated
+   */
+  EClass getDflow();
+
+  /**
+   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dflow#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dflow#getName()
+   * @see #getDflow()
+   * @generated
+   */
+  EAttribute getDflow_Name();
+
+  /**
+   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dfa <em>Dfa</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Dfa</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dfa
+   * @generated
+   */
+  EClass getDfa();
+
+  /**
+   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dfa#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dfa#getName()
+   * @see #getDfa()
+   * @generated
+   */
+  EAttribute getDfa_Name();
+
+  /**
    * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Behavior <em>Behavior</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -614,48 +647,6 @@ public interface ArchDSLPackage extends EPackage
   EReference getBehavior_End();
 
   /**
-   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dflow <em>Dflow</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Dflow</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dflow
-   * @generated
-   */
-  EClass getDflow();
-
-  /**
-   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dflow#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dflow#getName()
-   * @see #getDflow()
-   * @generated
-   */
-  EAttribute getDflow_Name();
-
-  /**
-   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dfa <em>Dfa</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Dfa</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dfa
-   * @generated
-   */
-  EClass getDfa();
-
-  /**
-   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dfa#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dfa#getName()
-   * @see #getDfa()
-   * @generated
-   */
-  EAttribute getDfa_Name();
-
-  /**
    * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow <em>Dataflow</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -666,26 +657,15 @@ public interface ArchDSLPackage extends EPackage
   EClass getDataflow();
 
   /**
-   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getDfa <em>Dfa</em>}'.
+   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getInterface <em>Interface</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Dfa</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getDfa()
+   * @return the meta object for the reference '<em>Interface</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getInterface()
    * @see #getDataflow()
    * @generated
    */
-  EReference getDataflow_Dfa();
-
-  /**
-   * Returns the meta object for the reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetflow <em>Getflow</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Getflow</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetflow()
-   * @see #getDataflow()
-   * @generated
-   */
-  EReference getDataflow_Getflow();
+  EReference getDataflow_Interface();
 
   /**
    * Returns the meta object for the reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getCall <em>Call</em>}'.
@@ -869,40 +849,6 @@ public interface ArchDSLPackage extends EPackage
     EAttribute PARAM__NAME = eINSTANCE.getParam_Name();
 
     /**
-     * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.BehaviorImpl <em>Behavior</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.BehaviorImpl
-     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getBehavior()
-     * @generated
-     */
-    EClass BEHAVIOR = eINSTANCE.getBehavior();
-
-    /**
-     * The meta object literal for the '<em><b>Interface</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference BEHAVIOR__INTERFACE = eINSTANCE.getBehavior_Interface();
-
-    /**
-     * The meta object literal for the '<em><b>Call</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference BEHAVIOR__CALL = eINSTANCE.getBehavior_Call();
-
-    /**
-     * The meta object literal for the '<em><b>End</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference BEHAVIOR__END = eINSTANCE.getBehavior_End();
-
-    /**
      * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DflowImpl <em>Dflow</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -939,6 +885,40 @@ public interface ArchDSLPackage extends EPackage
     EAttribute DFA__NAME = eINSTANCE.getDfa_Name();
 
     /**
+     * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.BehaviorImpl <em>Behavior</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.BehaviorImpl
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getBehavior()
+     * @generated
+     */
+    EClass BEHAVIOR = eINSTANCE.getBehavior();
+
+    /**
+     * The meta object literal for the '<em><b>Interface</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BEHAVIOR__INTERFACE = eINSTANCE.getBehavior_Interface();
+
+    /**
+     * The meta object literal for the '<em><b>Call</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BEHAVIOR__CALL = eINSTANCE.getBehavior_Call();
+
+    /**
+     * The meta object literal for the '<em><b>End</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BEHAVIOR__END = eINSTANCE.getBehavior_End();
+
+    /**
      * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl <em>Dataflow</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -949,20 +929,12 @@ public interface ArchDSLPackage extends EPackage
     EClass DATAFLOW = eINSTANCE.getDataflow();
 
     /**
-     * The meta object literal for the '<em><b>Dfa</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Interface</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DATAFLOW__DFA = eINSTANCE.getDataflow_Dfa();
-
-    /**
-     * The meta object literal for the '<em><b>Getflow</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DATAFLOW__GETFLOW = eINSTANCE.getDataflow_Getflow();
+    EReference DATAFLOW__INTERFACE = eINSTANCE.getDataflow_Interface();
 
     /**
      * The meta object literal for the '<em><b>Call</b></em>' reference list feature.

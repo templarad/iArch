@@ -29,22 +29,20 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Behavior">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" eType="#//Interface"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="call" unique="false" upperBound="-1"
-        eType="#//Method"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Interface"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dflow">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dfa">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Behavior">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" eType="#//Interface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="call" unique="false" upperBound="-1"
+        eType="#//Method"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Interface"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dataflow">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dfa" eType="#//Dfa"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="getflow" unique="false"
-        upperBound="-1" eType="#//Dflow"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" eType="#//Interface"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="call" unique="false" upperBound="-1"
         eType="#//Method"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Interface"/>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Dataflow_editor="http://www.eclipse.org/emf/2002/Ecore" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="DataflowDiagram" name="Dataflow" snapToGrid="true" version="0.11.0">
+    <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
+    <colors red="227" green="238" blue="249"/>
+    <colors red="255" green="255" blue="255"/>
+    <colors/>
+    <colors red="60" green="120" blue="167"/>
+    <colors red="170" green="200" blue="247"/>
+    <colors red="255" green="153" blue="51"/>
+    <colors red="98" green="131" blue="167"/>
+    <fonts name="Arial" size="8" bold="true"/>
+    <fonts name="Arial" size="8"/>
+  </pi:Diagram>
+  <Dataflow_editor:DataFlow name="state"/>
+  <Dataflow_editor:DataFlow name="state" Archpoint="true"/>
+  <Dataflow_editor:DataFlow name="state"/>
+  <Dataflow_editor:DataFlow name="state" Archpoint="true"/>
+</xmi:XMI>

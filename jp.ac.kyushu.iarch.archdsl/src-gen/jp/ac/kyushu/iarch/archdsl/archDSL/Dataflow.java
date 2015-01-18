@@ -14,8 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getDfa <em>Dfa</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetflow <em>Getflow</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getInterface <em>Interface</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getCall <em>Call</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getEnd <em>End</em>}</li>
  * </ul>
@@ -28,46 +27,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Dataflow extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Dfa</b></em>' reference.
+   * Returns the value of the '<em><b>Interface</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Dfa</em>' reference isn't clear,
+   * If the meaning of the '<em>Interface</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Dfa</em>' reference.
-   * @see #setDfa(Dfa)
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getDataflow_Dfa()
+   * @return the value of the '<em>Interface</em>' reference.
+   * @see #setInterface(Interface)
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getDataflow_Interface()
    * @model
    * @generated
    */
-  Dfa getDfa();
+  Interface getInterface();
 
   /**
-   * Sets the value of the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getDfa <em>Dfa</em>}' reference.
+   * Sets the value of the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getInterface <em>Interface</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Dfa</em>' reference.
-   * @see #getDfa()
+   * @param value the new value of the '<em>Interface</em>' reference.
+   * @see #getInterface()
    * @generated
    */
-  void setDfa(Dfa value);
-
-  /**
-   * Returns the value of the '<em><b>Getflow</b></em>' reference list.
-   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.Dflow}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Getflow</em>' reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Getflow</em>' reference list.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getDataflow_Getflow()
-   * @model
-   * @generated
-   */
-  EList<Dflow> getGetflow();
+  void setInterface(Interface value);
 
   /**
    * Returns the value of the '<em><b>Call</b></em>' reference list.

@@ -405,6 +405,100 @@ ruleParam returns [EObject current=null]
 
 
 
+// Entry rule entryRuleDflow
+entryRuleDflow returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDflowRule()); }
+	 iv_ruleDflow=ruleDflow 
+	 { $current=$iv_ruleDflow.current; } 
+	 EOF 
+;
+
+// Rule Dflow
+ruleDflow returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='Dflow data' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getDflowAccess().getDflowDataKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getDflowAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDflowRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_2=';' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDflowAccess().getSemicolonKeyword_2());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleDfa
+entryRuleDfa returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getDfaRule()); }
+	 iv_ruleDfa=ruleDfa 
+	 { $current=$iv_ruleDfa.current; } 
+	 EOF 
+;
+
+// Rule Dfa
+ruleDfa returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='Dfa' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getDfaAccess().getDfaKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getDfaAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDfaRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"ID");
+	    }
+
+)
+)	otherlv_2=';' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getDfaAccess().getSemicolonKeyword_2());
+    }
+)
+;
+
+
+
+
+
 // Entry rule entryRuleBehavior
 entryRuleBehavior returns [EObject current=null] 
 	:
@@ -502,100 +596,6 @@ ruleBehavior returns [EObject current=null]
 
 
 
-// Entry rule entryRuleDflow
-entryRuleDflow returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getDflowRule()); }
-	 iv_ruleDflow=ruleDflow 
-	 { $current=$iv_ruleDflow.current; } 
-	 EOF 
-;
-
-// Rule Dflow
-ruleDflow returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='Dflow data' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getDflowAccess().getDflowDataKeyword_0());
-    }
-(
-(
-		lv_name_1_0=RULE_ID
-		{
-			newLeafNode(lv_name_1_0, grammarAccess.getDflowAccess().getNameIDTerminalRuleCall_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getDflowRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ID");
-	    }
-
-)
-)	otherlv_2=';' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getDflowAccess().getSemicolonKeyword_2());
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleDfa
-entryRuleDfa returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getDfaRule()); }
-	 iv_ruleDfa=ruleDfa 
-	 { $current=$iv_ruleDfa.current; } 
-	 EOF 
-;
-
-// Rule Dfa
-ruleDfa returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='Dfa' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getDfaAccess().getDfaKeyword_0());
-    }
-(
-(
-		lv_name_1_0=RULE_ID
-		{
-			newLeafNode(lv_name_1_0, grammarAccess.getDfaAccess().getNameIDTerminalRuleCall_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getDfaRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ID");
-	    }
-
-)
-)	otherlv_2=';' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getDfaAccess().getSemicolonKeyword_2());
-    }
-)
-;
-
-
-
-
-
 // Entry rule entryRuleDataflow
 entryRuleDataflow returns [EObject current=null] 
 	:
@@ -619,7 +619,7 @@ ruleDataflow returns [EObject current=null]
         }
 	otherlv_0=RULE_ID
 	{
-		newLeafNode(otherlv_0, grammarAccess.getDataflowAccess().getDfaDfaCrossReference_0_0()); 
+		newLeafNode(otherlv_0, grammarAccess.getDataflowAccess().getInterfaceInterfaceCrossReference_0_0()); 
 	}
 
 )
@@ -627,26 +627,28 @@ ruleDataflow returns [EObject current=null]
     {
     	newLeafNode(otherlv_1, grammarAccess.getDataflowAccess().getEqualsSignKeyword_1());
     }
-((	otherlv_2='|' 
+	otherlv_2='(' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getDataflowAccess().getVerticalLineKeyword_2_0_0());
+    	newLeafNode(otherlv_2, grammarAccess.getDataflowAccess().getLeftParenthesisKeyword_2());
     }
-(
+((
 (
 		{
 			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getDataflowRule());
 	        }
         }
-	otherlv_3=RULE_ID
-	{
-		newLeafNode(otherlv_3, grammarAccess.getDataflowAccess().getGetflowDflowCrossReference_2_0_1_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getDataflowAccess().getCallMethodCrossReference_3_0_0()); 
+	    }
+		ruleFQN		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
-)	otherlv_4='|->>' 
+)(	otherlv_4='->>' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getDataflowAccess().getVerticalLineHyphenMinusGreaterThanSignGreaterThanSignKeyword_2_0_2());
+    	newLeafNode(otherlv_4, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_1_0());
     }
 (
 (
@@ -656,18 +658,18 @@ ruleDataflow returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getDataflowAccess().getCallMethodCrossReference_2_0_3_0()); 
+	        newCompositeNode(grammarAccess.getDataflowAccess().getCallMethodCrossReference_3_1_1_0()); 
 	    }
 		ruleFQN		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_6='->>' 
+))*	otherlv_6='->>' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_2_0_4());
+    	newLeafNode(otherlv_6, grammarAccess.getDataflowAccess().getHyphenMinusGreaterThanSignGreaterThanSignKeyword_3_2());
     }
-)*(
+(
 (
 		{
 			if ($current==null) {
@@ -676,17 +678,13 @@ ruleDataflow returns [EObject current=null]
         }
 	otherlv_7=RULE_ID
 	{
-		newLeafNode(otherlv_7, grammarAccess.getDataflowAccess().getEndInterfaceCrossReference_2_1_0()); 
+		newLeafNode(otherlv_7, grammarAccess.getDataflowAccess().getEndInterfaceCrossReference_3_3_0()); 
 	}
 
 )
-))?	otherlv_8=';' 
+))?	otherlv_8=');' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getDataflowAccess().getSemicolonKeyword_3());
-    }
-	otherlv_9='];' 
-    {
-    	newLeafNode(otherlv_9, grammarAccess.getDataflowAccess().getRightSquareBracketSemicolonKeyword_4());
+    	newLeafNode(otherlv_8, grammarAccess.getDataflowAccess().getRightParenthesisSemicolonKeyword_4());
     }
 )
 ;

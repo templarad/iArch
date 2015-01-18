@@ -59,15 +59,6 @@ public interface ArchDSLFactory extends EFactory
   Param createParam();
 
   /**
-   * Returns a new object of class '<em>Behavior</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Behavior</em>'.
-   * @generated
-   */
-  Behavior createBehavior();
-
-  /**
    * Returns a new object of class '<em>Dflow</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -84,6 +75,15 @@ public interface ArchDSLFactory extends EFactory
    * @generated
    */
   Dfa createDfa();
+
+  /**
+   * Returns a new object of class '<em>Behavior</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Behavior</em>'.
+   * @generated
+   */
+  Behavior createBehavior();
 
   /**
    * Returns a new object of class '<em>Dataflow</em>'.

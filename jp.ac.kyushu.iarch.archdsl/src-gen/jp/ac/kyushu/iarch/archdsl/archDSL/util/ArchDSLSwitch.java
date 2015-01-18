@@ -100,13 +100,6 @@ public class ArchDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchDSLPackage.BEHAVIOR:
-      {
-        Behavior behavior = (Behavior)theEObject;
-        T result = caseBehavior(behavior);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ArchDSLPackage.DFLOW:
       {
         Dflow dflow = (Dflow)theEObject;
@@ -118,6 +111,13 @@ public class ArchDSLSwitch<T> extends Switch<T>
       {
         Dfa dfa = (Dfa)theEObject;
         T result = caseDfa(dfa);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.BEHAVIOR:
+      {
+        Behavior behavior = (Behavior)theEObject;
+        T result = caseBehavior(behavior);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -197,22 +197,6 @@ public class ArchDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Behavior</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Behavior</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseBehavior(Behavior object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Dflow</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -240,6 +224,22 @@ public class ArchDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDfa(Dfa object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Behavior</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Behavior</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBehavior(Behavior object)
   {
     return null;
   }

@@ -5,9 +5,11 @@ generate archDSL "http://www.ac.jp/kyushu/iarch/archdsl/ArchDSL"
 Model:
 	interfaces+=Interface*
 	behaviors+=Behavior*
+	/* 
 	dflows+=Dflow*
 	dfas+=Dfa*
 	dataflows+=Dataflow*
+	*/
 ;
 
 Interface:
@@ -24,10 +26,10 @@ Param :
 	type=ID name=ID
 ;
 
-Behavior:
-	interface=[Interface] "=" "(" (call+=[Method|FQN]("->"call+=[Method|FQN])*"->"end=[Interface])?");"
-;
 
+
+
+/* 
 Dflow:
 	"Dflow data" name=ID";" //description of dataflow element "|state|
 		//'description' description = STRING  
@@ -37,10 +39,18 @@ Dfa:
 	"Dfa" name=ID";"
 	  //  'define' definition = STRING      //define "$Dataflow"
 ;
-		
-Dataflow:
-	dfa=[Dfa] "="  (("|"getflow+=[Dflow]"|->>"call+=[Method|FQN]"->>")*end=[Interface])?";"                      "];"
+*/
+
+Behavior:
+	interface=[Interface] "=" "(" (call+=[Method|FQN]("->"call+=[Method|FQN])*"->"end=[Interface])?");"
 ;
+	
+/* 
+Dataflow:
+	//dfa=[Dfa] "=" "["(("|"getflow+=[Dflow]"|->>"call+=[Method|FQN]"->>")*end=[Interface])?"];"
+	 interface=[Interface] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");"                    
+;
+*/
 
 FQN:
 	ID ("."ID)*

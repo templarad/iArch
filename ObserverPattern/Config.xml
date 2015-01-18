@@ -12,6 +12,7 @@
   </DataflowDiagram>
   <SequenceDiagram>
     <Path Attribute="\ObserverPattern\diagrams\Sequence_Valid.diagram"/>
+    <Path Attribute="\ObserverPattern\diagrams\Sequence_Invalid.diagram"/>
   </SequenceDiagram>
   <SourceCode>
     <Path Attribute="\ObserverPattern\src\Subject.java"/>

@@ -381,33 +381,33 @@ return null;
 */
 private DataFlow EtE_createDataFlow(Dataflow_editor.External_entity EtE_source, Dataflow_editor.External_entity EtE_target) {
 	DataFlow EtE_Reference = Dataflow_editorFactory.eINSTANCE.createDataFlow();
-	EtE_Reference.setName("newDataflow");
+	EtE_Reference.setName("state");
 	return  EtE_Reference;
 	}
 
 
 private DataFlow DStDS_createDataFlow(Dataflow_editor.DataStore DStDS_source, Dataflow_editor.DataStore DStDS_target) {
 	DataFlow DStDS_Reference = Dataflow_editorFactory.eINSTANCE.createDataFlow();
-	DStDS_Reference.setName("newDataflow");
+	DStDS_Reference.setName("state");
 	return  DStDS_Reference;
 	}
 
 
 private DataFlow PtP_createDataFlow(Dataflow_editor.Process PtP_source, Dataflow_editor.Process PtP_target) {
 	DataFlow PtP_Reference = Dataflow_editorFactory.eINSTANCE.createDataFlow();
-	PtP_Reference.setName("newDataflow");
+	PtP_Reference.setName("state");
 	return  PtP_Reference;
 	}
 
 private DataFlow PtDS_createDataFlow(Dataflow_editor.Process PtDS_source, Dataflow_editor.DataStore PtDS_target) {
 	DataFlow PtDS_Reference = Dataflow_editorFactory.eINSTANCE.createDataFlow();
-	PtDS_Reference.setName("newDataflow");
+	PtDS_Reference.setName("state");
 	return  PtDS_Reference;
 	}
 
 private DataFlow DStP_createDataFlow(Dataflow_editor.DataStore DStP_source, Dataflow_editor.Process DStP_target) {
 	DataFlow DStP_Reference = Dataflow_editorFactory.eINSTANCE.createDataFlow();
-	DStP_Reference.setName("newDataflow");
+	DStP_Reference.setName("state");
 	return  DStP_Reference;
 	}
 
