@@ -407,8 +407,20 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEndInterfaceIDTerminalRuleCall_3_7_0_1 = (RuleCall)cEndInterfaceCrossReference_3_7_0.eContents().get(1);
 		private final Keyword cRightSquareBracketSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//Dataflow: //	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
+		/// * 
+		////  another pattern
+		//    dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|""->>"
+		//    ((call+=[Method|FQN]"->>""|"getflow+=[Dflow]"|""->>")|(getIf+=[Interface]"->>""|"getflow+=[Dflow]"|""->>"))*
+		//    end=[Interface])?"];"
+		// * / / *        
+		//	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"
+		//		((("->>"call+=[Method|FQN])?("->>""|"getflow+=[Dflow]"|")?)*
+		//		(("->>"getIf+=[Interface])?("->>""|"getflow+=[Dflow]"|")?)*)*
+		//		"->>"end=[Interface])?"];"  
+		// * / Dataflow: //	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
 		//// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];" 
+		////    2015.1.19 
+		////    one to one
 		//	dfa=[Dfa] "=" "[" ("|" getflow+=[Dflow] "|" ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")) ("->>"
 		//	getIf+=[Interface] ("->>" "|" getflow+=[Dflow] "|")) ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|"))
 		//	"->>" end=[Interface])? "];";
@@ -416,6 +428,8 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 		////	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
 		//// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];" 
+		////    2015.1.19 
+		////    one to one
 		//dfa=[Dfa] "=" "[" ("|" getflow+=[Dflow] "|" ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")) ("->>"
 		//getIf+=[Interface] ("->>" "|" getflow+=[Dflow] "|")) ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")) "->>"
 		//end=[Interface])? "];"
@@ -423,6 +437,8 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 		////	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
 		//// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];" 
+		////    2015.1.19 
+		////    one to one
 		//dfa=[Dfa]
 		public Assignment getDfaAssignment_0() { return cDfaAssignment_0; }
 
@@ -756,8 +772,20 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getBehaviorAccess().getRule();
 	}
 
-	//Dataflow: //	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
+	/// * 
+	////  another pattern
+	//    dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|""->>"
+	//    ((call+=[Method|FQN]"->>""|"getflow+=[Dflow]"|""->>")|(getIf+=[Interface]"->>""|"getflow+=[Dflow]"|""->>"))*
+	//    end=[Interface])?"];"
+	// * / / *        
+	//	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"
+	//		((("->>"call+=[Method|FQN])?("->>""|"getflow+=[Dflow]"|")?)*
+	//		(("->>"getIf+=[Interface])?("->>""|"getflow+=[Dflow]"|")?)*)*
+	//		"->>"end=[Interface])?"];"  
+	// * / Dataflow: //	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
 	//// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];" 
+	////    2015.1.19 
+	////    one to one
 	//	dfa=[Dfa] "=" "[" ("|" getflow+=[Dflow] "|" ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|")) ("->>"
 	//	getIf+=[Interface] ("->>" "|" getflow+=[Dflow] "|")) ("->>" call+=[Method|FQN] ("->>" "|" getflow+=[Dflow] "|"))
 	//	"->>" end=[Interface])? "];";
