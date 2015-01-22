@@ -35,13 +35,21 @@ public class ConfigurationXMLHandler implements IHandler{
 
 		
 		final Element ClassDiagramElement = rootElement.addElement("ClassDiagram");
+		if(AllDialog.getClassDiagram() != null)
 		{			
 			final Element PathElement = ClassDiagramElement.addElement("Path");
 			PathElement.addAttribute("Attribute", AllDialog.getClassDiagram().getFullPath().toOSString());
 		}
 		
+		final Element DataflowDiagramElement = rootElement.addElement("DataflowDiagram");
+		if(AllDialog.getDataflowDiagram() != null)
+		{			
+			final Element PathElement = DataflowDiagramElement.addElement("Path");
+			PathElement.addAttribute("Attribute", AllDialog.getDataflowDiagram().getFullPath().toOSString());
+		}
 		
 		final Element SequenceDiagramElement = rootElement.addElement("SequenceDiagram");
+		if(AllDialog.getSequenceDiagrams() != null)
 		{			
 			for(IResource resource:AllDialog.getSequenceDiagrams()){
 				final Element PathElement = SequenceDiagramElement.addElement("Path");

@@ -100,7 +100,7 @@ public class RenameClassFeature extends AbstractCustomFeature {
                         this.hasDoneChanges = true;
                         updatePictogramElement(pes[0]);
 
-                    	Resource classDiagram = GraphitiModelManager.getGraphitiModel(XMLreader.getClassDiagramResource());
+                    	Resource classDiagram = GraphitiModelManager.getGraphitiModel(xx.getClassDiagramResource());
                         try {
                         	classDiagram.save(null);
     					} catch (IOException e) {

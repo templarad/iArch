@@ -1,0 +1,26 @@
+interface component  Main {
+void main  (String string);
+}
+interface component  Subject {
+void Subject  ();
+State getState  ();
+void setState  (State state);
+void addObserver  (Observer observer);
+void removeObserver  (Observer observer);
+}
+interface component  Observer {
+void Observer  (Subject subjet);
+void update  ();
+}
+
+Main= (Main.main->Subject.addObserver->List_Observer.add->Subject.setState->Observer.update->PrintStream.println->Subject.getState->Subject.setState->Observer.update->PrintStream.println->Subject.getState->Main);
+
+Subject= (Subject.Subject->Subject);
+Subject= (Subject.getState->Subject);
+Subject= (Subject.setState->Observer.update->PrintStream.println->Subject.getState->Subject);
+Subject= (Observer.update->PrintStream.println->Subject.getState->Subject);
+Subject= (Subject.addObserver->List_Observer.add->Subject);
+Subject= (Subject.removeObserver->List_Observer.remove->Subject);
+
+Observer= (Observer.Observer->Observer);
+Observer= (Observer.update->PrintStream.println->Subject.getState->Observer);

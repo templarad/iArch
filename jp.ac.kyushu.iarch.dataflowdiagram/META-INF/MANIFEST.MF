@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dataflowdiagram
+Bundle-SymbolicName: jp.ac.kyushu.iarch.dataflowdiagram;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui;bundle-version="3.105.0",
+ org.eclipse.core.runtime;bundle-version="3.9.100",
+ org.eclipse.emf.ecore;bundle-version="2.9.2",
+ org.eclipse.graphiti;bundle-version="0.10.2",
+ org.eclipse.graphiti.ui;bundle-version="0.10.2",
+ org.eclipse.graphiti.examples.common;bundle-version="0.10.2",
+ org.eclipse.core.resources;bundle-version="3.8.101",
+ org.eclipse.ui.views.properties.tabbed;bundle-version="3.6.0",
+ org.eclipse.draw2d;bundle-version="3.9.0"
+Import-Package: Dataflow_editor,
+ behavior;resolution:=optional

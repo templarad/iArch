@@ -120,11 +120,12 @@ public class SelectDiagramsDialogAR extends Dialog {
 		public void widgetSelected(SelectionEvent e) {
 			int cntArchiFiles = 0;
 			int cntClassDiagrams = 0;
+			int cntDataflowDiagrams = 0;
 			int cntSequenceDiagrams = 0;
 			for(TableItem item : archiTable.getItems()){
 				if(item.getChecked()) cntArchiFiles++;
 			}
-			if(cntArchiFiles==1&&cntClassDiagrams==1&&cntSequenceDiagrams>0){
+			if(cntArchiFiles==1&&cntClassDiagrams==1&&cntDataflowDiagrams==1&&cntSequenceDiagrams>0){
 				okButton.setEnabled(true);
 			}else{
 				okButton.setEnabled(false);

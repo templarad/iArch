@@ -33,7 +33,7 @@ public class ArchModel {
 		return (Model) resource.getContents().get(0);
 	}
 	
-	public static void readResoure(IResource archfile) {
+	private static void readResoure(IResource archfile) {
 		XtextResourceSet rs = (XtextResourceSet) injector.getInstance(
 				XtextResourceSetProvider.class).get(archfile.getProject());
 		rs.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);

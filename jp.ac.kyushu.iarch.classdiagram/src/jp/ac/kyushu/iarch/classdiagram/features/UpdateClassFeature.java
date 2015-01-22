@@ -120,6 +120,8 @@ public class UpdateClassFeature extends AbstractUpdateFeature {
                 }
                 
             }
+            if(cs.getGraphicsAlgorithm().getHeight()< (i+j-1)*20+36)
+            	cs.getGraphicsAlgorithm().setHeight((i+j-1)*20+36);
             return true;
         }
  

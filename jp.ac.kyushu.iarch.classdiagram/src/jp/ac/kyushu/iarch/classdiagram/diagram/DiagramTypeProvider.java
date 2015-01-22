@@ -6,6 +6,11 @@ import org.eclipse.graphiti.tb.IToolBehaviorProvider;
 
 public class DiagramTypeProvider extends AbstractDiagramTypeProvider implements IDiagramTypeProvider{
 
+	@Override
+	public boolean isAutoUpdateAtRuntime() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 	private IToolBehaviorProvider[] toolBehaviorProviders;
  
     @Override

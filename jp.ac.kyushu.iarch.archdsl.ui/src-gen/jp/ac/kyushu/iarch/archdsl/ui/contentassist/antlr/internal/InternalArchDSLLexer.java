@@ -359,10 +359,10 @@ public class InternalArchDSLLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -380,10 +380,10 @@ public class InternalArchDSLLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -399,23 +399,15 @@ public class InternalArchDSLLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:21: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -440,10 +432,10 @@ public class InternalArchDSLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -459,23 +451,15 @@ public class InternalArchDSLLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:54: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:1498:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
