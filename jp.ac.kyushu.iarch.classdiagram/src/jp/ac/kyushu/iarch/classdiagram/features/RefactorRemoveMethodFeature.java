@@ -9,16 +9,22 @@ import jp.ac.kyushu.iarch.basefunction.controller.GraphitiModelManager;
 import jp.ac.kyushu.iarch.basefunction.controller.SequenceDiagramModelController;
 import jp.ac.kyushu.iarch.basefunction.reader.ProjectReader;
 import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
+import jp.ac.kyushu.iarch.sequencediagram.diagram.providers.SequenceDiagramTypeProvider;
+import jp.ac.kyushu.iarch.sequencediagram.diagram.providers.SequenceFeatureProvider;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.graphiti.features.IDeleteFeature;
 import org.eclipse.graphiti.features.IFeatureProvider;
+import org.eclipse.graphiti.features.IRemoveFeature;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.context.impl.DeleteContext;
 import org.eclipse.graphiti.features.context.impl.MultiDeleteInfo;
+import org.eclipse.graphiti.features.context.impl.RemoveContext;
 import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
+import org.eclipse.graphiti.mm.pictograms.ContainerShape;
+import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -26,6 +32,7 @@ import org.eclipse.swt.SWT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import behavior.MessageOccurrenceSpecification;
 import umlClass.Operation;
 /**
  * Haven't completed part:<br>
@@ -117,7 +124,13 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
         		if (deleteFeature!=null){
         			deleteFeature.execute(ctx);
         		}
-        		updatePictogramElement(shape.getContainer());
+        		RemoveContext removectx = new RemoveContext(shape);
+        		ctx.setMultiDeleteInfo(new MultiDeleteInfo(false, false, 2));
+        		IRemoveFeature removeFeature = getFeatureProvider().getRemoveFeature(removectx);
+        		if (removeFeature!=null){
+        			removeFeature.execute(ctx);
+        		}
+        		
                 try {
                 	getDiagram().eResource().save(null);
 				} catch (IOException e) {
@@ -125,6 +138,7 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
 					e.printStackTrace();
 					logger.error("Refactoring - Saving diagram failed : {}", getDiagram().getName());
 				}
+                updatePictogramElement(shape.getContainer());
                 //Delete element from sequence diagram
                 removeMessageFromSequenceDiagram(xx, owenClass.getName(), currentName);
             }
@@ -143,13 +157,43 @@ public class RefactorRemoveMethodFeature extends AbstractCustomFeature{
     		return false;
     	}
     	Iterator<IResource> sqIt = sqList.iterator();
+    	Diagram diagram = null;
     	while(sqIt.hasNext()){
     		IResource sqRescource = sqIt.next();
     		Resource sequenceDiagram = GraphitiModelManager.getGraphitiModel(sqRescource);
+    		diagram = (Diagram)sequenceDiagram.getContents().get(0);
+    		logger.debug("Refactoring - Remove from diagram : {}", diagram.getDiagramTypeId());
+    		Iterator<Shape> containerShapeIt = diagram.getChildren().iterator();
+    		while(containerShapeIt.hasNext()){
+    			ContainerShape cs = (ContainerShape)containerShapeIt.next();
+    			Object obj = cs.getLink().getBusinessObjects().get(0);
+    			if(obj instanceof MessageOccurrenceSpecification 
+    					&& ((MessageOccurrenceSpecification) obj).getMessage().getName().equals(messageName)
+    					&&((MessageOccurrenceSpecification) obj).getCovered().get(0).getActor().getName().equals(objectName)){
+    				
+    				logger.debug("MessageOccurrenceSpecification : {}", ((MessageOccurrenceSpecification) obj).getCovered().get(0).getActor().getName());
+    				DeleteContext ctx = new DeleteContext(cs);
+            		ctx.setMultiDeleteInfo(new MultiDeleteInfo(false, false, 2));
+            		SequenceDiagramTypeProvider sdtp = new SequenceDiagramTypeProvider();
+            		SequenceFeatureProvider sfp = new SequenceFeatureProvider(sdtp);
+            		IDeleteFeature deleteFeature = sfp.getDeleteFeature(ctx);
+            		if (deleteFeature!=null){
+            			deleteFeature.execute(ctx);
+            			break;
+            		}
+    				
+    			}
+    		}
+    		updatePictogramElement(diagram);
+    		try {
+				diagram.eResource().save(null);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     		
-    		logger.warn("Refactoring - Remove from sequence : no sequence diagram exsit");
-    		System.out.println("ok");
     	}
+    	
     	return true;
     }
 }

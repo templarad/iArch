@@ -16,3 +16,4 @@ Require-Bundle: org.eclipse.ui,
  jp.ac.kyushu.iarch.archdsl
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: jp.ac.kyushu.iarch.sequencediagram.diagram.providers
