@@ -255,6 +255,7 @@ public class CreateMessageFeature extends AbstractCreateConnectionFeature {
 		 return null;
 		}
 	
+	@SuppressWarnings("unused")
 	private ContainerShape getLifelineContainer(PictogramElement pictogramE){
 		if (pictogramE instanceof FreeFormConnection){
 			FreeFormConnection connection = (FreeFormConnection)pictogramE;
