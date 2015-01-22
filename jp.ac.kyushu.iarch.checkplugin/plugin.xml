@@ -33,6 +33,14 @@
          id="jp.ac.kyushu.iarch.checkPlugin.checkARCommand"
          name="Check AR">
    </command>
+   
+    <command
+         categoryId="jp.ac.kyushu.iarch.checkPlugin.iarchcategory"
+         id="jp.ac.kyushu.iarch.checkPlugin.AddMethod"
+         name="AddMethodSample">
+   </command>
+   
+   
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -76,6 +84,17 @@
                   mnemonic="D"
                   style="push">
             </command>
+            
+            <command
+                  commandId="jp.ac.kyushu.iarch.checkPlugin.AddMethod"
+                  id="jp.ac.kyushu.iarch.checkPlugin.AddMethodCode"
+                  label="AddMethodSample"
+                  mnemonic="D"
+                  style="push">
+            </command>
+
+            
+            
          </menu>
       </menuContribution>
    </extension>
@@ -101,6 +120,13 @@
             class="jp.ac.kyushu.iarch.checkplugin.handler.GenerateArchCode"
             commandId="jp.ac.kyushu.iarch.checkPlugin.generateArch">
       </handler>
+      
+ <handler
+            class="jp.ac.kyushu.iarch.checkplugin.handler.AddMethod"
+            commandId="jp.ac.kyushu.iarch.checkPlugin.AddMethod">
+      </handler>
+      
+      
    </extension>
    <extension
          point="org.eclipse.ui.views">
