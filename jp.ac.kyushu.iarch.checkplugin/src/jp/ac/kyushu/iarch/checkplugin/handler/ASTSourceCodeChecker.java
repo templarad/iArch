@@ -371,7 +371,7 @@ public class ASTSourceCodeChecker{
 				if(superInterfaceName != null){
 					for (SuperMethod methodCall : u_behavior.getCall()) {
 						boolean isMethodInvocationExist = false;
-						String typeOfCall = methodCall.getClass().getSimpleName();
+						String typeOfCall = methodCall.getClass().getSimpleName();	//MethodImpl : Certain Method, OptMethodImpl : Optional Method
 						String currentMethodName = methodCall.getName();
 						if(currentMethodName == null)continue;	//for end of calls
 						String currentClassName = null;
