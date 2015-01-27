@@ -7,24 +7,24 @@ import org.eclipse.core.runtime.CoreException;
 
 public class ProblemViewManager {
 	private static ProblemViewManager problemviewmanager = new ProblemViewManager();
-	
-	
+
+
 	private ProblemViewManager(){
 		//Singleton
 	}
 	public static ProblemViewManager getInstance(){
 		return problemviewmanager;
 	}
-	
+
 	public static void removeAllProblems(IProject project){
 		try {
 			project.deleteMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE);
-			
+
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void addError(IResource resource, String message, String location) {
 		try {
 			IMarker marker = resource.createMarker(IMarker.PROBLEM);
