@@ -95,6 +95,24 @@ public interface ArchDSLFactory extends EFactory
   Behavior createBehavior();
 
   /**
+   * Returns a new object of class '<em>Super Method</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Super Method</em>'.
+   * @generated
+   */
+  SuperMethod createSuperMethod();
+
+  /**
+   * Returns a new object of class '<em>Uncertain Behavior</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Uncertain Behavior</em>'.
+   * @generated
+   */
+  UncertainBehavior createUncertainBehavior();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

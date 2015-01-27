@@ -360,10 +360,10 @@ public class InternalArchDSLLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3177:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3177:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4022:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4022:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3177:11: ( '^' )?
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4022:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -372,7 +372,7 @@ public class InternalArchDSLLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3177:11: '^'
+                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4022:11: '^'
                     {
                     match('^'); 
 
@@ -390,7 +390,7 @@ public class InternalArchDSLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3177:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4022:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -439,10 +439,10 @@ public class InternalArchDSLLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3179:10: ( ( '0' .. '9' )+ )
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3179:12: ( '0' .. '9' )+
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4024:10: ( ( '0' .. '9' )+ )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4024:12: ( '0' .. '9' )+
             {
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3179:12: ( '0' .. '9' )+
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4024:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -456,7 +456,7 @@ public class InternalArchDSLLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3179:13: '0' .. '9'
+            	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4024:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -488,10 +488,10 @@ public class InternalArchDSLLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3181:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3181:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4026:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4026:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3181:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4026:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -509,10 +509,10 @@ public class InternalArchDSLLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3181:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4026:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3181:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4026:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -528,7 +528,7 @@ public class InternalArchDSLLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3181:21: '\\\\' .
+                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4026:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -536,7 +536,7 @@ public class InternalArchDSLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3181:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4026:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -561,10 +561,10 @@ public class InternalArchDSLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3181:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4026:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3181:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4026:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -580,7 +580,7 @@ public class InternalArchDSLLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3181:54: '\\\\' .
+                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4026:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -588,7 +588,7 @@ public class InternalArchDSLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3181:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4026:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -631,12 +631,12 @@ public class InternalArchDSLLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3183:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3183:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4028:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4028:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3183:24: ( options {greedy=false; } : . )*
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4028:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -661,7 +661,7 @@ public class InternalArchDSLLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3183:52: .
+            	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4028:52: .
             	    {
             	    matchAny(); 
 
@@ -691,12 +691,12 @@ public class InternalArchDSLLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3185:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3185:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4030:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4030:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3185:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4030:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -709,7 +709,7 @@ public class InternalArchDSLLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3185:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4030:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -729,7 +729,7 @@ public class InternalArchDSLLexer extends Lexer {
                 }
             } while (true);
 
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3185:40: ( ( '\\r' )? '\\n' )?
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4030:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -738,9 +738,9 @@ public class InternalArchDSLLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3185:41: ( '\\r' )? '\\n'
+                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4030:41: ( '\\r' )? '\\n'
                     {
-                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3185:41: ( '\\r' )?
+                    // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4030:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -749,7 +749,7 @@ public class InternalArchDSLLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3185:41: '\\r'
+                            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4030:41: '\\r'
                             {
                             match('\r'); 
 
@@ -781,10 +781,10 @@ public class InternalArchDSLLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3187:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3187:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4032:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4032:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3187:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4032:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -838,8 +838,8 @@ public class InternalArchDSLLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3189:16: ( . )
-            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:3189:18: .
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4034:16: ( . )
+            // ../jp.ac.kyushu.iarch.archdsl.ui/src-gen/jp/ac/kyushu/iarch/archdsl/ui/contentassist/antlr/internal/InternalArchDSL.g:4034:18: .
             {
             matchAny(); 
 

@@ -48,6 +48,18 @@ public class ProblemViewManager {
 		}
 	}
 
+	public static void addWarning1(IResource resource, String message, String location,int lineNumber) {
+		try {
+			IMarker marker = resource.createMarker(IMarker.PROBLEM);
+			marker.setAttribute(IMarker.MESSAGE, message);
+			marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_WARNING);
+			marker.setAttribute(IMarker.LOCATION, location);
+			marker.setAttribute(IMarker.LINE_NUMBER,lineNumber);
+		} catch (CoreException ce) {
+			ce.printStackTrace();
+		}
+	}
+
 	public static void addInfo(IResource resource, String message, String location) {
 		try {
 			IMarker marker = resource.createMarker(IMarker.PROBLEM);

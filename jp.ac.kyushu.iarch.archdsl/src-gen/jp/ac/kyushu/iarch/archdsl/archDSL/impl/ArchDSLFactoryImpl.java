@@ -72,6 +72,8 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
       case ArchDSLPackage.OPT_METHOD: return createOptMethod();
       case ArchDSLPackage.PARAM: return createParam();
       case ArchDSLPackage.BEHAVIOR: return createBehavior();
+      case ArchDSLPackage.SUPER_METHOD: return createSuperMethod();
+      case ArchDSLPackage.UNCERTAIN_BEHAVIOR: return createUncertainBehavior();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -163,6 +165,28 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
   {
     BehaviorImpl behavior = new BehaviorImpl();
     return behavior;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SuperMethod createSuperMethod()
+  {
+    SuperMethodImpl superMethod = new SuperMethodImpl();
+    return superMethod;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UncertainBehavior createUncertainBehavior()
+  {
+    UncertainBehaviorImpl uncertainBehavior = new UncertainBehaviorImpl();
+    return uncertainBehavior;
   }
 
   /**

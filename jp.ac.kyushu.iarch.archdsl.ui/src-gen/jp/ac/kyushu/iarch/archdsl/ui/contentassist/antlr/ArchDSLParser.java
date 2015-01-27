@@ -38,7 +38,11 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getModelAccess().getAlternatives_0(), "rule__Model__Alternatives_0");
+					put(grammarAccess.getModelAccess().getAlternatives_1(), "rule__Model__Alternatives_1");
 					put(grammarAccess.getUncertainInterfaceAccess().getAlternatives_4(), "rule__UncertainInterface__Alternatives_4");
+					put(grammarAccess.getSuperMethodAccess().getAlternatives(), "rule__SuperMethod__Alternatives");
+					put(grammarAccess.getUncertainBehaviorAccess().getAlternatives_5_0(), "rule__UncertainBehavior__Alternatives_5_0");
+					put(grammarAccess.getUncertainBehaviorAccess().getAlternatives_5_1_1(), "rule__UncertainBehavior__Alternatives_5_1_1");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getUncertainInterfaceAccess().getGroup(), "rule__UncertainInterface__Group__0");
 					put(grammarAccess.getUncertainInterfaceAccess().getGroup_2(), "rule__UncertainInterface__Group_2__0");
@@ -59,11 +63,17 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBehaviorAccess().getGroup(), "rule__Behavior__Group__0");
 					put(grammarAccess.getBehaviorAccess().getGroup_3(), "rule__Behavior__Group_3__0");
 					put(grammarAccess.getBehaviorAccess().getGroup_3_1(), "rule__Behavior__Group_3_1__0");
+					put(grammarAccess.getUncertainBehaviorAccess().getGroup(), "rule__UncertainBehavior__Group__0");
+					put(grammarAccess.getUncertainBehaviorAccess().getGroup_5(), "rule__UncertainBehavior__Group_5__0");
+					put(grammarAccess.getUncertainBehaviorAccess().getGroup_5_0_1(), "rule__UncertainBehavior__Group_5_0_1__0");
+					put(grammarAccess.getUncertainBehaviorAccess().getGroup_5_1(), "rule__UncertainBehavior__Group_5_1__0");
+					put(grammarAccess.getUncertainBehaviorAccess().getGroup_5_1_1_1(), "rule__UncertainBehavior__Group_5_1_1_1__0");
 					put(grammarAccess.getFQNAccess().getGroup(), "rule__FQN__Group__0");
 					put(grammarAccess.getFQNAccess().getGroup_1(), "rule__FQN__Group_1__0");
 					put(grammarAccess.getModelAccess().getInterfacesAssignment_0_0(), "rule__Model__InterfacesAssignment_0_0");
 					put(grammarAccess.getModelAccess().getU_interfacesAssignment_0_1(), "rule__Model__U_interfacesAssignment_0_1");
-					put(grammarAccess.getModelAccess().getBehaviorsAssignment_1(), "rule__Model__BehaviorsAssignment_1");
+					put(grammarAccess.getModelAccess().getBehaviorsAssignment_1_0(), "rule__Model__BehaviorsAssignment_1_0");
+					put(grammarAccess.getModelAccess().getU_behaviorsAssignment_1_1(), "rule__Model__U_behaviorsAssignment_1_1");
 					put(grammarAccess.getUncertainInterfaceAccess().getNameAssignment_1(), "rule__UncertainInterface__NameAssignment_1");
 					put(grammarAccess.getUncertainInterfaceAccess().getSuperInterfaceAssignment_2_1(), "rule__UncertainInterface__SuperInterfaceAssignment_2_1");
 					put(grammarAccess.getUncertainInterfaceAccess().getAltmethodsAssignment_4_0(), "rule__UncertainInterface__AltmethodsAssignment_4_0");
@@ -92,6 +102,13 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBehaviorAccess().getCallAssignment_3_0(), "rule__Behavior__CallAssignment_3_0");
 					put(grammarAccess.getBehaviorAccess().getCallAssignment_3_1_1(), "rule__Behavior__CallAssignment_3_1_1");
 					put(grammarAccess.getBehaviorAccess().getEndAssignment_3_3(), "rule__Behavior__EndAssignment_3_3");
+					put(grammarAccess.getUncertainBehaviorAccess().getNameAssignment_0(), "rule__UncertainBehavior__NameAssignment_0");
+					put(grammarAccess.getUncertainBehaviorAccess().getInterfaceAssignment_2(), "rule__UncertainBehavior__InterfaceAssignment_2");
+					put(grammarAccess.getUncertainBehaviorAccess().getCallAssignment_5_0_0(), "rule__UncertainBehavior__CallAssignment_5_0_0");
+					put(grammarAccess.getUncertainBehaviorAccess().getCallAssignment_5_0_1_1(), "rule__UncertainBehavior__CallAssignment_5_0_1_1");
+					put(grammarAccess.getUncertainBehaviorAccess().getCallAssignment_5_1_1_0(), "rule__UncertainBehavior__CallAssignment_5_1_1_0");
+					put(grammarAccess.getUncertainBehaviorAccess().getCallAssignment_5_1_1_1_1(), "rule__UncertainBehavior__CallAssignment_5_1_1_1_1");
+					put(grammarAccess.getUncertainBehaviorAccess().getEndAssignment_5_3(), "rule__UncertainBehavior__EndAssignment_5_3");
 				}
 			};
 		}

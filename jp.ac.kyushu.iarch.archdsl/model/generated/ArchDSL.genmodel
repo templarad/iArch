@@ -11,6 +11,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/interfaces"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/u_interfaces"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/behaviors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/u_behaviors"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//UncertainInterface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//UncertainInterface/name"/>
@@ -22,22 +23,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Interface/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Interface/methods"/>
     </genClasses>
-    <genClasses ecoreClass="ArchDSL.ecore#//Method">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Method/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Method/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Method/param"/>
-    </genClasses>
+    <genClasses ecoreClass="ArchDSL.ecore#//Method"/>
     <genClasses ecoreClass="ArchDSL.ecore#//AltMethod">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//AltMethod/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//AltMethod/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//AltMethod/param"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//AltMethod/a_name"/>
     </genClasses>
-    <genClasses ecoreClass="ArchDSL.ecore#//OptMethod">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//OptMethod/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//OptMethod/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//OptMethod/param"/>
-    </genClasses>
+    <genClasses ecoreClass="ArchDSL.ecore#//OptMethod"/>
     <genClasses ecoreClass="ArchDSL.ecore#//Param">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Param/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Param/name"/>
@@ -46,6 +39,17 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Behavior/interface"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Behavior/call"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Behavior/end"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchDSL.ecore#//SuperMethod">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//SuperMethod/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//SuperMethod/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//SuperMethod/param"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchDSL.ecore#//UncertainBehavior">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//UncertainBehavior/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainBehavior/interface"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainBehavior/call"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainBehavior/end"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

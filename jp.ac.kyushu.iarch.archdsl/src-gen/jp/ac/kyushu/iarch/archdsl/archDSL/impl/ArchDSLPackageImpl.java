@@ -11,6 +11,8 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
+import jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod;
+import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -83,6 +85,20 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * @generated
    */
   private EClass behaviorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass superMethodEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass uncertainBehaviorEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -192,6 +208,16 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getModel_U_behaviors()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getUncertainInterface()
   {
     return uncertainInterfaceEClass;
@@ -282,36 +308,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMethod_Type()
-  {
-    return (EAttribute)methodEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getMethod_Name()
-  {
-    return (EAttribute)methodEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getMethod_Param()
-  {
-    return (EReference)methodEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getAltMethod()
   {
     return altMethodEClass;
@@ -365,36 +361,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
   public EClass getOptMethod()
   {
     return optMethodEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getOptMethod_Type()
-  {
-    return (EAttribute)optMethodEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getOptMethod_Name()
-  {
-    return (EAttribute)optMethodEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getOptMethod_Param()
-  {
-    return (EReference)optMethodEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -472,6 +438,96 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getSuperMethod()
+  {
+    return superMethodEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSuperMethod_Type()
+  {
+    return (EAttribute)superMethodEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSuperMethod_Name()
+  {
+    return (EAttribute)superMethodEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSuperMethod_Param()
+  {
+    return (EReference)superMethodEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUncertainBehavior()
+  {
+    return uncertainBehaviorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getUncertainBehavior_Name()
+  {
+    return (EAttribute)uncertainBehaviorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUncertainBehavior_Interface()
+  {
+    return (EReference)uncertainBehaviorEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUncertainBehavior_Call()
+  {
+    return (EReference)uncertainBehaviorEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUncertainBehavior_End()
+  {
+    return (EReference)uncertainBehaviorEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ArchDSLFactory getArchDSLFactory()
   {
     return (ArchDSLFactory)getEFactoryInstance();
@@ -501,6 +557,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     createEReference(modelEClass, MODEL__INTERFACES);
     createEReference(modelEClass, MODEL__UINTERFACES);
     createEReference(modelEClass, MODEL__BEHAVIORS);
+    createEReference(modelEClass, MODEL__UBEHAVIORS);
 
     uncertainInterfaceEClass = createEClass(UNCERTAIN_INTERFACE);
     createEAttribute(uncertainInterfaceEClass, UNCERTAIN_INTERFACE__NAME);
@@ -513,9 +570,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     createEReference(interfaceEClass, INTERFACE__METHODS);
 
     methodEClass = createEClass(METHOD);
-    createEAttribute(methodEClass, METHOD__TYPE);
-    createEAttribute(methodEClass, METHOD__NAME);
-    createEReference(methodEClass, METHOD__PARAM);
 
     altMethodEClass = createEClass(ALT_METHOD);
     createEAttribute(altMethodEClass, ALT_METHOD__TYPE);
@@ -524,9 +578,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     createEAttribute(altMethodEClass, ALT_METHOD__ANAME);
 
     optMethodEClass = createEClass(OPT_METHOD);
-    createEAttribute(optMethodEClass, OPT_METHOD__TYPE);
-    createEAttribute(optMethodEClass, OPT_METHOD__NAME);
-    createEReference(optMethodEClass, OPT_METHOD__PARAM);
 
     paramEClass = createEClass(PARAM);
     createEAttribute(paramEClass, PARAM__TYPE);
@@ -536,6 +587,17 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     createEReference(behaviorEClass, BEHAVIOR__INTERFACE);
     createEReference(behaviorEClass, BEHAVIOR__CALL);
     createEReference(behaviorEClass, BEHAVIOR__END);
+
+    superMethodEClass = createEClass(SUPER_METHOD);
+    createEAttribute(superMethodEClass, SUPER_METHOD__TYPE);
+    createEAttribute(superMethodEClass, SUPER_METHOD__NAME);
+    createEReference(superMethodEClass, SUPER_METHOD__PARAM);
+
+    uncertainBehaviorEClass = createEClass(UNCERTAIN_BEHAVIOR);
+    createEAttribute(uncertainBehaviorEClass, UNCERTAIN_BEHAVIOR__NAME);
+    createEReference(uncertainBehaviorEClass, UNCERTAIN_BEHAVIOR__INTERFACE);
+    createEReference(uncertainBehaviorEClass, UNCERTAIN_BEHAVIOR__CALL);
+    createEReference(uncertainBehaviorEClass, UNCERTAIN_BEHAVIOR__END);
   }
 
   /**
@@ -567,12 +629,15 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    methodEClass.getESuperTypes().add(this.getSuperMethod());
+    optMethodEClass.getESuperTypes().add(this.getSuperMethod());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getModel_Interfaces(), this.getInterface(), null, "interfaces", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_U_interfaces(), this.getUncertainInterface(), null, "u_interfaces", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Behaviors(), this.getBehavior(), null, "behaviors", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_U_behaviors(), this.getUncertainBehavior(), null, "u_behaviors", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(uncertainInterfaceEClass, UncertainInterface.class, "UncertainInterface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getUncertainInterface_Name(), ecorePackage.getEString(), "name", null, 0, 1, UncertainInterface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -585,9 +650,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     initEReference(getInterface_Methods(), this.getMethod(), null, "methods", null, 0, -1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(methodEClass, Method.class, "Method", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMethod_Type(), ecorePackage.getEString(), "type", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMethod_Param(), this.getParam(), null, "param", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(altMethodEClass, AltMethod.class, "AltMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAltMethod_Type(), ecorePackage.getEString(), "type", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -596,9 +658,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     initEAttribute(getAltMethod_A_name(), ecorePackage.getEString(), "a_name", null, 0, -1, AltMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(optMethodEClass, OptMethod.class, "OptMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getOptMethod_Type(), ecorePackage.getEString(), "type", null, 0, 1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOptMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOptMethod_Param(), this.getParam(), null, "param", null, 0, -1, OptMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(paramEClass, Param.class, "Param", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getParam_Type(), ecorePackage.getEString(), "type", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -608,6 +667,17 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     initEReference(getBehavior_Interface(), this.getInterface(), null, "interface", null, 0, 1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBehavior_Call(), this.getMethod(), null, "call", null, 0, -1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBehavior_End(), this.getInterface(), null, "end", null, 0, 1, Behavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(superMethodEClass, SuperMethod.class, "SuperMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSuperMethod_Type(), ecorePackage.getEString(), "type", null, 0, 1, SuperMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSuperMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, SuperMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSuperMethod_Param(), this.getParam(), null, "param", null, 0, -1, SuperMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(uncertainBehaviorEClass, UncertainBehavior.class, "UncertainBehavior", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getUncertainBehavior_Name(), ecorePackage.getEString(), "name", null, 0, 1, UncertainBehavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUncertainBehavior_Interface(), this.getInterface(), null, "interface", null, 0, 1, UncertainBehavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUncertainBehavior_Call(), this.getSuperMethod(), null, "call", null, 0, -1, UncertainBehavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUncertainBehavior_End(), this.getInterface(), null, "end", null, 0, 1, UncertainBehavior.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

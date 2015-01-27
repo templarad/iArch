@@ -8,6 +8,7 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
+import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getInterfaces <em>Interfaces</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getU_interfaces <em>Uinterfaces</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getBehaviors <em>Behaviors</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getU_behaviors <em>Ubehaviors</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,6 +70,16 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @ordered
    */
   protected EList<Behavior> behaviors;
+
+  /**
+   * The cached value of the '{@link #getU_behaviors() <em>Ubehaviors</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getU_behaviors()
+   * @generated
+   * @ordered
+   */
+  protected EList<UncertainBehavior> u_behaviors;
 
   /**
    * <!-- begin-user-doc -->
@@ -137,6 +149,20 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<UncertainBehavior> getU_behaviors()
+  {
+    if (u_behaviors == null)
+    {
+      u_behaviors = new EObjectContainmentEList<UncertainBehavior>(UncertainBehavior.class, this, ArchDSLPackage.MODEL__UBEHAVIORS);
+    }
+    return u_behaviors;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -148,6 +174,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return ((InternalEList<?>)getU_interfaces()).basicRemove(otherEnd, msgs);
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return ((InternalEList<?>)getBehaviors()).basicRemove(otherEnd, msgs);
+      case ArchDSLPackage.MODEL__UBEHAVIORS:
+        return ((InternalEList<?>)getU_behaviors()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -168,6 +196,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return getU_interfaces();
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return getBehaviors();
+      case ArchDSLPackage.MODEL__UBEHAVIORS:
+        return getU_behaviors();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -195,6 +225,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         getBehaviors().clear();
         getBehaviors().addAll((Collection<? extends Behavior>)newValue);
         return;
+      case ArchDSLPackage.MODEL__UBEHAVIORS:
+        getU_behaviors().clear();
+        getU_behaviors().addAll((Collection<? extends UncertainBehavior>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -218,6 +252,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ArchDSLPackage.MODEL__BEHAVIORS:
         getBehaviors().clear();
         return;
+      case ArchDSLPackage.MODEL__UBEHAVIORS:
+        getU_behaviors().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -238,6 +275,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return u_interfaces != null && !u_interfaces.isEmpty();
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return behaviors != null && !behaviors.isEmpty();
+      case ArchDSLPackage.MODEL__UBEHAVIORS:
+        return u_behaviors != null && !u_behaviors.isEmpty();
     }
     return super.eIsSet(featureID);
   }

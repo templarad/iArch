@@ -94,13 +94,22 @@ public interface ArchDSLPackage extends EPackage
   int MODEL__BEHAVIORS = 2;
 
   /**
+   * The feature id for the '<em><b>Ubehaviors</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__UBEHAVIORS = 3;
+
+  /**
    * The number of structural features of the '<em>Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 3;
+  int MODEL_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainInterfaceImpl <em>Uncertain Interface</em>}' class.
@@ -195,6 +204,52 @@ public interface ArchDSLPackage extends EPackage
   int INTERFACE_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperMethodImpl <em>Super Method</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperMethodImpl
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getSuperMethod()
+   * @generated
+   */
+  int SUPER_METHOD = 8;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUPER_METHOD__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUPER_METHOD__NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Param</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUPER_METHOD__PARAM = 2;
+
+  /**
+   * The number of structural features of the '<em>Super Method</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUPER_METHOD_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.MethodImpl <em>Method</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -211,7 +266,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD__TYPE = 0;
+  int METHOD__TYPE = SUPER_METHOD__TYPE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -220,7 +275,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD__NAME = 1;
+  int METHOD__NAME = SUPER_METHOD__NAME;
 
   /**
    * The feature id for the '<em><b>Param</b></em>' containment reference list.
@@ -229,7 +284,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD__PARAM = 2;
+  int METHOD__PARAM = SUPER_METHOD__PARAM;
 
   /**
    * The number of structural features of the '<em>Method</em>' class.
@@ -238,7 +293,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD_FEATURE_COUNT = 3;
+  int METHOD_FEATURE_COUNT = SUPER_METHOD_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl <em>Alt Method</em>}' class.
@@ -312,7 +367,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPT_METHOD__TYPE = 0;
+  int OPT_METHOD__TYPE = SUPER_METHOD__TYPE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -321,7 +376,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPT_METHOD__NAME = 1;
+  int OPT_METHOD__NAME = SUPER_METHOD__NAME;
 
   /**
    * The feature id for the '<em><b>Param</b></em>' containment reference list.
@@ -330,7 +385,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPT_METHOD__PARAM = 2;
+  int OPT_METHOD__PARAM = SUPER_METHOD__PARAM;
 
   /**
    * The number of structural features of the '<em>Opt Method</em>' class.
@@ -339,7 +394,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPT_METHOD_FEATURE_COUNT = 3;
+  int OPT_METHOD_FEATURE_COUNT = SUPER_METHOD_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ParamImpl <em>Param</em>}' class.
@@ -424,6 +479,61 @@ public interface ArchDSLPackage extends EPackage
    */
   int BEHAVIOR_FEATURE_COUNT = 3;
 
+  /**
+   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainBehaviorImpl <em>Uncertain Behavior</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainBehaviorImpl
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getUncertainBehavior()
+   * @generated
+   */
+  int UNCERTAIN_BEHAVIOR = 9;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNCERTAIN_BEHAVIOR__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Interface</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNCERTAIN_BEHAVIOR__INTERFACE = 1;
+
+  /**
+   * The feature id for the '<em><b>Call</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNCERTAIN_BEHAVIOR__CALL = 2;
+
+  /**
+   * The feature id for the '<em><b>End</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNCERTAIN_BEHAVIOR__END = 3;
+
+  /**
+   * The number of structural features of the '<em>Uncertain Behavior</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UNCERTAIN_BEHAVIOR_FEATURE_COUNT = 4;
+
 
   /**
    * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model <em>Model</em>}'.
@@ -467,6 +577,17 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    */
   EReference getModel_Behaviors();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getU_behaviors <em>Ubehaviors</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Ubehaviors</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Model#getU_behaviors()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_U_behaviors();
 
   /**
    * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface <em>Uncertain Interface</em>}'.
@@ -565,39 +686,6 @@ public interface ArchDSLPackage extends EPackage
   EClass getMethod();
 
   /**
-   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Method#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Method#getType()
-   * @see #getMethod()
-   * @generated
-   */
-  EAttribute getMethod_Type();
-
-  /**
-   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Method#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Method#getName()
-   * @see #getMethod()
-   * @generated
-   */
-  EAttribute getMethod_Name();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Method#getParam <em>Param</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Param</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Method#getParam()
-   * @see #getMethod()
-   * @generated
-   */
-  EReference getMethod_Param();
-
-  /**
    * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod <em>Alt Method</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -660,39 +748,6 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    */
   EClass getOptMethod();
-
-  /**
-   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getType()
-   * @see #getOptMethod()
-   * @generated
-   */
-  EAttribute getOptMethod_Type();
-
-  /**
-   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getName()
-   * @see #getOptMethod()
-   * @generated
-   */
-  EAttribute getOptMethod_Name();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getParam <em>Param</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Param</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getParam()
-   * @see #getOptMethod()
-   * @generated
-   */
-  EReference getOptMethod_Param();
 
   /**
    * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Param <em>Param</em>}'.
@@ -770,6 +825,103 @@ public interface ArchDSLPackage extends EPackage
   EReference getBehavior_End();
 
   /**
+   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod <em>Super Method</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Super Method</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod
+   * @generated
+   */
+  EClass getSuperMethod();
+
+  /**
+   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod#getType()
+   * @see #getSuperMethod()
+   * @generated
+   */
+  EAttribute getSuperMethod_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod#getName()
+   * @see #getSuperMethod()
+   * @generated
+   */
+  EAttribute getSuperMethod_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod#getParam <em>Param</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Param</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod#getParam()
+   * @see #getSuperMethod()
+   * @generated
+   */
+  EReference getSuperMethod_Param();
+
+  /**
+   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior <em>Uncertain Behavior</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Uncertain Behavior</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior
+   * @generated
+   */
+  EClass getUncertainBehavior();
+
+  /**
+   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getName()
+   * @see #getUncertainBehavior()
+   * @generated
+   */
+  EAttribute getUncertainBehavior_Name();
+
+  /**
+   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getInterface <em>Interface</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Interface</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getInterface()
+   * @see #getUncertainBehavior()
+   * @generated
+   */
+  EReference getUncertainBehavior_Interface();
+
+  /**
+   * Returns the meta object for the reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getCall <em>Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Call</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getCall()
+   * @see #getUncertainBehavior()
+   * @generated
+   */
+  EReference getUncertainBehavior_Call();
+
+  /**
+   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getEnd <em>End</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>End</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getEnd()
+   * @see #getUncertainBehavior()
+   * @generated
+   */
+  EReference getUncertainBehavior_End();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -825,6 +977,14 @@ public interface ArchDSLPackage extends EPackage
      * @generated
      */
     EReference MODEL__BEHAVIORS = eINSTANCE.getModel_Behaviors();
+
+    /**
+     * The meta object literal for the '<em><b>Ubehaviors</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__UBEHAVIORS = eINSTANCE.getModel_U_behaviors();
 
     /**
      * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainInterfaceImpl <em>Uncertain Interface</em>}' class.
@@ -905,30 +1065,6 @@ public interface ArchDSLPackage extends EPackage
     EClass METHOD = eINSTANCE.getMethod();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute METHOD__TYPE = eINSTANCE.getMethod_Type();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute METHOD__NAME = eINSTANCE.getMethod_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Param</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METHOD__PARAM = eINSTANCE.getMethod_Param();
-
-    /**
      * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl <em>Alt Method</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -979,30 +1115,6 @@ public interface ArchDSLPackage extends EPackage
      * @generated
      */
     EClass OPT_METHOD = eINSTANCE.getOptMethod();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OPT_METHOD__TYPE = eINSTANCE.getOptMethod_Type();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OPT_METHOD__NAME = eINSTANCE.getOptMethod_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Param</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference OPT_METHOD__PARAM = eINSTANCE.getOptMethod_Param();
 
     /**
      * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ParamImpl <em>Param</em>}' class.
@@ -1063,6 +1175,82 @@ public interface ArchDSLPackage extends EPackage
      * @generated
      */
     EReference BEHAVIOR__END = eINSTANCE.getBehavior_End();
+
+    /**
+     * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperMethodImpl <em>Super Method</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperMethodImpl
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getSuperMethod()
+     * @generated
+     */
+    EClass SUPER_METHOD = eINSTANCE.getSuperMethod();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SUPER_METHOD__TYPE = eINSTANCE.getSuperMethod_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SUPER_METHOD__NAME = eINSTANCE.getSuperMethod_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Param</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUPER_METHOD__PARAM = eINSTANCE.getSuperMethod_Param();
+
+    /**
+     * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainBehaviorImpl <em>Uncertain Behavior</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainBehaviorImpl
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getUncertainBehavior()
+     * @generated
+     */
+    EClass UNCERTAIN_BEHAVIOR = eINSTANCE.getUncertainBehavior();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute UNCERTAIN_BEHAVIOR__NAME = eINSTANCE.getUncertainBehavior_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Interface</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference UNCERTAIN_BEHAVIOR__INTERFACE = eINSTANCE.getUncertainBehavior_Interface();
+
+    /**
+     * The meta object literal for the '<em><b>Call</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference UNCERTAIN_BEHAVIOR__CALL = eINSTANCE.getUncertainBehavior_Call();
+
+    /**
+     * The meta object literal for the '<em><b>End</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference UNCERTAIN_BEHAVIOR__END = eINSTANCE.getUncertainBehavior_End();
 
   }
 

@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getInterfaces <em>Interfaces</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getU_interfaces <em>Uinterfaces</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getBehaviors <em>Behaviors</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getU_behaviors <em>Ubehaviors</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,5 +74,21 @@ public interface Model extends EObject
    * @generated
    */
   EList<Behavior> getBehaviors();
+
+  /**
+   * Returns the value of the '<em><b>Ubehaviors</b></em>' containment reference list.
+   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Ubehaviors</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Ubehaviors</em>' containment reference list.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getModel_U_behaviors()
+   * @model containment="true"
+   * @generated
+   */
+  EList<UncertainBehavior> getU_behaviors();
 
 } // Model

@@ -9,6 +9,8 @@
         eType="#//UncertainInterface" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="behaviors" upperBound="-1"
         eType="#//Behavior" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="u_behaviors" upperBound="-1"
+        eType="#//UncertainBehavior" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UncertainInterface">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -23,12 +25,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
         eType="#//Method" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Method">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="param" upperBound="-1"
-        eType="#//Param" containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Method" eSuperTypes="#//SuperMethod"/>
   <eClassifiers xsi:type="ecore:EClass" name="AltMethod">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" unique="false" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -38,12 +35,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="a_name" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OptMethod">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="param" upperBound="-1"
-        eType="#//Param" containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OptMethod" eSuperTypes="#//SuperMethod"/>
   <eClassifiers xsi:type="ecore:EClass" name="Param">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -52,6 +44,19 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="interface" eType="#//Interface"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="call" unique="false" upperBound="-1"
         eType="#//Method"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Interface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SuperMethod">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="param" upperBound="-1"
+        eType="#//Param" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UncertainBehavior">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" eType="#//Interface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="call" unique="false" upperBound="-1"
+        eType="#//SuperMethod"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Interface"/>
   </eClassifiers>
 </ecore:EPackage>

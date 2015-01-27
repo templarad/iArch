@@ -115,6 +115,16 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
         return createBehaviorAdapter();
       }
       @Override
+      public Adapter caseSuperMethod(SuperMethod object)
+      {
+        return createSuperMethodAdapter();
+      }
+      @Override
+      public Adapter caseUncertainBehavior(UncertainBehavior object)
+      {
+        return createUncertainBehaviorAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -252,6 +262,36 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBehaviorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod <em>Super Method</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod
+   * @generated
+   */
+  public Adapter createSuperMethodAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior <em>Uncertain Behavior</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior
+   * @generated
+   */
+  public Adapter createUncertainBehaviorAdapter()
   {
     return null;
   }

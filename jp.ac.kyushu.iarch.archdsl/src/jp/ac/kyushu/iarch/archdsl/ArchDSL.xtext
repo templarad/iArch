@@ -5,7 +5,9 @@ generate archDSL "http://www.ac.jp/kyushu/iarch/archdsl/ArchDSL"
 Model:
 	(interfaces+=Interface |
 	u_interfaces+=UncertainInterface)*
-	behaviors+=Behavior*;
+	//	behaviors+=Behavior*
+	(behaviors+=Behavior |
+	u_behaviors+=UncertainBehavior)*;
 
 UncertainInterface:
 	"interface uncertain" name=ID ("extends" superInterface=[Interface])? "{"
@@ -35,8 +37,18 @@ OptMethod:
 Param:
 	type=ID name=ID;
 
+
 Behavior:
-	interface=[Interface] "=" "(" (call+=[Method|FQN] ("->" call+=[Method|FQN])* "->" end=[Interface])? ");";
+	interface=[Interface] "=" "(" (call+=[Method|FQN]("->"call+=[Method|FQN])*"->"end=[Interface])?");"
+;
+
+SuperMethod:
+	Method|OptMethod
+;
+
+UncertainBehavior:
+	name=ID "extends" interface=[Interface] "=" "(" (((call+=[SuperMethod|FQN]) | ("[" call+=[SuperMethod|FQN] "]"))
+	("->" (call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]"))* "->" end=[Interface])? ");";
 
 FQN:
 	ID ("." ID)*;

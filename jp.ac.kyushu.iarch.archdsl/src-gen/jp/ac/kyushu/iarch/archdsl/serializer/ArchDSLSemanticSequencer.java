@@ -10,6 +10,7 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
+import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface;
 import jp.ac.kyushu.iarch.archdsl.services.ArchDSLGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
@@ -51,7 +52,8 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 				}
 				else break;
 			case ArchDSLPackage.METHOD:
-				if(context == grammarAccess.getMethodRule()) {
+				if(context == grammarAccess.getMethodRule() ||
+				   context == grammarAccess.getSuperMethodRule()) {
 					sequence_Method(context, (Method) semanticObject); 
 					return; 
 				}
@@ -63,7 +65,8 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 				}
 				else break;
 			case ArchDSLPackage.OPT_METHOD:
-				if(context == grammarAccess.getOptMethodRule()) {
+				if(context == grammarAccess.getOptMethodRule() ||
+				   context == grammarAccess.getSuperMethodRule()) {
 					sequence_OptMethod(context, (OptMethod) semanticObject); 
 					return; 
 				}
@@ -71,6 +74,12 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case ArchDSLPackage.PARAM:
 				if(context == grammarAccess.getParamRule()) {
 					sequence_Param(context, (Param) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchDSLPackage.UNCERTAIN_BEHAVIOR:
+				if(context == grammarAccess.getUncertainBehaviorRule()) {
+					sequence_UncertainBehavior(context, (UncertainBehavior) semanticObject); 
 					return; 
 				}
 				else break;
@@ -122,7 +131,7 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     ((interfaces+=Interface | u_interfaces+=UncertainInterface)* behaviors+=Behavior*)
+	 *     ((interfaces+=Interface | u_interfaces+=UncertainInterface)* (behaviors+=Behavior | u_behaviors+=UncertainBehavior)*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -154,6 +163,19 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 		feeder.accept(grammarAccess.getParamAccess().getTypeIDTerminalRuleCall_0_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getParamAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         interface=[Interface|ID] 
+	 *         ((call+=[SuperMethod|FQN] | call+=[SuperMethod|FQN]) (call+=[SuperMethod|FQN] | call+=[SuperMethod|FQN])* end=[Interface|ID])?
+	 *     )
+	 */
+	protected void sequence_UncertainBehavior(EObject context, UncertainBehavior semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

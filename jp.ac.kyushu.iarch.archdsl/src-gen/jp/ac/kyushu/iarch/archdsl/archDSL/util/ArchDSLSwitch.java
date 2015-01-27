@@ -97,6 +97,7 @@ public class ArchDSLSwitch<T> extends Switch<T>
       {
         Method method = (Method)theEObject;
         T result = caseMethod(method);
+        if (result == null) result = caseSuperMethod(method);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -111,6 +112,7 @@ public class ArchDSLSwitch<T> extends Switch<T>
       {
         OptMethod optMethod = (OptMethod)theEObject;
         T result = caseOptMethod(optMethod);
+        if (result == null) result = caseSuperMethod(optMethod);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -125,6 +127,20 @@ public class ArchDSLSwitch<T> extends Switch<T>
       {
         Behavior behavior = (Behavior)theEObject;
         T result = caseBehavior(behavior);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.SUPER_METHOD:
+      {
+        SuperMethod superMethod = (SuperMethod)theEObject;
+        T result = caseSuperMethod(superMethod);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.UNCERTAIN_BEHAVIOR:
+      {
+        UncertainBehavior uncertainBehavior = (UncertainBehavior)theEObject;
+        T result = caseUncertainBehavior(uncertainBehavior);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -256,6 +272,38 @@ public class ArchDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBehavior(Behavior object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Super Method</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Super Method</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSuperMethod(SuperMethod object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Uncertain Behavior</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Uncertain Behavior</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUncertainBehavior(UncertainBehavior object)
   {
     return null;
   }
