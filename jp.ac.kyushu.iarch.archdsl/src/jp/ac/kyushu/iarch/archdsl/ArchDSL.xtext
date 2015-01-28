@@ -6,12 +6,16 @@ Model:
 	interfaces+=Interface*
 	behaviors+=Behavior* 
 	dflows+=Dflow*
-	dfas+=Dfa*
+//	dfas+=Dfa*
 	dataflows+=Dataflow*
 ;
 
 Interface:
 	"interface component" name=ID "{"
+		methods+=Method*
+	"}"
+	
+	|"interface dataflow" name=ID "{"
 		methods+=Method*
 	"}"
 ;
@@ -29,10 +33,12 @@ Dflow:
 		//'description' description = STRING  
 ;
 
+/*
 Dfa:
 	"Dfa" name=ID";"
 	  //  'define' definition = STRING      //define "$Dataflow"
 ;
+*/
 
 Behavior:
 	interface=[Interface] "=" "(" (call+=[Method|FQN]("->"call+=[Method|FQN])*"->"end=[Interface])?");"
@@ -45,7 +51,8 @@ Dataflow:
  
 //    2015.1.19 
 //    one to one
-	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"
+ 
+	interface=[Interface] "=" "[" ("|"getflow+=[Dflow]"|"
 		("->>"call+=[Method|FQN]("->>""|"getflow+=[Dflow]"|"))
 		("->>"getIf+=[Interface]("->>""|"getflow+=[Dflow]"|"))
 		("->>"call+=[Method|FQN]("->>""|"getflow+=[Dflow]"|"))
@@ -57,11 +64,7 @@ Dataflow:
     dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|""->>"
     ((call+=[Method|FQN]"->>""|"getflow+=[Dflow]"|""->>")|(getIf+=[Interface]"->>""|"getflow+=[Dflow]"|""->>"))*
     end=[Interface])?"];"
- */	
-  
-	
-	
-	
+*/
 /*        
 	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"
 		((("->>"call+=[Method|FQN])?("->>""|"getflow+=[Dflow]"|")?)*

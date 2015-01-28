@@ -72,42 +72,78 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class InterfaceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Interface");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cInterfaceComponentKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cMethodsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cMethodsMethodParserRuleCall_3_0 = (RuleCall)cMethodsAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cInterfaceComponentKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Assignment cMethodsAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
+		private final RuleCall cMethodsMethodParserRuleCall_0_3_0 = (RuleCall)cMethodsAssignment_0_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cInterfaceDataflowKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Assignment cMethodsAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final RuleCall cMethodsMethodParserRuleCall_1_3_0 = (RuleCall)cMethodsAssignment_1_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
 		
 		//Interface:
-		//	"interface component" name=ID "{" methods+=Method* "}";
+		//	"interface component" name=ID "{" methods+=Method* "}" | "interface dataflow" name=ID "{" methods+=Method* "}";
 		public ParserRule getRule() { return rule; }
 
+		//"interface component" name=ID "{" methods+=Method* "}" | "interface dataflow" name=ID "{" methods+=Method* "}"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//"interface component" name=ID "{" methods+=Method* "}"
-		public Group getGroup() { return cGroup; }
+		public Group getGroup_0() { return cGroup_0; }
 
 		//"interface component"
-		public Keyword getInterfaceComponentKeyword_0() { return cInterfaceComponentKeyword_0; }
+		public Keyword getInterfaceComponentKeyword_0_0() { return cInterfaceComponentKeyword_0_0; }
 
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_0_1_0() { return cNameIDTerminalRuleCall_0_1_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_0_2() { return cLeftCurlyBracketKeyword_0_2; }
 
 		//methods+=Method*
-		public Assignment getMethodsAssignment_3() { return cMethodsAssignment_3; }
+		public Assignment getMethodsAssignment_0_3() { return cMethodsAssignment_0_3; }
 
 		//Method
-		public RuleCall getMethodsMethodParserRuleCall_3_0() { return cMethodsMethodParserRuleCall_3_0; }
+		public RuleCall getMethodsMethodParserRuleCall_0_3_0() { return cMethodsMethodParserRuleCall_0_3_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_0_4() { return cRightCurlyBracketKeyword_0_4; }
+
+		//"interface dataflow" name=ID "{" methods+=Method* "}"
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"interface dataflow"
+		public Keyword getInterfaceDataflowKeyword_1_0() { return cInterfaceDataflowKeyword_1_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_1_0() { return cNameIDTerminalRuleCall_1_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1_2() { return cLeftCurlyBracketKeyword_1_2; }
+
+		//methods+=Method*
+		public Assignment getMethodsAssignment_1_3() { return cMethodsAssignment_1_3; }
+
+		//Method
+		public RuleCall getMethodsMethodParserRuleCall_1_3_0() { return cMethodsMethodParserRuleCall_1_3_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_1_4() { return cRightCurlyBracketKeyword_1_4; }
 	}
 
 	public class MethodElements extends AbstractParserRuleElementFinder {
@@ -710,7 +746,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Interface:
-	//	"interface component" name=ID "{" methods+=Method* "}";
+	//	"interface component" name=ID "{" methods+=Method* "}" | "interface dataflow" name=ID "{" methods+=Method* "}";
 	public InterfaceElements getInterfaceAccess() {
 		return pInterface;
 	}

@@ -37,8 +37,10 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getInterfaceAccess().getAlternatives(), "rule__Interface__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
-					put(grammarAccess.getInterfaceAccess().getGroup(), "rule__Interface__Group__0");
+					put(grammarAccess.getInterfaceAccess().getGroup_0(), "rule__Interface__Group_0__0");
+					put(grammarAccess.getInterfaceAccess().getGroup_1(), "rule__Interface__Group_1__0");
 					put(grammarAccess.getMethodAccess().getGroup(), "rule__Method__Group__0");
 					put(grammarAccess.getMethodAccess().getGroup_3(), "rule__Method__Group_3__0");
 					put(grammarAccess.getMethodAccess().getGroup_3_1(), "rule__Method__Group_3_1__0");
@@ -63,8 +65,10 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getDflowsAssignment_2(), "rule__Model__DflowsAssignment_2");
 					put(grammarAccess.getModelAccess().getDfasAssignment_3(), "rule__Model__DfasAssignment_3");
 					put(grammarAccess.getModelAccess().getDataflowsAssignment_4(), "rule__Model__DataflowsAssignment_4");
-					put(grammarAccess.getInterfaceAccess().getNameAssignment_1(), "rule__Interface__NameAssignment_1");
-					put(grammarAccess.getInterfaceAccess().getMethodsAssignment_3(), "rule__Interface__MethodsAssignment_3");
+					put(grammarAccess.getInterfaceAccess().getNameAssignment_0_1(), "rule__Interface__NameAssignment_0_1");
+					put(grammarAccess.getInterfaceAccess().getMethodsAssignment_0_3(), "rule__Interface__MethodsAssignment_0_3");
+					put(grammarAccess.getInterfaceAccess().getNameAssignment_1_1(), "rule__Interface__NameAssignment_1_1");
+					put(grammarAccess.getInterfaceAccess().getMethodsAssignment_1_3(), "rule__Interface__MethodsAssignment_1_3");
 					put(grammarAccess.getMethodAccess().getTypeAssignment_0(), "rule__Method__TypeAssignment_0");
 					put(grammarAccess.getMethodAccess().getNameAssignment_1(), "rule__Method__NameAssignment_1");
 					put(grammarAccess.getMethodAccess().getParamAssignment_3_0(), "rule__Method__ParamAssignment_3_0");

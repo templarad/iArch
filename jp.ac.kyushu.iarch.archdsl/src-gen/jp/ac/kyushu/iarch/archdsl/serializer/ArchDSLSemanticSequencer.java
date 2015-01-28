@@ -148,7 +148,7 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (name=ID methods+=Method*)
+	 *     ((name=ID methods+=Method*) | (name=ID methods+=Method*))
 	 */
 	protected void sequence_Interface(EObject context, Interface semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
