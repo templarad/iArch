@@ -21,7 +21,7 @@ public class OldArchReader{
 	}
 	
 	public IResource getOldArchResouce(IProject project){
-		String oldArchPath = project.getProject().getLocation().toOSString()+"/arch.old";
+		String oldArchPath = "\\"+project.getProject().getName()+"\\arch\\arch.old";
 		IPath path = new Path(oldArchPath);
 		IResource re = ResourcesPlugin.getWorkspace().getRoot().findMember(path);
 		return re;
