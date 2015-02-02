@@ -63,6 +63,7 @@ public class CreateLifelineFeature extends AbstractCreateConnectionFeature {
 		return null;
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public boolean canStartConnection(ICreateConnectionContext context) {
 		PictogramElement srcPE = context.getSourcePictogramElement();

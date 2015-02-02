@@ -8,16 +8,22 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.basefunction.controller.GraphitiModelManager;
-
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import behavior.Message;
 import behavior.MessageOccurrenceSpecification;
 
 public class SequenceDiagramChecker {
+	private static final Logger logger = LoggerFactory.getLogger(SequenceDiagramChecker.class);
 	public boolean checkSequenceDiagram(Model archiface, IResource sequenceResource){
+		if(sequenceResource == null){
+			logger.error("Auto check failed :Sequence Diagram does not exsit!");
+			return false;
+		}
 		Resource sequenceDiagram = GraphitiModelManager.getGraphitiModel(sequenceResource);
 		List<Message> diagramMessages = getMassageSequence(sequenceDiagram);
 
