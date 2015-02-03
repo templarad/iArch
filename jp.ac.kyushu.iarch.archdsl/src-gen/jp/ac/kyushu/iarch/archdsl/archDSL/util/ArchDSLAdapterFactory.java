@@ -125,6 +125,26 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
         return createUncertainBehaviorAdapter();
       }
       @Override
+      public Adapter caseCertainCall(CertainCall object)
+      {
+        return createCertainCallAdapter();
+      }
+      @Override
+      public Adapter caseOptCall(OptCall object)
+      {
+        return createOptCallAdapter();
+      }
+      @Override
+      public Adapter caseAltCall(AltCall object)
+      {
+        return createAltCallAdapter();
+      }
+      @Override
+      public Adapter caseSuperCall(SuperCall object)
+      {
+        return createSuperCallAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -292,6 +312,66 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createUncertainBehaviorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.CertainCall <em>Certain Call</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.CertainCall
+   * @generated
+   */
+  public Adapter createCertainCallAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptCall <em>Opt Call</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.OptCall
+   * @generated
+   */
+  public Adapter createOptCallAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltCall <em>Alt Call</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.AltCall
+   * @generated
+   */
+  public Adapter createAltCallAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperCall <em>Super Call</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.SuperCall
+   * @generated
+   */
+  public Adapter createSuperCallAdapter()
   {
     return null;
   }

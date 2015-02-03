@@ -6,10 +6,11 @@ import java.util.Collection;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
-import jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod;
+import jp.ac.kyushu.iarch.archdsl.archDSL.SuperCall;
 import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -19,7 +20,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainBehaviorImpl#getName <em>Name</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainBehaviorImpl#getInterface <em>Interface</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainBehaviorImpl#getSuperInterface <em>Super Interface</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainBehaviorImpl#getCall <em>Call</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.UncertainBehaviorImpl#getEnd <em>End</em>}</li>
  * </ul>
@@ -60,24 +62,24 @@ public class UncertainBehaviorImpl extends MinimalEObjectImpl.Container implemen
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getInterface() <em>Interface</em>}' reference.
+   * The cached value of the '{@link #getSuperInterface() <em>Super Interface</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInterface()
+   * @see #getSuperInterface()
    * @generated
    * @ordered
    */
-  protected Interface interface_;
+  protected Interface superInterface;
 
   /**
-   * The cached value of the '{@link #getCall() <em>Call</em>}' reference list.
+   * The cached value of the '{@link #getCall() <em>Call</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCall()
    * @generated
    * @ordered
    */
-  protected EList<SuperMethod> call;
+  protected EList<SuperCall> call;
 
   /**
    * The cached value of the '{@link #getEnd() <em>End</em>}' reference.
@@ -138,19 +140,19 @@ public class UncertainBehaviorImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public Interface getInterface()
+  public Interface getSuperInterface()
   {
-    if (interface_ != null && interface_.eIsProxy())
+    if (superInterface != null && superInterface.eIsProxy())
     {
-      InternalEObject oldInterface = (InternalEObject)interface_;
-      interface_ = (Interface)eResolveProxy(oldInterface);
-      if (interface_ != oldInterface)
+      InternalEObject oldSuperInterface = (InternalEObject)superInterface;
+      superInterface = (Interface)eResolveProxy(oldSuperInterface);
+      if (superInterface != oldSuperInterface)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.UNCERTAIN_BEHAVIOR__INTERFACE, oldInterface, interface_));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.UNCERTAIN_BEHAVIOR__SUPER_INTERFACE, oldSuperInterface, superInterface));
       }
     }
-    return interface_;
+    return superInterface;
   }
 
   /**
@@ -158,9 +160,9 @@ public class UncertainBehaviorImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public Interface basicGetInterface()
+  public Interface basicGetSuperInterface()
   {
-    return interface_;
+    return superInterface;
   }
 
   /**
@@ -168,12 +170,12 @@ public class UncertainBehaviorImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setInterface(Interface newInterface)
+  public void setSuperInterface(Interface newSuperInterface)
   {
-    Interface oldInterface = interface_;
-    interface_ = newInterface;
+    Interface oldSuperInterface = superInterface;
+    superInterface = newSuperInterface;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.UNCERTAIN_BEHAVIOR__INTERFACE, oldInterface, interface_));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.UNCERTAIN_BEHAVIOR__SUPER_INTERFACE, oldSuperInterface, superInterface));
   }
 
   /**
@@ -181,11 +183,11 @@ public class UncertainBehaviorImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<SuperMethod> getCall()
+  public EList<SuperCall> getCall()
   {
     if (call == null)
     {
-      call = new EObjectResolvingEList<SuperMethod>(SuperMethod.class, this, ArchDSLPackage.UNCERTAIN_BEHAVIOR__CALL);
+      call = new EObjectContainmentEList<SuperCall>(SuperCall.class, this, ArchDSLPackage.UNCERTAIN_BEHAVIOR__CALL);
     }
     return call;
   }
@@ -239,15 +241,31 @@ public class UncertainBehaviorImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ArchDSLPackage.UNCERTAIN_BEHAVIOR__CALL:
+        return ((InternalEList<?>)getCall()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR__NAME:
         return getName();
-      case ArchDSLPackage.UNCERTAIN_BEHAVIOR__INTERFACE:
-        if (resolve) return getInterface();
-        return basicGetInterface();
+      case ArchDSLPackage.UNCERTAIN_BEHAVIOR__SUPER_INTERFACE:
+        if (resolve) return getSuperInterface();
+        return basicGetSuperInterface();
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR__CALL:
         return getCall();
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR__END:
@@ -271,12 +289,12 @@ public class UncertainBehaviorImpl extends MinimalEObjectImpl.Container implemen
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR__NAME:
         setName((String)newValue);
         return;
-      case ArchDSLPackage.UNCERTAIN_BEHAVIOR__INTERFACE:
-        setInterface((Interface)newValue);
+      case ArchDSLPackage.UNCERTAIN_BEHAVIOR__SUPER_INTERFACE:
+        setSuperInterface((Interface)newValue);
         return;
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR__CALL:
         getCall().clear();
-        getCall().addAll((Collection<? extends SuperMethod>)newValue);
+        getCall().addAll((Collection<? extends SuperCall>)newValue);
         return;
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR__END:
         setEnd((Interface)newValue);
@@ -298,8 +316,8 @@ public class UncertainBehaviorImpl extends MinimalEObjectImpl.Container implemen
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ArchDSLPackage.UNCERTAIN_BEHAVIOR__INTERFACE:
-        setInterface((Interface)null);
+      case ArchDSLPackage.UNCERTAIN_BEHAVIOR__SUPER_INTERFACE:
+        setSuperInterface((Interface)null);
         return;
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR__CALL:
         getCall().clear();
@@ -323,8 +341,8 @@ public class UncertainBehaviorImpl extends MinimalEObjectImpl.Container implemen
     {
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ArchDSLPackage.UNCERTAIN_BEHAVIOR__INTERFACE:
-        return interface_ != null;
+      case ArchDSLPackage.UNCERTAIN_BEHAVIOR__SUPER_INTERFACE:
+        return superInterface != null;
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR__CALL:
         return call != null && !call.isEmpty();
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR__END:

@@ -105,6 +105,7 @@ public class ArchDSLSwitch<T> extends Switch<T>
       {
         AltMethod altMethod = (AltMethod)theEObject;
         T result = caseAltMethod(altMethod);
+        if (result == null) result = caseSuperMethod(altMethod);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -141,6 +142,37 @@ public class ArchDSLSwitch<T> extends Switch<T>
       {
         UncertainBehavior uncertainBehavior = (UncertainBehavior)theEObject;
         T result = caseUncertainBehavior(uncertainBehavior);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.CERTAIN_CALL:
+      {
+        CertainCall certainCall = (CertainCall)theEObject;
+        T result = caseCertainCall(certainCall);
+        if (result == null) result = caseSuperCall(certainCall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.OPT_CALL:
+      {
+        OptCall optCall = (OptCall)theEObject;
+        T result = caseOptCall(optCall);
+        if (result == null) result = caseSuperCall(optCall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.ALT_CALL:
+      {
+        AltCall altCall = (AltCall)theEObject;
+        T result = caseAltCall(altCall);
+        if (result == null) result = caseSuperCall(altCall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.SUPER_CALL:
+      {
+        SuperCall superCall = (SuperCall)theEObject;
+        T result = caseSuperCall(superCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -304,6 +336,70 @@ public class ArchDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseUncertainBehavior(UncertainBehavior object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Certain Call</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Certain Call</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCertainCall(CertainCall object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Opt Call</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Opt Call</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOptCall(OptCall object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Alt Call</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Alt Call</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAltCall(AltCall object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Super Call</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Super Call</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSuperCall(SuperCall object)
   {
     return null;
   }

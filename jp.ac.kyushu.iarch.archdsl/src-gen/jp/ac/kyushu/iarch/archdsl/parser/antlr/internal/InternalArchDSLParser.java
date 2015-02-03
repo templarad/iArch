@@ -21,31 +21,33 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalArchDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'interface uncertain'", "'extends'", "'{'", "'}'", "'interface component'", "'('", "','", "');'", "')'", "'};'", "'['", "']'", "'='", "'->'", "'.'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'uncertain component'", "'extends'", "'{'", "'}'", "'interface component'", "'('", "','", "');'", "')'", "'};'", "'['", "']'", "'='", "'->'", "'uc'", "'null'", "'.'"
     };
-    public static final int RULE_STRING=6;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int T__19=19;
-    public static final int T__15=15;
-    public static final int T__16=16;
-    public static final int T__17=17;
-    public static final int T__18=18;
-    public static final int T__11=11;
-    public static final int T__12=12;
-    public static final int T__13=13;
-    public static final int T__14=14;
-    public static final int EOF=-1;
     public static final int RULE_ID=4;
-    public static final int RULE_WS=9;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int RULE_INT=5;
-    public static final int T__22=22;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__23=23;
-    public static final int T__24=24;
+    public static final int T__27=27;
+    public static final int T__26=26;
     public static final int T__25=25;
-    public static final int T__20=20;
+    public static final int T__24=24;
+    public static final int T__23=23;
+    public static final int T__22=22;
+    public static final int RULE_ANY_OTHER=10;
     public static final int T__21=21;
+    public static final int T__20=20;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int EOF=-1;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__19=19;
+    public static final int RULE_STRING=6;
+    public static final int T__16=16;
+    public static final int T__15=15;
+    public static final int T__18=18;
+    public static final int T__17=17;
+    public static final int T__12=12;
+    public static final int T__11=11;
+    public static final int T__14=14;
+    public static final int T__13=13;
+    public static final int RULE_INT=5;
+    public static final int RULE_WS=9;
 
     // delegates
     // delegators
@@ -246,16 +248,10 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
                 int LA2_0 = input.LA(1);
 
                 if ( (LA2_0==RULE_ID) ) {
-                    int LA2_2 = input.LA(2);
-
-                    if ( (LA2_2==23) ) {
-                        alt2=1;
-                    }
-                    else if ( (LA2_2==12) ) {
-                        alt2=2;
-                    }
-
-
+                    alt2=1;
+                }
+                else if ( (LA2_0==25) ) {
+                    alt2=2;
                 }
 
 
@@ -397,7 +393,7 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUncertainInterface"
-    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:171:1: ruleUncertainInterface returns [EObject current=null] : (otherlv_0= 'interface uncertain' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '{' ( ( (lv_altmethods_5_0= ruleAltMethod ) ) | ( (lv_optmethods_6_0= ruleOptMethod ) ) )* otherlv_7= '}' ) ;
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:171:1: ruleUncertainInterface returns [EObject current=null] : (otherlv_0= 'uncertain component' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '{' ( ( (lv_altmethods_5_0= ruleAltMethod ) ) | ( (lv_optmethods_6_0= ruleOptMethod ) ) )* otherlv_7= '}' ) ;
     public final EObject ruleUncertainInterface() throws RecognitionException {
         EObject current = null;
 
@@ -415,15 +411,15 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:174:28: ( (otherlv_0= 'interface uncertain' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '{' ( ( (lv_altmethods_5_0= ruleAltMethod ) ) | ( (lv_optmethods_6_0= ruleOptMethod ) ) )* otherlv_7= '}' ) )
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:175:1: (otherlv_0= 'interface uncertain' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '{' ( ( (lv_altmethods_5_0= ruleAltMethod ) ) | ( (lv_optmethods_6_0= ruleOptMethod ) ) )* otherlv_7= '}' )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:174:28: ( (otherlv_0= 'uncertain component' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '{' ( ( (lv_altmethods_5_0= ruleAltMethod ) ) | ( (lv_optmethods_6_0= ruleOptMethod ) ) )* otherlv_7= '}' ) )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:175:1: (otherlv_0= 'uncertain component' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '{' ( ( (lv_altmethods_5_0= ruleAltMethod ) ) | ( (lv_optmethods_6_0= ruleOptMethod ) ) )* otherlv_7= '}' )
             {
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:175:1: (otherlv_0= 'interface uncertain' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '{' ( ( (lv_altmethods_5_0= ruleAltMethod ) ) | ( (lv_optmethods_6_0= ruleOptMethod ) ) )* otherlv_7= '}' )
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:175:3: otherlv_0= 'interface uncertain' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '{' ( ( (lv_altmethods_5_0= ruleAltMethod ) ) | ( (lv_optmethods_6_0= ruleOptMethod ) ) )* otherlv_7= '}'
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:175:1: (otherlv_0= 'uncertain component' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '{' ( ( (lv_altmethods_5_0= ruleAltMethod ) ) | ( (lv_optmethods_6_0= ruleOptMethod ) ) )* otherlv_7= '}' )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:175:3: otherlv_0= 'uncertain component' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '{' ( ( (lv_altmethods_5_0= ruleAltMethod ) ) | ( (lv_optmethods_6_0= ruleOptMethod ) ) )* otherlv_7= '}'
             {
             otherlv_0=(Token)match(input,11,FOLLOW_11_in_ruleUncertainInterface295); 
 
-                	newLeafNode(otherlv_0, grammarAccess.getUncertainInterfaceAccess().getInterfaceUncertainKeyword_0());
+                	newLeafNode(otherlv_0, grammarAccess.getUncertainInterfaceAccess().getUncertainComponentKeyword_0());
                 
             // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:179:1: ( (lv_name_1_0= RULE_ID ) )
             // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:180:1: (lv_name_1_0= RULE_ID )
@@ -2009,7 +2005,7 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
                             if ( (LA15_1==RULE_ID) ) {
                                 int LA15_2 = input.LA(3);
 
-                                if ( ((LA15_2>=24 && LA15_2<=25)) ) {
+                                if ( (LA15_2==24||LA15_2==27) ) {
                                     alt15=1;
                                 }
 
@@ -2157,42 +2153,47 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUncertainBehavior"
-    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:920:1: ruleUncertainBehavior returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'extends' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' otherlv_4= '(' ( ( ( ( ruleFQN ) ) | (otherlv_6= '[' ( ( ruleFQN ) ) otherlv_8= ']' ) ) (otherlv_9= '->' ( ( ( ruleFQN ) ) | (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' ) ) )* otherlv_14= '->' ( (otherlv_15= RULE_ID ) ) )? otherlv_16= ');' ) ;
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:920:1: ruleUncertainBehavior returns [EObject current=null] : (otherlv_0= 'uc' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '=' otherlv_5= '(' ( ( (lv_call_6_0= ruleSuperCall ) ) (otherlv_7= '->' ( (lv_call_8_0= ruleSuperCall ) ) )* otherlv_9= '->' ( (otherlv_10= RULE_ID ) ) )? otherlv_11= ');' ) ;
     public final EObject ruleUncertainBehavior() throws RecognitionException {
         EObject current = null;
 
-        Token lv_name_0_0=null;
-        Token otherlv_1=null;
+        Token otherlv_0=null;
+        Token lv_name_1_0=null;
         Token otherlv_2=null;
         Token otherlv_3=null;
         Token otherlv_4=null;
-        Token otherlv_6=null;
-        Token otherlv_8=null;
+        Token otherlv_5=null;
+        Token otherlv_7=null;
         Token otherlv_9=null;
+        Token otherlv_10=null;
         Token otherlv_11=null;
-        Token otherlv_13=null;
-        Token otherlv_14=null;
-        Token otherlv_15=null;
-        Token otherlv_16=null;
+        EObject lv_call_6_0 = null;
+
+        EObject lv_call_8_0 = null;
+
 
          enterRule(); 
             
         try {
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:923:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'extends' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' otherlv_4= '(' ( ( ( ( ruleFQN ) ) | (otherlv_6= '[' ( ( ruleFQN ) ) otherlv_8= ']' ) ) (otherlv_9= '->' ( ( ( ruleFQN ) ) | (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' ) ) )* otherlv_14= '->' ( (otherlv_15= RULE_ID ) ) )? otherlv_16= ');' ) )
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:924:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'extends' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' otherlv_4= '(' ( ( ( ( ruleFQN ) ) | (otherlv_6= '[' ( ( ruleFQN ) ) otherlv_8= ']' ) ) (otherlv_9= '->' ( ( ( ruleFQN ) ) | (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' ) ) )* otherlv_14= '->' ( (otherlv_15= RULE_ID ) ) )? otherlv_16= ');' )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:923:28: ( (otherlv_0= 'uc' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '=' otherlv_5= '(' ( ( (lv_call_6_0= ruleSuperCall ) ) (otherlv_7= '->' ( (lv_call_8_0= ruleSuperCall ) ) )* otherlv_9= '->' ( (otherlv_10= RULE_ID ) ) )? otherlv_11= ');' ) )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:924:1: (otherlv_0= 'uc' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '=' otherlv_5= '(' ( ( (lv_call_6_0= ruleSuperCall ) ) (otherlv_7= '->' ( (lv_call_8_0= ruleSuperCall ) ) )* otherlv_9= '->' ( (otherlv_10= RULE_ID ) ) )? otherlv_11= ');' )
             {
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:924:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'extends' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' otherlv_4= '(' ( ( ( ( ruleFQN ) ) | (otherlv_6= '[' ( ( ruleFQN ) ) otherlv_8= ']' ) ) (otherlv_9= '->' ( ( ( ruleFQN ) ) | (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' ) ) )* otherlv_14= '->' ( (otherlv_15= RULE_ID ) ) )? otherlv_16= ');' )
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:924:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= 'extends' ( (otherlv_2= RULE_ID ) ) otherlv_3= '=' otherlv_4= '(' ( ( ( ( ruleFQN ) ) | (otherlv_6= '[' ( ( ruleFQN ) ) otherlv_8= ']' ) ) (otherlv_9= '->' ( ( ( ruleFQN ) ) | (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' ) ) )* otherlv_14= '->' ( (otherlv_15= RULE_ID ) ) )? otherlv_16= ');'
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:924:1: (otherlv_0= 'uc' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '=' otherlv_5= '(' ( ( (lv_call_6_0= ruleSuperCall ) ) (otherlv_7= '->' ( (lv_call_8_0= ruleSuperCall ) ) )* otherlv_9= '->' ( (otherlv_10= RULE_ID ) ) )? otherlv_11= ');' )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:924:3: otherlv_0= 'uc' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )? otherlv_4= '=' otherlv_5= '(' ( ( (lv_call_6_0= ruleSuperCall ) ) (otherlv_7= '->' ( (lv_call_8_0= ruleSuperCall ) ) )* otherlv_9= '->' ( (otherlv_10= RULE_ID ) ) )? otherlv_11= ');'
             {
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:924:2: ( (lv_name_0_0= RULE_ID ) )
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:925:1: (lv_name_0_0= RULE_ID )
-            {
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:925:1: (lv_name_0_0= RULE_ID )
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:926:3: lv_name_0_0= RULE_ID
-            {
-            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUncertainBehavior1794); 
+            otherlv_0=(Token)match(input,25,FOLLOW_25_in_ruleUncertainBehavior1789); 
 
-            			newLeafNode(lv_name_0_0, grammarAccess.getUncertainBehaviorAccess().getNameIDTerminalRuleCall_0_0()); 
+                	newLeafNode(otherlv_0, grammarAccess.getUncertainBehaviorAccess().getUcKeyword_0());
+                
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:928:1: ( (lv_name_1_0= RULE_ID ) )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:929:1: (lv_name_1_0= RULE_ID )
+            {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:929:1: (lv_name_1_0= RULE_ID )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:930:3: lv_name_1_0= RULE_ID
+            {
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUncertainBehavior1806); 
+
+            			newLeafNode(lv_name_1_0, grammarAccess.getUncertainBehaviorAccess().getNameIDTerminalRuleCall_1_0()); 
             		
 
             	        if (current==null) {
@@ -2201,7 +2202,7 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
                    		setWithLastConsumed(
                    			current, 
                    			"name",
-                    		lv_name_0_0, 
+                    		lv_name_1_0, 
                     		"ID");
             	    
 
@@ -2210,315 +2211,35 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,12,FOLLOW_12_in_ruleUncertainBehavior1811); 
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:946:2: (otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) ) )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-                	newLeafNode(otherlv_1, grammarAccess.getUncertainBehaviorAccess().getExtendsKeyword_1());
-                
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:946:1: ( (otherlv_2= RULE_ID ) )
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:947:1: (otherlv_2= RULE_ID )
-            {
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:947:1: (otherlv_2= RULE_ID )
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:948:3: otherlv_2= RULE_ID
-            {
-
-            			if (current==null) {
-            	            current = createModelElement(grammarAccess.getUncertainBehaviorRule());
-            	        }
-                    
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUncertainBehavior1831); 
-
-            		newLeafNode(otherlv_2, grammarAccess.getUncertainBehaviorAccess().getInterfaceInterfaceCrossReference_2_0()); 
-            	
-
+            if ( (LA17_0==12) ) {
+                alt17=1;
             }
-
-
-            }
-
-            otherlv_3=(Token)match(input,23,FOLLOW_23_in_ruleUncertainBehavior1843); 
-
-                	newLeafNode(otherlv_3, grammarAccess.getUncertainBehaviorAccess().getEqualsSignKeyword_3());
-                
-            otherlv_4=(Token)match(input,16,FOLLOW_16_in_ruleUncertainBehavior1855); 
-
-                	newLeafNode(otherlv_4, grammarAccess.getUncertainBehaviorAccess().getLeftParenthesisKeyword_4());
-                
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:967:1: ( ( ( ( ruleFQN ) ) | (otherlv_6= '[' ( ( ruleFQN ) ) otherlv_8= ']' ) ) (otherlv_9= '->' ( ( ( ruleFQN ) ) | (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' ) ) )* otherlv_14= '->' ( (otherlv_15= RULE_ID ) ) )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
-
-            if ( (LA20_0==RULE_ID||LA20_0==21) ) {
-                alt20=1;
-            }
-            switch (alt20) {
+            switch (alt17) {
                 case 1 :
-                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:967:2: ( ( ( ruleFQN ) ) | (otherlv_6= '[' ( ( ruleFQN ) ) otherlv_8= ']' ) ) (otherlv_9= '->' ( ( ( ruleFQN ) ) | (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' ) ) )* otherlv_14= '->' ( (otherlv_15= RULE_ID ) )
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:946:4: otherlv_2= 'extends' ( (otherlv_3= RULE_ID ) )
                     {
-                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:967:2: ( ( ( ruleFQN ) ) | (otherlv_6= '[' ( ( ruleFQN ) ) otherlv_8= ']' ) )
-                    int alt17=2;
-                    int LA17_0 = input.LA(1);
+                    otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleUncertainBehavior1824); 
 
-                    if ( (LA17_0==RULE_ID) ) {
-                        alt17=1;
-                    }
-                    else if ( (LA17_0==21) ) {
-                        alt17=2;
-                    }
-                    else {
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 17, 0, input);
-
-                        throw nvae;
-                    }
-                    switch (alt17) {
-                        case 1 :
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:967:3: ( ( ruleFQN ) )
-                            {
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:967:3: ( ( ruleFQN ) )
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:968:1: ( ruleFQN )
-                            {
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:968:1: ( ruleFQN )
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:969:3: ruleFQN
-                            {
-
-                            			if (current==null) {
-                            	            current = createModelElement(grammarAccess.getUncertainBehaviorRule());
-                            	        }
-                                    
-                             
-                            	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperMethodCrossReference_5_0_0_0()); 
-                            	    
-                            pushFollow(FOLLOW_ruleFQN_in_ruleUncertainBehavior1880);
-                            ruleFQN();
-
-                            state._fsp--;
-
-                             
-                            	        afterParserOrEnumRuleCall();
-                            	    
-
-                            }
-
-
-                            }
-
-
-                            }
-                            break;
-                        case 2 :
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:983:6: (otherlv_6= '[' ( ( ruleFQN ) ) otherlv_8= ']' )
-                            {
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:983:6: (otherlv_6= '[' ( ( ruleFQN ) ) otherlv_8= ']' )
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:983:8: otherlv_6= '[' ( ( ruleFQN ) ) otherlv_8= ']'
-                            {
-                            otherlv_6=(Token)match(input,21,FOLLOW_21_in_ruleUncertainBehavior1899); 
-
-                                	newLeafNode(otherlv_6, grammarAccess.getUncertainBehaviorAccess().getLeftSquareBracketKeyword_5_0_1_0());
-                                
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:987:1: ( ( ruleFQN ) )
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:988:1: ( ruleFQN )
-                            {
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:988:1: ( ruleFQN )
-                            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:989:3: ruleFQN
-                            {
-
-                            			if (current==null) {
-                            	            current = createModelElement(grammarAccess.getUncertainBehaviorRule());
-                            	        }
-                                    
-                             
-                            	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperMethodCrossReference_5_0_1_1_0()); 
-                            	    
-                            pushFollow(FOLLOW_ruleFQN_in_ruleUncertainBehavior1922);
-                            ruleFQN();
-
-                            state._fsp--;
-
-                             
-                            	        afterParserOrEnumRuleCall();
-                            	    
-
-                            }
-
-
-                            }
-
-                            otherlv_8=(Token)match(input,22,FOLLOW_22_in_ruleUncertainBehavior1934); 
-
-                                	newLeafNode(otherlv_8, grammarAccess.getUncertainBehaviorAccess().getRightSquareBracketKeyword_5_0_1_2());
-                                
-
-                            }
-
-
-                            }
-                            break;
-
-                    }
-
-                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1006:3: (otherlv_9= '->' ( ( ( ruleFQN ) ) | (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' ) ) )*
-                    loop19:
-                    do {
-                        int alt19=2;
-                        int LA19_0 = input.LA(1);
-
-                        if ( (LA19_0==24) ) {
-                            int LA19_1 = input.LA(2);
-
-                            if ( (LA19_1==RULE_ID) ) {
-                                int LA19_2 = input.LA(3);
-
-                                if ( ((LA19_2>=24 && LA19_2<=25)) ) {
-                                    alt19=1;
-                                }
-
-
-                            }
-                            else if ( (LA19_1==21) ) {
-                                alt19=1;
-                            }
-
-
-                        }
-
-
-                        switch (alt19) {
-                    	case 1 :
-                    	    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1006:5: otherlv_9= '->' ( ( ( ruleFQN ) ) | (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' ) )
-                    	    {
-                    	    otherlv_9=(Token)match(input,24,FOLLOW_24_in_ruleUncertainBehavior1949); 
-
-                    	        	newLeafNode(otherlv_9, grammarAccess.getUncertainBehaviorAccess().getHyphenMinusGreaterThanSignKeyword_5_1_0());
-                    	        
-                    	    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1010:1: ( ( ( ruleFQN ) ) | (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' ) )
-                    	    int alt18=2;
-                    	    int LA18_0 = input.LA(1);
-
-                    	    if ( (LA18_0==RULE_ID) ) {
-                    	        alt18=1;
-                    	    }
-                    	    else if ( (LA18_0==21) ) {
-                    	        alt18=2;
-                    	    }
-                    	    else {
-                    	        NoViableAltException nvae =
-                    	            new NoViableAltException("", 18, 0, input);
-
-                    	        throw nvae;
-                    	    }
-                    	    switch (alt18) {
-                    	        case 1 :
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1010:2: ( ( ruleFQN ) )
-                    	            {
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1010:2: ( ( ruleFQN ) )
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1011:1: ( ruleFQN )
-                    	            {
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1011:1: ( ruleFQN )
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1012:3: ruleFQN
-                    	            {
-
-                    	            			if (current==null) {
-                    	            	            current = createModelElement(grammarAccess.getUncertainBehaviorRule());
-                    	            	        }
-                    	                    
-                    	             
-                    	            	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperMethodCrossReference_5_1_1_0_0()); 
-                    	            	    
-                    	            pushFollow(FOLLOW_ruleFQN_in_ruleUncertainBehavior1973);
-                    	            ruleFQN();
-
-                    	            state._fsp--;
-
-                    	             
-                    	            	        afterParserOrEnumRuleCall();
-                    	            	    
-
-                    	            }
-
-
-                    	            }
-
-
-                    	            }
-                    	            break;
-                    	        case 2 :
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1026:6: (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' )
-                    	            {
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1026:6: (otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']' )
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1026:8: otherlv_11= '[' ( ( ruleFQN ) ) otherlv_13= ']'
-                    	            {
-                    	            otherlv_11=(Token)match(input,21,FOLLOW_21_in_ruleUncertainBehavior1992); 
-
-                    	                	newLeafNode(otherlv_11, grammarAccess.getUncertainBehaviorAccess().getLeftSquareBracketKeyword_5_1_1_1_0());
-                    	                
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1030:1: ( ( ruleFQN ) )
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1031:1: ( ruleFQN )
-                    	            {
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1031:1: ( ruleFQN )
-                    	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1032:3: ruleFQN
-                    	            {
-
-                    	            			if (current==null) {
-                    	            	            current = createModelElement(grammarAccess.getUncertainBehaviorRule());
-                    	            	        }
-                    	                    
-                    	             
-                    	            	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperMethodCrossReference_5_1_1_1_1_0()); 
-                    	            	    
-                    	            pushFollow(FOLLOW_ruleFQN_in_ruleUncertainBehavior2015);
-                    	            ruleFQN();
-
-                    	            state._fsp--;
-
-                    	             
-                    	            	        afterParserOrEnumRuleCall();
-                    	            	    
-
-                    	            }
-
-
-                    	            }
-
-                    	            otherlv_13=(Token)match(input,22,FOLLOW_22_in_ruleUncertainBehavior2027); 
-
-                    	                	newLeafNode(otherlv_13, grammarAccess.getUncertainBehaviorAccess().getRightSquareBracketKeyword_5_1_1_1_2());
-                    	                
-
-                    	            }
-
-
-                    	            }
-                    	            break;
-
-                    	    }
-
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop19;
-                        }
-                    } while (true);
-
-                    otherlv_14=(Token)match(input,24,FOLLOW_24_in_ruleUncertainBehavior2043); 
-
-                        	newLeafNode(otherlv_14, grammarAccess.getUncertainBehaviorAccess().getHyphenMinusGreaterThanSignKeyword_5_2());
+                        	newLeafNode(otherlv_2, grammarAccess.getUncertainBehaviorAccess().getExtendsKeyword_2_0());
                         
-                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1053:1: ( (otherlv_15= RULE_ID ) )
-                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1054:1: (otherlv_15= RULE_ID )
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:950:1: ( (otherlv_3= RULE_ID ) )
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:951:1: (otherlv_3= RULE_ID )
                     {
-                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1054:1: (otherlv_15= RULE_ID )
-                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1055:3: otherlv_15= RULE_ID
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:951:1: (otherlv_3= RULE_ID )
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:952:3: otherlv_3= RULE_ID
                     {
 
                     			if (current==null) {
                     	            current = createModelElement(grammarAccess.getUncertainBehaviorRule());
                     	        }
                             
-                    otherlv_15=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUncertainBehavior2063); 
+                    otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUncertainBehavior1844); 
 
-                    		newLeafNode(otherlv_15, grammarAccess.getUncertainBehaviorAccess().getEndInterfaceCrossReference_5_3_0()); 
+                    		newLeafNode(otherlv_3, grammarAccess.getUncertainBehaviorAccess().getSuperInterfaceInterfaceCrossReference_2_1_0()); 
                     	
 
                     }
@@ -2532,9 +2253,164 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_16=(Token)match(input,18,FOLLOW_18_in_ruleUncertainBehavior2077); 
+            otherlv_4=(Token)match(input,23,FOLLOW_23_in_ruleUncertainBehavior1858); 
 
-                	newLeafNode(otherlv_16, grammarAccess.getUncertainBehaviorAccess().getRightParenthesisSemicolonKeyword_6());
+                	newLeafNode(otherlv_4, grammarAccess.getUncertainBehaviorAccess().getEqualsSignKeyword_3());
+                
+            otherlv_5=(Token)match(input,16,FOLLOW_16_in_ruleUncertainBehavior1870); 
+
+                	newLeafNode(otherlv_5, grammarAccess.getUncertainBehaviorAccess().getLeftParenthesisKeyword_4());
+                
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:971:1: ( ( (lv_call_6_0= ruleSuperCall ) ) (otherlv_7= '->' ( (lv_call_8_0= ruleSuperCall ) ) )* otherlv_9= '->' ( (otherlv_10= RULE_ID ) ) )?
+            int alt19=2;
+            int LA19_0 = input.LA(1);
+
+            if ( (LA19_0==RULE_ID||LA19_0==13||LA19_0==21) ) {
+                alt19=1;
+            }
+            switch (alt19) {
+                case 1 :
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:971:2: ( (lv_call_6_0= ruleSuperCall ) ) (otherlv_7= '->' ( (lv_call_8_0= ruleSuperCall ) ) )* otherlv_9= '->' ( (otherlv_10= RULE_ID ) )
+                    {
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:971:2: ( (lv_call_6_0= ruleSuperCall ) )
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:972:1: (lv_call_6_0= ruleSuperCall )
+                    {
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:972:1: (lv_call_6_0= ruleSuperCall )
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:973:3: lv_call_6_0= ruleSuperCall
+                    {
+                     
+                    	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperCallParserRuleCall_5_0_0()); 
+                    	    
+                    pushFollow(FOLLOW_ruleSuperCall_in_ruleUncertainBehavior1892);
+                    lv_call_6_0=ruleSuperCall();
+
+                    state._fsp--;
+
+
+                    	        if (current==null) {
+                    	            current = createModelElementForParent(grammarAccess.getUncertainBehaviorRule());
+                    	        }
+                           		add(
+                           			current, 
+                           			"call",
+                            		lv_call_6_0, 
+                            		"SuperCall");
+                    	        afterParserOrEnumRuleCall();
+                    	    
+
+                    }
+
+
+                    }
+
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:989:2: (otherlv_7= '->' ( (lv_call_8_0= ruleSuperCall ) ) )*
+                    loop18:
+                    do {
+                        int alt18=2;
+                        int LA18_0 = input.LA(1);
+
+                        if ( (LA18_0==24) ) {
+                            int LA18_1 = input.LA(2);
+
+                            if ( (LA18_1==RULE_ID) ) {
+                                int LA18_2 = input.LA(3);
+
+                                if ( (LA18_2==24||LA18_2==27) ) {
+                                    alt18=1;
+                                }
+
+
+                            }
+                            else if ( (LA18_1==13||LA18_1==21) ) {
+                                alt18=1;
+                            }
+
+
+                        }
+
+
+                        switch (alt18) {
+                    	case 1 :
+                    	    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:989:4: otherlv_7= '->' ( (lv_call_8_0= ruleSuperCall ) )
+                    	    {
+                    	    otherlv_7=(Token)match(input,24,FOLLOW_24_in_ruleUncertainBehavior1905); 
+
+                    	        	newLeafNode(otherlv_7, grammarAccess.getUncertainBehaviorAccess().getHyphenMinusGreaterThanSignKeyword_5_1_0());
+                    	        
+                    	    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:993:1: ( (lv_call_8_0= ruleSuperCall ) )
+                    	    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:994:1: (lv_call_8_0= ruleSuperCall )
+                    	    {
+                    	    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:994:1: (lv_call_8_0= ruleSuperCall )
+                    	    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:995:3: lv_call_8_0= ruleSuperCall
+                    	    {
+                    	     
+                    	    	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperCallParserRuleCall_5_1_1_0()); 
+                    	    	    
+                    	    pushFollow(FOLLOW_ruleSuperCall_in_ruleUncertainBehavior1926);
+                    	    lv_call_8_0=ruleSuperCall();
+
+                    	    state._fsp--;
+
+
+                    	    	        if (current==null) {
+                    	    	            current = createModelElementForParent(grammarAccess.getUncertainBehaviorRule());
+                    	    	        }
+                    	           		add(
+                    	           			current, 
+                    	           			"call",
+                    	            		lv_call_8_0, 
+                    	            		"SuperCall");
+                    	    	        afterParserOrEnumRuleCall();
+                    	    	    
+
+                    	    }
+
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop18;
+                        }
+                    } while (true);
+
+                    otherlv_9=(Token)match(input,24,FOLLOW_24_in_ruleUncertainBehavior1940); 
+
+                        	newLeafNode(otherlv_9, grammarAccess.getUncertainBehaviorAccess().getHyphenMinusGreaterThanSignKeyword_5_2());
+                        
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1015:1: ( (otherlv_10= RULE_ID ) )
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1016:1: (otherlv_10= RULE_ID )
+                    {
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1016:1: (otherlv_10= RULE_ID )
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1017:3: otherlv_10= RULE_ID
+                    {
+
+                    			if (current==null) {
+                    	            current = createModelElement(grammarAccess.getUncertainBehaviorRule());
+                    	        }
+                            
+                    otherlv_10=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleUncertainBehavior1960); 
+
+                    		newLeafNode(otherlv_10, grammarAccess.getUncertainBehaviorAccess().getEndInterfaceCrossReference_5_3_0()); 
+                    	
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            otherlv_11=(Token)match(input,18,FOLLOW_18_in_ruleUncertainBehavior1974); 
+
+                	newLeafNode(otherlv_11, grammarAccess.getUncertainBehaviorAccess().getRightParenthesisSemicolonKeyword_6());
                 
 
             }
@@ -2556,8 +2432,629 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleUncertainBehavior"
 
 
+    // $ANTLR start "entryRuleCertainCall"
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1040:1: entryRuleCertainCall returns [EObject current=null] : iv_ruleCertainCall= ruleCertainCall EOF ;
+    public final EObject entryRuleCertainCall() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleCertainCall = null;
+
+
+        try {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1041:2: (iv_ruleCertainCall= ruleCertainCall EOF )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1042:2: iv_ruleCertainCall= ruleCertainCall EOF
+            {
+             newCompositeNode(grammarAccess.getCertainCallRule()); 
+            pushFollow(FOLLOW_ruleCertainCall_in_entryRuleCertainCall2010);
+            iv_ruleCertainCall=ruleCertainCall();
+
+            state._fsp--;
+
+             current =iv_ruleCertainCall; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCertainCall2020); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleCertainCall"
+
+
+    // $ANTLR start "ruleCertainCall"
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1049:1: ruleCertainCall returns [EObject current=null] : ( ( ruleFQN ) ) ;
+    public final EObject ruleCertainCall() throws RecognitionException {
+        EObject current = null;
+
+         enterRule(); 
+            
+        try {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1052:28: ( ( ( ruleFQN ) ) )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1053:1: ( ( ruleFQN ) )
+            {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1053:1: ( ( ruleFQN ) )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1054:1: ( ruleFQN )
+            {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1054:1: ( ruleFQN )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1055:3: ruleFQN
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getCertainCallRule());
+            	        }
+                    
+             
+            	        newCompositeNode(grammarAccess.getCertainCallAccess().getNameSuperMethodCrossReference_0()); 
+            	    
+            pushFollow(FOLLOW_ruleFQN_in_ruleCertainCall2067);
+            ruleFQN();
+
+            state._fsp--;
+
+             
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleCertainCall"
+
+
+    // $ANTLR start "entryRuleOptCall"
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1076:1: entryRuleOptCall returns [EObject current=null] : iv_ruleOptCall= ruleOptCall EOF ;
+    public final EObject entryRuleOptCall() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleOptCall = null;
+
+
+        try {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1077:2: (iv_ruleOptCall= ruleOptCall EOF )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1078:2: iv_ruleOptCall= ruleOptCall EOF
+            {
+             newCompositeNode(grammarAccess.getOptCallRule()); 
+            pushFollow(FOLLOW_ruleOptCall_in_entryRuleOptCall2102);
+            iv_ruleOptCall=ruleOptCall();
+
+            state._fsp--;
+
+             current =iv_ruleOptCall; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOptCall2112); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleOptCall"
+
+
+    // $ANTLR start "ruleOptCall"
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1085:1: ruleOptCall returns [EObject current=null] : (otherlv_0= '[' ( ( ruleFQN ) ) otherlv_2= ']' ) ;
+    public final EObject ruleOptCall() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token otherlv_2=null;
+
+         enterRule(); 
+            
+        try {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1088:28: ( (otherlv_0= '[' ( ( ruleFQN ) ) otherlv_2= ']' ) )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1089:1: (otherlv_0= '[' ( ( ruleFQN ) ) otherlv_2= ']' )
+            {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1089:1: (otherlv_0= '[' ( ( ruleFQN ) ) otherlv_2= ']' )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1089:3: otherlv_0= '[' ( ( ruleFQN ) ) otherlv_2= ']'
+            {
+            otherlv_0=(Token)match(input,21,FOLLOW_21_in_ruleOptCall2149); 
+
+                	newLeafNode(otherlv_0, grammarAccess.getOptCallAccess().getLeftSquareBracketKeyword_0());
+                
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1093:1: ( ( ruleFQN ) )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1094:1: ( ruleFQN )
+            {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1094:1: ( ruleFQN )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1095:3: ruleFQN
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getOptCallRule());
+            	        }
+                    
+             
+            	        newCompositeNode(grammarAccess.getOptCallAccess().getNameSuperMethodCrossReference_1_0()); 
+            	    
+            pushFollow(FOLLOW_ruleFQN_in_ruleOptCall2172);
+            ruleFQN();
+
+            state._fsp--;
+
+             
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,22,FOLLOW_22_in_ruleOptCall2184); 
+
+                	newLeafNode(otherlv_2, grammarAccess.getOptCallAccess().getRightSquareBracketKeyword_2());
+                
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleOptCall"
+
+
+    // $ANTLR start "entryRuleAltCall"
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1120:1: entryRuleAltCall returns [EObject current=null] : iv_ruleAltCall= ruleAltCall EOF ;
+    public final EObject entryRuleAltCall() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleAltCall = null;
+
+
+        try {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1121:2: (iv_ruleAltCall= ruleAltCall EOF )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1122:2: iv_ruleAltCall= ruleAltCall EOF
+            {
+             newCompositeNode(grammarAccess.getAltCallRule()); 
+            pushFollow(FOLLOW_ruleAltCall_in_entryRuleAltCall2220);
+            iv_ruleAltCall=ruleAltCall();
+
+            state._fsp--;
+
+             current =iv_ruleAltCall; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAltCall2230); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleAltCall"
+
+
+    // $ANTLR start "ruleAltCall"
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1129:1: ruleAltCall returns [EObject current=null] : (otherlv_0= '{' ( (lv_opt_1_0= 'null' ) )? ( ( ruleFQN ) ) (otherlv_3= ',' ( ( ( ruleFQN ) ) | ( (lv_opt_5_0= 'null' ) )? ) )* otherlv_6= '}' ) ;
+    public final EObject ruleAltCall() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_opt_1_0=null;
+        Token otherlv_3=null;
+        Token lv_opt_5_0=null;
+        Token otherlv_6=null;
+
+         enterRule(); 
+            
+        try {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1132:28: ( (otherlv_0= '{' ( (lv_opt_1_0= 'null' ) )? ( ( ruleFQN ) ) (otherlv_3= ',' ( ( ( ruleFQN ) ) | ( (lv_opt_5_0= 'null' ) )? ) )* otherlv_6= '}' ) )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1133:1: (otherlv_0= '{' ( (lv_opt_1_0= 'null' ) )? ( ( ruleFQN ) ) (otherlv_3= ',' ( ( ( ruleFQN ) ) | ( (lv_opt_5_0= 'null' ) )? ) )* otherlv_6= '}' )
+            {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1133:1: (otherlv_0= '{' ( (lv_opt_1_0= 'null' ) )? ( ( ruleFQN ) ) (otherlv_3= ',' ( ( ( ruleFQN ) ) | ( (lv_opt_5_0= 'null' ) )? ) )* otherlv_6= '}' )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1133:3: otherlv_0= '{' ( (lv_opt_1_0= 'null' ) )? ( ( ruleFQN ) ) (otherlv_3= ',' ( ( ( ruleFQN ) ) | ( (lv_opt_5_0= 'null' ) )? ) )* otherlv_6= '}'
+            {
+            otherlv_0=(Token)match(input,13,FOLLOW_13_in_ruleAltCall2267); 
+
+                	newLeafNode(otherlv_0, grammarAccess.getAltCallAccess().getLeftCurlyBracketKeyword_0());
+                
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1137:1: ( (lv_opt_1_0= 'null' ) )?
+            int alt20=2;
+            int LA20_0 = input.LA(1);
+
+            if ( (LA20_0==26) ) {
+                alt20=1;
+            }
+            switch (alt20) {
+                case 1 :
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1138:1: (lv_opt_1_0= 'null' )
+                    {
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1138:1: (lv_opt_1_0= 'null' )
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1139:3: lv_opt_1_0= 'null'
+                    {
+                    lv_opt_1_0=(Token)match(input,26,FOLLOW_26_in_ruleAltCall2285); 
+
+                            newLeafNode(lv_opt_1_0, grammarAccess.getAltCallAccess().getOptNullKeyword_1_0());
+                        
+
+                    	        if (current==null) {
+                    	            current = createModelElement(grammarAccess.getAltCallRule());
+                    	        }
+                           		setWithLastConsumed(current, "opt", true, "null");
+                    	    
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1152:3: ( ( ruleFQN ) )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1153:1: ( ruleFQN )
+            {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1153:1: ( ruleFQN )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1154:3: ruleFQN
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getAltCallRule());
+            	        }
+                    
+             
+            	        newCompositeNode(grammarAccess.getAltCallAccess().getNameSuperMethodCrossReference_2_0()); 
+            	    
+            pushFollow(FOLLOW_ruleFQN_in_ruleAltCall2322);
+            ruleFQN();
+
+            state._fsp--;
+
+             
+            	        afterParserOrEnumRuleCall();
+            	    
+
+            }
+
+
+            }
+
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1167:2: (otherlv_3= ',' ( ( ( ruleFQN ) ) | ( (lv_opt_5_0= 'null' ) )? ) )*
+            loop23:
+            do {
+                int alt23=2;
+                int LA23_0 = input.LA(1);
+
+                if ( (LA23_0==17) ) {
+                    alt23=1;
+                }
+
+
+                switch (alt23) {
+            	case 1 :
+            	    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1167:4: otherlv_3= ',' ( ( ( ruleFQN ) ) | ( (lv_opt_5_0= 'null' ) )? )
+            	    {
+            	    otherlv_3=(Token)match(input,17,FOLLOW_17_in_ruleAltCall2335); 
+
+            	        	newLeafNode(otherlv_3, grammarAccess.getAltCallAccess().getCommaKeyword_3_0());
+            	        
+            	    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1171:1: ( ( ( ruleFQN ) ) | ( (lv_opt_5_0= 'null' ) )? )
+            	    int alt22=2;
+            	    int LA22_0 = input.LA(1);
+
+            	    if ( (LA22_0==RULE_ID) ) {
+            	        alt22=1;
+            	    }
+            	    else if ( (LA22_0==14||LA22_0==17||LA22_0==26) ) {
+            	        alt22=2;
+            	    }
+            	    else {
+            	        NoViableAltException nvae =
+            	            new NoViableAltException("", 22, 0, input);
+
+            	        throw nvae;
+            	    }
+            	    switch (alt22) {
+            	        case 1 :
+            	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1171:2: ( ( ruleFQN ) )
+            	            {
+            	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1171:2: ( ( ruleFQN ) )
+            	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1172:1: ( ruleFQN )
+            	            {
+            	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1172:1: ( ruleFQN )
+            	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1173:3: ruleFQN
+            	            {
+
+            	            			if (current==null) {
+            	            	            current = createModelElement(grammarAccess.getAltCallRule());
+            	            	        }
+            	                    
+            	             
+            	            	        newCompositeNode(grammarAccess.getAltCallAccess().getA_nameSuperMethodCrossReference_3_1_0_0()); 
+            	            	    
+            	            pushFollow(FOLLOW_ruleFQN_in_ruleAltCall2359);
+            	            ruleFQN();
+
+            	            state._fsp--;
+
+            	             
+            	            	        afterParserOrEnumRuleCall();
+            	            	    
+
+            	            }
+
+
+            	            }
+
+
+            	            }
+            	            break;
+            	        case 2 :
+            	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1187:6: ( (lv_opt_5_0= 'null' ) )?
+            	            {
+            	            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1187:6: ( (lv_opt_5_0= 'null' ) )?
+            	            int alt21=2;
+            	            int LA21_0 = input.LA(1);
+
+            	            if ( (LA21_0==26) ) {
+            	                alt21=1;
+            	            }
+            	            switch (alt21) {
+            	                case 1 :
+            	                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1188:1: (lv_opt_5_0= 'null' )
+            	                    {
+            	                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1188:1: (lv_opt_5_0= 'null' )
+            	                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1189:3: lv_opt_5_0= 'null'
+            	                    {
+            	                    lv_opt_5_0=(Token)match(input,26,FOLLOW_26_in_ruleAltCall2383); 
+
+            	                            newLeafNode(lv_opt_5_0, grammarAccess.getAltCallAccess().getOptNullKeyword_3_1_1_0());
+            	                        
+
+            	                    	        if (current==null) {
+            	                    	            current = createModelElement(grammarAccess.getAltCallRule());
+            	                    	        }
+            	                           		setWithLastConsumed(current, "opt", true, "null");
+            	                    	    
+
+            	                    }
+
+
+            	                    }
+            	                    break;
+
+            	            }
+
+
+            	            }
+            	            break;
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop23;
+                }
+            } while (true);
+
+            otherlv_6=(Token)match(input,14,FOLLOW_14_in_ruleAltCall2412); 
+
+                	newLeafNode(otherlv_6, grammarAccess.getAltCallAccess().getRightCurlyBracketKeyword_4());
+                
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleAltCall"
+
+
+    // $ANTLR start "entryRuleSuperCall"
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1214:1: entryRuleSuperCall returns [EObject current=null] : iv_ruleSuperCall= ruleSuperCall EOF ;
+    public final EObject entryRuleSuperCall() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleSuperCall = null;
+
+
+        try {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1215:2: (iv_ruleSuperCall= ruleSuperCall EOF )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1216:2: iv_ruleSuperCall= ruleSuperCall EOF
+            {
+             newCompositeNode(grammarAccess.getSuperCallRule()); 
+            pushFollow(FOLLOW_ruleSuperCall_in_entryRuleSuperCall2448);
+            iv_ruleSuperCall=ruleSuperCall();
+
+            state._fsp--;
+
+             current =iv_ruleSuperCall; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSuperCall2458); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleSuperCall"
+
+
+    // $ANTLR start "ruleSuperCall"
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1223:1: ruleSuperCall returns [EObject current=null] : (this_CertainCall_0= ruleCertainCall | this_OptCall_1= ruleOptCall | this_AltCall_2= ruleAltCall ) ;
+    public final EObject ruleSuperCall() throws RecognitionException {
+        EObject current = null;
+
+        EObject this_CertainCall_0 = null;
+
+        EObject this_OptCall_1 = null;
+
+        EObject this_AltCall_2 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1226:28: ( (this_CertainCall_0= ruleCertainCall | this_OptCall_1= ruleOptCall | this_AltCall_2= ruleAltCall ) )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1227:1: (this_CertainCall_0= ruleCertainCall | this_OptCall_1= ruleOptCall | this_AltCall_2= ruleAltCall )
+            {
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1227:1: (this_CertainCall_0= ruleCertainCall | this_OptCall_1= ruleOptCall | this_AltCall_2= ruleAltCall )
+            int alt24=3;
+            switch ( input.LA(1) ) {
+            case RULE_ID:
+                {
+                alt24=1;
+                }
+                break;
+            case 21:
+                {
+                alt24=2;
+                }
+                break;
+            case 13:
+                {
+                alt24=3;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 24, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt24) {
+                case 1 :
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1228:5: this_CertainCall_0= ruleCertainCall
+                    {
+                     
+                            newCompositeNode(grammarAccess.getSuperCallAccess().getCertainCallParserRuleCall_0()); 
+                        
+                    pushFollow(FOLLOW_ruleCertainCall_in_ruleSuperCall2505);
+                    this_CertainCall_0=ruleCertainCall();
+
+                    state._fsp--;
+
+                     
+                            current = this_CertainCall_0; 
+                            afterParserOrEnumRuleCall();
+                        
+
+                    }
+                    break;
+                case 2 :
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1238:5: this_OptCall_1= ruleOptCall
+                    {
+                     
+                            newCompositeNode(grammarAccess.getSuperCallAccess().getOptCallParserRuleCall_1()); 
+                        
+                    pushFollow(FOLLOW_ruleOptCall_in_ruleSuperCall2532);
+                    this_OptCall_1=ruleOptCall();
+
+                    state._fsp--;
+
+                     
+                            current = this_OptCall_1; 
+                            afterParserOrEnumRuleCall();
+                        
+
+                    }
+                    break;
+                case 3 :
+                    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1248:5: this_AltCall_2= ruleAltCall
+                    {
+                     
+                            newCompositeNode(grammarAccess.getSuperCallAccess().getAltCallParserRuleCall_2()); 
+                        
+                    pushFollow(FOLLOW_ruleAltCall_in_ruleSuperCall2559);
+                    this_AltCall_2=ruleAltCall();
+
+                    state._fsp--;
+
+                     
+                            current = this_AltCall_2; 
+                            afterParserOrEnumRuleCall();
+                        
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleSuperCall"
+
+
     // $ANTLR start "entryRuleFQN"
-    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1078:1: entryRuleFQN returns [String current=null] : iv_ruleFQN= ruleFQN EOF ;
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1264:1: entryRuleFQN returns [String current=null] : iv_ruleFQN= ruleFQN EOF ;
     public final String entryRuleFQN() throws RecognitionException {
         String current = null;
 
@@ -2565,17 +3062,17 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1079:2: (iv_ruleFQN= ruleFQN EOF )
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1080:2: iv_ruleFQN= ruleFQN EOF
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1265:2: (iv_ruleFQN= ruleFQN EOF )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1266:2: iv_ruleFQN= ruleFQN EOF
             {
              newCompositeNode(grammarAccess.getFQNRule()); 
-            pushFollow(FOLLOW_ruleFQN_in_entryRuleFQN2114);
+            pushFollow(FOLLOW_ruleFQN_in_entryRuleFQN2595);
             iv_ruleFQN=ruleFQN();
 
             state._fsp--;
 
              current =iv_ruleFQN.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFQN2125); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFQN2606); 
 
             }
 
@@ -2593,7 +3090,7 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFQN"
-    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1087:1: ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
+    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1273:1: ruleFQN returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
     public final AntlrDatatypeRuleToken ruleFQN() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2604,40 +3101,40 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1090:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1091:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1276:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1277:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
             {
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1091:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1091:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1277:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1277:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN2165); 
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN2646); 
 
             		current.merge(this_ID_0);
                 
              
                 newLeafNode(this_ID_0, grammarAccess.getFQNAccess().getIDTerminalRuleCall_0()); 
                 
-            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1098:1: (kw= '.' this_ID_2= RULE_ID )*
-            loop21:
+            // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1284:1: (kw= '.' this_ID_2= RULE_ID )*
+            loop25:
             do {
-                int alt21=2;
-                int LA21_0 = input.LA(1);
+                int alt25=2;
+                int LA25_0 = input.LA(1);
 
-                if ( (LA21_0==25) ) {
-                    alt21=1;
+                if ( (LA25_0==27) ) {
+                    alt25=1;
                 }
 
 
-                switch (alt21) {
+                switch (alt25) {
             	case 1 :
-            	    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1099:2: kw= '.' this_ID_2= RULE_ID
+            	    // ../jp.ac.kyushu.iarch.archdsl/src-gen/jp/ac/kyushu/iarch/archdsl/parser/antlr/internal/InternalArchDSL.g:1285:2: kw= '.' this_ID_2= RULE_ID
             	    {
-            	    kw=(Token)match(input,25,FOLLOW_25_in_ruleFQN2184); 
+            	    kw=(Token)match(input,27,FOLLOW_27_in_ruleFQN2665); 
 
             	            current.merge(kw);
             	            newLeafNode(kw, grammarAccess.getFQNAccess().getFullStopKeyword_1_0()); 
             	        
-            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN2199); 
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFQN2680); 
 
             	    		current.merge(this_ID_2);
             	        
@@ -2649,7 +3146,7 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop21;
+            	    break loop25;
                 }
             } while (true);
 
@@ -2679,10 +3176,10 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_ruleModel_in_entryRuleModel75 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleModel85 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInterface_in_ruleModel132 = new BitSet(new long[]{0x0000000000008812L});
-    public static final BitSet FOLLOW_ruleUncertainInterface_in_ruleModel159 = new BitSet(new long[]{0x0000000000008812L});
-    public static final BitSet FOLLOW_ruleBehavior_in_ruleModel183 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_ruleUncertainBehavior_in_ruleModel210 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_ruleInterface_in_ruleModel132 = new BitSet(new long[]{0x0000000002008812L});
+    public static final BitSet FOLLOW_ruleUncertainInterface_in_ruleModel159 = new BitSet(new long[]{0x0000000002008812L});
+    public static final BitSet FOLLOW_ruleBehavior_in_ruleModel183 = new BitSet(new long[]{0x0000000002000012L});
+    public static final BitSet FOLLOW_ruleUncertainBehavior_in_ruleModel210 = new BitSet(new long[]{0x0000000002000012L});
     public static final BitSet FOLLOW_ruleUncertainInterface_in_entryRuleUncertainInterface248 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleUncertainInterface258 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_11_in_ruleUncertainInterface295 = new BitSet(new long[]{0x0000000000000010L});
@@ -2756,27 +3253,44 @@ public class InternalArchDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_18_in_ruleBehavior1704 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleUncertainBehavior_in_entryRuleUncertainBehavior1742 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleUncertainBehavior1752 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleUncertainBehavior1794 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleUncertainBehavior1811 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleUncertainBehavior1831 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_23_in_ruleUncertainBehavior1843 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_16_in_ruleUncertainBehavior1855 = new BitSet(new long[]{0x0000000000240010L});
-    public static final BitSet FOLLOW_ruleFQN_in_ruleUncertainBehavior1880 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_21_in_ruleUncertainBehavior1899 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleFQN_in_ruleUncertainBehavior1922 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_22_in_ruleUncertainBehavior1934 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleUncertainBehavior1949 = new BitSet(new long[]{0x0000000000200010L});
-    public static final BitSet FOLLOW_ruleFQN_in_ruleUncertainBehavior1973 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_21_in_ruleUncertainBehavior1992 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleFQN_in_ruleUncertainBehavior2015 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_22_in_ruleUncertainBehavior2027 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleUncertainBehavior2043 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleUncertainBehavior2063 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_ruleUncertainBehavior2077 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFQN_in_entryRuleFQN2114 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFQN2125 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN2165 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_25_in_ruleFQN2184 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN2199 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_25_in_ruleUncertainBehavior1789 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleUncertainBehavior1806 = new BitSet(new long[]{0x0000000000801000L});
+    public static final BitSet FOLLOW_12_in_ruleUncertainBehavior1824 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleUncertainBehavior1844 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_ruleUncertainBehavior1858 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_16_in_ruleUncertainBehavior1870 = new BitSet(new long[]{0x0000000000242010L});
+    public static final BitSet FOLLOW_ruleSuperCall_in_ruleUncertainBehavior1892 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleUncertainBehavior1905 = new BitSet(new long[]{0x0000000000202010L});
+    public static final BitSet FOLLOW_ruleSuperCall_in_ruleUncertainBehavior1926 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleUncertainBehavior1940 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleUncertainBehavior1960 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_18_in_ruleUncertainBehavior1974 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCertainCall_in_entryRuleCertainCall2010 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCertainCall2020 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleCertainCall2067 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOptCall_in_entryRuleOptCall2102 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOptCall2112 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_ruleOptCall2149 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleOptCall2172 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_22_in_ruleOptCall2184 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAltCall_in_entryRuleAltCall2220 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAltCall2230 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_ruleAltCall2267 = new BitSet(new long[]{0x0000000004000010L});
+    public static final BitSet FOLLOW_26_in_ruleAltCall2285 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleAltCall2322 = new BitSet(new long[]{0x0000000000024000L});
+    public static final BitSet FOLLOW_17_in_ruleAltCall2335 = new BitSet(new long[]{0x0000000004024010L});
+    public static final BitSet FOLLOW_ruleFQN_in_ruleAltCall2359 = new BitSet(new long[]{0x0000000000024000L});
+    public static final BitSet FOLLOW_26_in_ruleAltCall2383 = new BitSet(new long[]{0x0000000000024000L});
+    public static final BitSet FOLLOW_14_in_ruleAltCall2412 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSuperCall_in_entryRuleSuperCall2448 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSuperCall2458 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCertainCall_in_ruleSuperCall2505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOptCall_in_ruleSuperCall2532 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAltCall_in_ruleSuperCall2559 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFQN_in_entryRuleFQN2595 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFQN2606 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN2646 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_27_in_ruleFQN2665 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFQN2680 = new BitSet(new long[]{0x0000000008000002L});
 
 }

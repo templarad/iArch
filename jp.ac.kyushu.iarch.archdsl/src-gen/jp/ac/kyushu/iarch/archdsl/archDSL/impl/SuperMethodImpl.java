@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperMethodImpl#getType <em>Type</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperMethodImpl#getName <em>Name</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperMethodImpl#getParam <em>Param</em>}</li>
  * </ul>
@@ -39,26 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class SuperMethodImpl extends MinimalEObjectImpl.Container implements SuperMethod
 {
-  /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -108,29 +87,6 @@ public class SuperMethodImpl extends MinimalEObjectImpl.Container implements Sup
   protected EClass eStaticClass()
   {
     return ArchDSLPackage.Literals.SUPER_METHOD;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(String newType)
-  {
-    String oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.SUPER_METHOD__TYPE, oldType, type));
   }
 
   /**
@@ -196,8 +152,6 @@ public class SuperMethodImpl extends MinimalEObjectImpl.Container implements Sup
   {
     switch (featureID)
     {
-      case ArchDSLPackage.SUPER_METHOD__TYPE:
-        return getType();
       case ArchDSLPackage.SUPER_METHOD__NAME:
         return getName();
       case ArchDSLPackage.SUPER_METHOD__PARAM:
@@ -217,9 +171,6 @@ public class SuperMethodImpl extends MinimalEObjectImpl.Container implements Sup
   {
     switch (featureID)
     {
-      case ArchDSLPackage.SUPER_METHOD__TYPE:
-        setType((String)newValue);
-        return;
       case ArchDSLPackage.SUPER_METHOD__NAME:
         setName((String)newValue);
         return;
@@ -241,9 +192,6 @@ public class SuperMethodImpl extends MinimalEObjectImpl.Container implements Sup
   {
     switch (featureID)
     {
-      case ArchDSLPackage.SUPER_METHOD__TYPE:
-        setType(TYPE_EDEFAULT);
-        return;
       case ArchDSLPackage.SUPER_METHOD__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -264,8 +212,6 @@ public class SuperMethodImpl extends MinimalEObjectImpl.Container implements Sup
   {
     switch (featureID)
     {
-      case ArchDSLPackage.SUPER_METHOD__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case ArchDSLPackage.SUPER_METHOD__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ArchDSLPackage.SUPER_METHOD__PARAM:
@@ -285,9 +231,7 @@ public class SuperMethodImpl extends MinimalEObjectImpl.Container implements Sup
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (type: ");
-    result.append(type);
-    result.append(", name: ");
+    result.append(" (name: ");
     result.append(name);
     result.append(')');
     return result.toString();

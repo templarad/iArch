@@ -25,17 +25,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
         eType="#//Method" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Method" eSuperTypes="#//SuperMethod"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AltMethod">
+  <eClassifiers xsi:type="ecore:EClass" name="Method" eSuperTypes="#//SuperMethod">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AltMethod" eSuperTypes="#//SuperMethod">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" unique="false" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="param" upperBound="-1"
-        eType="#//Param" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="a_name" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OptMethod" eSuperTypes="#//SuperMethod"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OptMethod" eSuperTypes="#//SuperMethod">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Param">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -47,16 +48,25 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Interface"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SuperMethod">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="param" upperBound="-1"
         eType="#//Param" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UncertainBehavior">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" eType="#//Interface"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="call" unique="false" upperBound="-1"
-        eType="#//SuperMethod"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superInterface" eType="#//Interface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="call" upperBound="-1" eType="#//SuperCall"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Interface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CertainCall" eSuperTypes="#//SuperCall"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OptCall" eSuperTypes="#//SuperCall"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AltCall" eSuperTypes="#//SuperCall">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="opt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="a_name" unique="false"
+        upperBound="-1" eType="#//SuperMethod"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SuperCall">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//SuperMethod"/>
   </eClassifiers>
 </ecore:EPackage>

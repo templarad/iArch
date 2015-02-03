@@ -76,7 +76,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	public class UncertainInterfaceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UncertainInterface");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cInterfaceUncertainKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cUncertainComponentKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
@@ -93,16 +93,16 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//UncertainInterface:
-		//	"interface uncertain" name=ID ("extends" superInterface=[Interface])? "{" (altmethods+=AltMethod |
+		//	"uncertain component" name=ID ("extends" superInterface=[Interface])? "{" (altmethods+=AltMethod |
 		//	optmethods+=OptMethod)* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"interface uncertain" name=ID ("extends" superInterface=[Interface])? "{" (altmethods+=AltMethod |
+		//"uncertain component" name=ID ("extends" superInterface=[Interface])? "{" (altmethods+=AltMethod |
 		//optmethods+=OptMethod)* "}"
 		public Group getGroup() { return cGroup; }
 
-		//"interface uncertain"
-		public Keyword getInterfaceUncertainKeyword_0() { return cInterfaceUncertainKeyword_0; }
+		//"uncertain component"
+		public Keyword getUncertainComponentKeyword_0() { return cUncertainComponentKeyword_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -578,12 +578,13 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMethodParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cOptMethodParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cAltMethodParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//SuperMethod:
-		//	Method | OptMethod;
+		//	Method | OptMethod | AltMethod;
 		public ParserRule getRule() { return rule; }
 
-		//Method | OptMethod
+		//Method | OptMethod | AltMethod
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Method
@@ -591,42 +592,31 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//OptMethod
 		public RuleCall getOptMethodParserRuleCall_1() { return cOptMethodParserRuleCall_1; }
+
+		//AltMethod
+		public RuleCall getAltMethodParserRuleCall_2() { return cAltMethodParserRuleCall_2; }
 	}
 
 	public class UncertainBehaviorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UncertainBehavior");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cExtendsKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cInterfaceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cInterfaceInterfaceCrossReference_2_0 = (CrossReference)cInterfaceAssignment_2.eContents().get(0);
-		private final RuleCall cInterfaceInterfaceIDTerminalRuleCall_2_0_1 = (RuleCall)cInterfaceInterfaceCrossReference_2_0.eContents().get(1);
+		private final Keyword cUcKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cExtendsKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cSuperInterfaceAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cSuperInterfaceInterfaceCrossReference_2_1_0 = (CrossReference)cSuperInterfaceAssignment_2_1.eContents().get(0);
+		private final RuleCall cSuperInterfaceInterfaceIDTerminalRuleCall_2_1_0_1 = (RuleCall)cSuperInterfaceInterfaceCrossReference_2_1_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Keyword cLeftParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Alternatives cAlternatives_5_0 = (Alternatives)cGroup_5.eContents().get(0);
-		private final Assignment cCallAssignment_5_0_0 = (Assignment)cAlternatives_5_0.eContents().get(0);
-		private final CrossReference cCallSuperMethodCrossReference_5_0_0_0 = (CrossReference)cCallAssignment_5_0_0.eContents().get(0);
-		private final RuleCall cCallSuperMethodFQNParserRuleCall_5_0_0_0_1 = (RuleCall)cCallSuperMethodCrossReference_5_0_0_0.eContents().get(1);
-		private final Group cGroup_5_0_1 = (Group)cAlternatives_5_0.eContents().get(1);
-		private final Keyword cLeftSquareBracketKeyword_5_0_1_0 = (Keyword)cGroup_5_0_1.eContents().get(0);
-		private final Assignment cCallAssignment_5_0_1_1 = (Assignment)cGroup_5_0_1.eContents().get(1);
-		private final CrossReference cCallSuperMethodCrossReference_5_0_1_1_0 = (CrossReference)cCallAssignment_5_0_1_1.eContents().get(0);
-		private final RuleCall cCallSuperMethodFQNParserRuleCall_5_0_1_1_0_1 = (RuleCall)cCallSuperMethodCrossReference_5_0_1_1_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_5_0_1_2 = (Keyword)cGroup_5_0_1.eContents().get(2);
+		private final Assignment cCallAssignment_5_0 = (Assignment)cGroup_5.eContents().get(0);
+		private final RuleCall cCallSuperCallParserRuleCall_5_0_0 = (RuleCall)cCallAssignment_5_0.eContents().get(0);
 		private final Group cGroup_5_1 = (Group)cGroup_5.eContents().get(1);
 		private final Keyword cHyphenMinusGreaterThanSignKeyword_5_1_0 = (Keyword)cGroup_5_1.eContents().get(0);
-		private final Alternatives cAlternatives_5_1_1 = (Alternatives)cGroup_5_1.eContents().get(1);
-		private final Assignment cCallAssignment_5_1_1_0 = (Assignment)cAlternatives_5_1_1.eContents().get(0);
-		private final CrossReference cCallSuperMethodCrossReference_5_1_1_0_0 = (CrossReference)cCallAssignment_5_1_1_0.eContents().get(0);
-		private final RuleCall cCallSuperMethodFQNParserRuleCall_5_1_1_0_0_1 = (RuleCall)cCallSuperMethodCrossReference_5_1_1_0_0.eContents().get(1);
-		private final Group cGroup_5_1_1_1 = (Group)cAlternatives_5_1_1.eContents().get(1);
-		private final Keyword cLeftSquareBracketKeyword_5_1_1_1_0 = (Keyword)cGroup_5_1_1_1.eContents().get(0);
-		private final Assignment cCallAssignment_5_1_1_1_1 = (Assignment)cGroup_5_1_1_1.eContents().get(1);
-		private final CrossReference cCallSuperMethodCrossReference_5_1_1_1_1_0 = (CrossReference)cCallAssignment_5_1_1_1_1.eContents().get(0);
-		private final RuleCall cCallSuperMethodFQNParserRuleCall_5_1_1_1_1_0_1 = (RuleCall)cCallSuperMethodCrossReference_5_1_1_1_1_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_5_1_1_1_2 = (Keyword)cGroup_5_1_1_1.eContents().get(2);
+		private final Assignment cCallAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
+		private final RuleCall cCallSuperCallParserRuleCall_5_1_1_0 = (RuleCall)cCallAssignment_5_1_1.eContents().get(0);
 		private final Keyword cHyphenMinusGreaterThanSignKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
 		private final Assignment cEndAssignment_5_3 = (Assignment)cGroup_5.eContents().get(3);
 		private final CrossReference cEndInterfaceCrossReference_5_3_0 = (CrossReference)cEndAssignment_5_3.eContents().get(0);
@@ -634,31 +624,37 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//UncertainBehavior:
-		//	name=ID "extends" interface=[Interface] "=" "(" ((call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]") ("->"
-		//	(call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]"))* "->" end=[Interface])? ");";
+		//	"uc" name=ID ("extends" superInterface=[Interface])? "=" "(" (call+=SuperCall ("->" call+=SuperCall)* "->"
+		//	end=[Interface])? ");";
 		public ParserRule getRule() { return rule; }
 
-		//name=ID "extends" interface=[Interface] "=" "(" ((call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]") ("->"
-		//(call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]"))* "->" end=[Interface])? ");"
+		//"uc" name=ID ("extends" superInterface=[Interface])? "=" "(" (call+=SuperCall ("->" call+=SuperCall)* "->"
+		//end=[Interface])? ");"
 		public Group getGroup() { return cGroup; }
 
+		//"uc"
+		public Keyword getUcKeyword_0() { return cUcKeyword_0; }
+
 		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//("extends" superInterface=[Interface])?
+		public Group getGroup_2() { return cGroup_2; }
 
 		//"extends"
-		public Keyword getExtendsKeyword_1() { return cExtendsKeyword_1; }
+		public Keyword getExtendsKeyword_2_0() { return cExtendsKeyword_2_0; }
 
-		//interface=[Interface]
-		public Assignment getInterfaceAssignment_2() { return cInterfaceAssignment_2; }
+		//superInterface=[Interface]
+		public Assignment getSuperInterfaceAssignment_2_1() { return cSuperInterfaceAssignment_2_1; }
 
 		//[Interface]
-		public CrossReference getInterfaceInterfaceCrossReference_2_0() { return cInterfaceInterfaceCrossReference_2_0; }
+		public CrossReference getSuperInterfaceInterfaceCrossReference_2_1_0() { return cSuperInterfaceInterfaceCrossReference_2_1_0; }
 
 		//ID
-		public RuleCall getInterfaceInterfaceIDTerminalRuleCall_2_0_1() { return cInterfaceInterfaceIDTerminalRuleCall_2_0_1; }
+		public RuleCall getSuperInterfaceInterfaceIDTerminalRuleCall_2_1_0_1() { return cSuperInterfaceInterfaceIDTerminalRuleCall_2_1_0_1; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
@@ -666,75 +662,26 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_4() { return cLeftParenthesisKeyword_4; }
 
-		//((call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]") ("->" (call+=[SuperMethod|FQN] | "["
-		//call+=[SuperMethod|FQN] "]"))* "->" end=[Interface])?
+		//(call+=SuperCall ("->" call+=SuperCall)* "->" end=[Interface])?
 		public Group getGroup_5() { return cGroup_5; }
 
-		//call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]"
-		public Alternatives getAlternatives_5_0() { return cAlternatives_5_0; }
+		//call+=SuperCall
+		public Assignment getCallAssignment_5_0() { return cCallAssignment_5_0; }
 
-		//call+=[SuperMethod|FQN]
-		public Assignment getCallAssignment_5_0_0() { return cCallAssignment_5_0_0; }
+		//SuperCall
+		public RuleCall getCallSuperCallParserRuleCall_5_0_0() { return cCallSuperCallParserRuleCall_5_0_0; }
 
-		//[SuperMethod|FQN]
-		public CrossReference getCallSuperMethodCrossReference_5_0_0_0() { return cCallSuperMethodCrossReference_5_0_0_0; }
-
-		//FQN
-		public RuleCall getCallSuperMethodFQNParserRuleCall_5_0_0_0_1() { return cCallSuperMethodFQNParserRuleCall_5_0_0_0_1; }
-
-		//"[" call+=[SuperMethod|FQN] "]"
-		public Group getGroup_5_0_1() { return cGroup_5_0_1; }
-
-		//"["
-		public Keyword getLeftSquareBracketKeyword_5_0_1_0() { return cLeftSquareBracketKeyword_5_0_1_0; }
-
-		//call+=[SuperMethod|FQN]
-		public Assignment getCallAssignment_5_0_1_1() { return cCallAssignment_5_0_1_1; }
-
-		//[SuperMethod|FQN]
-		public CrossReference getCallSuperMethodCrossReference_5_0_1_1_0() { return cCallSuperMethodCrossReference_5_0_1_1_0; }
-
-		//FQN
-		public RuleCall getCallSuperMethodFQNParserRuleCall_5_0_1_1_0_1() { return cCallSuperMethodFQNParserRuleCall_5_0_1_1_0_1; }
-
-		//"]"
-		public Keyword getRightSquareBracketKeyword_5_0_1_2() { return cRightSquareBracketKeyword_5_0_1_2; }
-
-		//("->" (call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]"))*
+		//("->" call+=SuperCall)*
 		public Group getGroup_5_1() { return cGroup_5_1; }
 
 		//"->"
 		public Keyword getHyphenMinusGreaterThanSignKeyword_5_1_0() { return cHyphenMinusGreaterThanSignKeyword_5_1_0; }
 
-		//call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]"
-		public Alternatives getAlternatives_5_1_1() { return cAlternatives_5_1_1; }
+		//call+=SuperCall
+		public Assignment getCallAssignment_5_1_1() { return cCallAssignment_5_1_1; }
 
-		//call+=[SuperMethod|FQN]
-		public Assignment getCallAssignment_5_1_1_0() { return cCallAssignment_5_1_1_0; }
-
-		//[SuperMethod|FQN]
-		public CrossReference getCallSuperMethodCrossReference_5_1_1_0_0() { return cCallSuperMethodCrossReference_5_1_1_0_0; }
-
-		//FQN
-		public RuleCall getCallSuperMethodFQNParserRuleCall_5_1_1_0_0_1() { return cCallSuperMethodFQNParserRuleCall_5_1_1_0_0_1; }
-
-		//"[" call+=[SuperMethod|FQN] "]"
-		public Group getGroup_5_1_1_1() { return cGroup_5_1_1_1; }
-
-		//"["
-		public Keyword getLeftSquareBracketKeyword_5_1_1_1_0() { return cLeftSquareBracketKeyword_5_1_1_1_0; }
-
-		//call+=[SuperMethod|FQN]
-		public Assignment getCallAssignment_5_1_1_1_1() { return cCallAssignment_5_1_1_1_1; }
-
-		//[SuperMethod|FQN]
-		public CrossReference getCallSuperMethodCrossReference_5_1_1_1_1_0() { return cCallSuperMethodCrossReference_5_1_1_1_1_0; }
-
-		//FQN
-		public RuleCall getCallSuperMethodFQNParserRuleCall_5_1_1_1_1_0_1() { return cCallSuperMethodFQNParserRuleCall_5_1_1_1_1_0_1; }
-
-		//"]"
-		public Keyword getRightSquareBracketKeyword_5_1_1_1_2() { return cRightSquareBracketKeyword_5_1_1_1_2; }
+		//SuperCall
+		public RuleCall getCallSuperCallParserRuleCall_5_1_1_0() { return cCallSuperCallParserRuleCall_5_1_1_0; }
 
 		//"->"
 		public Keyword getHyphenMinusGreaterThanSignKeyword_5_2() { return cHyphenMinusGreaterThanSignKeyword_5_2; }
@@ -750,6 +697,154 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 		//");"
 		public Keyword getRightParenthesisSemicolonKeyword_6() { return cRightParenthesisSemicolonKeyword_6; }
+	}
+
+	public class CertainCallElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CertainCall");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final CrossReference cNameSuperMethodCrossReference_0 = (CrossReference)cNameAssignment.eContents().get(0);
+		private final RuleCall cNameSuperMethodFQNParserRuleCall_0_1 = (RuleCall)cNameSuperMethodCrossReference_0.eContents().get(1);
+		
+		//CertainCall:
+		//	name=[SuperMethod|FQN];
+		public ParserRule getRule() { return rule; }
+
+		//name=[SuperMethod|FQN]
+		public Assignment getNameAssignment() { return cNameAssignment; }
+
+		//[SuperMethod|FQN]
+		public CrossReference getNameSuperMethodCrossReference_0() { return cNameSuperMethodCrossReference_0; }
+
+		//FQN
+		public RuleCall getNameSuperMethodFQNParserRuleCall_0_1() { return cNameSuperMethodFQNParserRuleCall_0_1; }
+	}
+
+	public class OptCallElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "OptCall");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cNameSuperMethodCrossReference_1_0 = (CrossReference)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cNameSuperMethodFQNParserRuleCall_1_0_1 = (RuleCall)cNameSuperMethodCrossReference_1_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//OptCall:
+		//	"[" name=[SuperMethod|FQN] "]";
+		public ParserRule getRule() { return rule; }
+
+		//"[" name=[SuperMethod|FQN] "]"
+		public Group getGroup() { return cGroup; }
+
+		//"["
+		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
+
+		//name=[SuperMethod|FQN]
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//[SuperMethod|FQN]
+		public CrossReference getNameSuperMethodCrossReference_1_0() { return cNameSuperMethodCrossReference_1_0; }
+
+		//FQN
+		public RuleCall getNameSuperMethodFQNParserRuleCall_1_0_1() { return cNameSuperMethodFQNParserRuleCall_1_0_1; }
+
+		//"]"
+		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
+	}
+
+	public class AltCallElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AltCall");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cOptAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cOptNullKeyword_1_0 = (Keyword)cOptAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cNameSuperMethodCrossReference_2_0 = (CrossReference)cNameAssignment_2.eContents().get(0);
+		private final RuleCall cNameSuperMethodFQNParserRuleCall_2_0_1 = (RuleCall)cNameSuperMethodCrossReference_2_0.eContents().get(1);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
+		private final Assignment cA_nameAssignment_3_1_0 = (Assignment)cAlternatives_3_1.eContents().get(0);
+		private final CrossReference cA_nameSuperMethodCrossReference_3_1_0_0 = (CrossReference)cA_nameAssignment_3_1_0.eContents().get(0);
+		private final RuleCall cA_nameSuperMethodFQNParserRuleCall_3_1_0_0_1 = (RuleCall)cA_nameSuperMethodCrossReference_3_1_0_0.eContents().get(1);
+		private final Assignment cOptAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
+		private final Keyword cOptNullKeyword_3_1_1_0 = (Keyword)cOptAssignment_3_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//AltCall:
+		//	"{" opt?="null"? name=[SuperMethod|FQN] ("," (a_name+=[SuperMethod|FQN] | opt?="null"?))* "}";
+		public ParserRule getRule() { return rule; }
+
+		//"{" opt?="null"? name=[SuperMethod|FQN] ("," (a_name+=[SuperMethod|FQN] | opt?="null"?))* "}"
+		public Group getGroup() { return cGroup; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
+
+		//opt?="null"?
+		public Assignment getOptAssignment_1() { return cOptAssignment_1; }
+
+		//"null"
+		public Keyword getOptNullKeyword_1_0() { return cOptNullKeyword_1_0; }
+
+		//name=[SuperMethod|FQN]
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//[SuperMethod|FQN]
+		public CrossReference getNameSuperMethodCrossReference_2_0() { return cNameSuperMethodCrossReference_2_0; }
+
+		//FQN
+		public RuleCall getNameSuperMethodFQNParserRuleCall_2_0_1() { return cNameSuperMethodFQNParserRuleCall_2_0_1; }
+
+		//("," (a_name+=[SuperMethod|FQN] | opt?="null"?))*
+		public Group getGroup_3() { return cGroup_3; }
+
+		//","
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+
+		//a_name+=[SuperMethod|FQN] | opt?="null"?
+		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
+
+		//a_name+=[SuperMethod|FQN]
+		public Assignment getA_nameAssignment_3_1_0() { return cA_nameAssignment_3_1_0; }
+
+		//[SuperMethod|FQN]
+		public CrossReference getA_nameSuperMethodCrossReference_3_1_0_0() { return cA_nameSuperMethodCrossReference_3_1_0_0; }
+
+		//FQN
+		public RuleCall getA_nameSuperMethodFQNParserRuleCall_3_1_0_0_1() { return cA_nameSuperMethodFQNParserRuleCall_3_1_0_0_1; }
+
+		//opt?="null"?
+		public Assignment getOptAssignment_3_1_1() { return cOptAssignment_3_1_1; }
+
+		//"null"
+		public Keyword getOptNullKeyword_3_1_1_0() { return cOptNullKeyword_3_1_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class SuperCallElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SuperCall");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cCertainCallParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cOptCallParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cAltCallParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//SuperCall:
+		//	CertainCall | OptCall | AltCall;
+		public ParserRule getRule() { return rule; }
+
+		//CertainCall | OptCall | AltCall
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//CertainCall
+		public RuleCall getCertainCallParserRuleCall_0() { return cCertainCallParserRuleCall_0; }
+
+		//OptCall
+		public RuleCall getOptCallParserRuleCall_1() { return cOptCallParserRuleCall_1; }
+
+		//AltCall
+		public RuleCall getAltCallParserRuleCall_2() { return cAltCallParserRuleCall_2; }
 	}
 
 	public class FQNElements extends AbstractParserRuleElementFinder {
@@ -791,6 +886,10 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final BehaviorElements pBehavior;
 	private final SuperMethodElements pSuperMethod;
 	private final UncertainBehaviorElements pUncertainBehavior;
+	private final CertainCallElements pCertainCall;
+	private final OptCallElements pOptCall;
+	private final AltCallElements pAltCall;
+	private final SuperCallElements pSuperCall;
 	private final FQNElements pFQN;
 	
 	private final Grammar grammar;
@@ -812,6 +911,10 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pBehavior = new BehaviorElements();
 		this.pSuperMethod = new SuperMethodElements();
 		this.pUncertainBehavior = new UncertainBehaviorElements();
+		this.pCertainCall = new CertainCallElements();
+		this.pOptCall = new OptCallElements();
+		this.pAltCall = new AltCallElements();
+		this.pSuperCall = new SuperCallElements();
 		this.pFQN = new FQNElements();
 	}
 	
@@ -854,7 +957,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UncertainInterface:
-	//	"interface uncertain" name=ID ("extends" superInterface=[Interface])? "{" (altmethods+=AltMethod |
+	//	"uncertain component" name=ID ("extends" superInterface=[Interface])? "{" (altmethods+=AltMethod |
 	//	optmethods+=OptMethod)* "}";
 	public UncertainInterfaceElements getUncertainInterfaceAccess() {
 		return pUncertainInterface;
@@ -926,7 +1029,7 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SuperMethod:
-	//	Method | OptMethod;
+	//	Method | OptMethod | AltMethod;
 	public SuperMethodElements getSuperMethodAccess() {
 		return pSuperMethod;
 	}
@@ -936,14 +1039,54 @@ public class ArchDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UncertainBehavior:
-	//	name=ID "extends" interface=[Interface] "=" "(" ((call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]") ("->"
-	//	(call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]"))* "->" end=[Interface])? ");";
+	//	"uc" name=ID ("extends" superInterface=[Interface])? "=" "(" (call+=SuperCall ("->" call+=SuperCall)* "->"
+	//	end=[Interface])? ");";
 	public UncertainBehaviorElements getUncertainBehaviorAccess() {
 		return pUncertainBehavior;
 	}
 	
 	public ParserRule getUncertainBehaviorRule() {
 		return getUncertainBehaviorAccess().getRule();
+	}
+
+	//CertainCall:
+	//	name=[SuperMethod|FQN];
+	public CertainCallElements getCertainCallAccess() {
+		return pCertainCall;
+	}
+	
+	public ParserRule getCertainCallRule() {
+		return getCertainCallAccess().getRule();
+	}
+
+	//OptCall:
+	//	"[" name=[SuperMethod|FQN] "]";
+	public OptCallElements getOptCallAccess() {
+		return pOptCall;
+	}
+	
+	public ParserRule getOptCallRule() {
+		return getOptCallAccess().getRule();
+	}
+
+	//AltCall:
+	//	"{" opt?="null"? name=[SuperMethod|FQN] ("," (a_name+=[SuperMethod|FQN] | opt?="null"?))* "}";
+	public AltCallElements getAltCallAccess() {
+		return pAltCall;
+	}
+	
+	public ParserRule getAltCallRule() {
+		return getAltCallAccess().getRule();
+	}
+
+	//SuperCall:
+	//	CertainCall | OptCall | AltCall;
+	public SuperCallElements getSuperCallAccess() {
+		return pSuperCall;
+	}
+	
+	public ParserRule getSuperCallRule() {
+		return getSuperCallAccess().getRule();
 	}
 
 	//FQN:

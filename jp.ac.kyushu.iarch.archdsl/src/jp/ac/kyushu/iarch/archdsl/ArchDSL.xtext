@@ -10,7 +10,7 @@ Model:
 	u_behaviors+=UncertainBehavior)*;
 
 UncertainInterface:
-	"interface uncertain" name=ID ("extends" superInterface=[Interface])? "{"
+	"uncertain component" name=ID ("extends" superInterface=[Interface])? "{"
 	(altmethods+=AltMethod |
 	optmethods+=OptMethod)*
 	"}";
@@ -37,18 +37,28 @@ OptMethod:
 Param:
 	type=ID name=ID;
 
-
 Behavior:
-	interface=[Interface] "=" "(" (call+=[Method|FQN]("->"call+=[Method|FQN])*"->"end=[Interface])?");"
-;
+	interface=[Interface] "=" "(" (call+=[Method|FQN] ("->" call+=[Method|FQN])* "->" end=[Interface])? ");";
 
 SuperMethod:
-	Method|OptMethod
-;
+	Method | OptMethod | AltMethod;
 
 UncertainBehavior:
-	name=ID "extends" interface=[Interface] "=" "(" (((call+=[SuperMethod|FQN]) | ("[" call+=[SuperMethod|FQN] "]"))
-	("->" (call+=[SuperMethod|FQN] | "[" call+=[SuperMethod|FQN] "]"))* "->" end=[Interface])? ");";
+	"uc" name=ID ("extends" superInterface=[Interface])? "=" "("
+		(call+=SuperCall ("->" call+=SuperCall)* "->" end=[Interface])?
+	");";
+
+CertainCall:
+	name=[SuperMethod|FQN];
+
+OptCall:
+	"[" name=[SuperMethod|FQN] "]";
+
+AltCall:
+	"{" (opt ?= "null")? name=[SuperMethod|FQN] ("," (a_name+=[SuperMethod|FQN] | (opt ?= "null")?))* "}";
+
+SuperCall:
+	CertainCall | OptCall | AltCall;
 
 FQN:
 	ID ("." ID)*;

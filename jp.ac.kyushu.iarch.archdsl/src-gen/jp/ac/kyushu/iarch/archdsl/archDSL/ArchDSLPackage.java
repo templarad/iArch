@@ -214,22 +214,13 @@ public interface ArchDSLPackage extends EPackage
   int SUPER_METHOD = 8;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SUPER_METHOD__TYPE = 0;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUPER_METHOD__NAME = 1;
+  int SUPER_METHOD__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Param</b></em>' containment reference list.
@@ -238,7 +229,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SUPER_METHOD__PARAM = 2;
+  int SUPER_METHOD__PARAM = 1;
 
   /**
    * The number of structural features of the '<em>Super Method</em>' class.
@@ -247,7 +238,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SUPER_METHOD_FEATURE_COUNT = 3;
+  int SUPER_METHOD_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.MethodImpl <em>Method</em>}' class.
@@ -258,15 +249,6 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    */
   int METHOD = 3;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METHOD__TYPE = SUPER_METHOD__TYPE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -287,13 +269,22 @@ public interface ArchDSLPackage extends EPackage
   int METHOD__PARAM = SUPER_METHOD__PARAM;
 
   /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD__TYPE = SUPER_METHOD_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Method</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD_FEATURE_COUNT = SUPER_METHOD_FEATURE_COUNT + 0;
+  int METHOD_FEATURE_COUNT = SUPER_METHOD_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl <em>Alt Method</em>}' class.
@@ -306,22 +297,13 @@ public interface ArchDSLPackage extends EPackage
   int ALT_METHOD = 4;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ALT_METHOD__TYPE = 0;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ALT_METHOD__NAME = 1;
+  int ALT_METHOD__NAME = SUPER_METHOD__NAME;
 
   /**
    * The feature id for the '<em><b>Param</b></em>' containment reference list.
@@ -330,7 +312,16 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALT_METHOD__PARAM = 2;
+  int ALT_METHOD__PARAM = SUPER_METHOD__PARAM;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALT_METHOD__TYPE = SUPER_METHOD_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Aname</b></em>' attribute list.
@@ -339,7 +330,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALT_METHOD__ANAME = 3;
+  int ALT_METHOD__ANAME = SUPER_METHOD_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Alt Method</em>' class.
@@ -348,7 +339,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALT_METHOD_FEATURE_COUNT = 4;
+  int ALT_METHOD_FEATURE_COUNT = SUPER_METHOD_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptMethodImpl <em>Opt Method</em>}' class.
@@ -359,15 +350,6 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    */
   int OPT_METHOD = 5;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPT_METHOD__TYPE = SUPER_METHOD__TYPE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -388,13 +370,22 @@ public interface ArchDSLPackage extends EPackage
   int OPT_METHOD__PARAM = SUPER_METHOD__PARAM;
 
   /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPT_METHOD__TYPE = SUPER_METHOD_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Opt Method</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPT_METHOD_FEATURE_COUNT = SUPER_METHOD_FEATURE_COUNT + 0;
+  int OPT_METHOD_FEATURE_COUNT = SUPER_METHOD_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ParamImpl <em>Param</em>}' class.
@@ -499,16 +490,16 @@ public interface ArchDSLPackage extends EPackage
   int UNCERTAIN_BEHAVIOR__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Interface</b></em>' reference.
+   * The feature id for the '<em><b>Super Interface</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int UNCERTAIN_BEHAVIOR__INTERFACE = 1;
+  int UNCERTAIN_BEHAVIOR__SUPER_INTERFACE = 1;
 
   /**
-   * The feature id for the '<em><b>Call</b></em>' reference list.
+   * The feature id for the '<em><b>Call</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -533,6 +524,136 @@ public interface ArchDSLPackage extends EPackage
    * @ordered
    */
   int UNCERTAIN_BEHAVIOR_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperCallImpl <em>Super Call</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperCallImpl
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getSuperCall()
+   * @generated
+   */
+  int SUPER_CALL = 13;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUPER_CALL__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Super Call</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUPER_CALL_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.CertainCallImpl <em>Certain Call</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.CertainCallImpl
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getCertainCall()
+   * @generated
+   */
+  int CERTAIN_CALL = 10;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CERTAIN_CALL__NAME = SUPER_CALL__NAME;
+
+  /**
+   * The number of structural features of the '<em>Certain Call</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CERTAIN_CALL_FEATURE_COUNT = SUPER_CALL_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptCallImpl <em>Opt Call</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptCallImpl
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getOptCall()
+   * @generated
+   */
+  int OPT_CALL = 11;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPT_CALL__NAME = SUPER_CALL__NAME;
+
+  /**
+   * The number of structural features of the '<em>Opt Call</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPT_CALL_FEATURE_COUNT = SUPER_CALL_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltCallImpl <em>Alt Call</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltCallImpl
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getAltCall()
+   * @generated
+   */
+  int ALT_CALL = 12;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALT_CALL__NAME = SUPER_CALL__NAME;
+
+  /**
+   * The feature id for the '<em><b>Opt</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALT_CALL__OPT = SUPER_CALL_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Aname</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALT_CALL__ANAME = SUPER_CALL_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Alt Call</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALT_CALL_FEATURE_COUNT = SUPER_CALL_FEATURE_COUNT + 2;
 
 
   /**
@@ -686,6 +807,17 @@ public interface ArchDSLPackage extends EPackage
   EClass getMethod();
 
   /**
+   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Method#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Method#getType()
+   * @see #getMethod()
+   * @generated
+   */
+  EAttribute getMethod_Type();
+
+  /**
    * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod <em>Alt Method</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -707,28 +839,6 @@ public interface ArchDSLPackage extends EPackage
   EAttribute getAltMethod_Type();
 
   /**
-   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getName()
-   * @see #getAltMethod()
-   * @generated
-   */
-  EAttribute getAltMethod_Name();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getParam <em>Param</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Param</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getParam()
-   * @see #getAltMethod()
-   * @generated
-   */
-  EReference getAltMethod_Param();
-
-  /**
    * Returns the meta object for the attribute list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod#getA_name <em>Aname</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -748,6 +858,17 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    */
   EClass getOptMethod();
+
+  /**
+   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod#getType()
+   * @see #getOptMethod()
+   * @generated
+   */
+  EAttribute getOptMethod_Type();
 
   /**
    * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Param <em>Param</em>}'.
@@ -835,17 +956,6 @@ public interface ArchDSLPackage extends EPackage
   EClass getSuperMethod();
 
   /**
-   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod#getType()
-   * @see #getSuperMethod()
-   * @generated
-   */
-  EAttribute getSuperMethod_Type();
-
-  /**
    * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -889,21 +999,21 @@ public interface ArchDSLPackage extends EPackage
   EAttribute getUncertainBehavior_Name();
 
   /**
-   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getInterface <em>Interface</em>}'.
+   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getSuperInterface <em>Super Interface</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Interface</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getInterface()
+   * @return the meta object for the reference '<em>Super Interface</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getSuperInterface()
    * @see #getUncertainBehavior()
    * @generated
    */
-  EReference getUncertainBehavior_Interface();
+  EReference getUncertainBehavior_SuperInterface();
 
   /**
-   * Returns the meta object for the reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getCall <em>Call</em>}'.
+   * Returns the meta object for the containment reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getCall <em>Call</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Call</em>'.
+   * @return the meta object for the containment reference list '<em>Call</em>'.
    * @see jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getCall()
    * @see #getUncertainBehavior()
    * @generated
@@ -920,6 +1030,79 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    */
   EReference getUncertainBehavior_End();
+
+  /**
+   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.CertainCall <em>Certain Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Certain Call</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.CertainCall
+   * @generated
+   */
+  EClass getCertainCall();
+
+  /**
+   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.OptCall <em>Opt Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Opt Call</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.OptCall
+   * @generated
+   */
+  EClass getOptCall();
+
+  /**
+   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltCall <em>Alt Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Alt Call</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.AltCall
+   * @generated
+   */
+  EClass getAltCall();
+
+  /**
+   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltCall#isOpt <em>Opt</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Opt</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.AltCall#isOpt()
+   * @see #getAltCall()
+   * @generated
+   */
+  EAttribute getAltCall_Opt();
+
+  /**
+   * Returns the meta object for the reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.AltCall#getA_name <em>Aname</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Aname</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.AltCall#getA_name()
+   * @see #getAltCall()
+   * @generated
+   */
+  EReference getAltCall_A_name();
+
+  /**
+   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperCall <em>Super Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Super Call</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.SuperCall
+   * @generated
+   */
+  EClass getSuperCall();
+
+  /**
+   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperCall#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Name</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.SuperCall#getName()
+   * @see #getSuperCall()
+   * @generated
+   */
+  EReference getSuperCall_Name();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1065,6 +1248,14 @@ public interface ArchDSLPackage extends EPackage
     EClass METHOD = eINSTANCE.getMethod();
 
     /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute METHOD__TYPE = eINSTANCE.getMethod_Type();
+
+    /**
      * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl <em>Alt Method</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1083,22 +1274,6 @@ public interface ArchDSLPackage extends EPackage
     EAttribute ALT_METHOD__TYPE = eINSTANCE.getAltMethod_Type();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ALT_METHOD__NAME = eINSTANCE.getAltMethod_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Param</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ALT_METHOD__PARAM = eINSTANCE.getAltMethod_Param();
-
-    /**
      * The meta object literal for the '<em><b>Aname</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1115,6 +1290,14 @@ public interface ArchDSLPackage extends EPackage
      * @generated
      */
     EClass OPT_METHOD = eINSTANCE.getOptMethod();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OPT_METHOD__TYPE = eINSTANCE.getOptMethod_Type();
 
     /**
      * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ParamImpl <em>Param</em>}' class.
@@ -1187,14 +1370,6 @@ public interface ArchDSLPackage extends EPackage
     EClass SUPER_METHOD = eINSTANCE.getSuperMethod();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SUPER_METHOD__TYPE = eINSTANCE.getSuperMethod_Type();
-
-    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1229,15 +1404,15 @@ public interface ArchDSLPackage extends EPackage
     EAttribute UNCERTAIN_BEHAVIOR__NAME = eINSTANCE.getUncertainBehavior_Name();
 
     /**
-     * The meta object literal for the '<em><b>Interface</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Super Interface</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference UNCERTAIN_BEHAVIOR__INTERFACE = eINSTANCE.getUncertainBehavior_Interface();
+    EReference UNCERTAIN_BEHAVIOR__SUPER_INTERFACE = eINSTANCE.getUncertainBehavior_SuperInterface();
 
     /**
-     * The meta object literal for the '<em><b>Call</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Call</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1251,6 +1426,70 @@ public interface ArchDSLPackage extends EPackage
      * @generated
      */
     EReference UNCERTAIN_BEHAVIOR__END = eINSTANCE.getUncertainBehavior_End();
+
+    /**
+     * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.CertainCallImpl <em>Certain Call</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.CertainCallImpl
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getCertainCall()
+     * @generated
+     */
+    EClass CERTAIN_CALL = eINSTANCE.getCertainCall();
+
+    /**
+     * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptCallImpl <em>Opt Call</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptCallImpl
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getOptCall()
+     * @generated
+     */
+    EClass OPT_CALL = eINSTANCE.getOptCall();
+
+    /**
+     * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltCallImpl <em>Alt Call</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltCallImpl
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getAltCall()
+     * @generated
+     */
+    EClass ALT_CALL = eINSTANCE.getAltCall();
+
+    /**
+     * The meta object literal for the '<em><b>Opt</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ALT_CALL__OPT = eINSTANCE.getAltCall_Opt();
+
+    /**
+     * The meta object literal for the '<em><b>Aname</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ALT_CALL__ANAME = eINSTANCE.getAltCall_A_name();
+
+    /**
+     * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperCallImpl <em>Super Call</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperCallImpl
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getSuperCall()
+     * @generated
+     */
+    EClass SUPER_CALL = eINSTANCE.getSuperCall();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUPER_CALL__NAME = eINSTANCE.getSuperCall_Name();
 
   }
 

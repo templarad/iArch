@@ -74,6 +74,10 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
       case ArchDSLPackage.BEHAVIOR: return createBehavior();
       case ArchDSLPackage.SUPER_METHOD: return createSuperMethod();
       case ArchDSLPackage.UNCERTAIN_BEHAVIOR: return createUncertainBehavior();
+      case ArchDSLPackage.CERTAIN_CALL: return createCertainCall();
+      case ArchDSLPackage.OPT_CALL: return createOptCall();
+      case ArchDSLPackage.ALT_CALL: return createAltCall();
+      case ArchDSLPackage.SUPER_CALL: return createSuperCall();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -187,6 +191,50 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
   {
     UncertainBehaviorImpl uncertainBehavior = new UncertainBehaviorImpl();
     return uncertainBehavior;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CertainCall createCertainCall()
+  {
+    CertainCallImpl certainCall = new CertainCallImpl();
+    return certainCall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OptCall createOptCall()
+  {
+    OptCallImpl optCall = new OptCallImpl();
+    return optCall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AltCall createAltCall()
+  {
+    AltCallImpl altCall = new AltCallImpl();
+    return altCall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SuperCall createSuperCall()
+  {
+    SuperCallImpl superCall = new SuperCallImpl();
+    return superCall;
   }
 
   /**

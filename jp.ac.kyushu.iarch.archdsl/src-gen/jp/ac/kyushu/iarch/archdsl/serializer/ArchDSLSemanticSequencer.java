@@ -2,12 +2,15 @@ package jp.ac.kyushu.iarch.archdsl.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import jp.ac.kyushu.iarch.archdsl.archDSL.AltCall;
 import jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
+import jp.ac.kyushu.iarch.archdsl.archDSL.CertainCall;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
+import jp.ac.kyushu.iarch.archdsl.archDSL.OptCall;
 import jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
 import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior;
@@ -33,8 +36,16 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == ArchDSLPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case ArchDSLPackage.ALT_CALL:
+				if(context == grammarAccess.getAltCallRule() ||
+				   context == grammarAccess.getSuperCallRule()) {
+					sequence_AltCall(context, (AltCall) semanticObject); 
+					return; 
+				}
+				else break;
 			case ArchDSLPackage.ALT_METHOD:
-				if(context == grammarAccess.getAltMethodRule()) {
+				if(context == grammarAccess.getAltMethodRule() ||
+				   context == grammarAccess.getSuperMethodRule()) {
 					sequence_AltMethod(context, (AltMethod) semanticObject); 
 					return; 
 				}
@@ -42,6 +53,13 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case ArchDSLPackage.BEHAVIOR:
 				if(context == grammarAccess.getBehaviorRule()) {
 					sequence_Behavior(context, (Behavior) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchDSLPackage.CERTAIN_CALL:
+				if(context == grammarAccess.getCertainCallRule() ||
+				   context == grammarAccess.getSuperCallRule()) {
+					sequence_CertainCall(context, (CertainCall) semanticObject); 
 					return; 
 				}
 				else break;
@@ -61,6 +79,13 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case ArchDSLPackage.MODEL:
 				if(context == grammarAccess.getModelRule()) {
 					sequence_Model(context, (Model) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchDSLPackage.OPT_CALL:
+				if(context == grammarAccess.getOptCallRule() ||
+				   context == grammarAccess.getSuperCallRule()) {
+					sequence_OptCall(context, (OptCall) semanticObject); 
 					return; 
 				}
 				else break;
@@ -95,6 +120,15 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
+	 *     (opt?='null'? name=[SuperMethod|FQN] (a_name+=[SuperMethod|FQN] | opt?='null'?)*)
+	 */
+	protected void sequence_AltCall(EObject context, AltCall semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (type+=ID name=ID (param+=Param param+=Param*)? (type+=ID a_name+=ID (param+=Param param+=Param*)?)*)
 	 */
 	protected void sequence_AltMethod(EObject context, AltMethod semanticObject) {
@@ -108,6 +142,22 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 */
 	protected void sequence_Behavior(EObject context, Behavior semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=[SuperMethod|FQN]
+	 */
+	protected void sequence_CertainCall(EObject context, CertainCall semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ArchDSLPackage.Literals.SUPER_CALL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchDSLPackage.Literals.SUPER_CALL__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getCertainCallAccess().getNameSuperMethodFQNParserRuleCall_0_1(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
@@ -135,6 +185,22 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=[SuperMethod|FQN]
+	 */
+	protected void sequence_OptCall(EObject context, OptCall semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ArchDSLPackage.Literals.SUPER_CALL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchDSLPackage.Literals.SUPER_CALL__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getOptCallAccess().getNameSuperMethodFQNParserRuleCall_1_0_1(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
@@ -168,11 +234,7 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         interface=[Interface|ID] 
-	 *         ((call+=[SuperMethod|FQN] | call+=[SuperMethod|FQN]) (call+=[SuperMethod|FQN] | call+=[SuperMethod|FQN])* end=[Interface|ID])?
-	 *     )
+	 *     (name=ID superInterface=[Interface|ID]? (call+=SuperCall call+=SuperCall* end=[Interface|ID])?)
 	 */
 	protected void sequence_UncertainBehavior(EObject context, UncertainBehavior semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

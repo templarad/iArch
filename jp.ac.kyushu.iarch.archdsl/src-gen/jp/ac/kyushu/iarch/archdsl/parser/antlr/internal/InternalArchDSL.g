@@ -172,9 +172,9 @@ ruleUncertainInterface returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='interface uncertain' 
+(	otherlv_0='uncertain component' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getUncertainInterfaceAccess().getInterfaceUncertainKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getUncertainInterfaceAccess().getUncertainComponentKeyword_0());
     }
 (
 (
@@ -921,11 +921,15 @@ ruleUncertainBehavior returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
+(	otherlv_0='uc' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getUncertainBehaviorAccess().getUcKeyword_0());
+    }
 (
-		lv_name_0_0=RULE_ID
+(
+		lv_name_1_0=RULE_ID
 		{
-			newLeafNode(lv_name_0_0, grammarAccess.getUncertainBehaviorAccess().getNameIDTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_1_0, grammarAccess.getUncertainBehaviorAccess().getNameIDTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -934,14 +938,14 @@ ruleUncertainBehavior returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_0_0, 
+        		lv_name_1_0, 
         		"ID");
 	    }
 
 )
-)	otherlv_1='extends' 
+)(	otherlv_2='extends' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getUncertainBehaviorAccess().getExtendsKeyword_1());
+    	newLeafNode(otherlv_2, grammarAccess.getUncertainBehaviorAccess().getExtendsKeyword_2_0());
     }
 (
 (
@@ -950,29 +954,111 @@ ruleUncertainBehavior returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getUncertainBehaviorRule());
 	        }
         }
-	otherlv_2=RULE_ID
+	otherlv_3=RULE_ID
 	{
-		newLeafNode(otherlv_2, grammarAccess.getUncertainBehaviorAccess().getInterfaceInterfaceCrossReference_2_0()); 
+		newLeafNode(otherlv_3, grammarAccess.getUncertainBehaviorAccess().getSuperInterfaceInterfaceCrossReference_2_1_0()); 
 	}
 
 )
-)	otherlv_3='=' 
+))?	otherlv_4='=' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getUncertainBehaviorAccess().getEqualsSignKeyword_3());
+    	newLeafNode(otherlv_4, grammarAccess.getUncertainBehaviorAccess().getEqualsSignKeyword_3());
     }
-	otherlv_4='(' 
+	otherlv_5='(' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getUncertainBehaviorAccess().getLeftParenthesisKeyword_4());
+    	newLeafNode(otherlv_5, grammarAccess.getUncertainBehaviorAccess().getLeftParenthesisKeyword_4());
     }
-(((
+((
+(
+		{ 
+	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperCallParserRuleCall_5_0_0()); 
+	    }
+		lv_call_6_0=ruleSuperCall		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getUncertainBehaviorRule());
+	        }
+       		add(
+       			$current, 
+       			"call",
+        		lv_call_6_0, 
+        		"SuperCall");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_7='->' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getUncertainBehaviorAccess().getHyphenMinusGreaterThanSignKeyword_5_1_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperCallParserRuleCall_5_1_1_0()); 
+	    }
+		lv_call_8_0=ruleSuperCall		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getUncertainBehaviorRule());
+	        }
+       		add(
+       			$current, 
+       			"call",
+        		lv_call_8_0, 
+        		"SuperCall");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*	otherlv_9='->' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getUncertainBehaviorAccess().getHyphenMinusGreaterThanSignKeyword_5_2());
+    }
+(
 (
 		{
 			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getUncertainBehaviorRule());
 	        }
         }
+	otherlv_10=RULE_ID
+	{
+		newLeafNode(otherlv_10, grammarAccess.getUncertainBehaviorAccess().getEndInterfaceCrossReference_5_3_0()); 
+	}
+
+)
+))?	otherlv_11=');' 
+    {
+    	newLeafNode(otherlv_11, grammarAccess.getUncertainBehaviorAccess().getRightParenthesisSemicolonKeyword_6());
+    }
+)
+;
+
+
+
+
+
+// Entry rule entryRuleCertainCall
+entryRuleCertainCall returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getCertainCallRule()); }
+	 iv_ruleCertainCall=ruleCertainCall 
+	 { $current=$iv_ruleCertainCall.current; } 
+	 EOF 
+;
+
+// Rule CertainCall
+ruleCertainCall returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCertainCallRule());
+	        }
+        }
 		{ 
-	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperMethodCrossReference_5_0_0_0()); 
+	        newCompositeNode(grammarAccess.getCertainCallAccess().getNameSuperMethodCrossReference_0()); 
 	    }
 		ruleFQN		{ 
 	        afterParserOrEnumRuleCall();
@@ -980,42 +1066,117 @@ ruleUncertainBehavior returns [EObject current=null]
 
 )
 )
-    |(	otherlv_6='[' 
+;
+
+
+
+
+
+// Entry rule entryRuleOptCall
+entryRuleOptCall returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getOptCallRule()); }
+	 iv_ruleOptCall=ruleOptCall 
+	 { $current=$iv_ruleOptCall.current; } 
+	 EOF 
+;
+
+// Rule OptCall
+ruleOptCall returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='[' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getUncertainBehaviorAccess().getLeftSquareBracketKeyword_5_0_1_0());
+    	newLeafNode(otherlv_0, grammarAccess.getOptCallAccess().getLeftSquareBracketKeyword_0());
     }
 (
 (
 		{
 			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getUncertainBehaviorRule());
+	            $current = createModelElement(grammarAccess.getOptCallRule());
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperMethodCrossReference_5_0_1_1_0()); 
+	        newCompositeNode(grammarAccess.getOptCallAccess().getNameSuperMethodCrossReference_1_0()); 
 	    }
 		ruleFQN		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_8=']' 
+)	otherlv_2=']' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getUncertainBehaviorAccess().getRightSquareBracketKeyword_5_0_1_2());
+    	newLeafNode(otherlv_2, grammarAccess.getOptCallAccess().getRightSquareBracketKeyword_2());
     }
-))(	otherlv_9='->' 
+)
+;
+
+
+
+
+
+// Entry rule entryRuleAltCall
+entryRuleAltCall returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getAltCallRule()); }
+	 iv_ruleAltCall=ruleAltCall 
+	 { $current=$iv_ruleAltCall.current; } 
+	 EOF 
+;
+
+// Rule AltCall
+ruleAltCall returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='{' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getUncertainBehaviorAccess().getHyphenMinusGreaterThanSignKeyword_5_1_0());
+    	newLeafNode(otherlv_0, grammarAccess.getAltCallAccess().getLeftCurlyBracketKeyword_0());
+    }
+(
+(
+		lv_opt_1_0=	'null' 
+    {
+        newLeafNode(lv_opt_1_0, grammarAccess.getAltCallAccess().getOptNullKeyword_1_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAltCallRule());
+	        }
+       		setWithLastConsumed($current, "opt", true, "null");
+	    }
+
+)
+)?(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAltCallRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getAltCallAccess().getNameSuperMethodCrossReference_2_0()); 
+	    }
+		ruleFQN		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_3=',' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getAltCallAccess().getCommaKeyword_3_0());
     }
 ((
 (
 		{
 			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getUncertainBehaviorRule());
+	            $current = createModelElement(grammarAccess.getAltCallRule());
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperMethodCrossReference_5_1_1_0_0()); 
+	        newCompositeNode(grammarAccess.getAltCallAccess().getA_nameSuperMethodCrossReference_3_1_0_0()); 
 	    }
 		ruleFQN		{ 
 	        afterParserOrEnumRuleCall();
@@ -1023,49 +1184,74 @@ ruleUncertainBehavior returns [EObject current=null]
 
 )
 )
-    |(	otherlv_11='[' 
+    |(
+(
+		lv_opt_5_0=	'null' 
     {
-    	newLeafNode(otherlv_11, grammarAccess.getUncertainBehaviorAccess().getLeftSquareBracketKeyword_5_1_1_1_0());
+        newLeafNode(lv_opt_5_0, grammarAccess.getAltCallAccess().getOptNullKeyword_3_1_1_0());
     }
-(
-(
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getUncertainBehaviorRule());
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAltCallRule());
 	        }
-        }
-		{ 
-	        newCompositeNode(grammarAccess.getUncertainBehaviorAccess().getCallSuperMethodCrossReference_5_1_1_1_1_0()); 
-	    }
-		ruleFQN		{ 
-	        afterParserOrEnumRuleCall();
+       		setWithLastConsumed($current, "opt", true, "null");
 	    }
 
 )
-)	otherlv_13=']' 
+)?))*	otherlv_6='}' 
     {
-    	newLeafNode(otherlv_13, grammarAccess.getUncertainBehaviorAccess().getRightSquareBracketKeyword_5_1_1_1_2());
+    	newLeafNode(otherlv_6, grammarAccess.getAltCallAccess().getRightCurlyBracketKeyword_4());
     }
-)))*	otherlv_14='->' 
-    {
-    	newLeafNode(otherlv_14, grammarAccess.getUncertainBehaviorAccess().getHyphenMinusGreaterThanSignKeyword_5_2());
-    }
-(
-(
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getUncertainBehaviorRule());
-	        }
-        }
-	otherlv_15=RULE_ID
-	{
-		newLeafNode(otherlv_15, grammarAccess.getUncertainBehaviorAccess().getEndInterfaceCrossReference_5_3_0()); 
-	}
-
 )
-))?	otherlv_16=');' 
-    {
-    	newLeafNode(otherlv_16, grammarAccess.getUncertainBehaviorAccess().getRightParenthesisSemicolonKeyword_6());
+;
+
+
+
+
+
+// Entry rule entryRuleSuperCall
+entryRuleSuperCall returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getSuperCallRule()); }
+	 iv_ruleSuperCall=ruleSuperCall 
+	 { $current=$iv_ruleSuperCall.current; } 
+	 EOF 
+;
+
+// Rule SuperCall
+ruleSuperCall returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getSuperCallAccess().getCertainCallParserRuleCall_0()); 
+    }
+    this_CertainCall_0=ruleCertainCall
+    { 
+        $current = $this_CertainCall_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getSuperCallAccess().getOptCallParserRuleCall_1()); 
+    }
+    this_OptCall_1=ruleOptCall
+    { 
+        $current = $this_OptCall_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getSuperCallAccess().getAltCallParserRuleCall_2()); 
+    }
+    this_AltCall_2=ruleAltCall
+    { 
+        $current = $this_AltCall_2.current; 
+        afterParserOrEnumRuleCall();
     }
 )
 ;

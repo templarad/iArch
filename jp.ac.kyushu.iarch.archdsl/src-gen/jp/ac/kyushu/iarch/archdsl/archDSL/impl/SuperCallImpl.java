@@ -3,55 +3,48 @@
 package jp.ac.kyushu.iarch.archdsl.archDSL.impl;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
-import jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod;
+import jp.ac.kyushu.iarch.archdsl.archDSL.SuperCall;
+import jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Opt Method</b></em>'.
+ * An implementation of the model object '<em><b>Super Call</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.OptMethodImpl#getType <em>Type</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.SuperCallImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class OptMethodImpl extends SuperMethodImpl implements OptMethod
+public class SuperCallImpl extends MinimalEObjectImpl.Container implements SuperCall
 {
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
+  protected SuperMethod name;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected OptMethodImpl()
+  protected SuperCallImpl()
   {
     super();
   }
@@ -64,7 +57,7 @@ public class OptMethodImpl extends SuperMethodImpl implements OptMethod
   @Override
   protected EClass eStaticClass()
   {
-    return ArchDSLPackage.Literals.OPT_METHOD;
+    return ArchDSLPackage.Literals.SUPER_CALL;
   }
 
   /**
@@ -72,9 +65,19 @@ public class OptMethodImpl extends SuperMethodImpl implements OptMethod
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getType()
+  public SuperMethod getName()
   {
-    return type;
+    if (name != null && name.eIsProxy())
+    {
+      InternalEObject oldName = (InternalEObject)name;
+      name = (SuperMethod)eResolveProxy(oldName);
+      if (name != oldName)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.SUPER_CALL__NAME, oldName, name));
+      }
+    }
+    return name;
   }
 
   /**
@@ -82,12 +85,22 @@ public class OptMethodImpl extends SuperMethodImpl implements OptMethod
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(String newType)
+  public SuperMethod basicGetName()
   {
-    String oldType = type;
-    type = newType;
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(SuperMethod newName)
+  {
+    SuperMethod oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.OPT_METHOD__TYPE, oldType, type));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.SUPER_CALL__NAME, oldName, name));
   }
 
   /**
@@ -100,8 +113,9 @@ public class OptMethodImpl extends SuperMethodImpl implements OptMethod
   {
     switch (featureID)
     {
-      case ArchDSLPackage.OPT_METHOD__TYPE:
-        return getType();
+      case ArchDSLPackage.SUPER_CALL__NAME:
+        if (resolve) return getName();
+        return basicGetName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -116,8 +130,8 @@ public class OptMethodImpl extends SuperMethodImpl implements OptMethod
   {
     switch (featureID)
     {
-      case ArchDSLPackage.OPT_METHOD__TYPE:
-        setType((String)newValue);
+      case ArchDSLPackage.SUPER_CALL__NAME:
+        setName((SuperMethod)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -133,8 +147,8 @@ public class OptMethodImpl extends SuperMethodImpl implements OptMethod
   {
     switch (featureID)
     {
-      case ArchDSLPackage.OPT_METHOD__TYPE:
-        setType(TYPE_EDEFAULT);
+      case ArchDSLPackage.SUPER_CALL__NAME:
+        setName((SuperMethod)null);
         return;
     }
     super.eUnset(featureID);
@@ -150,27 +164,10 @@ public class OptMethodImpl extends SuperMethodImpl implements OptMethod
   {
     switch (featureID)
     {
-      case ArchDSLPackage.OPT_METHOD__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+      case ArchDSLPackage.SUPER_CALL__NAME:
+        return name != null;
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (type: ");
-    result.append(type);
-    result.append(')');
-    return result.toString();
-  }
-
-} //OptMethodImpl
+} //SuperCallImpl

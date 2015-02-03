@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getName <em>Name</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getInterface <em>Interface</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getSuperInterface <em>Super Interface</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getCall <em>Call</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getEnd <em>End</em>}</li>
  * </ul>
@@ -54,46 +54,46 @@ public interface UncertainBehavior extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Interface</b></em>' reference.
+   * Returns the value of the '<em><b>Super Interface</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Interface</em>' reference isn't clear,
+   * If the meaning of the '<em>Super Interface</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Interface</em>' reference.
-   * @see #setInterface(Interface)
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getUncertainBehavior_Interface()
+   * @return the value of the '<em>Super Interface</em>' reference.
+   * @see #setSuperInterface(Interface)
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getUncertainBehavior_SuperInterface()
    * @model
    * @generated
    */
-  Interface getInterface();
+  Interface getSuperInterface();
 
   /**
-   * Sets the value of the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getInterface <em>Interface</em>}' reference.
+   * Sets the value of the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior#getSuperInterface <em>Super Interface</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Interface</em>' reference.
-   * @see #getInterface()
+   * @param value the new value of the '<em>Super Interface</em>' reference.
+   * @see #getSuperInterface()
    * @generated
    */
-  void setInterface(Interface value);
+  void setSuperInterface(Interface value);
 
   /**
-   * Returns the value of the '<em><b>Call</b></em>' reference list.
-   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod}.
+   * Returns the value of the '<em><b>Call</b></em>' containment reference list.
+   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.SuperCall}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Call</em>' reference list isn't clear,
+   * If the meaning of the '<em>Call</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Call</em>' reference list.
+   * @return the value of the '<em>Call</em>' containment reference list.
    * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getUncertainBehavior_Call()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  EList<SuperMethod> getCall();
+  EList<SuperCall> getCall();
 
   /**
    * Returns the value of the '<em><b>End</b></em>' reference.

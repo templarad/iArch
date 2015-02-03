@@ -4,57 +4,72 @@ package jp.ac.kyushu.iarch.archdsl.archDSL.impl;
 
 import java.util.Collection;
 
-import jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod;
+import jp.ac.kyushu.iarch.archdsl.archDSL.AltCall;
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
+import jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod;
+
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Alt Method</b></em>'.
+ * An implementation of the model object '<em><b>Alt Call</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl#getType <em>Type</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltMethodImpl#getA_name <em>Aname</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltCallImpl#isOpt <em>Opt</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.AltCallImpl#getA_name <em>Aname</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class AltMethodImpl extends SuperMethodImpl implements AltMethod
+public class AltCallImpl extends SuperCallImpl implements AltCall
 {
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute list.
+   * The default value of the '{@link #isOpt() <em>Opt</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #isOpt()
    * @generated
    * @ordered
    */
-  protected EList<String> type;
+  protected static final boolean OPT_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getA_name() <em>Aname</em>}' attribute list.
+   * The cached value of the '{@link #isOpt() <em>Opt</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isOpt()
+   * @generated
+   * @ordered
+   */
+  protected boolean opt = OPT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getA_name() <em>Aname</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getA_name()
    * @generated
    * @ordered
    */
-  protected EList<String> a_name;
+  protected EList<SuperMethod> a_name;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AltMethodImpl()
+  protected AltCallImpl()
   {
     super();
   }
@@ -67,7 +82,7 @@ public class AltMethodImpl extends SuperMethodImpl implements AltMethod
   @Override
   protected EClass eStaticClass()
   {
-    return ArchDSLPackage.Literals.ALT_METHOD;
+    return ArchDSLPackage.Literals.ALT_CALL;
   }
 
   /**
@@ -75,13 +90,9 @@ public class AltMethodImpl extends SuperMethodImpl implements AltMethod
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getType()
+  public boolean isOpt()
   {
-    if (type == null)
-    {
-      type = new EDataTypeEList<String>(String.class, this, ArchDSLPackage.ALT_METHOD__TYPE);
-    }
-    return type;
+    return opt;
   }
 
   /**
@@ -89,11 +100,24 @@ public class AltMethodImpl extends SuperMethodImpl implements AltMethod
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getA_name()
+  public void setOpt(boolean newOpt)
+  {
+    boolean oldOpt = opt;
+    opt = newOpt;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.ALT_CALL__OPT, oldOpt, opt));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<SuperMethod> getA_name()
   {
     if (a_name == null)
     {
-      a_name = new EDataTypeEList<String>(String.class, this, ArchDSLPackage.ALT_METHOD__ANAME);
+      a_name = new EObjectResolvingEList<SuperMethod>(SuperMethod.class, this, ArchDSLPackage.ALT_CALL__ANAME);
     }
     return a_name;
   }
@@ -108,9 +132,9 @@ public class AltMethodImpl extends SuperMethodImpl implements AltMethod
   {
     switch (featureID)
     {
-      case ArchDSLPackage.ALT_METHOD__TYPE:
-        return getType();
-      case ArchDSLPackage.ALT_METHOD__ANAME:
+      case ArchDSLPackage.ALT_CALL__OPT:
+        return isOpt();
+      case ArchDSLPackage.ALT_CALL__ANAME:
         return getA_name();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -127,13 +151,12 @@ public class AltMethodImpl extends SuperMethodImpl implements AltMethod
   {
     switch (featureID)
     {
-      case ArchDSLPackage.ALT_METHOD__TYPE:
-        getType().clear();
-        getType().addAll((Collection<? extends String>)newValue);
+      case ArchDSLPackage.ALT_CALL__OPT:
+        setOpt((Boolean)newValue);
         return;
-      case ArchDSLPackage.ALT_METHOD__ANAME:
+      case ArchDSLPackage.ALT_CALL__ANAME:
         getA_name().clear();
-        getA_name().addAll((Collection<? extends String>)newValue);
+        getA_name().addAll((Collection<? extends SuperMethod>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -149,10 +172,10 @@ public class AltMethodImpl extends SuperMethodImpl implements AltMethod
   {
     switch (featureID)
     {
-      case ArchDSLPackage.ALT_METHOD__TYPE:
-        getType().clear();
+      case ArchDSLPackage.ALT_CALL__OPT:
+        setOpt(OPT_EDEFAULT);
         return;
-      case ArchDSLPackage.ALT_METHOD__ANAME:
+      case ArchDSLPackage.ALT_CALL__ANAME:
         getA_name().clear();
         return;
     }
@@ -169,9 +192,9 @@ public class AltMethodImpl extends SuperMethodImpl implements AltMethod
   {
     switch (featureID)
     {
-      case ArchDSLPackage.ALT_METHOD__TYPE:
-        return type != null && !type.isEmpty();
-      case ArchDSLPackage.ALT_METHOD__ANAME:
+      case ArchDSLPackage.ALT_CALL__OPT:
+        return opt != OPT_EDEFAULT;
+      case ArchDSLPackage.ALT_CALL__ANAME:
         return a_name != null && !a_name.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -188,12 +211,10 @@ public class AltMethodImpl extends SuperMethodImpl implements AltMethod
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (type: ");
-    result.append(type);
-    result.append(", a_name: ");
-    result.append(a_name);
+    result.append(" (opt: ");
+    result.append(opt);
     result.append(')');
     return result.toString();
   }
 
-} //AltMethodImpl
+} //AltCallImpl

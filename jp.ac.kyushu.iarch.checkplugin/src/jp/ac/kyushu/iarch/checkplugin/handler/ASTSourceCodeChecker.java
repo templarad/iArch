@@ -8,12 +8,14 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import jp.ac.kyushu.iarch.archdsl.archDSL.AltCall;
 import jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod;
+import jp.ac.kyushu.iarch.archdsl.archDSL.SuperCall;
 import jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface;
@@ -279,7 +281,7 @@ public class ASTSourceCodeChecker{
 										isExist = true;
 									}
 								}
-								
+
 								if(!isExist){
 									ProblemViewManager.addWarning1(st2, "UncertainInterface- OptionMethod : " + optMethodNameArch + " is not defined", superInterface.getName(), lineNumberClass);
 								}
@@ -358,60 +360,96 @@ public class ASTSourceCodeChecker{
 					methodNameLaString = methodName;
 				}
 			}
-			
+
+
+
+
 			//Uncertain Behaviors Check
 			for (UncertainBehavior u_behavior : archiface.getU_behaviors()) {
-				
 				String uncertainInterfaceName = u_behavior.getName();
-				String superInterfaceName = u_behavior.getInterface().getName();
-				String lastClassName = ((Interface)u_behavior.getCall().get(0).eContainer()).getName();
-				String lastMethodName = null;
-				String outputMsg = null;
-				
+				String superInterfaceName = u_behavior.getSuperInterface().getName();
 				if(superInterfaceName != null){
-					for (SuperMethod methodCall : u_behavior.getCall()) {
+					String lastClassName = null;
+					if(u_behavior.getCall().get(0).getName().getClass().getSimpleName().equals("MethodImpl")){
+						lastClassName = ((Interface)u_behavior.getCall().get(0).getName().eContainer()).getName();
+					}else{
+						lastClassName = ((UncertainInterface)u_behavior.getCall().get(0).getName().eContainer()).getSuperInterface().getName();
+					}
+					String lastMethodName = null;
+					String lastTypeOfMethod = null;
+
+					for (SuperCall methodCall : u_behavior.getCall()) {
 						boolean isMethodInvocationExist = false;
-						String typeOfCall = methodCall.getClass().getSimpleName();	//MethodImpl : Certain Method, OptMethodImpl : Optional Method
-						String currentMethodName = methodCall.getName();
-						if(currentMethodName == null)continue;	//for end of calls
-						String currentClassName = null;
-						if(typeOfCall.equals("MethodImpl")){
-							currentClassName = ((Interface)methodCall.eContainer()).getName();
-						}else if(typeOfCall == "OptMethodImpl"){
-							currentClassName = ((UncertainInterface)methodCall.eContainer()).getSuperInterface().getName();
-						}
+						String typeOfCall = methodCall.getClass().getSimpleName();// CertainCallImpl,OptCallImpl,AltCallImpl
+						String typeOfMethod = methodCall.getName().getClass().getSimpleName();	//MethodImpl : Certain Method, OptMethodImpl : Optional Method
 						int lineNumber = 0;
 						Node classNode = null;
+						String currentClassName = null;
+						String currentMethodName = methodCall.getName().getName();
+						String outputMsg = null;
+
+						if(currentMethodName == null)continue;	//for end of calls
 						if(lastClassName != null){
 							classNode = test.selectSingleNode("Class[@name='" + lastClassName + "']");
 						}
 						if(classNode==null)continue;
+						if(typeOfMethod.equals("MethodImpl")){
+							currentClassName = ((Interface)methodCall.getName().eContainer()).getName();
+						}else if(typeOfMethod.equals("OptMethodImpl")){
+							currentClassName = ((UncertainInterface)methodCall.getName().eContainer()).getSuperInterface().getName();
+						}
 						if (lastMethodName != null) {
 							Node methodDcl = classNode.selectSingleNode("MethodDeclaration[@name='" + lastMethodName + "']");
+							IResource st2=javaFileIResource.getProject().getFile("/src/"+lastClassName+".java");
+							if(methodDcl == null){
+								ProblemViewManager.addWarning1(st2, lastMethodName + " is not implemented, so this connector can't check.", currentClassName, lineNumber);
+								continue;
+							}
 							isMethodInvocationExist = (methodDcl.selectSingleNode("MethodInvocation[@name='" + currentMethodName + "']") != null);
 							lineNumber=Integer.parseInt(((Element) methodDcl).attributeValue("lineNumber").toString());
 							if (!isMethodInvocationExist) {
-								IResource st2=javaFileIResource.getProject().getFile("/src/"+lastClassName+".java");
 								String errMsg = "Behavior  : " + uncertainInterfaceName + " :  " + lastClassName + "." + lastMethodName + " -> " + currentMethodName + " " + "is not defined.";
-								if(typeOfCall.equals("MethodImpl")){
-									ProblemViewManager.addError1(st2, errMsg, currentClassName,lineNumber);
-								}else{
+								if(typeOfCall.equals("CertainCallImpl")){
+									if(!lastTypeOfMethod.equals("OptMethodImpl")){
+										ProblemViewManager.addError1(st2, errMsg, currentClassName,lineNumber);
+									}
+								}else if(typeOfCall.equals("OptCallImpl")){
 									ProblemViewManager.addWarning1(st2, errMsg, currentClassName, lineNumber);
 									currentClassName = lastClassName;
 									currentMethodName = lastMethodName;	/* return to certain method and class(This impl is temporary...)*/
+								}else if(typeOfCall.equals("AltCallImpl")){
+									AltCall altCall = (AltCall)methodCall;
+									for (SuperMethod altMethod : altCall.getA_name()) {// altMethodCallに書かれている2つ目以降のMethodのチェック
+										typeOfMethod = altMethod.getClass().getSimpleName();
+										if(typeOfMethod.equals("MethodImpl")){
+											currentClassName = ((Interface)altMethod.eContainer()).getName();
+										}else if(typeOfMethod.equals("OptMethodImpl")){
+											currentClassName = ((UncertainInterface)altMethod.eContainer()).getSuperInterface().getName();
+										}
+										currentMethodName = altMethod.getName();
+										isMethodInvocationExist = (methodDcl.selectSingleNode("MethodInvocation[@name='" + currentMethodName + "']") != null);
+										if(isMethodInvocationExist)	break;
+									}
+									if(altCall.isOpt() && !isMethodInvocationExist){
+										currentClassName = lastClassName;
+										currentMethodName = lastMethodName;	/* return to certain method and class(This impl is temporary...)*/
+									}
 								}
 							}
 						}
-	
+
 						if (isMethodInvocationExist) {
-							outputMsg = "UncertainBehavior  : " + uncertainInterfaceName + " : " + lastClassName + "." + lastMethodName + " -> " + currentClassName + "." + currentMethodName;
+							if(!currentMethodName.equals(lastMethodName)){
+								outputMsg = "UncertainBehavior  : " + uncertainInterfaceName + " : " + lastClassName + "." + lastMethodName + " -> " + currentClassName + "." + currentMethodName;
+							}
 						}
 						if (outputMsg != null) {
 							IResource st2=javaFileIResource.getProject().getFile("/src/"+lastClassName+".java");
 							ProblemViewManager.addInfo1(st2, outputMsg, lastClassName,lineNumber);
 						}
 						lastClassName = currentClassName;
-						lastMethodName = currentMethodName;						
+						lastMethodName = currentMethodName;
+						lastTypeOfMethod = typeOfMethod;
 					}
 				}
 			}

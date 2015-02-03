@@ -113,6 +113,42 @@ public interface ArchDSLFactory extends EFactory
   UncertainBehavior createUncertainBehavior();
 
   /**
+   * Returns a new object of class '<em>Certain Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Certain Call</em>'.
+   * @generated
+   */
+  CertainCall createCertainCall();
+
+  /**
+   * Returns a new object of class '<em>Opt Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Opt Call</em>'.
+   * @generated
+   */
+  OptCall createOptCall();
+
+  /**
+   * Returns a new object of class '<em>Alt Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Alt Call</em>'.
+   * @generated
+   */
+  AltCall createAltCall();
+
+  /**
+   * Returns a new object of class '<em>Super Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Super Call</em>'.
+   * @generated
+   */
+  SuperCall createSuperCall();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
