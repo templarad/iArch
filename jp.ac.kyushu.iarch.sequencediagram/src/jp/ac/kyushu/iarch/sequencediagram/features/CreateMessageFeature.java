@@ -38,8 +38,7 @@ public class CreateMessageFeature extends AbstractCreateConnectionFeature {
 	public boolean canCreate(ICreateConnectionContext context) {
         // return true if both pictogram belong to an Lifeline
 		Lifeline source = getLifeline(context.getSourcePictogramElement());
-		Lifeline target = getLifeline(context.getTargetPictogramElement());
-		if (source != null && target != null) {
+		if (source != null ) {
 		    return true;
 		}
 		return false;
