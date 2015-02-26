@@ -34,7 +34,6 @@ import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
-import org.eclipse.graphiti.mm.pictograms.PictogramLink;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 
 import behavior.Actor;
@@ -52,16 +51,16 @@ import behavior.Object;
 public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 	Logger logger = Logger.getGlobal();
 	/**
-	 * A list of '<em><b>object</b></em>' in sequence diagram.
+	 * A list of <b>Object</b> in sequence diagram.
 	 */
 	private List<behavior.Object> objects;
 	/**
-	 * A list of shapes in sequence diagram which is linked with '<em><b>Object</b></em>'.
+	 * A list of shapes in sequence diagram which is linked with <b>Object</b>.
 	 */
 	private List<Shape> shapes;
 
 	/**
-	 * A list of Connection which is linked with '<em><b>Lifeline</b></em>'.
+	 * A list of Connection which is linked with <b>Lifeline</b>.
 	 */
 	private List<Connection> lifelineConnections;
 
@@ -121,9 +120,9 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 	 * 
 	 * @param sequenceResource
 	 *            The sequence diagram resource in which the diagram will
-	 *            generate to.
+	 *            generate into.
 	 * @param archfaceModel
-	 *            The Archface Model which will be used to generate diagram.
+	 *            The Archface Model which will be used in generating diagram.
 	 */
 	public void generateSequenceDiagram(Resource sequenceResource,
 			Model archfaceModel) {
@@ -240,7 +239,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 	}
 	
 	/**
-	 * Add all '<em><b>LifeLines</b></em>' into the selected sequence diagram <br>
+	 * Add all '<b>LifeLines</b>' into the selected sequence diagram <br>
 	 * for all '<em><b>interface components</b></em>' in Archface code and an Actor.
 	 */
 	public void addLifeLine() {
@@ -280,7 +279,7 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 	}
 
 	/**
-	 * Generate all '<em><b>Object</b></em>' into the selected sequence diagram <br>
+	 * Generate all <b>Object</b> into the selected sequence diagram <br>
 	 * based on the '<em><b>interface component</b></em>' in Archface code.
 	 */
 	public void addObject() {
@@ -304,8 +303,8 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 	}
 
 	/**
-	 * Add a '<em><b>Message</b></em>' between <b>sourcePE</b> and
-	 * <b>targetPE</b> from the <b>startY</b>.
+	 * Add a <b>Message</b> between <em><b>sourcePE</b></em> and
+	 * <em><b>targetPE</b></em> from the <em><b>startY</b></em>.
 	 * 
 	 * @param startY
 	 *            The start position Y of message on the lifeline.
@@ -365,24 +364,12 @@ public class GenerateSequenceDiagramFeature extends AbstractCustomFeature {
 			EObject nextobj = eobjectIter.next();
 			if (nextobj instanceof Diagram) {
 			} else {
-				eobjectIter.remove();
+				eobjectIter.remove();//Remove objects in business model.
 			}
 		}
-		Iterator<Shape> shapeIter = getDiagram().getChildren().iterator();
-		while (shapeIter.hasNext()) {
-			shapeIter.next();
-			shapeIter.remove();
-		}
-		Iterator<Connection> connectionIter = getDiagram().getConnections().iterator();
-		while (connectionIter.hasNext()) {
-			connectionIter.next();
-			connectionIter.remove();
-		}
-		Iterator<PictogramLink> ptlintIter = getDiagram().getPictogramLinks().iterator();
-		while (ptlintIter.hasNext()) {
-			ptlintIter.next();
-			ptlintIter.remove();
-		}
+		getDiagram().getChildren().clear();//Remove graphical elements.
+		getDiagram().getConnections().clear();//Remove connections.
+		getDiagram().getPictogramLinks().clear();//Remove links between business model and graphical element.
 	}
 	
 	/**
