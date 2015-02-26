@@ -1,11 +1,11 @@
-iArch
+ï»¿iArch
 =====
 
 Kyushu University Ubayashi lab, Archface project
 
 wiki https://github.com/templarad/iArch/wiki
-[Wiki-ssh]:   https://github.com/templarad/iArch/wiki/SSHkey%E3%81%AE%E8%A8%AD%E5%AE%9A "SSHkey‚Ìİ’è"
-[Wiki-git]:   https://github.com/templarad/iArch/wiki/Git%E3%81%AE%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C "git‚Ìg‚¢•û"
+[Wiki-ssh]:   https://github.com/templarad/iArch/wiki/SSHkey%E3%81%AE%E8%A8%AD%E5%AE%9A "SSHkeyã®è¨­å®š"
+[Wiki-git]:   https://github.com/templarad/iArch/wiki/Git%E3%81%AE%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C "gitã®ä½¿ã„æ–¹"
 
 How to install
 ------
