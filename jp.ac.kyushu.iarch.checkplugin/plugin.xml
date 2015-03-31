@@ -19,8 +19,9 @@
             name="Generate ArchCode">
       </command>
       <command
-            id="jp.ac.kyushu.iarch.checkplugin.SelectPoint1"
-            name="SelectPoint">
+      		categoryId="jp.ac.kyushu.iarch.checkPlugin.iarchcategory"
+            id="jp.ac.kyushu.iarch.checkplugin.SelectPoint"
+            name="Select Point">
       </command>
    </extension>
    <extension
@@ -47,7 +48,9 @@
             </command>
             <command
 		         commandId="jp.ac.kyushu.iarch.checkplugin.SelectPoint"
+		         id="jp.ac.kyushu.iarch.checkplugin.SelectArchPoint"
 		         label="SelectPoint"
+		         mnemonic="C"
 		         style="push">
 			</command>
          </menu>
@@ -64,7 +67,7 @@
 			commandId="jp.ac.kyushu.iarch.checkPlugin.generateArch">
 		</handler>
 		<handler
-			class="jp.ac.kyushu.iarch.checkplugin.handler.SlectPoint"
+			class="jp.ac.kyushu.iarch.checkplugin.handler.SelectPoint"
 			commandId="jp.ac.kyushu.iarch.checkplugin.SelectPoint">
 		</handler>
    </extension>

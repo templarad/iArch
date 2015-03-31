@@ -63,7 +63,7 @@ public class AbstractionRatioController {
 		absRatioView.setArchAndImpl(checker.getArchpointNum(), checker.getXmlpointNum());
 		absRatioView.setStructureRatio(1-(double)(checker.getClassNum()+checker.getMethodNum())
 				/(double)(checker.getXmlClassNum()+checker.getXmlMethodNum()));
-		absRatioView.setStructureArchAndImpl(checker.getXmlClassNum()+checker.getMethodNum() ,
+		absRatioView.setStructureArchAndImpl(checker.getClassNum()+checker.getMethodNum() ,
 				checker.getXmlClassNum()+checker.getXmlMethodNum());
 		absRatioView.setBehaviorRatio(1-(double)checker.getBehaviorNum() 
 				/ (double)checker.getXmlInvocationPointNum());

@@ -50,20 +50,11 @@
         <parameterTypeElement>
           <parameterType>State</parameterType>
         </parameterTypeElement>
-        <MethodInvocation name="_notify">
-          <InvocationExpression/>
-        </MethodInvocation>
-      </MethodDeclaration>
-      <MethodDeclaration lineNumber="17" name="_notify">
-        <MethodModifiers>
-          <modifier>public</modifier>
-          <modifier>void</modifier>
-        </MethodModifiers>
         <MethodInvocation name="update">
           <InvocationExpression>o</InvocationExpression>
         </MethodInvocation>
       </MethodDeclaration>
-      <MethodDeclaration lineNumber="22" name="addObserver">
+      <MethodDeclaration lineNumber="20" name="addObserver">
         <MethodModifiers>
           <modifier>public</modifier>
           <modifier>void</modifier>
@@ -75,7 +66,7 @@
           <InvocationExpression>this.observers</InvocationExpression>
         </MethodInvocation>
       </MethodDeclaration>
-      <MethodDeclaration lineNumber="25" name="removeObserver">
+      <MethodDeclaration lineNumber="23" name="removeObserver">
         <MethodModifiers>
           <modifier>public</modifier>
           <modifier>void</modifier>
@@ -129,7 +120,6 @@
   <Package name="java"/>
   <Package name="com.sun.org.apache.xml"/>
   <Package name="com.sun.xml.internal.messaging.saaj.client"/>
-  <Package name="com.sun.servicetag"/>
   <Package name="com.sun.org"/>
   <Package name="com.sun.java.util.jar"/>
   <Package name="com.sun.xml.internal.bind.v2.schemagen"/>
@@ -214,7 +204,6 @@
   <Package name="com.sun.xml.internal.bind.v2.model.annotation"/>
   <Package name="sun.text"/>
   <Package name="com.sun.imageio.plugins"/>
-  <Package name="com.sun.servicetag.resources"/>
   <Package name="javax.xml.bind.helpers"/>
   <Package name="com.sun.org.apache.xalan"/>
   <Package name="com.sun.org.apache.xml.internal.security.resource"/>
@@ -497,7 +486,6 @@
   <Package name="java.security.acl"/>
   <Package name="javax.imageio.plugins.bmp"/>
   <Package name="org.omg.PortableInterceptor.ORBInitInfoPackage"/>
-  <Package name="sun.org.mozilla.classfile.internal"/>
   <Package name="com.sun.swing.internal"/>
   <Package name="sun.rmi.runtime"/>
   <Package name="javax.xml.transform.stream"/>
@@ -537,9 +525,9 @@
   <Package name="com.sun.xml.internal.bind.unmarshaller"/>
   <Package name="com.sun.xml.internal.fastinfoset.util"/>
   <Package name="com.sun.org.apache.xml.internal.security.keys.keyresolver"/>
-  <Package name="com.sun.xml.internal.ws.encoding.xml"/>
-  <Package name="com.sun.corba.se.spi.oa"/>
   <Package name="com.sun.tracing.dtrace"/>
+  <Package name="com.sun.corba.se.spi.oa"/>
+  <Package name="com.sun.xml.internal.ws.encoding.xml"/>
   <Package name="java.awt.datatransfer"/>
   <Package name="sun.org.mozilla.javascript.internal.jdk13"/>
   <Package name="sun.net.spi.nameservice"/>
@@ -696,7 +684,6 @@
   <Package name="com.sun.xml.internal.bind.v2.model.nav"/>
   <Package name="com.sun.org.apache.xalan.internal.xsltc.compiler"/>
   <Package name="sun.awt.datatransfer"/>
-  <Package name="sun.org.mozilla.javascript.internal.optimizer"/>
   <Package name="java.awt.peer"/>
   <Package name="com.sun.xml.internal.messaging.saaj.packaging.mime"/>
   <Package name="sun.net.www.http"/>
@@ -737,7 +724,6 @@
   <Package name="org.w3c.dom.stylesheets"/>
   <Package name="com.sun.org.glassfish.external.statistics.impl"/>
   <Package name="javax.swing.text"/>
-  <Package name="com.sun.servicetag"/>
   <Package name="sun.applet.resources"/>
   <Package name="com.sun.security.auth.login"/>
   <Package name="sun.org.mozilla.javascript.internal.regexp"/>
@@ -883,6 +869,7 @@
   <Package name="com.sun.nio.file"/>
   <Package name="com.sun.xml.internal.ws.org"/>
   <Package name="com.sun.corba.se.impl.oa.poa"/>
+  <Package name="com.sun.beans.infos"/>
   <Package name="javax.net.ssl"/>
   <Package name="sun.java2d.opengl"/>
   <Package name="com.sun.imageio.plugins.bmp"/>
@@ -975,8 +962,6 @@
   <Package name="com.sun.xml.internal.fastinfoset.tools"/>
   <Package name="org.omg.stub.javax.management.remote"/>
   <Package name="com.sun.corba.se.impl.copyobject"/>
-  <Package name="sun.org.mozilla.classfile"/>
-  <Package name="sun.org.mozilla.javascript.internal.serialize"/>
   <Package name="com.sun.org.omg.CORBA"/>
   <Package name="sun.swing.plaf"/>
   <Package name="com.sun.xml.internal.bind.v2.runtime.unmarshaller"/>
@@ -1036,7 +1021,6 @@
   <Package name="com.sun.tracing"/>
   <Package name="java.util.spi"/>
   <Package name="sun.management"/>
-  <Package name="sun.beans.infos"/>
   <Package name="com.sun.xml.internal.bind.util"/>
   <Package name="com.sun.corba.se.spi.orbutil.fsm"/>
   <Package name="com.sun.swing.internal.plaf.basic"/>
@@ -1083,6 +1067,7 @@
   <Package name="com"/>
   <Package name="com.sun.imageio.plugins"/>
   <Package name="com.sun.corba.se.impl.orb"/>
+  <Package name="sun.management.jdp"/>
   <Package name="java.applet"/>
   <Package name="sun.beans.editors"/>
   <Package name="java.security.cert"/>
@@ -1098,6 +1083,7 @@
   <Package name="org.xml"/>
   <Package name="sun.security.jca"/>
   <Package name="com.sun.xml.internal.bind.v2.runtime.property"/>
+  <Package name="com.sun.beans.editors"/>
   <Package name="java.rmi.server"/>
   <Package name="com.sun.org.apache.xerces.internal.impl.dv.util"/>
   <Package name="com.sun.jndi.rmi.registry"/>
@@ -1220,13 +1206,25 @@
   <Package name="oracle.jrockit.jfr"/>
   <Package name="oracle.jrockit.jfr.parser"/>
   <Package name="oracle.jrockit.jfr.events"/>
+  <Package name="jdk"/>
+  <Package name="jdk.internal"/>
   <Package name="com.oracle.jrockit.jfr"/>
+  <Package name="oracle.jrockit.jfr.jdkevents"/>
+  <Package name="jdk.internal.jfr"/>
   <Package name="com.oracle.jrockit.jfr.management"/>
   <Package name="com.oracle.jrockit"/>
+  <Package name="oracle.jrockit.jfr.jdkevents.throwabletransform"/>
   <Package name="com.oracle"/>
+  <Package name="jdk.internal.jfr.events"/>
   <Package name="oracle.jrockit.jfr.openmbean"/>
   <Package name="oracle.jrockit.jfr.tools"/>
   <Package name="oracle.jrockit.jfr.settings"/>
+  <Package name=""/>
+  <Package name="com.sun.java"/>
+  <Package name="com.sun.java.accessibility"/>
+  <Package name="com.sun"/>
+  <Package name="com.sun.java.accessibility.util"/>
+  <Package name="com"/>
   <Package name=""/>
   <Package name="sun"/>
   <Package name="sun.net"/>
@@ -1237,6 +1235,14 @@
   <Package name="com.apple"/>
   <Package name="com.apple.dnssd"/>
   <Package name="com"/>
+  <Package name=""/>
+  <Package name="com.sun.java.accessibility.util.java.awt"/>
+  <Package name="com.sun.java"/>
+  <Package name="com.sun.java.accessibility"/>
+  <Package name="com.sun"/>
+  <Package name="com.sun.java.accessibility.util"/>
+  <Package name="com"/>
+  <Package name="com.sun.java.accessibility.util.java"/>
   <Package name=""/>
   <Package name="sun.text"/>
   <Package name="sun"/>

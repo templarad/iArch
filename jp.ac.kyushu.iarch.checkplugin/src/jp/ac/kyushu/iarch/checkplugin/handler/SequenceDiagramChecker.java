@@ -8,16 +8,22 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.basefunction.controller.GraphitiModelManager;
-
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import behavior.Message;
 import behavior.MessageOccurrenceSpecification;
 
 public class SequenceDiagramChecker {
+	private static final Logger logger = LoggerFactory.getLogger(SequenceDiagramChecker.class);
 	public boolean checkSequenceDiagram(Model archiface, IResource sequenceResource){
+		if(sequenceResource == null){
+			logger.error("Auto check failed :Sequence Diagram does not exsit!");
+			return false;
+		}
 		Resource sequenceDiagram = GraphitiModelManager.getGraphitiModel(sequenceResource);
 		List<Message> diagramMessages = getMassageSequence(sequenceDiagram);
 
@@ -63,17 +69,18 @@ public class SequenceDiagramChecker {
 	}
 	
 	private boolean checkMessageOrder(Behavior behavior, List<Message> diagramMessages){
-		int diagOrderCount = 0;
 		int messageOrderCount = 0;
 		for(Method methodCall : behavior.getCall()){
 
 			//System.out.println("in "+methodCall.getName());
 			if(methodCall.getName()==null)continue;//in case of "no declaration in Archface component"
 			
-			for(diagOrderCount=0;;diagOrderCount++){
+			for(int diagOrderCount=0;;diagOrderCount++){
+				
 				if(diagOrderCount>=diagramMessages.size()){
 					return false;
 				}
+				if(diagramMessages.get(diagOrderCount).getReceiveEvent()==null)continue;
 				//System.out.println(" c :"+diagramMessages.get(diagOrderCount));
 				String Actorname = ((MessageOccurrenceSpecification)diagramMessages.get(diagOrderCount).getReceiveEvent())
 						.getCovered().get(0).getActor().getName();

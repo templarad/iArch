@@ -1,5 +1,4 @@
 package jp.ac.kyushu.iarch.checkplugin.handler;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -40,6 +39,8 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.IMethodBinding;
+import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
@@ -53,8 +54,8 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.resource.XtextResourceSetProvider;
-import com.google.inject.Injector;
 
+import com.google.inject.Injector;
 
 public class CheckASTHandler implements IHandler {
 	final private static Injector injector = ArchDSLActivator.getInstance().getInjector(ArchDSLPlugin.getLanguageName());
@@ -77,6 +78,7 @@ public class CheckASTHandler implements IHandler {
 				Document codeXmlDocument = DocumentHelper.createDocument();
 				 ASTParser parser = ASTParser.newParser(AST.JLS4);
 				parser.setProject(project);
+				parser.setResolveBindings(true);
 
 				try {
 
@@ -101,6 +103,7 @@ public class CheckASTHandler implements IHandler {
 
 									{
 										parser.setSource(file);
+										parser.setResolveBindings(true);
 										st = file.getResource();
 										ASTNode rootnode = parser.createAST(null);
 										final CompilationUnit result = (CompilationUnit)rootnode;
@@ -121,7 +124,6 @@ public class CheckASTHandler implements IHandler {
 												classElement = pageElement.addElement(nodeType);
 												String className = node.getName().toString();
 												classElement.addAttribute("name", className);
-												
 												List classInterface = node.superInterfaceTypes();
 												if (node.isInterface() != true) {
 													for (Iterator iterator = classInterface.iterator(); iterator.hasNext();) {
@@ -159,8 +161,22 @@ public class CheckASTHandler implements IHandler {
 												Element mEElement = methodInvocationElement.addElement("InvocationExpression");
 												System.out.println("Method Invocation:" + node.getName());
 												System.out.println("Method InvocationExpression:" + node.getExpression());
-												if ((node.getExpression()) != null)
-													mEElement.addText(node.getExpression().toString());
+												if ((node.getExpression()) != null){
+												ITypeBinding binding = node.getExpression().resolveTypeBinding();
+												
+												 if (binding != null) {
+															 methodInvocationElement.addAttribute("type",  binding.getName());
+															 System.out.println("type :" + binding.getName());
+						                            }
+												 }
+												IMethodBinding binding2 = node.resolveMethodBinding();
+					                            if (binding2!= null) {
+					                                ITypeBinding type = binding2.getDeclaringClass();
+					                                if (type != null) {
+					                                	methodInvocationElement.addAttribute("class",  type.getName());
+					                                	System.out.println("class :" + type.getName());
+					                                }
+					                            }
 
 												return super.visit(node);
 											}
@@ -265,7 +281,7 @@ public class CheckASTHandler implements IHandler {
 							int lineNumberClass=Integer.parseInt(a.attributeValue("lineNumber").toString());
 							if (className.equals(className2)) {
 								IResource st2=st.getProject().getFile("/src/"+className+".java");
-								ProblemViewManager.addInfo1(st2, "Interface-Class :" + className + " is Exist", st.getName(),lineNumberClass);
+								ProblemViewManager.addInfo1(st2, "Interface-Class :" + className + " exists", st.getName(),lineNumberClass);
 								@SuppressWarnings("unchecked")
 								List<Element> methodList = a.selectNodes("MethodDeclaration");
 								for (Method m : archiclass.getMethods()) {
@@ -276,12 +292,12 @@ public class CheckASTHandler implements IHandler {
 										methodname2 = b.attributeValue("name");
 										int lineNumberMethod=Integer.parseInt(b.attributeValue("lineNumber").toString());
 										if (methodname2.equals(methodname)) {
-											ProblemViewManager.addInfo1(st2, "Interface- Method : " + methodname+ " is Exist", archiclass.getName(),lineNumberMethod);
+											ProblemViewManager.addInfo1(st2, "Interface- Method : " + methodname+ " exists", archiclass.getName(),lineNumberMethod);
 											flag = true;
 										}
 									}
 									if (!flag) {
-										ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not  Exist", archiclass.getName(),lineNumberClass);
+										ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " does not exist", archiclass.getName(),lineNumberClass);
 									}
 								}
 							}

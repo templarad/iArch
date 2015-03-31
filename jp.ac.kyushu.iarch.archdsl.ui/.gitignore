@@ -1,2 +1,3 @@
 /bin
-/bin
+/src-gen
+*.xml_gen
