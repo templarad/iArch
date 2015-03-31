@@ -12,31 +12,31 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalArchDSLLexer extends Lexer {
-    public static final int RULE_ID=4;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int T__21=21;
-    public static final int T__20=20;
-    public static final int EOF=-1;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__19=19;
     public static final int RULE_STRING=6;
-    public static final int T__16=16;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int T__19=19;
     public static final int T__15=15;
-    public static final int T__18=18;
+    public static final int T__16=16;
     public static final int T__17=17;
-    public static final int T__12=12;
+    public static final int T__18=18;
     public static final int T__11=11;
-    public static final int T__14=14;
+    public static final int T__12=12;
     public static final int T__13=13;
-    public static final int RULE_INT=5;
+    public static final int T__14=14;
+    public static final int EOF=-1;
+    public static final int RULE_ID=4;
     public static final int RULE_WS=9;
+    public static final int RULE_ANY_OTHER=10;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int RULE_INT=5;
+    public static final int T__22=22;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
 
     // delegates
     // delegators
@@ -1078,19 +1078,37 @@ public class InternalArchDSLLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\1\31\1\uffff\1\34\2\31\1\uffff\1\41\4\uffff\1\26\1\uffff\1\31\1\26\2\uffff\3\26\2\uffff\1\31\1\57\4\uffff\2\31\11\uffff\1\31\5\uffff\1\31\1\uffff\6\31\1\72\3\31\1\uffff\4\31\1\102\2\31\1\uffff\3\31\2\uffff";
+        "\1\uffff\1\31\1\uffff\1\34\2\31\1\uffff\1\41\4\uffff\1\26\1\uffff"+
+        "\1\31\1\26\2\uffff\3\26\2\uffff\1\31\1\57\4\uffff\2\31\11\uffff"+
+        "\1\31\5\uffff\1\31\1\uffff\6\31\1\72\3\31\1\uffff\4\31\1\102\2\31"+
+        "\1\uffff\3\31\2\uffff";
     static final String DFA12_eofS =
         "\110\uffff";
     static final String DFA12_minS =
-        "\1\0\1\143\1\uffff\1\73\1\170\1\156\1\uffff\1\73\4\uffff\1\76\1\uffff\1\165\1\101\2\uffff\2\0\1\52\2\uffff\1\143\1\60\4\uffff\2\164\11\uffff\1\154\5\uffff\1\145\1\uffff\2\145\1\154\1\162\1\156\1\162\1\60\1\164\1\144\1\146\1\uffff\1\141\1\163\1\141\1\151\1\60\1\143\1\156\1\uffff\1\145\2\40\2\uffff";
+        "\1\0\1\143\1\uffff\1\73\1\170\1\156\1\uffff\1\73\4\uffff\1\76\1"+
+        "\uffff\1\165\1\101\2\uffff\2\0\1\52\2\uffff\1\143\1\60\4\uffff\2"+
+        "\164\11\uffff\1\154\5\uffff\1\145\1\uffff\2\145\1\154\1\162\1\156"+
+        "\1\162\1\60\1\164\1\144\1\146\1\uffff\1\141\1\163\1\141\1\151\1"+
+        "\60\1\143\1\156\1\uffff\1\145\2\40\2\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\156\1\uffff\1\73\1\170\1\156\1\uffff\1\73\4\uffff\1\76\1\uffff\1\165\1\172\2\uffff\2\uffff\1\57\2\uffff\1\143\1\172\4\uffff\2\164\11\uffff\1\154\5\uffff\1\145\1\uffff\2\145\1\154\1\162\1\156\1\162\1\172\1\164\1\144\1\146\1\uffff\1\141\1\163\1\141\1\151\1\172\1\143\1\156\1\uffff\1\145\2\40\2\uffff";
+        "\1\uffff\1\156\1\uffff\1\73\1\170\1\156\1\uffff\1\73\4\uffff\1"+
+        "\76\1\uffff\1\165\1\172\2\uffff\2\uffff\1\57\2\uffff\1\143\1\172"+
+        "\4\uffff\2\164\11\uffff\1\154\5\uffff\1\145\1\uffff\2\145\1\154"+
+        "\1\162\1\156\1\162\1\172\1\164\1\144\1\146\1\uffff\1\141\1\163\1"+
+        "\141\1\151\1\172\1\143\1\156\1\uffff\1\145\2\40\2\uffff";
     static final String DFA12_acceptS =
-        "\2\uffff\1\2\3\uffff\1\6\1\uffff\1\10\1\13\1\14\1\15\1\uffff\1\20\2\uffff\1\22\1\23\3\uffff\1\27\1\30\2\uffff\1\22\1\2\1\12\1\3\2\uffff\1\6\1\7\1\11\1\10\1\13\1\14\1\15\1\16\1\20\1\uffff\1\23\1\24\1\25\1\26\1\27\1\uffff\1\17\12\uffff\1\21\7\uffff\1\4\3\uffff\1\1\1\5";
+        "\2\uffff\1\2\3\uffff\1\6\1\uffff\1\10\1\13\1\14\1\15\1\uffff\1"+
+        "\20\2\uffff\1\22\1\23\3\uffff\1\27\1\30\2\uffff\1\22\1\2\1\12\1"+
+        "\3\2\uffff\1\6\1\7\1\11\1\10\1\13\1\14\1\15\1\16\1\20\1\uffff\1"+
+        "\23\1\24\1\25\1\26\1\27\1\uffff\1\17\12\uffff\1\21\7\uffff\1\4\3"+
+        "\uffff\1\1\1\5";
     static final String DFA12_specialS =
-        "\1\2\21\uffff\1\1\1\0\64\uffff}>";
+        "\1\1\21\uffff\1\0\1\2\64\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\26\2\25\2\26\1\25\22\26\1\25\1\26\1\22\4\26\1\23\1\6\1\7\2\26\1\10\1\14\1\15\1\24\12\21\3\26\1\13\3\26\32\20\1\11\1\26\1\12\1\17\1\20\1\26\4\20\1\4\3\20\1\5\4\20\1\16\6\20\1\1\5\20\1\2\1\26\1\3\uff82\26",
+            "\11\26\2\25\2\26\1\25\22\26\1\25\1\26\1\22\4\26\1\23\1\6\1"+
+            "\7\2\26\1\10\1\14\1\15\1\24\12\21\3\26\1\13\3\26\32\20\1\11"+
+            "\1\26\1\12\1\17\1\20\1\26\4\20\1\4\3\20\1\5\4\20\1\16\6\20\1"+
+            "\1\5\20\1\2\1\26\1\3\uff82\26",
             "\1\30\12\uffff\1\27",
             "",
             "\1\33",
@@ -1201,16 +1219,6 @@ public class InternalArchDSLLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_19 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_19>='\u0000' && LA12_19<='\uFFFF')) ) {s = 42;}
-
-                        else s = 22;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
                         int LA12_18 = input.LA(1);
 
                         s = -1;
@@ -1220,7 +1228,7 @@ public class InternalArchDSLLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 2 : 
+                    case 1 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -1267,6 +1275,16 @@ public class InternalArchDSLLexer extends Lexer {
                         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 21;}
 
                         else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='*' && LA12_0<='+')||(LA12_0>=':' && LA12_0<='<')||(LA12_0>='>' && LA12_0<='@')||LA12_0=='\\'||LA12_0=='`'||LA12_0=='|'||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 22;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA12_19 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_19>='\u0000' && LA12_19<='\uFFFF')) ) {s = 42;}
+
+                        else s = 22;
 
                         if ( s>=0 ) return s;
                         break;

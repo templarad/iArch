@@ -1,6 +1,5 @@
 package jp.ac.kyushu.iarch.checkplugin.view;
 
-import org.eclipse.jdt.ui.ISharedImages;
 import org.eclipse.jdt.ui.JavaUI;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
@@ -8,6 +7,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.part.ViewPart;
 
 public class UncertainMethodViewPart extends ViewPart {
@@ -34,14 +34,14 @@ public class UncertainMethodViewPart extends ViewPart {
 		for (int i = 0; i < 4; i++) {
 			TreeItem item = new TreeItem(tree, SWT.NONE);
 			item.setText(new String[] { "ClassName " + i, "-", "-" });
-			item.setImage(JavaUI.getSharedImages().getImage(
-					ISharedImages.IMG_OBJS_CLASS));
+//			item.setImage(JavaUI.getSharedImages().getImage(
+//					ISharedImages.));
 			for (int j = 0; j < 4; j++) {
 				TreeItem subItem = new TreeItem(item, SWT.BORDER);
 				subItem.setText(new String[] { "MethodName " + j,
 						"Alternative", "-" });
-				subItem.setImage(JavaUI.getSharedImages().getImage(
-						ISharedImages.IMG_FIELD_PRIVATE));
+//				subItem.setImage(JavaUI.getSharedImages().getImage(
+//						ISharedImages.IMG_FIELD_PRIVATE));
 			}
 		}
 	}

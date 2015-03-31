@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/jp.ac.kyushu.iarch.archdsl/src-gen" editDirectory="/jp.ac.kyushu.iarch.archdsl.edit/src"
@@ -64,38 +63,3 @@
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/jp.ac.kyushu.iarch.archdsl/src-gen" editDirectory="/jp.ac.kyushu.iarch.archdsl.edit/src"
-    editorDirectory="/jp.ac.kyushu.iarch.archdsl.editor/src" modelPluginID="jp.ac.kyushu.iarch.archdsl"
-    forceOverwrite="true" modelName="ArchDSL" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    complianceLevel="5.0" copyrightFields="false" editPluginID="jp.ac.kyushu.iarch.archdsl.edit"
-    editorPluginID="jp.ac.kyushu.iarch.archdsl.editor" runtimeVersion="2.10">
-  <genPackages prefix="ArchDSL" basePackage="jp.ac.kyushu.iarch.archdsl" disposableProviderFactory="true"
-      fileExtensions="arch" ecorePackage="ArchDSL.ecore#/">
-    <genClasses ecoreClass="ArchDSL.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/interfaces"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/behaviors"/>
-    </genClasses>
-    <genClasses ecoreClass="ArchDSL.ecore#//Interface">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Interface/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Interface/methods"/>
-    </genClasses>
-    <genClasses ecoreClass="ArchDSL.ecore#//Method">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Method/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Method/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Method/param"/>
-    </genClasses>
-    <genClasses ecoreClass="ArchDSL.ecore#//Param">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Param/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Param/name"/>
-    </genClasses>
-    <genClasses ecoreClass="ArchDSL.ecore#//Behavior">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Behavior/interface"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Behavior/call"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Behavior/end"/>
-    </genClasses>
-  </genPackages>
-</genmodel:GenModel>
->>>>>>> origin/master
