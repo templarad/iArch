@@ -19,6 +19,9 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.SuperCall;
 import jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainBehavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.UncertainInterface;
+import jp.ac.kyushu.iarch.checkplugin.model.JavaClassModel;
+import jp.ac.kyushu.iarch.checkplugin.model.JavaMethodModel;
+import jp.ac.kyushu.iarch.checkplugin.model.TypeCheckModelsManager;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -27,7 +30,7 @@ import org.dom4j.Node;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
@@ -219,105 +222,20 @@ public class ASTSourceCodeChecker{
 			Element test = (Element) root.selectSingleNode("//Package[@name='']");
 			@SuppressWarnings("unchecked")
 			List<Element> javaClasses = test.selectNodes("Class");	//list of classes in java source code
+			List<JavaClassModel> javaClassList = new ArrayList<JavaClassModel>();
+			for (Element element : javaClasses) {
+				JavaClassModel jcm = new JavaClassModel(element,javaFileIResource);
+				javaClassList.add(jcm);
+			}
+
+			// pairModels Clear.
+			TypeCheckModelsManager.modelsInit();
 
 			// Interface check
-			for (Interface archiclass : archiface.getInterfaces()) {
-				String className = archiclass.getName();
-				for (Element a : javaClasses) {
-					String className2 = a.attributeValue("name");
-					int lineNumberClass=Integer.parseInt(a.attributeValue("lineNumber").toString());
-					// pick the java methods into JavaMethodList
-					if (className.equals(className2)) {
-						IResource st2=javaFileIResource.getProject().getFile("/src/"+className+".java");
-						ProblemViewManager.addInfo1(st2, "Interface-Class :" + className + " is defined", javaFileIResource.getName(),lineNumberClass);
-						@SuppressWarnings("unchecked")
-						List<Element> javaMethodList = a.selectNodes("MethodDeclaration");
-						//Method check : m is arch method
-						for (Method m : archiclass.getMethods()) {
-							String methodname = m.getName();
-							String methodname2 = null;
-							boolean isExist = false;
-							for (Element b : javaMethodList) {
-								methodname2 = b.attributeValue("name");
-								int lineNumberMethod=Integer.parseInt(b.attributeValue("lineNumber").toString());
-								if (methodname2.equals(methodname)) {
-									ProblemViewManager.addInfo1(st2, "Interface- Method : " + methodname+ " is defined", archiclass.getName(),lineNumberMethod);
-									isExist = true;
-									break;
-								}
-							}
-							if (!isExist) {
-								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not defined", archiclass.getName(),lineNumberClass);
-							}
-						}
-					}
-				}
-			}
+			typeCheckInterface(archiface.getInterfaces(),test,javaFileIResource);
 
 			// UncertainInterface check
-
-			for (UncertainInterface u_interface :archiface.getU_interfaces()) {
-				Interface superInterface = u_interface.getSuperInterface();
-				if(superInterface != null){
-					IResource st2=javaFileIResource.getProject().getFile("/src/"+superInterface.getName()+".java");
-					for (Element jc : javaClasses) {
-						String javaClassName = jc.attributeValue("name");
-						if(superInterface.getName().equals(javaClassName)){
-							@SuppressWarnings("unchecked")
-							List<Element> javaMethodList = jc.selectNodes("MethodDeclaration");
-							int lineNumberClass = Integer.parseInt(jc.attributeValue("lineNumber").toString());
-
-							//optmethods check
-							for(OptMethod om : u_interface.getOptmethods()){
-								String optMethodNameArch = om.getName();
-								String optMethodNameJava = null;
-								boolean isExist = false;
-								// optmethods control
-								for(Element jm : javaMethodList){
-									optMethodNameJava = jm.attributeValue("name");
-									int lineNumberOptMethod=Integer.parseInt(jm.attributeValue("lineNumber").toString());
-									if (optMethodNameJava.equals(optMethodNameArch)) {
-										ProblemViewManager.addInfo1(st2, "UncertainInterface- OptionMethod : " + optMethodNameArch + " is defined", superInterface.getName(),lineNumberOptMethod);
-										isExist = true;
-									}
-								}
-
-								if(!isExist){
-									ProblemViewManager.addWarning1(st2, "UncertainInterface- OptionMethod : " + optMethodNameArch + " is not defined", superInterface.getName(), lineNumberClass);
-								}
-							}
-
-							//altmethods check
-							for (AltMethod am : u_interface.getAltmethods()) {
-								List<String> altMethodNameArch = new ArrayList<String>();
-								altMethodNameArch.add(am.getName());
-								altMethodNameArch.addAll(am.getA_name());
-								String altMethodNameJava = null;
-								boolean isDefine = false;
-								// altmethods control
-								for (Element jm : javaMethodList) {
-									altMethodNameJava = jm.attributeValue("name");
-									int lineNumberAltMethod = Integer.parseInt(jm.attributeValue("lineNumber").toString());
-									for (String s : altMethodNameArch) {
-										if (altMethodNameJava.equals(s)) {
-												ProblemViewManager.addInfo1(st2, "UncertainInterface- AlternativeMethod : " + s + " is defined", superInterface.getName(), lineNumberAltMethod);
-												isDefine= true;
-										}
-									}
-								}
-								if(isDefine == false){
-									String altmethodname_all = "";
-									for(String s : altMethodNameArch){
-										altmethodname_all += s+" ";
-									}
-									ProblemViewManager.addError1(st2,"UncertainInterface- AlternativeMethod : AlternativeMethod is not defined."
-											+ " You can insert an AlternativeMethod in these methods : " + altmethodname_all , jc.getName(),lineNumberClass);
-								}
-							}
-						}
-					}
-				}
-			}
+			typeCheckUncertainInterface(archiface.getU_interfaces(),test,javaFileIResource);
 
 			// behaver
 			for (Behavior behavior : archiface.getBehaviors()) {
@@ -453,6 +371,95 @@ public class ASTSourceCodeChecker{
 					}
 				}
 			}
+	}
+
+
+	private void typeCheckUncertainInterface(
+			EList<UncertainInterface> u_interfaces,
+			Element rootElement, IResource projectPath) {
+		Interface superInterface = null;
+		Node classNode = null;
+		Node methodNode = null;
+		boolean isDefine = false;
+
+		for (UncertainInterface u_interface :u_interfaces) {
+			superInterface = u_interface.getSuperInterface();
+			if(superInterface != null){	// if super-interface is not exist, type check should not be done.
+				classNode = rootElement.selectSingleNode("Class[@name='" + superInterface.getName() + "']");
+				if(classNode != null){	// this means the class defined by super-interface is exist in java code.
+					//optmethods check
+					for(OptMethod om : u_interface.getOptmethods()){
+						isDefine = false;
+						methodNode = classNode.selectSingleNode("MethodDeclaration[@name='" + om.getName() + "']");
+						if(methodNode != null){
+//							ProblemViewManager.addInfo1(j_class.getResourceFilePath(), "UncertainInterface- OptionMethod : " + om.getName() + " is defined", superInterface.getName(),j_method.getLineNumber());
+							isDefine = true;
+						}
+						if(!isDefine){
+//							ProblemViewManager.addWarning1(j_class.getResourceFilePath(), "UncertainInterface- OptionMethod : " + om.getName() + " is not defined", superInterface.getName(), j_class.getLineNumber());
+						}
+					}
+
+					//altmethods check
+					for (AltMethod am : u_interface.getAltmethods()) {
+						List<String> altMethodNamesArch = new ArrayList<String>();
+						altMethodNamesArch.add(am.getName());
+						altMethodNamesArch.addAll(am.getA_name());
+						String altMethodNameJava = null;
+						isDefine = false;
+						// altmethods control
+						methodNode = classNode.selectSingleNode("MethodDeclaration[@name='" + am.getName() + "']");
+						if (methodNode != null) {
+							for (String s : altMethodNamesArch) {
+								if (altMethodNameJava.equals(s)) {
+//										ProblemViewManager.addInfo1(j_class.getResourceFilePath(), "UncertainInterface- AlternativeMethod : " + s + " is defined", j_class.getName(), j_method.getLineNumber());
+										isDefine= true;
+								}
+							}
+						}
+						if(isDefine == false){
+							String altmethodname_all = "";
+							for(String s : altMethodNamesArch){
+								altmethodname_all += s+" ";
+							}
+//							ProblemViewManager.addError1(j_class.getProjectPath(),"UncertainInterface- AlternativeMethod : AlternativeMethod is not defined."
+//									+ " You can insert an AlternativeMethod in these methods : " + altmethodname_all , j_class.getName(),j_class.getLineNumber());
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+
+	private void typeCheckInterface(EList<Interface> interfaces,
+			Element rootElement, IResource projectPath) {
+		String archClassName = null;
+		boolean isMatch = false;	//Parameter for type check is true or false
+		Node classNode =  null;
+		JavaClassModel tmpClassModel = null;
+		Node methodNode = null;
+
+		for (Interface archiclass : interfaces) {
+			archClassName = archiclass.getName();
+			classNode =  rootElement.selectSingleNode("Class[@name='" + archClassName + "']");
+			if(classNode != null){
+				// this model makes various parameters enable.
+				tmpClassModel = new JavaClassModel(classNode, projectPath);
+				// Insert Class Model to static model
+				for (Method archimethod : archiclass.getMethods()) {
+					methodNode = classNode.selectSingleNode("MethodDeclaration[@name='" + archimethod.getName() + "']");
+					isMatch = (methodNode != null);
+					if(isMatch){
+						// Insert Method Model to static model
+
+					}else{
+						ProblemViewManager.addError1(tmpClassModel.getResourceFilePath(), "Interface- Method :" + archimethod.getName() + " is not exist", archiclass.getName(),tmpClassModel.getLineNumber());
+					}
+				}
+			}
+		}
 	}
 
 

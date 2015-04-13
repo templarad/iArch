@@ -3398,9 +3398,9 @@ rule__AltCall__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getAltCallAccess().getOptAssignment_1()); }
-(rule__AltCall__OptAssignment_1)?
-{ after(grammarAccess.getAltCallAccess().getOptAssignment_1()); }
+{ before(grammarAccess.getAltCallAccess().getGroup_1()); }
+(rule__AltCall__Group_1__0)?
+{ after(grammarAccess.getAltCallAccess().getGroup_1()); }
 )
 
 ;
@@ -3501,6 +3501,69 @@ finally {
 
 
 
+
+
+
+
+
+
+rule__AltCall__Group_1__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__AltCall__Group_1__0__Impl
+	rule__AltCall__Group_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AltCall__Group_1__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAltCallAccess().getOptAssignment_1_0()); }
+(rule__AltCall__OptAssignment_1_0)
+{ after(grammarAccess.getAltCallAccess().getOptAssignment_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__AltCall__Group_1__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__AltCall__Group_1__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AltCall__Group_1__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAltCallAccess().getCommaKeyword_1_1()); }
+
+	',' 
+
+{ after(grammarAccess.getAltCallAccess().getCommaKeyword_1_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 
@@ -4316,22 +4379,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__AltCall__OptAssignment_1
+rule__AltCall__OptAssignment_1_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getAltCallAccess().getOptNullKeyword_1_0()); }
+{ before(grammarAccess.getAltCallAccess().getOptNullKeyword_1_0_0()); }
 (
-{ before(grammarAccess.getAltCallAccess().getOptNullKeyword_1_0()); }
+{ before(grammarAccess.getAltCallAccess().getOptNullKeyword_1_0_0()); }
 
 	'null' 
 
-{ after(grammarAccess.getAltCallAccess().getOptNullKeyword_1_0()); }
+{ after(grammarAccess.getAltCallAccess().getOptNullKeyword_1_0_0()); }
 )
 
-{ after(grammarAccess.getAltCallAccess().getOptNullKeyword_1_0()); }
+{ after(grammarAccess.getAltCallAccess().getOptNullKeyword_1_0_0()); }
 )
 
 ;

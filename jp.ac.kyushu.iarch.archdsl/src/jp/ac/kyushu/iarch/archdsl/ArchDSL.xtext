@@ -55,7 +55,7 @@ OptCall:
 	"[" name=[SuperMethod|FQN] "]";
 
 AltCall:
-	"{" (opt ?= "null")? name=[SuperMethod|FQN] ("," (a_name+=[SuperMethod|FQN] | (opt ?= "null")?))* "}";
+	"{" (opt ?= "null" ",")? name=[SuperMethod|FQN] ("," (a_name+=[SuperMethod|FQN] | (opt ?= "null")?))* "}";
 
 SuperCall:
 	CertainCall | OptCall | AltCall;
