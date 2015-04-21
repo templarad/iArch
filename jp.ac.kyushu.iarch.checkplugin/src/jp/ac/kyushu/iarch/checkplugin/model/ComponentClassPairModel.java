@@ -3,6 +3,9 @@
  */
 package jp.ac.kyushu.iarch.checkplugin.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 
 import org.dom4j.Node;
@@ -13,20 +16,43 @@ import org.dom4j.Node;
  */
 public class ComponentClassPairModel {
 
-	private Interface archClass = null;
+	private Interface archInterface = null;
 	private Node javaClassNode = null;
 	private boolean isExistJavaNode = false;
+	public List<ComponentMethodPairModel> methodPairsList = new ArrayList<ComponentMethodPairModel>();
 
 	public ComponentClassPairModel(Interface archInterface, Node javaClassNode) {
-		this.archClass = archInterface;
+		this.archInterface = archInterface;
 		this.javaClassNode = javaClassNode;
 		if (javaClassNode != null) {
 			this.isExistJavaNode = true;
 		}
 	}
 
-	public Interface getArchClass() {
-		return archClass;
+	public boolean overrideMethodPairModel(ComponentMethodPairModel newModel) {
+		for (ComponentMethodPairModel methodPairModel : methodPairsList) {
+			if (newModel.isAlt()) {
+				if (newModel.getAltMethodName().equals(
+						methodPairModel.getArchMethod().getName())) {
+					methodPairsList.set(
+							methodPairsList.indexOf(methodPairModel), newModel);
+					return true;
+				}
+			} else {
+				if (newModel.getArchMethod().getName().equals(
+						methodPairModel.getArchMethod().getName())) {
+					methodPairsList.set(
+							methodPairsList.indexOf(methodPairModel), newModel);
+					return true;
+				}
+			}
+		}
+		methodPairsList.add(newModel);
+		return false;
+	}
+
+	public Interface getArchInterface() {
+		return archInterface;
 	}
 
 	public Node getJavaClassNode() {

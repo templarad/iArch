@@ -3,6 +3,7 @@
  */
 package jp.ac.kyushu.iarch.checkplugin.model;
 
+import jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod;
@@ -20,11 +21,18 @@ public class ComponentMethodPairModel {
 	private Node javaClassNode = null;
 	private boolean isExistJavaNode = false;
 	private boolean isOpt = false;
+	private boolean isAlt = false;
+	private String altMethodName = null;
 
 
+	/**
+	 * Method,OptMethodをペアに使うときのコンストラクタ
+	 * @param archMethod メソッド本体
+	 * @param javaMethodNode 合致しているJavaのメソッドNode(ない場合はnull)
+	 */
 	public ComponentMethodPairModel(SuperMethod archMethod, Node javaMethodNode) {
 		this.archMethod = archMethod;
-		this.archClass = (Interface) archMethod.eContainer();
+//		this.archClass = (Interface) archMethod.eContainer();
 		this.javaMethodNode = javaMethodNode;
 		if (javaMethodNode != null) {
 			isExistJavaNode = true;
@@ -37,6 +45,31 @@ public class ComponentMethodPairModel {
 		}
 	}
 
+	/**
+	 * AltMethodをペアに使うときのコンストラクタ
+	 * @param altMethodKey AltMethod本体
+	 * @param methodName AltMethod内でJavaソースと合致している(であろう)メソッド名
+	 * @param javaMethodNode 合致しているJavaのメソッドNode(ない場合はnull)
+	 */
+	public ComponentMethodPairModel(AltMethod altMethodKey,String methodName, Node javaMethodNode) {
+		this(altMethodKey,javaMethodNode);
+		this.isAlt = true;
+		this.altMethodName = methodName;
+	}
+
+	/**
+	 * @return isAlt
+	 */
+	public boolean isAlt() {
+		return isAlt;
+	}
+
+	/**
+	 * @return altMethodName
+	 */
+	public String getAltMethodName() {
+		return altMethodName;
+	}
 
 	/**
 	 * @return archMethod
@@ -44,20 +77,6 @@ public class ComponentMethodPairModel {
 	public SuperMethod getArchMethod() {
 		return archMethod;
 	}
-
-
-	/**
-	 * @param archMethod セットする archMethod
-	 */
-	public void setArchMethod(SuperMethod archMethod) {
-		this.archMethod = archMethod;
-		if(archMethod instanceof OptMethod){
-			isOpt = true;
-		}else{
-			isOpt = false;
-		}
-	}
-
 
 	/**
 	 * @return archClass
