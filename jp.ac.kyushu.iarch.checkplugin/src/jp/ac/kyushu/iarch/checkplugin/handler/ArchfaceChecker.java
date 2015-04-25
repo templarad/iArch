@@ -1,6 +1,7 @@
 package jp.ac.kyushu.iarch.checkplugin.handler;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,6 +10,7 @@ import java.util.logging.Logger;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.basefunction.reader.ArchModel;
 import jp.ac.kyushu.iarch.basefunction.reader.XMLreader;
+import jp.ac.kyushu.iarch.checkplugin.model.ComponentClassPairModel;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -17,6 +19,7 @@ import org.eclipse.core.resources.IResource;
 public class ArchfaceChecker extends XMLreader {
 
 	Logger logger = Logger.getGlobal();
+	private List<ComponentClassPairModel> classPairs = new ArrayList<ComponentClassPairModel>();
 	
 	public ArchfaceChecker(IProject project){
 		super(project);
@@ -68,12 +71,15 @@ public class ArchfaceChecker extends XMLreader {
 		//Check source code
 		ASTSourceCodeChecker astchecker = new ASTSourceCodeChecker();
 		astchecker.SourceCodeArchifileChecker(archModel, getJavaProject());
-		
+		classPairs = astchecker.getComponentClassPairModels();
 		//Check AR
 //		ARChecker archecker = new ARChecker();
 //		archecker.checkAR(archfile, aRXMLResource);
 		
 		return;
+	}
+	public List<ComponentClassPairModel> getClassPairs() {
+		return classPairs;
 	}
 	
 }

@@ -19,11 +19,13 @@ public class ComponentClassPairModel {
 	private Interface archInterface = null;
 	private Node javaClassNode = null;
 	private boolean isExistJavaNode = false;
+	private String name = null;
 	public List<ComponentMethodPairModel> methodPairsList = new ArrayList<ComponentMethodPairModel>();
 
 	public ComponentClassPairModel(Interface archInterface, Node javaClassNode) {
 		this.archInterface = archInterface;
 		this.javaClassNode = javaClassNode;
+		this.name = archInterface.getName();
 		if (javaClassNode != null) {
 			this.isExistJavaNode = true;
 		}
@@ -57,6 +59,10 @@ public class ComponentClassPairModel {
 
 	public Node getJavaClassNode() {
 		return javaClassNode;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public boolean isExistJavaNode() {

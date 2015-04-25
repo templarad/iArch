@@ -49,7 +49,7 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclarationStatement;
 
 public class ASTSourceCodeChecker{
-	public static List<ComponentClassPairModel> componentClassPairModels = new ArrayList<ComponentClassPairModel>();
+	private List<ComponentClassPairModel> componentClassPairModels = new ArrayList<ComponentClassPairModel>();
 
 	public void SourceCodeArchifileChecker(Model archiface,	IJavaProject project){
 
@@ -383,7 +383,12 @@ public class ASTSourceCodeChecker{
 			}
 	}
 
-	// Archfaceと同じクラス，メソッド名をJavaソースコードから探し，ComponentClassPairModelへ格納します．
+
+	/**
+	 * Archfaceと同じクラス，メソッド名をJavaソースコードから探し，ComponentClassPairModelへ格納します．
+	 * @param archiface
+	 * @param packageElement
+	 */
 	private void typeCheckInterface(Model archiface,
 			Element packageElement) {
 		String archClassName = null;
@@ -399,12 +404,12 @@ public class ASTSourceCodeChecker{
 			if(classNode != null){
 				for (Method archimethod : archiclass.getMethods()) {
 					methodNode = classNode.selectSingleNode("MethodDeclaration[@name='" + archimethod.getName() + "']");
-					methodPairModel = new ComponentMethodPairModel(archimethod, methodNode);
+					methodPairModel = new ComponentMethodPairModel(archimethod, methodNode,classPairModel);
 					// Insert Method Model to class Pair Model
 					classPairModel.methodPairsList.add(methodPairModel);
 				}
 			}
-			// uncertain check?
+			// uncertain check
 			typeCheckUncertainInterface(archiface.getU_interfaces(), classPairModel);
 			// Insert Pair Model to static model
 			componentClassPairModels.add(classPairModel);
@@ -428,7 +433,7 @@ public class ASTSourceCodeChecker{
 					//optmethods check
 					for(OptMethod o_method : u_interface.getOptmethods()){
 						methodNode = classNode.selectSingleNode("MethodDeclaration[@name='" + o_method.getName() + "']");
-						uncertainMethodPairModel = new ComponentMethodPairModel(o_method, methodNode);
+						uncertainMethodPairModel = new ComponentMethodPairModel(o_method, methodNode,classPairModel);
 						// insert or override OptMethodPairModel
 						classPairModel.overrideMethodPairModel(uncertainMethodPairModel);
 					}
@@ -441,76 +446,26 @@ public class ASTSourceCodeChecker{
 						// altmethods control
 						for (String altMethodName : altMethodNamesArch) {
 							methodNode = classNode.selectSingleNode("MethodDeclaration[@name='" + altMethodName + "']");
-							uncertainMethodPairModel = new ComponentMethodPairModel(a_method, altMethodName, methodNode);
+							uncertainMethodPairModel = new ComponentMethodPairModel(a_method, altMethodName, methodNode,classPairModel);
 							// insert or override AltMethodPairModel
 							classPairModel.overrideMethodPairModel(uncertainMethodPairModel);
 						}
 					}
-					// override ClassPairModel
-//					overrideClassPairModel(componentClassPairModels,classPairModel);
 				}
 			}
 		}
 		return classPairModel;
 	}
 
-//	private void typeCheckUncertainInterface(
-//			EList<UncertainInterface> u_interfaces,
-//			Element rootElement, IResource projectPath) {
-//		Interface superInterface = null;
-//		Node classNode = null;
-//		ComponentClassPairModel uncertainClassPairModel = null;
-//		Node methodNode = null;
-//		ComponentMethodPairModel uncertainMethodPairModel = null;
-//		List<ComponentMethodPairModel> altMethodPairModels = new ArrayList<ComponentMethodPairModel>();
-//
-//		for (UncertainInterface u_interface :u_interfaces) {
-//			superInterface = u_interface.getSuperInterface();
-//			if(superInterface != null){	// if super-interface is not exist, type check should not be done.
-//
-//				classNode = rootElement.selectSingleNode("Class[@name='" + superInterface.getName() + "']");
-//				uncertainClassPairModel = new ComponentClassPairModel(superInterface, classNode);
-//				if(classNode != null){	// this means the class defined by super-interface is exist in java code.
-//					//optmethods check
-//					for(OptMethod o_method : u_interface.getOptmethods()){
-//						methodNode = classNode.selectSingleNode("MethodDeclaration[@name='" + o_method.getName() + "']");
-//						uncertainMethodPairModel = new ComponentMethodPairModel(o_method, methodNode);
-//						// insert or override OptMethodPairModel
-//						uncertainClassPairModel.overrideMethodPairModel(uncertainMethodPairModel);
-//					}
-//
-//					//altmethods check
-//					for (AltMethod a_method : u_interface.getAltmethods()) {
-//						List<String> altMethodNamesArch = new ArrayList<String>();
-//						altMethodNamesArch.add(a_method.getName());
-//						altMethodNamesArch.addAll(a_method.getA_name());
-//						// altmethods control
-//						for (String altMethodName : altMethodNamesArch) {
-//							methodNode = classNode.selectSingleNode("MethodDeclaration[@name='" + altMethodName + "']");
-//							uncertainMethodPairModel = new ComponentMethodPairModel(a_method, altMethodName, methodNode);
-//							// insert or override AltMethodPairModel
-//							uncertainClassPairModel.overrideMethodPairModel(uncertainMethodPairModel);
-//						}
-//					}
-//					// override ClassPairModel
-//					overrideClassPairModel(componentClassPairModels,uncertainClassPairModel);
-//				}
-//			}
-//		}
-//	}
 
 	private void pairModelsInit() {
 		componentClassPairModels.clear();
 	}
 
-	private void overrideClassPairModel(List<ComponentClassPairModel> pairModels,ComponentClassPairModel newModel){
-		for (ComponentClassPairModel classPairModel : pairModels) {
-			if(newModel.getArchInterface().getName().equals(classPairModel.getArchInterface().getName())){
-				pairModels.set(pairModels.indexOf(classPairModel), newModel);
-				break;
-			}
-		}
+	public List<ComponentClassPairModel> getComponentClassPairModels() {
+		return componentClassPairModels;
 	}
+
 
 	private List<String> returnModifiers(int ModifiersNum) {
 		// It is not all

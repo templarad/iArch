@@ -17,8 +17,10 @@ import org.dom4j.Node;
 public class ComponentMethodPairModel {
 	private SuperMethod archMethod = null;
 	private Interface archClass = null;
+	private ComponentClassPairModel parentModel = null;
 	private Node javaMethodNode = null;
 	private Node javaClassNode = null;
+	private String name = null;
 	private boolean isExistJavaNode = false;
 	private boolean isOpt = false;
 	private boolean isAlt = false;
@@ -30,14 +32,16 @@ public class ComponentMethodPairModel {
 	 * @param archMethod メソッド本体
 	 * @param javaMethodNode 合致しているJavaのメソッドNode(ない場合はnull)
 	 */
-	public ComponentMethodPairModel(SuperMethod archMethod, Node javaMethodNode) {
+	public ComponentMethodPairModel(SuperMethod archMethod, Node javaMethodNode, ComponentClassPairModel parentModel) {
 		this.archMethod = archMethod;
+		this.parentModel = parentModel;
 //		this.archClass = (Interface) archMethod.eContainer();
 		this.javaMethodNode = javaMethodNode;
 		if (javaMethodNode != null) {
 			isExistJavaNode = true;
 			this.javaClassNode = javaMethodNode.getParent();
 		}
+		this.name = archMethod.getName();
 		if(archMethod instanceof OptMethod){
 			isOpt = true;
 		}else{
@@ -51,10 +55,11 @@ public class ComponentMethodPairModel {
 	 * @param methodName AltMethod内でJavaソースと合致している(であろう)メソッド名
 	 * @param javaMethodNode 合致しているJavaのメソッドNode(ない場合はnull)
 	 */
-	public ComponentMethodPairModel(AltMethod altMethodKey,String methodName, Node javaMethodNode) {
-		this(altMethodKey,javaMethodNode);
+	public ComponentMethodPairModel(AltMethod altMethodKey,String methodName, Node javaMethodNode,ComponentClassPairModel parentModel) {
+		this(altMethodKey,javaMethodNode,parentModel);
 		this.isAlt = true;
 		this.altMethodName = methodName;
+		this.name = methodName;
 	}
 
 	/**
@@ -101,6 +106,16 @@ public class ComponentMethodPairModel {
 		return javaClassNode;
 	}
 
+	/**
+	 * @return name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	public ComponentClassPairModel getParentModel() {
+		return parentModel;
+	}
 
 	/**
 	 * @return isExistJavaNode

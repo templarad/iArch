@@ -80,9 +80,9 @@
             restorable="true">
       </view>
       <view
-            class="jp.ac.kyushu.iarch.checkplugin.view.UncertainMethodViewPart"
-            id="jp.ac.kyushu.iarch.checkplugin.view1"
-            name="Uncertain Methods"
+            class="jp.ac.kyushu.iarch.checkplugin.view.SourceCodeCheckViewPart"
+            id="jp.ac.kyushu.iarch.checkplugin.archfaceview"
+            name="Archface View"
             restorable="true">
       </view>
    </extension>
