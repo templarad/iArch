@@ -3,8 +3,10 @@
  */
 package jp.ac.kyushu.iarch.checkplugin.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jp.ac.kyushu.iarch.archdsl.archDSL.AltMethod;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.OptMethod;
 import jp.ac.kyushu.iarch.archdsl.archDSL.SuperMethod;
 
@@ -14,9 +16,9 @@ import org.dom4j.Node;
  * @author fukamachi
  *
  */
+// TODO Uncertainな要素を分離し，このクラスを継承したクラスを作成する
 public class ComponentMethodPairModel {
 	private SuperMethod archMethod = null;
-	private Interface archClass = null;
 	private ComponentClassPairModel parentModel = null;
 	private Node javaMethodNode = null;
 	private Node javaClassNode = null;
@@ -24,49 +26,70 @@ public class ComponentMethodPairModel {
 	private boolean isExistJavaNode = false;
 	private boolean isOpt = false;
 	private boolean isAlt = false;
+	private boolean isAltSet = false;
+	private boolean isInvocationExist = false;
 	private String altMethodName = null;
-
+	private List<ComponentMethodPairModel> altMethodPairSets = new ArrayList<ComponentMethodPairModel>();
+	private ComponentMethodPairModel altParentMethodModel = null;
 
 	/**
 	 * Method,OptMethodをペアに使うときのコンストラクタ
-	 * @param archMethod メソッド本体
-	 * @param javaMethodNode 合致しているJavaのメソッドNode(ない場合はnull)
+	 *
+	 * @param archMethod
+	 *            メソッド本体
+	 * @param javaMethodNode
+	 *            合致しているJavaのメソッドNode(ない場合はnull)
 	 */
-	public ComponentMethodPairModel(SuperMethod archMethod, Node javaMethodNode, ComponentClassPairModel parentModel) {
+	public ComponentMethodPairModel(SuperMethod archMethod,
+			Node javaMethodNode, ComponentClassPairModel parentModel) {
 		this.archMethod = archMethod;
 		this.parentModel = parentModel;
-//		this.archClass = (Interface) archMethod.eContainer();
 		this.javaMethodNode = javaMethodNode;
 		if (javaMethodNode != null) {
 			isExistJavaNode = true;
 			this.javaClassNode = javaMethodNode.getParent();
 		}
 		this.name = archMethod.getName();
-		if(archMethod instanceof OptMethod){
+		if (archMethod instanceof OptMethod) {
 			isOpt = true;
-		}else{
+		} else {
 			isOpt = false;
 		}
 	}
 
 	/**
 	 * AltMethodをペアに使うときのコンストラクタ
-	 * @param altMethodKey AltMethod本体
-	 * @param methodName AltMethod内でJavaソースと合致している(であろう)メソッド名
-	 * @param javaMethodNode 合致しているJavaのメソッドNode(ない場合はnull)
+	 *
+	 * @param altMethodKey
+	 *            AltMethod本体
+	 * @param methodName
+	 *            AltMethod内の要素
+	 * @param javaMethodNode
+	 *            合致しているJavaのメソッドNode(ない場合はnull)
 	 */
-	public ComponentMethodPairModel(AltMethod altMethodKey,String methodName, Node javaMethodNode,ComponentClassPairModel parentModel) {
-		this(altMethodKey,javaMethodNode,parentModel);
+	public ComponentMethodPairModel(AltMethod altMethodKey, String methodName,
+			Node javaMethodNode, ComponentClassPairModel parentClassModel) {
+		this(altMethodKey, javaMethodNode, parentClassModel);
 		this.isAlt = true;
 		this.altMethodName = methodName;
 		this.name = methodName;
 	}
 
 	/**
-	 * @return isAlt
+	 * AltMethodSetを作るときのコンストラクタ
+	 * @param altMethodKey AltMethodのname
+	 * @param altMethodModels AltMethodPairのリスト
+	 * @param parentModel クラスペア
 	 */
-	public boolean isAlt() {
-		return isAlt;
+	public ComponentMethodPairModel(AltMethod altMethodKey,
+			List<ComponentMethodPairModel> altMethodModels,ComponentClassPairModel parentModel) {
+		this.name = altMethodKey.getName();
+		this.isAltSet = true;
+		this.parentModel = parentModel;
+		this.altMethodPairSets = altMethodModels;
+		for(ComponentMethodPairModel model : altMethodModels){
+			model.setAltParentMethodModel(this);
+		}
 	}
 
 	/**
@@ -84,20 +107,11 @@ public class ComponentMethodPairModel {
 	}
 
 	/**
-	 * @return archClass
-	 */
-	public Interface getArchClass() {
-		return archClass;
-	}
-
-
-	/**
 	 * @return javaMethodNode
 	 */
 	public Node getJavaMethodNode() {
 		return javaMethodNode;
 	}
-
 
 	/**
 	 * @return javaClassNode
@@ -124,12 +138,56 @@ public class ComponentMethodPairModel {
 		return isExistJavaNode;
 	}
 
-
 	/**
 	 * @return isOpt
 	 */
 	public boolean isOpt() {
 		return isOpt;
+	}
+
+	/**
+	 * @return isAlt
+	 */
+	public boolean isAlt() {
+		return isAlt;
+	}
+
+	/**
+	 * @return isAltSet
+	 */
+	public boolean isAltSet() {
+		return isAltSet;
+	}
+
+	/**
+	 * @return isInvocationExist
+	 */
+	public boolean isInvocationExist(String name) {
+		isExistJavaNode = (javaMethodNode
+				.selectSingleNode("MethodInvocation[@name='" + name + "']") != null);
+		return isInvocationExist;
+	}
+
+	/**
+	 * @return altMethodPairSets
+	 */
+	public List<ComponentMethodPairModel> getAltMethodPairSets() {
+		return altMethodPairSets;
+	}
+
+	/**
+	 * @return altParentMethodModel
+	 */
+	public ComponentMethodPairModel getAltParentMethodModel() {
+		return altParentMethodModel;
+	}
+
+	/**
+	 * @param altParentMethodModel セットする altParentMethodModel
+	 */
+	public void setAltParentMethodModel(
+			ComponentMethodPairModel altParentMethodModel) {
+		this.altParentMethodModel = altParentMethodModel;
 	}
 
 }

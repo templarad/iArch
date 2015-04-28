@@ -60,6 +60,9 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOptMethodAccess().getGroup_4(), "rule__OptMethod__Group_4__0");
 					put(grammarAccess.getOptMethodAccess().getGroup_4_1(), "rule__OptMethod__Group_4_1__0");
 					put(grammarAccess.getParamAccess().getGroup(), "rule__Param__Group__0");
+					put(grammarAccess.getConnectorAccess().getGroup(), "rule__Connector__Group__0");
+					put(grammarAccess.getUncertainConnectorAccess().getGroup(), "rule__UncertainConnector__Group__0");
+					put(grammarAccess.getUncertainConnectorAccess().getGroup_2(), "rule__UncertainConnector__Group_2__0");
 					put(grammarAccess.getBehaviorAccess().getGroup(), "rule__Behavior__Group__0");
 					put(grammarAccess.getBehaviorAccess().getGroup_3(), "rule__Behavior__Group_3__0");
 					put(grammarAccess.getBehaviorAccess().getGroup_3_1(), "rule__Behavior__Group_3_1__0");
@@ -77,6 +80,7 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getU_interfacesAssignment_0_1(), "rule__Model__U_interfacesAssignment_0_1");
 					put(grammarAccess.getModelAccess().getBehaviorsAssignment_1_0(), "rule__Model__BehaviorsAssignment_1_0");
 					put(grammarAccess.getModelAccess().getU_behaviorsAssignment_1_1(), "rule__Model__U_behaviorsAssignment_1_1");
+					put(grammarAccess.getModelAccess().getConnectorsAssignment_1_2(), "rule__Model__ConnectorsAssignment_1_2");
 					put(grammarAccess.getUncertainInterfaceAccess().getNameAssignment_1(), "rule__UncertainInterface__NameAssignment_1");
 					put(grammarAccess.getUncertainInterfaceAccess().getSuperInterfaceAssignment_2_1(), "rule__UncertainInterface__SuperInterfaceAssignment_2_1");
 					put(grammarAccess.getUncertainInterfaceAccess().getAltmethodsAssignment_4_0(), "rule__UncertainInterface__AltmethodsAssignment_4_0");
@@ -101,6 +105,11 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOptMethodAccess().getParamAssignment_4_1_1(), "rule__OptMethod__ParamAssignment_4_1_1");
 					put(grammarAccess.getParamAccess().getTypeAssignment_0(), "rule__Param__TypeAssignment_0");
 					put(grammarAccess.getParamAccess().getNameAssignment_1(), "rule__Param__NameAssignment_1");
+					put(grammarAccess.getConnectorAccess().getNameAssignment_1(), "rule__Connector__NameAssignment_1");
+					put(grammarAccess.getConnectorAccess().getBehaviorsAssignment_3(), "rule__Connector__BehaviorsAssignment_3");
+					put(grammarAccess.getUncertainConnectorAccess().getNameAssignment_1(), "rule__UncertainConnector__NameAssignment_1");
+					put(grammarAccess.getUncertainConnectorAccess().getSuperInterfaceAssignment_2_1(), "rule__UncertainConnector__SuperInterfaceAssignment_2_1");
+					put(grammarAccess.getUncertainConnectorAccess().getU_behaviorsAssignment_4(), "rule__UncertainConnector__U_behaviorsAssignment_4");
 					put(grammarAccess.getBehaviorAccess().getInterfaceAssignment_0(), "rule__Behavior__InterfaceAssignment_0");
 					put(grammarAccess.getBehaviorAccess().getCallAssignment_3_0(), "rule__Behavior__CallAssignment_3_0");
 					put(grammarAccess.getBehaviorAccess().getCallAssignment_3_1_1(), "rule__Behavior__CallAssignment_3_1_1");

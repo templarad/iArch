@@ -33,16 +33,16 @@ public class ComponentClassPairModel {
 
 	public boolean overrideMethodPairModel(ComponentMethodPairModel newModel) {
 		for (ComponentMethodPairModel methodPairModel : methodPairsList) {
-			if (newModel.isAlt()) {
-				if (newModel.getAltMethodName().equals(
-						methodPairModel.getArchMethod().getName())) {
-					methodPairsList.set(
-							methodPairsList.indexOf(methodPairModel), newModel);
-					return true;
+			if (newModel.isAltSet()) {
+				// If model is altset, simply, remove same methods, and add altset model.
+				for (ComponentMethodPairModel altMethodModel : newModel.getAltMethodPairSets()) {
+					if(altMethodModel.getName().equals(methodPairModel.getName())){
+						methodPairsList.remove(methodPairModel);
+					}
 				}
 			} else {
-				if (newModel.getArchMethod().getName().equals(
-						methodPairModel.getArchMethod().getName())) {
+				if (newModel.getArchMethod().getName()
+						.equals(methodPairModel.getArchMethod().getName())) {
 					methodPairsList.set(
 							methodPairsList.indexOf(methodPairModel), newModel);
 					return true;

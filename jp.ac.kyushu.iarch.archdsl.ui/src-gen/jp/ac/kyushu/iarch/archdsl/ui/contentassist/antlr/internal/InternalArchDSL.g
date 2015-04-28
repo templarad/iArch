@@ -252,6 +252,36 @@ finally {
 
 
 
+// Entry rule entryRuleConnector
+entryRuleConnector 
+:
+{ before(grammarAccess.getConnectorRule()); }
+	 ruleConnector
+{ after(grammarAccess.getConnectorRule()); } 
+	 EOF 
+;
+
+// Rule Connector
+ruleConnector
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getConnectorAccess().getGroup()); }
+(rule__Connector__Group__0)
+{ after(grammarAccess.getConnectorAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
 // Entry rule entryRuleBehavior
 entryRuleBehavior 
 :
@@ -488,6 +518,12 @@ rule__Model__Alternatives_1
 { before(grammarAccess.getModelAccess().getU_behaviorsAssignment_1_1()); }
 (rule__Model__U_behaviorsAssignment_1_1)
 { after(grammarAccess.getModelAccess().getU_behaviorsAssignment_1_1()); }
+)
+
+    |(
+{ before(grammarAccess.getModelAccess().getConnectorsAssignment_1_2()); }
+(rule__Model__ConnectorsAssignment_1_2)
+{ after(grammarAccess.getModelAccess().getConnectorsAssignment_1_2()); }
 )
 
 ;
@@ -2430,6 +2466,168 @@ finally {
 
 
 
+rule__Connector__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Connector__Group__0__Impl
+	rule__Connector__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Connector__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getConnectorAccess().getInterfaceConnectorKeyword_0()); }
+
+	'interface connector' 
+
+{ after(grammarAccess.getConnectorAccess().getInterfaceConnectorKeyword_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Connector__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Connector__Group__1__Impl
+	rule__Connector__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Connector__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getConnectorAccess().getNameAssignment_1()); }
+(rule__Connector__NameAssignment_1)
+{ after(grammarAccess.getConnectorAccess().getNameAssignment_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Connector__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Connector__Group__2__Impl
+	rule__Connector__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Connector__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getConnectorAccess().getLeftCurlyBracketKeyword_2()); }
+
+	'{' 
+
+{ after(grammarAccess.getConnectorAccess().getLeftCurlyBracketKeyword_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Connector__Group__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Connector__Group__3__Impl
+	rule__Connector__Group__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Connector__Group__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getConnectorAccess().getBehaviorsAssignment_3()); }
+(rule__Connector__BehaviorsAssignment_3)*
+{ after(grammarAccess.getConnectorAccess().getBehaviorsAssignment_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Connector__Group__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Connector__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Connector__Group__4__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getConnectorAccess().getRightCurlyBracketKeyword_4()); }
+
+	'}' 
+
+{ after(grammarAccess.getConnectorAccess().getRightCurlyBracketKeyword_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 rule__Behavior__Group__0
     @init {
 		int stackSize = keepStackSize();
@@ -3818,6 +4016,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__Model__ConnectorsAssignment_1_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getModelAccess().getConnectorsConnectorParserRuleCall_1_2_0()); }
+	ruleConnector{ after(grammarAccess.getModelAccess().getConnectorsConnectorParserRuleCall_1_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__UncertainInterface__NameAssignment_1
     @init {
 		int stackSize = keepStackSize();
@@ -4181,6 +4394,39 @@ rule__Param__NameAssignment_1
 finally {
 	restoreStackSize(stackSize);
 }
+
+rule__Connector__NameAssignment_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getConnectorAccess().getNameIDTerminalRuleCall_1_0()); }
+	RULE_ID{ after(grammarAccess.getConnectorAccess().getNameIDTerminalRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Connector__BehaviorsAssignment_3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getConnectorAccess().getBehaviorsBehaviorParserRuleCall_3_0()); }
+	ruleBehavior{ after(grammarAccess.getConnectorAccess().getBehaviorsBehaviorParserRuleCall_3_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 
 rule__Behavior__InterfaceAssignment_0
     @init {

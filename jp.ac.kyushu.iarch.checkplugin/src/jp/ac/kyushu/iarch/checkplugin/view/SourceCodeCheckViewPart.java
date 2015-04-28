@@ -56,6 +56,12 @@ public class SourceCodeCheckViewPart extends ViewPart {
 			if (parentElement instanceof ComponentClassPairModel) {
 				return ((ComponentClassPairModel) parentElement).methodPairsList
 						.toArray();
+			}else if(parentElement instanceof ComponentMethodPairModel){
+				if(((ComponentMethodPairModel) parentElement).isAltSet()){
+					return ((ComponentMethodPairModel) parentElement).getAltMethodPairSets().toArray();
+				}else{
+					return null;
+				}
 			}
 			return null;
 		}
@@ -65,6 +71,10 @@ public class SourceCodeCheckViewPart extends ViewPart {
 			// TODO Auto-generated method stub
 			if (element instanceof ComponentMethodPairModel) {
 				return ((ComponentMethodPairModel) element).getParentModel();
+			}else if(element instanceof ComponentMethodPairModel){
+				if(((ComponentMethodPairModel) element).isAltSet()){
+					return ((ComponentMethodPairModel) element).getAltParentMethodModel();
+				}
 			}
 			return null;
 		}
@@ -74,6 +84,12 @@ public class SourceCodeCheckViewPart extends ViewPart {
 			// TODO Auto-generated method stub
 			if (element instanceof ComponentClassPairModel) {
 				return true;
+			}else if(element instanceof ComponentMethodPairModel){
+				if (((ComponentMethodPairModel) element).isAltSet()) {
+					return true;
+				}else{
+					return false;
+				}
 			} else {
 				return false;
 			}
@@ -143,6 +159,8 @@ public class SourceCodeCheckViewPart extends ViewPart {
 						return "Optional";
 					} else if (((ComponentMethodPairModel) element).isAlt()) {
 						return "Alternative";
+					}else if(((ComponentMethodPairModel) element).isAltSet()){
+						return "Alternatives";
 					} else {
 						return "Certain";
 					}
@@ -155,8 +173,11 @@ public class SourceCodeCheckViewPart extends ViewPart {
 						return "×";
 					}
 				} else if (element instanceof ComponentMethodPairModel) {
+					if(((ComponentMethodPairModel) element).isAltSet()){
+						return "-";
+					}
 					if(((ComponentMethodPairModel) element).isExistJavaNode()){
-						return "✔";						
+						return "✔";
 					}else{
 						return "×";
 					}
@@ -202,7 +223,7 @@ public class SourceCodeCheckViewPart extends ViewPart {
 		nameColumn.setWidth(150);
 		TreeColumn uncertainColumn = new TreeColumn(tree, SWT.LEFT);
 		uncertainColumn.setText("Uncertain Type");
-		uncertainColumn.setWidth(200);
+		uncertainColumn.setWidth(100);
 		TreeColumn isExistColumn = new TreeColumn(tree, SWT.LEFT);
 		isExistColumn.setText("Impl");
 		isExistColumn.setWidth(50);

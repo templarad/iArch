@@ -12,6 +12,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/u_interfaces"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/behaviors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/u_behaviors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/connectors"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//UncertainInterface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//UncertainInterface/name"/>
@@ -36,6 +37,15 @@
     <genClasses ecoreClass="ArchDSL.ecore#//Param">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Param/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Param/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchDSL.ecore#//Connector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Connector/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Connector/behaviors"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchDSL.ecore#//UncertainConnector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//UncertainConnector/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainConnector/superInterface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//UncertainConnector/u_behaviors"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//Behavior">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Behavior/interface"/>
