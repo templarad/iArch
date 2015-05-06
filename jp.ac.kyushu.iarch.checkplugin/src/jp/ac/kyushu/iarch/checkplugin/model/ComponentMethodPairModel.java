@@ -163,7 +163,7 @@ public class ComponentMethodPairModel {
 	 * @return isInvocationExist
 	 */
 	public boolean isInvocationExist(String name) {
-		isExistJavaNode = (javaMethodNode
+		isInvocationExist = (javaMethodNode
 				.selectSingleNode("MethodInvocation[@name='" + name + "']") != null);
 		return isInvocationExist;
 	}

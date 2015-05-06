@@ -48,9 +48,6 @@ import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclarationStatement;
-import org.eclipse.xtext.parser.packrat.matching.SetBasedKeywordMatcher;
-
-import behavior.Connector;
 
 public class ASTSourceCodeChecker{
 	private List<ComponentClassPairModel> componentClassPairModels = new ArrayList<ComponentClassPairModel>();
@@ -279,9 +276,6 @@ public class ASTSourceCodeChecker{
 				}
 			}
 
-
-
-
 			//Uncertain Behaviors Check
 			for (UncertainBehavior u_behavior : archiface.getU_behaviors()) {
 				String uncertainInterfaceName = u_behavior.getName();
@@ -410,7 +404,19 @@ public class ASTSourceCodeChecker{
 				ProblemViewManager.addError1(resource, pairModel.getArchInterface().getName()+" is not defined",pairModel.getArchInterface().getName(), 0);
 			}
 		}
-
+		for (BehaviorPairModel pairModel : behaviorPairModels) {
+			List<ComponentMethodPairModel> methodModelList = pairModel.getMethodModels();
+			
+			for (int i = 0; (i < methodModelList.size() - 1)&&(methodModelList.size() > 1); i++) {
+				ComponentMethodPairModel currentMethodModel = methodModelList.get(i);
+				ComponentMethodPairModel nextMethodModel = methodModelList.get(i+1);
+				if(currentMethodModel.isInvocationExist(nextMethodModel.getName())){
+					ProblemViewManager.addInfo1(resource, currentMethodModel.getName() +" -> " + nextMethodModel.getName() + " is defined", currentMethodModel.getName(), Integer.parseInt(((Element)currentMethodModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+				}else{
+					ProblemViewManager.addError1(resource, currentMethodModel.getName() +" -> " + nextMethodModel.getName() + " is not defined", currentMethodModel.getName(), Integer.parseInt(((Element)currentMethodModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+				}
+			}
+		}
 	}
 
 
@@ -423,26 +429,24 @@ public class ASTSourceCodeChecker{
 	private void typeCheckBehavior(Model archiface, Element packageElement) {
 		ComponentClassPairModel classPairModel = null;
 		List<ComponentMethodPairModel> methodPairModels = new ArrayList<ComponentMethodPairModel>();
+		
 		for (jp.ac.kyushu.iarch.archdsl.archDSL.Connector connector : archiface.getConnectors()) {
 			for (Behavior behavior : connector.getBehaviors()) {
-				for (ComponentClassPairModel cm : componentClassPairModels) {
-					if(behavior.getInterface().equals(cm.getName())){
-						classPairModel = cm;
-						break;
-					}
-				}
-				if(classPairModel != null){
-					for (Method methodCall : behavior.getCall()) {
-						for (ComponentMethodPairModel methodModel : classPairModel.methodPairsList) {
-							if(methodCall.getName().equals(methodModel.getName())){
-								methodPairModels.add(methodModel);
-								break;
-							}
+				for (Method methodCall : behavior.getCall()) {
+					for (ComponentClassPairModel c_model : componentClassPairModels) {
+						if(c_model.getName().equals(((Interface)methodCall.eContainer()).getName())){
+							classPairModel=c_model;
+							break;
 						}
-						System.out.println(methodCall.getName() + " is inserted");
 					}
-					behaviorPairModels.add(new BehaviorPairModel(classPairModel, methodPairModels));
+					for (ComponentMethodPairModel methodModel : classPairModel.methodPairsList) {
+						if(methodCall.getName().equals(methodModel.getName())){
+							methodPairModels.add(methodModel);
+							break;
+						}
+					}
 				}
+				behaviorPairModels.add(new BehaviorPairModel(behavior.getInterface().getName(),methodPairModels));
 			}
 		}
 	}
