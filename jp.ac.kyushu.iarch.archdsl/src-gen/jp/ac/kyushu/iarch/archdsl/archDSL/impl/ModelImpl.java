@@ -8,9 +8,9 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Connector;
 import jp.ac.kyushu.iarch.archdsl.archDSL.DFlow;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
+import jp.ac.kyushu.iarch.archdsl.archDSL.StateNotification;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getBehaviors <em>Behaviors</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getConnectors <em>Connectors</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getDflows <em>Dflows</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getDataflows <em>Dataflows</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getStatenotificaions <em>Statenotificaions</em>}</li>
  * </ul>
  * </p>
  *
@@ -84,14 +84,14 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected EList<DFlow> dflows;
 
   /**
-   * The cached value of the '{@link #getDataflows() <em>Dataflows</em>}' containment reference list.
+   * The cached value of the '{@link #getStatenotificaions() <em>Statenotificaions</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDataflows()
+   * @see #getStatenotificaions()
    * @generated
    * @ordered
    */
-  protected EList<Dataflow> dataflows;
+  protected EList<StateNotification> statenotificaions;
 
   /**
    * <!-- begin-user-doc -->
@@ -175,13 +175,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Dataflow> getDataflows()
+  public EList<StateNotification> getStatenotificaions()
   {
-    if (dataflows == null)
+    if (statenotificaions == null)
     {
-      dataflows = new EObjectContainmentEList<Dataflow>(Dataflow.class, this, ArchDSLPackage.MODEL__DATAFLOWS);
+      statenotificaions = new EObjectContainmentEList<StateNotification>(StateNotification.class, this, ArchDSLPackage.MODEL__STATENOTIFICAIONS);
     }
-    return dataflows;
+    return statenotificaions;
   }
 
   /**
@@ -202,8 +202,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return ((InternalEList<?>)getConnectors()).basicRemove(otherEnd, msgs);
       case ArchDSLPackage.MODEL__DFLOWS:
         return ((InternalEList<?>)getDflows()).basicRemove(otherEnd, msgs);
-      case ArchDSLPackage.MODEL__DATAFLOWS:
-        return ((InternalEList<?>)getDataflows()).basicRemove(otherEnd, msgs);
+      case ArchDSLPackage.MODEL__STATENOTIFICAIONS:
+        return ((InternalEList<?>)getStatenotificaions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -226,8 +226,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return getConnectors();
       case ArchDSLPackage.MODEL__DFLOWS:
         return getDflows();
-      case ArchDSLPackage.MODEL__DATAFLOWS:
-        return getDataflows();
+      case ArchDSLPackage.MODEL__STATENOTIFICAIONS:
+        return getStatenotificaions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -259,9 +259,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         getDflows().clear();
         getDflows().addAll((Collection<? extends DFlow>)newValue);
         return;
-      case ArchDSLPackage.MODEL__DATAFLOWS:
-        getDataflows().clear();
-        getDataflows().addAll((Collection<? extends Dataflow>)newValue);
+      case ArchDSLPackage.MODEL__STATENOTIFICAIONS:
+        getStatenotificaions().clear();
+        getStatenotificaions().addAll((Collection<? extends StateNotification>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -289,8 +289,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ArchDSLPackage.MODEL__DFLOWS:
         getDflows().clear();
         return;
-      case ArchDSLPackage.MODEL__DATAFLOWS:
-        getDataflows().clear();
+      case ArchDSLPackage.MODEL__STATENOTIFICAIONS:
+        getStatenotificaions().clear();
         return;
     }
     super.eUnset(featureID);
@@ -314,8 +314,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return connectors != null && !connectors.isEmpty();
       case ArchDSLPackage.MODEL__DFLOWS:
         return dflows != null && !dflows.isEmpty();
-      case ArchDSLPackage.MODEL__DATAFLOWS:
-        return dataflows != null && !dataflows.isEmpty();
+      case ArchDSLPackage.MODEL__STATENOTIFICAIONS:
+        return statenotificaions != null && !statenotificaions.isEmpty();
     }
     return super.eIsSet(featureID);
   }

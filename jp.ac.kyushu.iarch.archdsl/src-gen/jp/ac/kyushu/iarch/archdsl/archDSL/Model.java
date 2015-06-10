@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getBehaviors <em>Behaviors</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getConnectors <em>Connectors</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getDflows <em>Dflows</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getDataflows <em>Dataflows</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getStatenotificaions <em>Statenotificaions</em>}</li>
  * </ul>
  * </p>
  *
@@ -93,19 +93,19 @@ public interface Model extends EObject
   EList<DFlow> getDflows();
 
   /**
-   * Returns the value of the '<em><b>Dataflows</b></em>' containment reference list.
-   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow}.
+   * Returns the value of the '<em><b>Statenotificaions</b></em>' containment reference list.
+   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.StateNotification}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Dataflows</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Statenotificaions</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Dataflows</em>' containment reference list.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getModel_Dataflows()
+   * @return the value of the '<em>Statenotificaions</em>' containment reference list.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getModel_Statenotificaions()
    * @model containment="true"
    * @generated
    */
-  EList<Dataflow> getDataflows();
+  EList<StateNotification> getStatenotificaions();
 
 } // Model

@@ -60,7 +60,7 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getBehaviorsAssignment_1(), "rule__Model__BehaviorsAssignment_1");
 					put(grammarAccess.getModelAccess().getConnectorsAssignment_2(), "rule__Model__ConnectorsAssignment_2");
 					put(grammarAccess.getModelAccess().getDflowsAssignment_3(), "rule__Model__DflowsAssignment_3");
-					put(grammarAccess.getModelAccess().getDataflowsAssignment_4(), "rule__Model__DataflowsAssignment_4");
+					put(grammarAccess.getModelAccess().getStatenotificaionsAssignment_4(), "rule__Model__StatenotificaionsAssignment_4");
 					put(grammarAccess.getInterfaceAccess().getNameAssignment_1(), "rule__Interface__NameAssignment_1");
 					put(grammarAccess.getInterfaceAccess().getMethodsAssignment_3(), "rule__Interface__MethodsAssignment_3");
 					put(grammarAccess.getMethodAccess().getTypeAssignment_0(), "rule__Method__TypeAssignment_0");
@@ -91,7 +91,7 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDataflowAccess().getCallAssignment_2_16(), "rule__Dataflow__CallAssignment_2_16");
 					put(grammarAccess.getDataflowAccess().getGetflowAssignment_2_19(), "rule__Dataflow__GetflowAssignment_2_19");
 					put(grammarAccess.getDataflowAccess().getCallAssignment_2_22(), "rule__Dataflow__CallAssignment_2_22");
-					put(grammarAccess.getDataflowAccess().getStatenotificationAssignment_2_24(), "rule__Dataflow__StatenotificationAssignment_2_24");
+					put(grammarAccess.getDataflowAccess().getEndAssignment_2_24(), "rule__Dataflow__EndAssignment_2_24");
 					put(grammarAccess.getStateNotificationAccess().getNameAssignment(), "rule__StateNotification__NameAssignment");
 				}
 			};

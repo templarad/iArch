@@ -128,17 +128,17 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * Constraint:
 	 *     (
-	 *         statenotification+=StateNotification 
+	 *         statenotification=[StateNotification|ID] 
 	 *         (
-	 *             getflow+=[DFlow|ID] 
+	 *             getflow+=[Param|ID] 
 	 *             call+=[Method|FQN] 
-	 *             getflow+=[DFlow|ID] 
+	 *             getflow+=[Param|ID] 
 	 *             getIf+=[Interface|ID] 
-	 *             getflow+=[DFlow|ID] 
+	 *             getflow+=[Param|ID] 
 	 *             call+=[Method|FQN] 
-	 *             getflow+=[DFlow|ID] 
+	 *             getflow+=[Param|ID] 
 	 *             call+=[Method|FQN] 
-	 *             statenotification+=StateNotification
+	 *             end=[StateNotification|ID]
 	 *         )?
 	 *     )
 	 */
@@ -167,7 +167,7 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (interfaces+=Interface* behaviors+=Behavior* connectors+=Connector* dflows+=DFlow* dataflows+=Dataflow*)
+	 *     (interfaces+=Interface* behaviors+=Behavior* connectors+=Connector* dflows+=DFlow* statenotificaions+=StateNotification*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

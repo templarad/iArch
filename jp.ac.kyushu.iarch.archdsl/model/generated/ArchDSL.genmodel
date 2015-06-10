@@ -12,7 +12,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/behaviors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/connectors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/dflows"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/dataflows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/statenotificaions"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//Interface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Interface/name"/>
@@ -46,10 +46,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//DFlow/dataflows"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//Dataflow">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Dataflow/statenotification"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Dataflow/statenotification"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Dataflow/getflow"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Dataflow/call"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Dataflow/getIf"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Dataflow/end"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//StateNotification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//StateNotification/name"/>

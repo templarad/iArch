@@ -500,9 +500,9 @@ rule__Model__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getModelAccess().getDataflowsAssignment_4()); }
-(rule__Model__DataflowsAssignment_4)*
-{ after(grammarAccess.getModelAccess().getDataflowsAssignment_4()); }
+{ before(grammarAccess.getModelAccess().getStatenotificaionsAssignment_4()); }
+(rule__Model__StatenotificaionsAssignment_4)*
+{ after(grammarAccess.getModelAccess().getStatenotificaionsAssignment_4()); }
 )
 
 ;
@@ -2973,9 +2973,9 @@ rule__Dataflow__Group_2__24__Impl
     }
 :
 (
-{ before(grammarAccess.getDataflowAccess().getStatenotificationAssignment_2_24()); }
-(rule__Dataflow__StatenotificationAssignment_2_24)
-{ after(grammarAccess.getDataflowAccess().getStatenotificationAssignment_2_24()); }
+{ before(grammarAccess.getDataflowAccess().getEndAssignment_2_24()); }
+(rule__Dataflow__EndAssignment_2_24)
+{ after(grammarAccess.getDataflowAccess().getEndAssignment_2_24()); }
 )
 
 ;
@@ -3219,14 +3219,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Model__DataflowsAssignment_4
+rule__Model__StatenotificaionsAssignment_4
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getModelAccess().getDataflowsDataflowParserRuleCall_4_0()); }
-	ruleDataflow{ after(grammarAccess.getModelAccess().getDataflowsDataflowParserRuleCall_4_0()); }
+{ before(grammarAccess.getModelAccess().getStatenotificaionsStateNotificationParserRuleCall_4_0()); }
+	ruleStateNotification{ after(grammarAccess.getModelAccess().getStatenotificaionsStateNotificationParserRuleCall_4_0()); }
 )
 
 ;
@@ -3571,8 +3571,12 @@ rule__Dataflow__StatenotificationAssignment_0
     }
 :
 (
-{ before(grammarAccess.getDataflowAccess().getStatenotificationStateNotificationParserRuleCall_0_0()); }
-	ruleStateNotification{ after(grammarAccess.getDataflowAccess().getStatenotificationStateNotificationParserRuleCall_0_0()); }
+{ before(grammarAccess.getDataflowAccess().getStatenotificationStateNotificationCrossReference_0_0()); }
+(
+{ before(grammarAccess.getDataflowAccess().getStatenotificationStateNotificationIDTerminalRuleCall_0_0_1()); }
+	RULE_ID{ after(grammarAccess.getDataflowAccess().getStatenotificationStateNotificationIDTerminalRuleCall_0_0_1()); }
+)
+{ after(grammarAccess.getDataflowAccess().getStatenotificationStateNotificationCrossReference_0_0()); }
 )
 
 ;
@@ -3586,12 +3590,12 @@ rule__Dataflow__GetflowAssignment_2_1
     }
 :
 (
-{ before(grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_1_0()); }
+{ before(grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_1_0()); }
 (
-{ before(grammarAccess.getDataflowAccess().getGetflowDFlowIDTerminalRuleCall_2_1_0_1()); }
-	RULE_ID{ after(grammarAccess.getDataflowAccess().getGetflowDFlowIDTerminalRuleCall_2_1_0_1()); }
+{ before(grammarAccess.getDataflowAccess().getGetflowParamIDTerminalRuleCall_2_1_0_1()); }
+	RULE_ID{ after(grammarAccess.getDataflowAccess().getGetflowParamIDTerminalRuleCall_2_1_0_1()); }
 )
-{ after(grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_1_0()); }
+{ after(grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_1_0()); }
 )
 
 ;
@@ -3624,12 +3628,12 @@ rule__Dataflow__GetflowAssignment_2_7
     }
 :
 (
-{ before(grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_7_0()); }
+{ before(grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_7_0()); }
 (
-{ before(grammarAccess.getDataflowAccess().getGetflowDFlowIDTerminalRuleCall_2_7_0_1()); }
-	RULE_ID{ after(grammarAccess.getDataflowAccess().getGetflowDFlowIDTerminalRuleCall_2_7_0_1()); }
+{ before(grammarAccess.getDataflowAccess().getGetflowParamIDTerminalRuleCall_2_7_0_1()); }
+	RULE_ID{ after(grammarAccess.getDataflowAccess().getGetflowParamIDTerminalRuleCall_2_7_0_1()); }
 )
-{ after(grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_7_0()); }
+{ after(grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_7_0()); }
 )
 
 ;
@@ -3662,12 +3666,12 @@ rule__Dataflow__GetflowAssignment_2_13
     }
 :
 (
-{ before(grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_13_0()); }
+{ before(grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_13_0()); }
 (
-{ before(grammarAccess.getDataflowAccess().getGetflowDFlowIDTerminalRuleCall_2_13_0_1()); }
-	RULE_ID{ after(grammarAccess.getDataflowAccess().getGetflowDFlowIDTerminalRuleCall_2_13_0_1()); }
+{ before(grammarAccess.getDataflowAccess().getGetflowParamIDTerminalRuleCall_2_13_0_1()); }
+	RULE_ID{ after(grammarAccess.getDataflowAccess().getGetflowParamIDTerminalRuleCall_2_13_0_1()); }
 )
-{ after(grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_13_0()); }
+{ after(grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_13_0()); }
 )
 
 ;
@@ -3700,12 +3704,12 @@ rule__Dataflow__GetflowAssignment_2_19
     }
 :
 (
-{ before(grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_19_0()); }
+{ before(grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_19_0()); }
 (
-{ before(grammarAccess.getDataflowAccess().getGetflowDFlowIDTerminalRuleCall_2_19_0_1()); }
-	RULE_ID{ after(grammarAccess.getDataflowAccess().getGetflowDFlowIDTerminalRuleCall_2_19_0_1()); }
+{ before(grammarAccess.getDataflowAccess().getGetflowParamIDTerminalRuleCall_2_19_0_1()); }
+	RULE_ID{ after(grammarAccess.getDataflowAccess().getGetflowParamIDTerminalRuleCall_2_19_0_1()); }
 )
-{ after(grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_19_0()); }
+{ after(grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_19_0()); }
 )
 
 ;
@@ -3732,14 +3736,18 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Dataflow__StatenotificationAssignment_2_24
+rule__Dataflow__EndAssignment_2_24
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getDataflowAccess().getStatenotificationStateNotificationParserRuleCall_2_24_0()); }
-	ruleStateNotification{ after(grammarAccess.getDataflowAccess().getStatenotificationStateNotificationParserRuleCall_2_24_0()); }
+{ before(grammarAccess.getDataflowAccess().getEndStateNotificationCrossReference_2_24_0()); }
+(
+{ before(grammarAccess.getDataflowAccess().getEndStateNotificationIDTerminalRuleCall_2_24_0_1()); }
+	RULE_ID{ after(grammarAccess.getDataflowAccess().getEndStateNotificationIDTerminalRuleCall_2_24_0_1()); }
+)
+{ after(grammarAccess.getDataflowAccess().getEndStateNotificationCrossReference_2_24_0()); }
 )
 
 ;

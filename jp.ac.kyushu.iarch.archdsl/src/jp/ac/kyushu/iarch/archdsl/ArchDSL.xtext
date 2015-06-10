@@ -7,7 +7,7 @@ Model:
 	behaviors+=Behavior* 
 	connectors+=Connector*
 	dflows+=DFlow*
-	dataflows+=Dataflow*
+	statenotificaions+=StateNotification*
 ;
 
 Interface:
@@ -28,10 +28,6 @@ cParam :
     name=ID
 ;
 
-//Data:
-//	"|state|"
-//;
-
 Connector:
     "interface connector" name=ID "(" (cparam+=cParam(","cparam+=cParam)*)? ")" "{"
         behaviors+=Behavior*
@@ -49,16 +45,16 @@ DFlow:
 ;	
 	
 Dataflow:		
-		statenotification+=StateNotification "="
-		("|"getflow+=[DFlow]"|""->>"
+		statenotification=[StateNotification] "="
+		("|"getflow+=[Param]"|""->>"
 		call+=[Method|FQN]
-		"->>""|"getflow+=[DFlow]"|""->>"
+		"->>""|"getflow+=[Param]"|""->>"
 		getIf+=[Interface]
-		"->>""|"getflow+=[DFlow]"|""->>"
+		"->>""|"getflow+=[Param]"|""->>"
 		call+=[Method|FQN]
-		"->>""|"getflow+=[DFlow]"|""->>"
+		"->>""|"getflow+=[Param]"|""->>"
 		call+=[Method|FQN]
-		"->>"statenotification+=StateNotification)?";"  		
+		"->>"end=[StateNotification])?";"  		
 ;
 
 /* some definition Directions
@@ -69,7 +65,7 @@ Dataflow:
 */
 
 StateNotification:
-	name=ID 
+	name=ID
 ;
 
 

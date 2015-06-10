@@ -5,24 +5,23 @@ package jp.ac.kyushu.iarch.archdsl.archDSL.impl;
 import java.util.Collection;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
-import jp.ac.kyushu.iarch.archdsl.archDSL.DFlow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
 import jp.ac.kyushu.iarch.archdsl.archDSL.StateNotification;
 
-import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getGetflow <em>Getflow</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getCall <em>Call</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getGetIf <em>Get If</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getEnd <em>End</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,14 +43,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class DataflowImpl extends MinimalEObjectImpl.Container implements Dataflow
 {
   /**
-   * The cached value of the '{@link #getStatenotification() <em>Statenotification</em>}' containment reference list.
+   * The cached value of the '{@link #getStatenotification() <em>Statenotification</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getStatenotification()
    * @generated
    * @ordered
    */
-  protected EList<StateNotification> statenotification;
+  protected StateNotification statenotification;
 
   /**
    * The cached value of the '{@link #getGetflow() <em>Getflow</em>}' reference list.
@@ -60,7 +60,7 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * @generated
    * @ordered
    */
-  protected EList<DFlow> getflow;
+  protected EList<Param> getflow;
 
   /**
    * The cached value of the '{@link #getCall() <em>Call</em>}' reference list.
@@ -81,6 +81,16 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * @ordered
    */
   protected EList<Interface> getIf;
+
+  /**
+   * The cached value of the '{@link #getEnd() <em>End</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnd()
+   * @generated
+   * @ordered
+   */
+  protected StateNotification end;
 
   /**
    * <!-- begin-user-doc -->
@@ -108,11 +118,17 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<StateNotification> getStatenotification()
+  public StateNotification getStatenotification()
   {
-    if (statenotification == null)
+    if (statenotification != null && statenotification.eIsProxy())
     {
-      statenotification = new EObjectContainmentEList<StateNotification>(StateNotification.class, this, ArchDSLPackage.DATAFLOW__STATENOTIFICATION);
+      InternalEObject oldStatenotification = (InternalEObject)statenotification;
+      statenotification = (StateNotification)eResolveProxy(oldStatenotification);
+      if (statenotification != oldStatenotification)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.DATAFLOW__STATENOTIFICATION, oldStatenotification, statenotification));
+      }
     }
     return statenotification;
   }
@@ -122,11 +138,34 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<DFlow> getGetflow()
+  public StateNotification basicGetStatenotification()
+  {
+    return statenotification;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setStatenotification(StateNotification newStatenotification)
+  {
+    StateNotification oldStatenotification = statenotification;
+    statenotification = newStatenotification;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.DATAFLOW__STATENOTIFICATION, oldStatenotification, statenotification));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Param> getGetflow()
   {
     if (getflow == null)
     {
-      getflow = new EObjectResolvingEList<DFlow>(DFlow.class, this, ArchDSLPackage.DATAFLOW__GETFLOW);
+      getflow = new EObjectResolvingEList<Param>(Param.class, this, ArchDSLPackage.DATAFLOW__GETFLOW);
     }
     return getflow;
   }
@@ -164,15 +203,42 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public StateNotification getEnd()
   {
-    switch (featureID)
+    if (end != null && end.eIsProxy())
     {
-      case ArchDSLPackage.DATAFLOW__STATENOTIFICATION:
-        return ((InternalEList<?>)getStatenotification()).basicRemove(otherEnd, msgs);
+      InternalEObject oldEnd = (InternalEObject)end;
+      end = (StateNotification)eResolveProxy(oldEnd);
+      if (end != oldEnd)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.DATAFLOW__END, oldEnd, end));
+      }
     }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    return end;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StateNotification basicGetEnd()
+  {
+    return end;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEnd(StateNotification newEnd)
+  {
+    StateNotification oldEnd = end;
+    end = newEnd;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.DATAFLOW__END, oldEnd, end));
   }
 
   /**
@@ -186,13 +252,17 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
     switch (featureID)
     {
       case ArchDSLPackage.DATAFLOW__STATENOTIFICATION:
-        return getStatenotification();
+        if (resolve) return getStatenotification();
+        return basicGetStatenotification();
       case ArchDSLPackage.DATAFLOW__GETFLOW:
         return getGetflow();
       case ArchDSLPackage.DATAFLOW__CALL:
         return getCall();
       case ArchDSLPackage.DATAFLOW__GET_IF:
         return getGetIf();
+      case ArchDSLPackage.DATAFLOW__END:
+        if (resolve) return getEnd();
+        return basicGetEnd();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -209,12 +279,11 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
     switch (featureID)
     {
       case ArchDSLPackage.DATAFLOW__STATENOTIFICATION:
-        getStatenotification().clear();
-        getStatenotification().addAll((Collection<? extends StateNotification>)newValue);
+        setStatenotification((StateNotification)newValue);
         return;
       case ArchDSLPackage.DATAFLOW__GETFLOW:
         getGetflow().clear();
-        getGetflow().addAll((Collection<? extends DFlow>)newValue);
+        getGetflow().addAll((Collection<? extends Param>)newValue);
         return;
       case ArchDSLPackage.DATAFLOW__CALL:
         getCall().clear();
@@ -223,6 +292,9 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
       case ArchDSLPackage.DATAFLOW__GET_IF:
         getGetIf().clear();
         getGetIf().addAll((Collection<? extends Interface>)newValue);
+        return;
+      case ArchDSLPackage.DATAFLOW__END:
+        setEnd((StateNotification)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -239,7 +311,7 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
     switch (featureID)
     {
       case ArchDSLPackage.DATAFLOW__STATENOTIFICATION:
-        getStatenotification().clear();
+        setStatenotification((StateNotification)null);
         return;
       case ArchDSLPackage.DATAFLOW__GETFLOW:
         getGetflow().clear();
@@ -249,6 +321,9 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
         return;
       case ArchDSLPackage.DATAFLOW__GET_IF:
         getGetIf().clear();
+        return;
+      case ArchDSLPackage.DATAFLOW__END:
+        setEnd((StateNotification)null);
         return;
     }
     super.eUnset(featureID);
@@ -265,13 +340,15 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
     switch (featureID)
     {
       case ArchDSLPackage.DATAFLOW__STATENOTIFICATION:
-        return statenotification != null && !statenotification.isEmpty();
+        return statenotification != null;
       case ArchDSLPackage.DATAFLOW__GETFLOW:
         return getflow != null && !getflow.isEmpty();
       case ArchDSLPackage.DATAFLOW__CALL:
         return call != null && !call.isEmpty();
       case ArchDSLPackage.DATAFLOW__GET_IF:
         return getIf != null && !getIf.isEmpty();
+      case ArchDSLPackage.DATAFLOW__END:
+        return end != null;
     }
     return super.eIsSet(featureID);
   }

@@ -152,17 +152,17 @@ ruleModel returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getDataflowsDataflowParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getModelAccess().getStatenotificaionsStateNotificationParserRuleCall_4_0()); 
 	    }
-		lv_dataflows_4_0=ruleDataflow		{
+		lv_statenotificaions_4_0=ruleStateNotification		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModelRule());
 	        }
        		add(
        			$current, 
-       			"dataflows",
-        		lv_dataflows_4_0, 
-        		"Dataflow");
+       			"statenotificaions",
+        		lv_statenotificaions_4_0, 
+        		"StateNotification");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -787,20 +787,15 @@ ruleDataflow returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		{ 
-	        newCompositeNode(grammarAccess.getDataflowAccess().getStatenotificationStateNotificationParserRuleCall_0_0()); 
-	    }
-		lv_statenotification_0_0=ruleStateNotification		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getDataflowRule());
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDataflowRule());
 	        }
-       		add(
-       			$current, 
-       			"statenotification",
-        		lv_statenotification_0_0, 
-        		"StateNotification");
-	        afterParserOrEnumRuleCall();
-	    }
+        }
+	otherlv_0=RULE_ID
+	{
+		newLeafNode(otherlv_0, grammarAccess.getDataflowAccess().getStatenotificationStateNotificationCrossReference_0_0()); 
+	}
 
 )
 )	otherlv_1='=' 
@@ -820,7 +815,7 @@ ruleDataflow returns [EObject current=null]
         }
 	otherlv_3=RULE_ID
 	{
-		newLeafNode(otherlv_3, grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_1_0()); 
+		newLeafNode(otherlv_3, grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_1_0()); 
 	}
 
 )
@@ -864,7 +859,7 @@ ruleDataflow returns [EObject current=null]
         }
 	otherlv_9=RULE_ID
 	{
-		newLeafNode(otherlv_9, grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_7_0()); 
+		newLeafNode(otherlv_9, grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_7_0()); 
 	}
 
 )
@@ -906,7 +901,7 @@ ruleDataflow returns [EObject current=null]
         }
 	otherlv_15=RULE_ID
 	{
-		newLeafNode(otherlv_15, grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_13_0()); 
+		newLeafNode(otherlv_15, grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_13_0()); 
 	}
 
 )
@@ -950,7 +945,7 @@ ruleDataflow returns [EObject current=null]
         }
 	otherlv_21=RULE_ID
 	{
-		newLeafNode(otherlv_21, grammarAccess.getDataflowAccess().getGetflowDFlowCrossReference_2_19_0()); 
+		newLeafNode(otherlv_21, grammarAccess.getDataflowAccess().getGetflowParamCrossReference_2_19_0()); 
 	}
 
 )
@@ -983,20 +978,15 @@ ruleDataflow returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getDataflowAccess().getStatenotificationStateNotificationParserRuleCall_2_24_0()); 
-	    }
-		lv_statenotification_26_0=ruleStateNotification		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getDataflowRule());
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getDataflowRule());
 	        }
-       		add(
-       			$current, 
-       			"statenotification",
-        		lv_statenotification_26_0, 
-        		"StateNotification");
-	        afterParserOrEnumRuleCall();
-	    }
+        }
+	otherlv_26=RULE_ID
+	{
+		newLeafNode(otherlv_26, grammarAccess.getDataflowAccess().getEndStateNotificationCrossReference_2_24_0()); 
+	}
 
 )
 ))?	otherlv_27=';' 
