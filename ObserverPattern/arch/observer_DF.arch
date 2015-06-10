@@ -1,28 +1,35 @@
-interface component Subject {
+interface component cSubject {
 	String getState();
 	void setState(String state);
 }
 
-interface component Observer {
+interface component cObserver {
 	void update(); 
 }
 
-interface dataflow Dataflow{
-	
+interface connector cObserverPattern(cSubject,cObserver){	
+cSubject = 
+	cSubject.setState->
+	cObserver.update->
+	cSubject.getState->
+	cSubject;            
+cObserver = 
+	cObserver.update->
+	cSubject.getState
+	->cObserver;
 }
-
-Subject = (Subject.setState->
-	Observer.update->Subject.getState->Subject
-);            
-Observer = (Observer.update->Subject.getState
-	->Observer);	
-
-
-
-//dataflow definition
-Dflow data state;
 	
-Dataflow = [|state|->>Subject.setState->>|state|->>Subject->>
-	|state|->>Subject.getState->>|state|->>Observer];
+interface dflow dObserverPattern(cSubject,cObserver){
+dStateNotification = 
+		 |state|->>
+	cSubject.setState
+	  ->>|state|->>
+	cSubject
+	  ->>|state|->>
+	cSubject.getState
+	  ->>|state|->>
+	cObserver.update
+	  ->>dStateNotification;
+}
 
 	

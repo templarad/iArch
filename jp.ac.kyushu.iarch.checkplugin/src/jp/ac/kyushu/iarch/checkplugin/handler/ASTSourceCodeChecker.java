@@ -213,7 +213,7 @@ public class ASTSourceCodeChecker{
 					int lineNumberClass=Integer.parseInt(a.attributeValue("lineNumber").toString());
 					if (className.equals(className2)) {
 						IResource st2=st.getProject().getFile("/src/"+className+".java");
-						ProblemViewManager.addInfo1(st2, "Interface-Class :" + className + " is Exist", st.getName(),lineNumberClass);
+						ProblemViewManager.addInfo1(st2, "Interface-Class :" + className + " is Existing", st.getName(),lineNumberClass);
 						@SuppressWarnings("unchecked")
 						List<Element> methodList = a.selectNodes("MethodDeclaration");
 						for (Method m : archiclass.getMethods()) {
@@ -224,12 +224,12 @@ public class ASTSourceCodeChecker{
 								methodname2 = b.attributeValue("name");
 								int lineNumberMethod=Integer.parseInt(b.attributeValue("lineNumber").toString());
 								if (methodname2.equals(methodname)) {
-									ProblemViewManager.addInfo1(st2, "Interface- Method : " + methodname+ " is Exist", archiclass.getName(),lineNumberMethod);
+									ProblemViewManager.addInfo1(st2, "Interface- Method : " + methodname+ " is Existing", archiclass.getName(),lineNumberMethod);
 									flag = true;
 								}
 							}
 							if (!flag) {
-								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not  Exist", archiclass.getName(),lineNumberClass);
+								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not Existing", archiclass.getName(),lineNumberClass);
 							}
 						}
 					}

@@ -68,10 +68,12 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
       case ArchDSLPackage.INTERFACE: return createInterface();
       case ArchDSLPackage.METHOD: return createMethod();
       case ArchDSLPackage.PARAM: return createParam();
-      case ArchDSLPackage.DFLOW: return createDflow();
-      case ArchDSLPackage.DFA: return createDfa();
+      case ArchDSLPackage.CPARAM: return createcParam();
+      case ArchDSLPackage.CONNECTOR: return createConnector();
       case ArchDSLPackage.BEHAVIOR: return createBehavior();
+      case ArchDSLPackage.DFLOW: return createDFlow();
       case ArchDSLPackage.DATAFLOW: return createDataflow();
+      case ArchDSLPackage.STATE_NOTIFICATION: return createStateNotification();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -126,10 +128,10 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Dflow createDflow()
+  public cParam createcParam()
   {
-    DflowImpl dflow = new DflowImpl();
-    return dflow;
+    cParamImpl cParam = new cParamImpl();
+    return cParam;
   }
 
   /**
@@ -137,10 +139,10 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Dfa createDfa()
+  public Connector createConnector()
   {
-    DfaImpl dfa = new DfaImpl();
-    return dfa;
+    ConnectorImpl connector = new ConnectorImpl();
+    return connector;
   }
 
   /**
@@ -159,10 +161,32 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public DFlow createDFlow()
+  {
+    DFlowImpl dFlow = new DFlowImpl();
+    return dFlow;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Dataflow createDataflow()
   {
     DataflowImpl dataflow = new DataflowImpl();
     return dataflow;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StateNotification createStateNotification()
+  {
+    StateNotificationImpl stateNotification = new StateNotificationImpl();
+    return stateNotification;
   }
 
   /**

@@ -100,17 +100,17 @@ public class ArchDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchDSLPackage.DFLOW:
+      case ArchDSLPackage.CPARAM:
       {
-        Dflow dflow = (Dflow)theEObject;
-        T result = caseDflow(dflow);
+        cParam cParam = (cParam)theEObject;
+        T result = casecParam(cParam);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchDSLPackage.DFA:
+      case ArchDSLPackage.CONNECTOR:
       {
-        Dfa dfa = (Dfa)theEObject;
-        T result = caseDfa(dfa);
+        Connector connector = (Connector)theEObject;
+        T result = caseConnector(connector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -121,10 +121,24 @@ public class ArchDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ArchDSLPackage.DFLOW:
+      {
+        DFlow dFlow = (DFlow)theEObject;
+        T result = caseDFlow(dFlow);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ArchDSLPackage.DATAFLOW:
       {
         Dataflow dataflow = (Dataflow)theEObject;
         T result = caseDataflow(dataflow);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchDSLPackage.STATE_NOTIFICATION:
+      {
+        StateNotification stateNotification = (StateNotification)theEObject;
+        T result = caseStateNotification(stateNotification);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -197,33 +211,33 @@ public class ArchDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Dflow</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>cParam</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Dflow</em>'.
+   * @return the result of interpreting the object as an instance of '<em>cParam</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDflow(Dflow object)
+  public T casecParam(cParam object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Dfa</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Connector</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Dfa</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Connector</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDfa(Dfa object)
+  public T caseConnector(Connector object)
   {
     return null;
   }
@@ -245,6 +259,22 @@ public class ArchDSLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>DFlow</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>DFlow</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDFlow(DFlow object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Dataflow</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -256,6 +286,22 @@ public class ArchDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDataflow(Dataflow object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>State Notification</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>State Notification</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStateNotification(StateNotification object)
   {
     return null;
   }

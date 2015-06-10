@@ -6,9 +6,9 @@ import java.util.Collection;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Connector;
+import jp.ac.kyushu.iarch.archdsl.archDSL.DFlow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Dfa;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Dflow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 
@@ -33,8 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getInterfaces <em>Interfaces</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getBehaviors <em>Behaviors</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getConnectors <em>Connectors</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getDflows <em>Dflows</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getDfas <em>Dfas</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ModelImpl#getDataflows <em>Dataflows</em>}</li>
  * </ul>
  * </p>
@@ -64,6 +64,16 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected EList<Behavior> behaviors;
 
   /**
+   * The cached value of the '{@link #getConnectors() <em>Connectors</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConnectors()
+   * @generated
+   * @ordered
+   */
+  protected EList<Connector> connectors;
+
+  /**
    * The cached value of the '{@link #getDflows() <em>Dflows</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -71,17 +81,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    * @ordered
    */
-  protected EList<Dflow> dflows;
-
-  /**
-   * The cached value of the '{@link #getDfas() <em>Dfas</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDfas()
-   * @generated
-   * @ordered
-   */
-  protected EList<Dfa> dfas;
+  protected EList<DFlow> dflows;
 
   /**
    * The cached value of the '{@link #getDataflows() <em>Dataflows</em>}' containment reference list.
@@ -147,13 +147,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Dflow> getDflows()
+  public EList<Connector> getConnectors()
   {
-    if (dflows == null)
+    if (connectors == null)
     {
-      dflows = new EObjectContainmentEList<Dflow>(Dflow.class, this, ArchDSLPackage.MODEL__DFLOWS);
+      connectors = new EObjectContainmentEList<Connector>(Connector.class, this, ArchDSLPackage.MODEL__CONNECTORS);
     }
-    return dflows;
+    return connectors;
   }
 
   /**
@@ -161,13 +161,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Dfa> getDfas()
+  public EList<DFlow> getDflows()
   {
-    if (dfas == null)
+    if (dflows == null)
     {
-      dfas = new EObjectContainmentEList<Dfa>(Dfa.class, this, ArchDSLPackage.MODEL__DFAS);
+      dflows = new EObjectContainmentEList<DFlow>(DFlow.class, this, ArchDSLPackage.MODEL__DFLOWS);
     }
-    return dfas;
+    return dflows;
   }
 
   /**
@@ -198,10 +198,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return ((InternalEList<?>)getInterfaces()).basicRemove(otherEnd, msgs);
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return ((InternalEList<?>)getBehaviors()).basicRemove(otherEnd, msgs);
+      case ArchDSLPackage.MODEL__CONNECTORS:
+        return ((InternalEList<?>)getConnectors()).basicRemove(otherEnd, msgs);
       case ArchDSLPackage.MODEL__DFLOWS:
         return ((InternalEList<?>)getDflows()).basicRemove(otherEnd, msgs);
-      case ArchDSLPackage.MODEL__DFAS:
-        return ((InternalEList<?>)getDfas()).basicRemove(otherEnd, msgs);
       case ArchDSLPackage.MODEL__DATAFLOWS:
         return ((InternalEList<?>)getDataflows()).basicRemove(otherEnd, msgs);
     }
@@ -222,10 +222,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return getInterfaces();
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return getBehaviors();
+      case ArchDSLPackage.MODEL__CONNECTORS:
+        return getConnectors();
       case ArchDSLPackage.MODEL__DFLOWS:
         return getDflows();
-      case ArchDSLPackage.MODEL__DFAS:
-        return getDfas();
       case ArchDSLPackage.MODEL__DATAFLOWS:
         return getDataflows();
     }
@@ -251,13 +251,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         getBehaviors().clear();
         getBehaviors().addAll((Collection<? extends Behavior>)newValue);
         return;
+      case ArchDSLPackage.MODEL__CONNECTORS:
+        getConnectors().clear();
+        getConnectors().addAll((Collection<? extends Connector>)newValue);
+        return;
       case ArchDSLPackage.MODEL__DFLOWS:
         getDflows().clear();
-        getDflows().addAll((Collection<? extends Dflow>)newValue);
-        return;
-      case ArchDSLPackage.MODEL__DFAS:
-        getDfas().clear();
-        getDfas().addAll((Collection<? extends Dfa>)newValue);
+        getDflows().addAll((Collection<? extends DFlow>)newValue);
         return;
       case ArchDSLPackage.MODEL__DATAFLOWS:
         getDataflows().clear();
@@ -283,11 +283,11 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ArchDSLPackage.MODEL__BEHAVIORS:
         getBehaviors().clear();
         return;
+      case ArchDSLPackage.MODEL__CONNECTORS:
+        getConnectors().clear();
+        return;
       case ArchDSLPackage.MODEL__DFLOWS:
         getDflows().clear();
-        return;
-      case ArchDSLPackage.MODEL__DFAS:
-        getDfas().clear();
         return;
       case ArchDSLPackage.MODEL__DATAFLOWS:
         getDataflows().clear();
@@ -310,10 +310,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return interfaces != null && !interfaces.isEmpty();
       case ArchDSLPackage.MODEL__BEHAVIORS:
         return behaviors != null && !behaviors.isEmpty();
+      case ArchDSLPackage.MODEL__CONNECTORS:
+        return connectors != null && !connectors.isEmpty();
       case ArchDSLPackage.MODEL__DFLOWS:
         return dflows != null && !dflows.isEmpty();
-      case ArchDSLPackage.MODEL__DFAS:
-        return dfas != null && !dfas.isEmpty();
       case ArchDSLPackage.MODEL__DATAFLOWS:
         return dataflows != null && !dataflows.isEmpty();
     }

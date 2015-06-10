@@ -17,9 +17,9 @@ Observer = (Observer.update->Subject.getState
 
 
 //dataflow definition
-//Dflow data state;
-//
-//Dfa  Dataflow;
+Dflow data state;
+
+Dfa  Dataflow;
 
 /* 
 Dataflow = (Subject.setState->>
@@ -27,8 +27,8 @@ Dataflow = (Subject.setState->>
 ); 
 */
 
-//Dataflow = [|state|->>Subject.setState->>|state|->>Subject->>
-//	|state|->>Subject.getState->>|state|->>Observer];
+Dataflow = [|state|->>Subject.setState->>|state|->>Subject->>
+	|state|->>Subject.getState->>|state|->>Observer];
       
 
 /*    

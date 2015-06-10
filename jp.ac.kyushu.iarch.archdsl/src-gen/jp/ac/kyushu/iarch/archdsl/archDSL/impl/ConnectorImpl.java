@@ -5,8 +5,8 @@ package jp.ac.kyushu.iarch.archdsl.archDSL.impl;
 import java.util.Collection;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
-import jp.ac.kyushu.iarch.archdsl.archDSL.DFlow;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Connector;
 import jp.ac.kyushu.iarch.archdsl.archDSL.cParam;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -25,20 +25,20 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>DFlow</b></em>'.
+ * An implementation of the model object '<em><b>Connector</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DFlowImpl#getName <em>Name</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DFlowImpl#getCparam <em>Cparam</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DFlowImpl#getDataflows <em>Dataflows</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ConnectorImpl#getName <em>Name</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ConnectorImpl#getCparam <em>Cparam</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.ConnectorImpl#getBehaviors <em>Behaviors</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
+public class ConnectorImpl extends MinimalEObjectImpl.Container implements Connector
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -71,21 +71,21 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
   protected EList<cParam> cparam;
 
   /**
-   * The cached value of the '{@link #getDataflows() <em>Dataflows</em>}' containment reference list.
+   * The cached value of the '{@link #getBehaviors() <em>Behaviors</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDataflows()
+   * @see #getBehaviors()
    * @generated
    * @ordered
    */
-  protected EList<Dataflow> dataflows;
+  protected EList<Behavior> behaviors;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected DFlowImpl()
+  protected ConnectorImpl()
   {
     super();
   }
@@ -98,7 +98,7 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
   @Override
   protected EClass eStaticClass()
   {
-    return ArchDSLPackage.Literals.DFLOW;
+    return ArchDSLPackage.Literals.CONNECTOR;
   }
 
   /**
@@ -121,7 +121,7 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.DFLOW__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.CONNECTOR__NAME, oldName, name));
   }
 
   /**
@@ -133,7 +133,7 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
   {
     if (cparam == null)
     {
-      cparam = new EObjectContainmentEList<cParam>(cParam.class, this, ArchDSLPackage.DFLOW__CPARAM);
+      cparam = new EObjectContainmentEList<cParam>(cParam.class, this, ArchDSLPackage.CONNECTOR__CPARAM);
     }
     return cparam;
   }
@@ -143,13 +143,13 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Dataflow> getDataflows()
+  public EList<Behavior> getBehaviors()
   {
-    if (dataflows == null)
+    if (behaviors == null)
     {
-      dataflows = new EObjectContainmentEList<Dataflow>(Dataflow.class, this, ArchDSLPackage.DFLOW__DATAFLOWS);
+      behaviors = new EObjectContainmentEList<Behavior>(Behavior.class, this, ArchDSLPackage.CONNECTOR__BEHAVIORS);
     }
-    return dataflows;
+    return behaviors;
   }
 
   /**
@@ -162,10 +162,10 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DFLOW__CPARAM:
+      case ArchDSLPackage.CONNECTOR__CPARAM:
         return ((InternalEList<?>)getCparam()).basicRemove(otherEnd, msgs);
-      case ArchDSLPackage.DFLOW__DATAFLOWS:
-        return ((InternalEList<?>)getDataflows()).basicRemove(otherEnd, msgs);
+      case ArchDSLPackage.CONNECTOR__BEHAVIORS:
+        return ((InternalEList<?>)getBehaviors()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -180,12 +180,12 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DFLOW__NAME:
+      case ArchDSLPackage.CONNECTOR__NAME:
         return getName();
-      case ArchDSLPackage.DFLOW__CPARAM:
+      case ArchDSLPackage.CONNECTOR__CPARAM:
         return getCparam();
-      case ArchDSLPackage.DFLOW__DATAFLOWS:
-        return getDataflows();
+      case ArchDSLPackage.CONNECTOR__BEHAVIORS:
+        return getBehaviors();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -201,16 +201,16 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DFLOW__NAME:
+      case ArchDSLPackage.CONNECTOR__NAME:
         setName((String)newValue);
         return;
-      case ArchDSLPackage.DFLOW__CPARAM:
+      case ArchDSLPackage.CONNECTOR__CPARAM:
         getCparam().clear();
         getCparam().addAll((Collection<? extends cParam>)newValue);
         return;
-      case ArchDSLPackage.DFLOW__DATAFLOWS:
-        getDataflows().clear();
-        getDataflows().addAll((Collection<? extends Dataflow>)newValue);
+      case ArchDSLPackage.CONNECTOR__BEHAVIORS:
+        getBehaviors().clear();
+        getBehaviors().addAll((Collection<? extends Behavior>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -226,14 +226,14 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DFLOW__NAME:
+      case ArchDSLPackage.CONNECTOR__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ArchDSLPackage.DFLOW__CPARAM:
+      case ArchDSLPackage.CONNECTOR__CPARAM:
         getCparam().clear();
         return;
-      case ArchDSLPackage.DFLOW__DATAFLOWS:
-        getDataflows().clear();
+      case ArchDSLPackage.CONNECTOR__BEHAVIORS:
+        getBehaviors().clear();
         return;
     }
     super.eUnset(featureID);
@@ -249,12 +249,12 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DFLOW__NAME:
+      case ArchDSLPackage.CONNECTOR__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ArchDSLPackage.DFLOW__CPARAM:
+      case ArchDSLPackage.CONNECTOR__CPARAM:
         return cparam != null && !cparam.isEmpty();
-      case ArchDSLPackage.DFLOW__DATAFLOWS:
-        return dataflows != null && !dataflows.isEmpty();
+      case ArchDSLPackage.CONNECTOR__BEHAVIORS:
+        return behaviors != null && !behaviors.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -276,4 +276,4 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
     return result.toString();
   }
 
-} //DFlowImpl
+} //ConnectorImpl

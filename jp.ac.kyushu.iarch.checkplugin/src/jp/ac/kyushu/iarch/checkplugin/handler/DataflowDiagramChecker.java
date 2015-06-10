@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 public class DataflowDiagramChecker {
 	
-	boolean entity_Sub_exist = false;
-	boolean entity_Ob_exist = false;
+//	boolean entity_Sub_exist = false;
+//	boolean entity_Ob_exist = false;
 	int i=0;
 	int flag=0;
 	public void checkDataflowDiagram(Model archiface,
@@ -31,10 +31,10 @@ public class DataflowDiagramChecker {
 			Dataflow_editor.DataFlow umlDataflow = findDataflow(
 					archiDF, dataflowDiagram.getContents());
 			
-			if (umlDataflow == null) {       //if dataflow name equals to "State"
+			if (umlDataflow == null) {       //if dataflow name equals to "state"
 
 			//	ProblemViewManager.addInfo(dataflowDiagramResource,
-			//			archiDF.getName() + " is Exist.",
+			//			archiDF.getName() + " is Existing.",
 			//			archiDF.getName());
 				
 				
@@ -51,20 +51,16 @@ public class DataflowDiagramChecker {
 		for (Interface archidatastore : archiface.getInterfaces()) {
 			Dataflow_editor.DataStore umlDatastore = findDatastore(
 					archidatastore, dataflowDiagram.getContents());
-			if (umlDatastore != null) {       //if entity name equals to "Subject" or "Observer"
+			if (umlDatastore != null) {       //if entity name equals to "cSubject" or "cObserver"
 				flag++;
 				ProblemViewManager.addInfo(dataflowDiagramResource,
-						archidatastore.getName() + " is Exist.",
+						archidatastore.getName() + " is Existing.",
 						archidatastore.getName());
-				
-				if(archidatastore.getName().equals("Subject"))
-					 entity_Sub_exist = true;
-				else if(archidatastore.getName().equals("Observer"))
-					 entity_Ob_exist = true;
+
 				
 			} else {
 				ProblemViewManager.addError(dataflowDiagramResource,
-						archidatastore.getName() + " is not found.",
+						archidatastore.getName() + "  not found.",
 						archidatastore.getName());
 				
 			}
@@ -107,13 +103,13 @@ public class DataflowDiagramChecker {
 						    	flag++;
 							ProblemViewManager.addInfo(dataflowDiagramResource,
 								//	archiprocess.getName()+"."+m.getName()+" is Exist.", 
-									"Subject"+"."+m.getName()+" is Exist.", 
+									"Subject"+"."+m.getName()+" is Existing.", 
 									m.getName());
 						}
 						    
 						    else{              // Subject methods checking
 						    ProblemViewManager.addInfo(dataflowDiagramResource,
-								    "Subject"+"."+"setState"+" is not found.", 
+								    "Subject"+"."+"setState"+"  not found.", 
 								    m.getName());
 						}
 						
@@ -128,18 +124,18 @@ public class DataflowDiagramChecker {
 							
 							if(m.getName().equals("getState")){
 							ProblemViewManager.addInfo(dataflowDiagramResource,
-								    "Subject"+"."+"getState"+" is Exist.", 
+								    "Subject"+"."+"getState"+" is Existing.", 
 								    m.getName());
 							
 							ProblemViewManager.addInfo(dataflowDiagramResource,
-								    "Subject"+"."+"update"+" is Exist.", 
+								    "Subject"+"."+"update"+" is Existing.", 
 								    m.getName());
 							}
 							
 							else{
 								if(!m.getName().equals("update")  && !m.getName().equals("getState"))
 								ProblemViewManager.addError(dataflowDiagramResource,
-									    "Subject"+"."+"setState"+" is not found.", 
+									    "Subject"+"."+"setState"+"  not found.", 
 									    m.getName());
 							}
 							

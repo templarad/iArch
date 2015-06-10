@@ -6,21 +6,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Dfa</b></em>'.
+ * A representation of the model object '<em><b>cParam</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dfa#getName <em>Name</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.cParam#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getDfa()
+ * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getcParam()
  * @model
  * @generated
  */
-public interface Dfa extends EObject
+public interface cParam extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -32,14 +32,14 @@ public interface Dfa extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getDfa_Name()
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getcParam_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dfa#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.cParam#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -48,4 +48,4 @@ public interface Dfa extends EObject
    */
   void setName(String value);
 
-} // Dfa
+} // cParam

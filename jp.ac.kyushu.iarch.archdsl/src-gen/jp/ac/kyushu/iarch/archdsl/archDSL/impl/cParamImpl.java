@@ -3,7 +3,7 @@
 package jp.ac.kyushu.iarch.archdsl.archDSL.impl;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Dfa;
+import jp.ac.kyushu.iarch.archdsl.archDSL.cParam;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Dfa</b></em>'.
+ * An implementation of the model object '<em><b>cParam</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DfaImpl#getName <em>Name</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.cParamImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DfaImpl extends MinimalEObjectImpl.Container implements Dfa
+public class cParamImpl extends MinimalEObjectImpl.Container implements cParam
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -52,7 +52,7 @@ public class DfaImpl extends MinimalEObjectImpl.Container implements Dfa
    * <!-- end-user-doc -->
    * @generated
    */
-  protected DfaImpl()
+  protected cParamImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class DfaImpl extends MinimalEObjectImpl.Container implements Dfa
   @Override
   protected EClass eStaticClass()
   {
-    return ArchDSLPackage.Literals.DFA;
+    return ArchDSLPackage.Literals.CPARAM;
   }
 
   /**
@@ -88,7 +88,7 @@ public class DfaImpl extends MinimalEObjectImpl.Container implements Dfa
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.DFA__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.CPARAM__NAME, oldName, name));
   }
 
   /**
@@ -101,7 +101,7 @@ public class DfaImpl extends MinimalEObjectImpl.Container implements Dfa
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DFA__NAME:
+      case ArchDSLPackage.CPARAM__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -117,7 +117,7 @@ public class DfaImpl extends MinimalEObjectImpl.Container implements Dfa
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DFA__NAME:
+      case ArchDSLPackage.CPARAM__NAME:
         setName((String)newValue);
         return;
     }
@@ -134,7 +134,7 @@ public class DfaImpl extends MinimalEObjectImpl.Container implements Dfa
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DFA__NAME:
+      case ArchDSLPackage.CPARAM__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -151,7 +151,7 @@ public class DfaImpl extends MinimalEObjectImpl.Container implements Dfa
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DFA__NAME:
+      case ArchDSLPackage.CPARAM__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
@@ -174,4 +174,4 @@ public class DfaImpl extends MinimalEObjectImpl.Container implements Dfa
     return result.toString();
   }
 
-} //DfaImpl
+} //cParamImpl

@@ -340,7 +340,7 @@ public class CheckASTHandler implements IHandler {
 										"/src/" + className + ".java");
 								ProblemViewManager.addInfo1(st2,
 										"Interface-Class :" + className
-												+ " is Exist", st.getName(),
+												+ " is Existing", st.getName(),
 										lineNumberClass);
 								@SuppressWarnings("unchecked")
 								List<Element> methodList = a
@@ -359,7 +359,7 @@ public class CheckASTHandler implements IHandler {
 											ProblemViewManager.addInfo1(st2,
 													"Interface- Method : "
 															+ methodname
-															+ " is Exist",
+															+ " is Existing",
 													archiclass.getName(),
 													lineNumberMethod);
 											flag = true;
@@ -369,7 +369,7 @@ public class CheckASTHandler implements IHandler {
 										ProblemViewManager.addError1(st2,
 												"Interface- Method :"
 														+ methodname
-														+ " is not  Exist",
+														+ " is not  Existing",
 												archiclass.getName(),
 												lineNumberClass);
 									}
@@ -416,7 +416,7 @@ public class CheckASTHandler implements IHandler {
 											+ interNameString + " :  "
 											+ classNameL + "."
 											+ methodNameLaString + " : "
-											+ methodName + " " + "is not Exist";
+											+ methodName + " " + "is not Existing";
 									ProblemViewManager.addError1(st2, message,
 											classNameString, lineNumber);
 								}

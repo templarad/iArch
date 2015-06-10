@@ -5,17 +5,13 @@ generate archDSL "http://www.ac.jp/kyushu/iarch/archdsl/ArchDSL"
 Model:
 	interfaces+=Interface*
 	behaviors+=Behavior* 
-	dflows+=Dflow*
-//	dfas+=Dfa*
+	connectors+=Connector*
+	dflows+=DFlow*
 	dataflows+=Dataflow*
 ;
 
 Interface:
 	"interface component" name=ID "{"
-		methods+=Method*
-	"}"
-	
-	|"interface dataflow" name=ID "{"
 		methods+=Method*
 	"}"
 ;
@@ -27,50 +23,42 @@ Method:
 Param :
 	type=ID name=ID
 ;
- 
-Dflow:
-	"Dflow data" name=ID";" //description of dataflow element "|state|
-		//'description' description = STRING  
+
+cParam :
+    name=ID
 ;
 
-/*
-Dfa:
-	"Dfa" name=ID";"
-	  //  'define' definition = STRING      //define "$Dataflow"
+//Data:
+//	"|state|"
+//;
+
+Connector:
+    "interface connector" name=ID "(" (cparam+=cParam(","cparam+=cParam)*)? ")" "{"
+        behaviors+=Behavior*
+    "}"
 ;
-*/
 
 Behavior:
-	interface=[Interface] "=" "(" (call+=[Method|FQN]("->"call+=[Method|FQN])*"->"end=[Interface])?");"
+	interface=[Interface] "="  (call+=[Method|FQN]("->"call+=[Method|FQN])*"->"end=[Interface])?";"
 ;
 	
-Dataflow:
+DFlow:
+	"interface dflow" name=ID "(" (cparam+=cParam(","cparam+=cParam)*)? ")" "{"
+		dataflows+=Dataflow*
+	 "}"
+;	
 	
-//	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"("->>"((call+=[Method|FQN])*|(getIf+=[Interface])*)+
-// 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];" 
- 
-//    2015.1.19 
-//    one to one
- 
-	interface=[Interface] "=" "[" ("|"getflow+=[Dflow]"|"
-		("->>"call+=[Method|FQN]("->>""|"getflow+=[Dflow]"|"))
-		("->>"getIf+=[Interface]("->>""|"getflow+=[Dflow]"|"))
-		("->>"call+=[Method|FQN]("->>""|"getflow+=[Dflow]"|"))
-		"->>"end=[Interface])?"];"  
-   
-
-/* 
-//  another pattern
-    dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|""->>"
-    ((call+=[Method|FQN]"->>""|"getflow+=[Dflow]"|""->>")|(getIf+=[Interface]"->>""|"getflow+=[Dflow]"|""->>"))*
-    end=[Interface])?"];"
-*/
-/*        
-	dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"
-		((("->>"call+=[Method|FQN])?("->>""|"getflow+=[Dflow]"|")?)*
-		(("->>"getIf+=[Interface])?("->>""|"getflow+=[Dflow]"|")?)*)*
-		"->>"end=[Interface])?"];"  
-*/
+Dataflow:		
+		statenotification+=StateNotification "="
+		("|"getflow+=[DFlow]"|""->>"
+		call+=[Method|FQN]
+		"->>""|"getflow+=[DFlow]"|""->>"
+		getIf+=[Interface]
+		"->>""|"getflow+=[DFlow]"|""->>"
+		call+=[Method|FQN]
+		"->>""|"getflow+=[DFlow]"|""->>"
+		call+=[Method|FQN]
+		"->>"statenotification+=StateNotification)?";"  		
 ;
 
 /* some definition Directions
@@ -80,23 +68,11 @@ Dataflow:
 * "getIf"-> get Interface_name (for instance:"Subject" or "Observer").
 */
 
-FQN:
-	ID ("."ID)*
+StateNotification:
+	name=ID 
 ;
 
 
-//others
-/* 
-//dfa=[Dfa] "=" "["(("|"getflow+=[Dflow]"|->>"call+=[Method|FQN]"->>")*end=[Interface])?"];"
-// interface=[Interface] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");" 
-// dfa=[Dfa] "=" "(" (call+=[Method|FQN]("->>"call+=[Method|FQN])*"->>"end=[Interface])?");"   
- */
- 
- 
-//errors report
-//
-/* 
- * dfa=[Dfa] "=" "[" ("|"getflow+=[Dflow]"|"(("->>"((call+=[Method|FQN])|(getIf+=[Interface])))
- 	("->>""|"getflow+=[Dflow]"|"))*"->>"end=[Interface])?"];"   
- * 
- * */
+FQN:
+	ID ("."ID)*
+;

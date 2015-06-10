@@ -59,22 +59,22 @@ public interface ArchDSLFactory extends EFactory
   Param createParam();
 
   /**
-   * Returns a new object of class '<em>Dflow</em>'.
+   * Returns a new object of class '<em>cParam</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Dflow</em>'.
+   * @return a new object of class '<em>cParam</em>'.
    * @generated
    */
-  Dflow createDflow();
+  cParam createcParam();
 
   /**
-   * Returns a new object of class '<em>Dfa</em>'.
+   * Returns a new object of class '<em>Connector</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Dfa</em>'.
+   * @return a new object of class '<em>Connector</em>'.
    * @generated
    */
-  Dfa createDfa();
+  Connector createConnector();
 
   /**
    * Returns a new object of class '<em>Behavior</em>'.
@@ -86,6 +86,15 @@ public interface ArchDSLFactory extends EFactory
   Behavior createBehavior();
 
   /**
+   * Returns a new object of class '<em>DFlow</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>DFlow</em>'.
+   * @generated
+   */
+  DFlow createDFlow();
+
+  /**
    * Returns a new object of class '<em>Dataflow</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -93,6 +102,15 @@ public interface ArchDSLFactory extends EFactory
    * @generated
    */
   Dataflow createDataflow();
+
+  /**
+   * Returns a new object of class '<em>State Notification</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>State Notification</em>'.
+   * @generated
+   */
+  StateNotification createStateNotification();
 
   /**
    * Returns the package supported by this factory.

@@ -7,10 +7,10 @@
         eType="#//Interface" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="behaviors" upperBound="-1"
         eType="#//Behavior" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"
+        eType="#//Connector" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dflows" upperBound="-1"
-        eType="#//Dflow" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dfas" upperBound="-1" eType="#//Dfa"
-        containment="true"/>
+        eType="#//DFlow" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataflows" upperBound="-1"
         eType="#//Dataflow" containment="true"/>
   </eClassifiers>
@@ -29,11 +29,15 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Dflow">
+  <eClassifiers xsi:type="ecore:EClass" name="cParam">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Dfa">
+  <eClassifiers xsi:type="ecore:EClass" name="Connector">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cparam" upperBound="-1"
+        eType="#//cParam" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="behaviors" upperBound="-1"
+        eType="#//Behavior" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Behavior">
     <eStructuralFeatures xsi:type="ecore:EReference" name="interface" eType="#//Interface"/>
@@ -41,14 +45,24 @@
         eType="#//Method"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Interface"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DFlow">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cparam" upperBound="-1"
+        eType="#//cParam" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataflows" upperBound="-1"
+        eType="#//Dataflow" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dataflow">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dfa" eType="#//Dfa"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statenotification" upperBound="-1"
+        eType="#//StateNotification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="getflow" unique="false"
-        upperBound="-1" eType="#//Dflow"/>
+        upperBound="-1" eType="#//DFlow"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="call" unique="false" upperBound="-1"
         eType="#//Method"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="getIf" unique="false" upperBound="-1"
         eType="#//Interface"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//Interface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateNotification">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>
