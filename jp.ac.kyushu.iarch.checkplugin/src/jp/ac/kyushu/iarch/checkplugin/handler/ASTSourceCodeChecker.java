@@ -6,18 +6,22 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import org.eclipse.jdt.core.ICompilationUnit;
+
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
+import jp.ac.kyushu.iarch.checkplugin.ArchfaceMarkerResolutionGenerator;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
@@ -36,12 +40,22 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclarationStatement;
 
 public class ASTSourceCodeChecker{
+
+	public static String InsertPath;
+	public static String InsertMethod;
+	public static String InsertJavaCode;
+//	
+//	public static List<String> InserPathList;
+//	public static List<String> InsertMethodList;
+//	public static List<String> InsertJavaCodeList;
+	
 	public void SourceCodeArchifileChecker(Model archiface,	IJavaProject project){
 	
 		Document codeXmlDocument = DocumentHelper.createDocument();
 		 ASTParser parser = ASTParser.newParser(AST.JLS4);
 		parser.setProject(project);
 		IResource st = null;
+	
 		try {
 
 			String projectName = project.getElementName();
@@ -205,7 +219,10 @@ public class ASTSourceCodeChecker{
 			Element test = (Element) root.selectSingleNode("//Package[@name='']");
 			List<Element> testClass = test.selectNodes("Class");
 			// }
-
+			
+			
+			
+			//component
 			for (Interface archiclass : archiface.getInterfaces()) {
 				String className = archiclass.getName();
 				for (Element a : testClass) {
@@ -218,8 +235,10 @@ public class ASTSourceCodeChecker{
 						List<Element> methodList = a.selectNodes("MethodDeclaration");
 						for (Method m : archiclass.getMethods()) {
 							String methodname = m.getName();
+							
 							String methodname2 = null;
 							boolean flag = false;
+							
 							for (Element b : methodList) {
 								methodname2 = b.attributeValue("name");
 								int lineNumberMethod=Integer.parseInt(b.attributeValue("lineNumber").toString());
@@ -230,6 +249,7 @@ public class ASTSourceCodeChecker{
 							}
 							if (!flag) {
 								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not  Exist", archiclass.getName(),lineNumberClass);
+								
 							}
 						}
 					}
@@ -240,7 +260,7 @@ public class ASTSourceCodeChecker{
 
 				String interNameString = behavior.getInterface().getName();
 				String methodNameLaString = null;
-				String classNameL = null;
+				String classNameL = ((Interface)behavior.getCall().get(0).eContainer()).getName();
 				String outString = null;
 				for (Method methodCall : behavior.getCall()) {
 					boolean flag2 = false;
@@ -261,12 +281,24 @@ public class ASTSourceCodeChecker{
 						if (!flag2) {
 							IResource st2=st.getProject().getFile("/src/"+classNameL+".java");
 							String message = "Behavior  : " + interNameString + " :  " + classNameL + "." + methodNameLaString + " : " + methodName + " " + "is not Exist";
-							ProblemViewManager.addError1(st2, message, classNameString,lineNumber);
+							
+							IMarker marker = ProblemViewManager.addError1(st2, message, classNameString,lineNumber);
+							ArchfaceMarkerResolutionGenerator archfaceErrorResolution = new ArchfaceMarkerResolutionGenerator();
+							archfaceErrorResolution.getResolutions(marker);
+							
+//							InserPathList.add("/src/"+classNameL+".java");
+//							InsertMethodList.add(methodNameLaString);
+//							InsertJavaCodeList.add(methodName);
+//							
+//							InsertPath="/src/"+classNameL+".java";
+//							InsertMethod=methodNameLaString;
+//							InsertJavaCode=methodName;
 						}
 					}
 
 					if (flag2) {
 						outString = "Behavior  : " + interNameString + " : " + classNameL + "." + methodNameLaString + " ->" + classNameString + "." + methodName;
+					
 					}
 					if (outString != null) {
 						IResource st2=st.getProject().getFile("/src/"+classNameL+".java");
@@ -324,6 +356,9 @@ public class ASTSourceCodeChecker{
 
 		return modifiers;
 	}
+	
+	
+
 	
 }
 

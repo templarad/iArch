@@ -40,6 +40,12 @@
          name="AddMethodSample">
    </command>
    
+       <command
+         categoryId="jp.ac.kyushu.iarch.checkPlugin.iarchcategory"
+         id="jp.ac.kyushu.iarch.checkPlugin.GeneratorGUI"
+         name="GeneratorGUI">
+   </command>
+   
    
    </extension>
    <extension
@@ -93,7 +99,13 @@
                   style="push">
             </command>
 
-            
+             <command
+                  commandId="jp.ac.kyushu.iarch.checkPlugin.GeneratorGUI"
+                  id="jp.ac.kyushu.iarch.checkPlugin.GeneratorGUI"
+                  label="GeneratorGUISample"
+                  mnemonic="D"
+                  style="push">
+            </command>
             
          </menu>
       </menuContribution>
@@ -126,6 +138,10 @@
             commandId="jp.ac.kyushu.iarch.checkPlugin.AddMethod">
       </handler>
       
+       <handler
+            class="jp.ac.kyushu.iarch.checkplugin.handler.GeneratorGUI"
+            commandId="jp.ac.kyushu.iarch.checkPlugin.GeneratorGUI">
+      </handler>
       
    </extension>
    <extension
@@ -144,6 +160,12 @@
    <extension
          point="org.eclipse.ui.startup">
          <startup class="jp.ac.kyushu.iarch.checkplugin.Savehook"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="jp.ac.kyushu.iarch.checkplugin.ArchfaceMarkerResolutionGenerator">
+      </markerResolutionGenerator>
    </extension>
 
 </plugin>

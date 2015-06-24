@@ -36,15 +36,17 @@ public class ProblemViewManager {
 			ce.printStackTrace();
 		}
 	}
-	public static void addError1(IResource resource, String message, String location,int lineNumber) {
+	public static IMarker addError1(IResource resource, String message, String location,int lineNumber) {
 		try {
 			IMarker marker = resource.createMarker(IMarker.PROBLEM);
 			marker.setAttribute(IMarker.MESSAGE, message);
 			marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
 			marker.setAttribute(IMarker.LOCATION, location);
 			marker.setAttribute(IMarker.LINE_NUMBER,lineNumber);
+			return marker;
 		} catch (CoreException ce) {
 			ce.printStackTrace();
+			return null;
 		}
 	}
 

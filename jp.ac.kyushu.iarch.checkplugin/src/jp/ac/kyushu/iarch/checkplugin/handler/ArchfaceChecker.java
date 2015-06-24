@@ -68,7 +68,6 @@ public class ArchfaceChecker extends XMLreader {
 		//Check source code
 		ASTSourceCodeChecker astchecker = new ASTSourceCodeChecker();
 		astchecker.SourceCodeArchifileChecker(archModel, getJavaProject());
-		
 		//Check AR
 //		ARChecker archecker = new ARChecker();
 //		archecker.checkAR(archfile, aRXMLResource);

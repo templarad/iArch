@@ -250,9 +250,7 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="jp.ac.kyushu.iarch.archdsl.ui.ArchDSLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
-            fileExtensions="arch"
-            >
+            class="jp.ac.kyushu.iarch.archdsl.ui.ArchDSLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
       </participant>
    </extension>
    <extension
