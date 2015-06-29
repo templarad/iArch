@@ -248,13 +248,44 @@ public class ASTSourceCodeChecker{
 								}
 							}
 							if (!flag) {
-								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not  Exist", archiclass.getName(),lineNumberClass);
+								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not defined", archiclass.getName(),lineNumberClass);
 								
 							}
 						}
 					}
 				}
 			}
+			//component:warning
+			for (Element javaCode : testClass) {
+				String javafileClassname=javaCode.attributeValue("name");
+				int lineNumberClass=Integer.parseInt(javaCode.attributeValue("lineNumber").toString());
+					for(Interface archiclass : archiface.getInterfaces()){
+						String ArchClassname = archiclass.getName();
+							if(ArchClassname.equals(javafileClassname)){
+								IResource st2=st.getProject().getFile("/src/"+ArchClassname+".java");
+								List<Element> methodList = javaCode.selectNodes("MethodDeclaration");
+								for (Element javaCodemethod : methodList){
+									String javacodemethodname = javaCodemethod.attributeValue("name");
+									int lineNumberMethod=Integer.parseInt(javaCodemethod.attributeValue("lineNumber").toString());
+									boolean flag = false;
+										for (Method archmethod : archiclass.getMethods()){
+											String Archmethodname=archmethod.getName();
+											if(Archmethodname.equals(javacodemethodname)){
+												flag = true;
+											}
+										}
+											if(!flag){
+												
+												ProblemViewManager.addWarning1(st2, "JavaCode- Method :"+javacodemethodname+" is not in the Archface", archiclass.getName(), lineNumberMethod);
+											}
+										}
+								}
+							}
+					
+					}
+				
+				
+			
 			// behaver
 			for (Behavior behavior : archiface.getBehaviors()) {
 
@@ -280,7 +311,7 @@ public class ASTSourceCodeChecker{
 						 lineNumber=Integer.parseInt(((Element) methodDcl).attributeValue("lineNumber").toString());
 						if (!flag2) {
 							IResource st2=st.getProject().getFile("/src/"+classNameL+".java");
-							String message = "Behavior  : " + interNameString + " :  " + classNameL + "." + methodNameLaString + " : " + methodName + " " + "is not Exist";
+							String message = "Behavior  : " + interNameString + " :  " + classNameL + "." + methodNameLaString + " : " + methodName + " " + "is not defined";
 							
 							IMarker marker = ProblemViewManager.addError1(st2, message, classNameString,lineNumber);
 							ArchfaceMarkerResolutionGenerator archfaceErrorResolution = new ArchfaceMarkerResolutionGenerator();
@@ -310,6 +341,7 @@ public class ASTSourceCodeChecker{
 		}
 	}
 
+	
 	private List<String> returnModifiers(int ModifiersNum) {
 		// It is not all
 		List<String> modifiers = new LinkedList<String>();

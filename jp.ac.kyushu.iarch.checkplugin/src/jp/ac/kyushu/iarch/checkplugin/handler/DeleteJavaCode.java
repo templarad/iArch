@@ -16,17 +16,16 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jface.text.Document;
 import org.eclipse.text.edits.TextEdit;
 
-public class InsertJavaCode  {
+public class DeleteJavaCode  {
 	
 	
 	
-	
-	public static void insert(String Path,String MethordName,String Insertcode){
+	public static void delete(String Path,String MethordName){
 		
 		SourceFile sourceFile;
 		try {
 			
-			ASTVisitor visitor = new InsertVisitor(MethordName,Insertcode);
+			ASTVisitor visitor = new DeleteVisitor(MethordName);
 //			String InsertCode=ASTSourceCodeChecker.InsertJavaCode;
 //			String InsertPath=ASTSourceCodeChecker.InsertPath;
 //			String InsertMethod=ASTSourceCodeChecker.InsertMethod;
@@ -52,7 +51,7 @@ public class InsertJavaCode  {
 	        unit.accept(visitor);
 	  
 	        String code = getCode(sourceFile.getSourceCode(), unit);
-	        System.out.println(code);
+
 	        
 	        
 	        BufferedWriter out = new BufferedWriter(new FileWriter("C:/Users/Liyuning/Desktop/iArch/ObserverPattern/src/Subject.java"));
@@ -69,12 +68,12 @@ public class InsertJavaCode  {
 		
 	}
 	
-	public static void insert2(String Path,String MethordName){
+	public static void insert2(String MethordName){
 		SourceFile sourceFile;
 		try {
 			
 			ASTVisitor visitor2 = new InsertMethordVisitor(MethordName);
-			sourceFile = new SourceFile(Path);
+			sourceFile = new SourceFile("C:/Users/Liyuning/Desktop/iArch/ObserverPattern/src/Subject.java");
 			CompilationUnit unit;
 	        
 	        ASTParser astParser = ASTParser.newParser(AST.JLS4);

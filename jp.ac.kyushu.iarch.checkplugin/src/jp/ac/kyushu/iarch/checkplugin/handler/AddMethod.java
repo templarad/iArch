@@ -88,7 +88,7 @@ public class AddMethod  implements IHandler{
 		 OldArchReader oar = OldArchReader.getInstance();
 		 IResource oldarchResouce = oar.getOldArchResouce(project);
 		 if(oldarchResouce == null){
-			 logger.error("Old Archface does not exist! ");
+			 logger.error("Old Archface is not exist! ");
 			 return;
 		 }
 		 */
