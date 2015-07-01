@@ -1,0 +1,57 @@
+次回の会議
+	6/30(水) 18:30
+
+参加者
+郭,李,深町
+鵜林先生,亀井先生
+
+予定----------------------
+		iArchのリファクタリングを外注する…？
+		PBL発表会が終わったらiArch開発の整理
+-------------------------
+
+李
+	今週欠席？
+	
+	前回決まったTODO
+	エラー文をわかりやすく修正します
+	Warningに対しても修正を支援しましょう
+	Fixした内容がJavaコンパイラを通るような支援を行います
+
+	Done
+		エラーをクリックしたら，コード上で追加することが出来ました。
+
+	次週以降のTODO
+
+		以下の作業を行いましょう
+			1. 艾さんのbranch(refactoring-pattern)をマージ
+			2. 各branchが1.をmerge
+			3. masterをrefactoring
+			4. 各自が2.をmerge
+			5. 各自がmasterへ4.をmerge
+		
+		メモ
+
+深町
+	前回決まったTODO
+		FOSEの論文を書きます
+		1. SIGSE3月 + SIGSE7月のマージ
+			ベース3月に7月の変更を反映させる
+			アルゴリズムは削るのかな？Archface-Uの言語仕様に重きを置く
+		2. FOSE形式で10ページにする
+		3. 7/1までに投稿
+		Optional(期間伸びたら)
+		4. iArch-Uの改造
+		5. iArch-Uの性能評価(コンパイルスピード)
+
+	DONE
+	  FOSE論文に取り掛かりつつ有ります…
+	次週以降のTODO
+			
+		以下の作業を行いましょう
+			1. 艾さんのbranch(refactoring-pattern)をマージ
+			2. 各branchが1.をmerge
+			3. masterをrefactoring
+			4. 各自が2.をmerge
+			5. 各自がmasterへ4.をmerge
+		
