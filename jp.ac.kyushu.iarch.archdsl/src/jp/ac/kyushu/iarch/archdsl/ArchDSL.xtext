@@ -4,8 +4,8 @@ generate archDSL "http://www.ac.jp/kyushu/iarch/archdsl/ArchDSL"
 
 Model:
     (interfaces+=Interface |
-    u_interfaces+=UncertainInterface)*
-    (behaviors+=Behavior |
+    u_interfaces+=UncertainInterface|
+    behaviors+=Behavior |
     u_behaviors+=UncertainBehavior|
     connectors+=Connector)*;
 

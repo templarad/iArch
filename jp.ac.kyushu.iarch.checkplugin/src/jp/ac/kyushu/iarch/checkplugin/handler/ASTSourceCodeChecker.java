@@ -72,8 +72,8 @@ public class ASTSourceCodeChecker{
 					for (IJavaElement packg : ((IPackageFragmentRoot) element).getChildren()) {
 
 						// element
-						final Element pageElement = rootElement.addElement("Package");
-						pageElement.addAttribute("name", packg.getElementName());
+						final Element packgElement = rootElement.addElement("Package");
+						packgElement.addAttribute("name", packg.getElementName());
 
 						if (packg instanceof IPackageFragment)
 
@@ -100,7 +100,7 @@ public class ASTSourceCodeChecker{
 										} else {
 											nodeType = "Class";
 										}
-										classElement = pageElement.addElement(nodeType);
+										classElement = packgElement.addElement(nodeType);
 										String className = node.getName().toString();
 										classElement.addAttribute("name", className);
 
@@ -220,20 +220,29 @@ public class ASTSourceCodeChecker{
 			e.printStackTrace();
 		}
 
-			//check with archface
+			// TODO リファクタリングでメソッド化されていないチェックを全て消去する
 			Element root = codeXmlDocument.getRootElement();
 			Element packageElement = (Element) root.selectSingleNode("//Package[@name='']");
+
+//			List<Element> tmpPackageElements = new ArrayList<Element>();
 			@SuppressWarnings("unchecked")
-			List<Element> javaClasses = packageElement.selectNodes("Class");	//list of classes in java source code
+			List<Element> packageElements = root.selectNodes("Package");
+//			for(Element e : tmpPackageElements){
+//				@SuppressWarnings("unchecked")
+//				List<Element> tmps = e.selectNodes("Class");
+//				if(!tmps.isEmpty()){
+//					packageElements.add(e);
+//				}
+//			}
 
 			// pairModels Clear.
 			pairModelsInit();
 
 			// Interface check
-			typeCheckInterface(archiface,packageElement);
+			typeCheckInterface(archiface,packageElements);
 
 			// behaver
-			typeCheckBehavior(archiface,packageElement);
+			typeCheckBehavior(archiface);
 
 			for (Behavior behavior : archiface.getBehaviors()) {
 
@@ -322,9 +331,7 @@ public class ASTSourceCodeChecker{
 							if (!isMethodInvocationExist) {
 								String errMsg = "Behavior  : " + uncertainInterfaceName + " :  " + lastClassName + "." + lastMethodName + " -> " + currentMethodName + " " + "is not defined.";
 								if(typeOfCall.equals("CertainCallImpl")){
-									if(!lastTypeOfMethod.equals("OptMethodImpl")){
-										ProblemViewManager.addError1(st2, errMsg, currentClassName,lineNumber);
-									}
+									ProblemViewManager.addError1(st2, errMsg, currentClassName,lineNumber);
 								}else if(typeOfCall.equals("OptCallImpl")){
 									ProblemViewManager.addWarning1(st2, errMsg, currentClassName, lineNumber);
 									currentClassName = lastClassName;
@@ -366,54 +373,59 @@ public class ASTSourceCodeChecker{
 				}
 			}
 
-			ouputErrorMessages(javaFileIResource);
+			outputErrorMessages(javaFileIResource);
 
 	}
 
 
-	private void ouputErrorMessages(IResource resource) {
+	/**
+	 * エラーメッセージ出力
+	 * @param resource IResource型 リソース
+	 */
+	private void outputErrorMessages(IResource resource) {
 		// tmp compile error output
 		for (ComponentClassPairModel pairModel : componentClassPairModels) {
 			if(pairModel.isExistJavaNode()){
-				ProblemViewManager.addInfo1(resource, pairModel.getName()+" is defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+//				ProblemViewManager.addInfo1(pairModel.getClassPath(resource), "Component :" + pairModel.getName()+" is defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 				for (ComponentMethodPairModel methodModel : pairModel.methodPairsList) {
 					if(!methodModel.isAltSet()){
 						if(methodModel.isExistJavaNode()){
-							ProblemViewManager.addInfo1(resource, methodModel.getName()+" is defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+//							ProblemViewManager.addInfo1(pairModel.getClassPath(resource), "Component :" + methodModel.getName()+" is defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 						}else{
 							if(methodModel.isOpt()){
-								ProblemViewManager.addWarning1(resource, methodModel.getName()+" is not defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+								ProblemViewManager.addWarning1(pairModel.getClassPath(resource),"OptComponent :" +  methodModel.getName()+" is not defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 							}else{
-								ProblemViewManager.addError1(resource, methodModel.getName()+" is not defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+								ProblemViewManager.addError1(pairModel.getClassPath(resource),"Component :" +  methodModel.getName()+" is not defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 							}
 						}
 					}else{
 						boolean isError = true;
 						for (ComponentMethodPairModel altMethod : methodModel.getAltMethodPairSets()) {
 							if(altMethod.isExistJavaNode()){
-								ProblemViewManager.addInfo1(resource, altMethod.getName() + " is not defined", pairModel.getName(), Integer.parseInt(((Element)pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+//								ProblemViewManager.addInfo1(pairModel.getClassPath(resource),"AltComponent :" +  altMethod.getName() + " is not defined", pairModel.getName(), Integer.parseInt(((Element)pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 								isError = false;	//AltMethodはひとつでも確立ができればOK
 							}
 						}
 						if(isError){
-							ProblemViewManager.addError1(resource, "Component - AltMethod: " + methodModel.getName()+" is not defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+							ProblemViewManager.addError1(pairModel.getClassPath(resource), "AltComponent : " + methodModel.getName()+" is not defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 						}
 					}
 				}
 			}else{
-				ProblemViewManager.addError1(resource, pairModel.getArchInterface().getName()+" is not defined",pairModel.getArchInterface().getName(), 0);
+				ProblemViewManager.addError1(pairModel.getClassPath(resource), "Component :" + pairModel.getArchInterface().getName() + " is not defined", pairModel.getArchInterface().getName(), 0);
 			}
 		}
+
 		for (BehaviorPairModel pairModel : behaviorPairModels) {
 			List<ComponentMethodPairModel> methodModelList = pairModel.getMethodModels();
-			
-			for (int i = 0; (i < methodModelList.size() - 1)&&(methodModelList.size() > 1); i++) {
+			//ループを行う回数はコールの数 - 1
+			for (int i = 0; (i < methodModelList.size() - 1) && (methodModelList.size() > 1); i++) {
 				ComponentMethodPairModel currentMethodModel = methodModelList.get(i);
 				ComponentMethodPairModel nextMethodModel = methodModelList.get(i+1);
 				if(currentMethodModel.isInvocationExist(nextMethodModel.getName())){
-					ProblemViewManager.addInfo1(resource, currentMethodModel.getName() +" -> " + nextMethodModel.getName() + " is defined", currentMethodModel.getName(), Integer.parseInt(((Element)currentMethodModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+					ProblemViewManager.addInfo1(currentMethodModel.getParentModel().getClassPath(resource), "Connector -" + currentMethodModel.getName() +" -> " + nextMethodModel.getName() + " is defined", currentMethodModel.getName(), Integer.parseInt(((Element)currentMethodModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 				}else{
-					ProblemViewManager.addError1(resource, currentMethodModel.getName() +" -> " + nextMethodModel.getName() + " is not defined", currentMethodModel.getName(), Integer.parseInt(((Element)currentMethodModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+					ProblemViewManager.addError1(currentMethodModel.getParentModel().getClassPath(resource), "Connector -" + currentMethodModel.getName() +" -> " + nextMethodModel.getName() + " is not defined", currentMethodModel.getName(), Integer.parseInt(((Element)currentMethodModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 				}
 			}
 		}
@@ -421,15 +433,15 @@ public class ASTSourceCodeChecker{
 
 
 	/**
-	 * Behaviorに記述されたメソッドの該当したメソッドの組み合わせのComponentMethodPairModelをListへ格納します．
+	 * Behaviorに記述されたメソッドの該当したメソッドの組み合わせのComponentMethodPairModelをコール順にListへ格納します．
 	 * Behaviorの成立可否はComponentMethodPairModelのisInvocationExistによって判定します．
-	 * @param archiface
-	 * @param packageElement
+	 * @param archiface Archface全情報が入っているモデル
+	 * @param packageElements パッケージ以下のDOM情報
 	 */
-	private void typeCheckBehavior(Model archiface, Element packageElement) {
+	private void typeCheckBehavior(Model archiface) {
 		ComponentClassPairModel classPairModel = null;
 		List<ComponentMethodPairModel> methodPairModels = new ArrayList<ComponentMethodPairModel>();
-		
+
 		for (jp.ac.kyushu.iarch.archdsl.archDSL.Connector connector : archiface.getConnectors()) {
 			for (Behavior behavior : connector.getBehaviors()) {
 				for (Method methodCall : behavior.getCall()) {
@@ -446,19 +458,23 @@ public class ASTSourceCodeChecker{
 						}
 					}
 				}
+
 				behaviorPairModels.add(new BehaviorPairModel(behavior.getInterface().getName(),methodPairModels));
 			}
 		}
+	}
+
+	private void typeCheckUncertainBehavior(Behavior behavior, List<ComponentMethodPairModel> methodPairModels){
+
 	}
 
 
 	/**
 	 * Archfaceと同じクラス，メソッド名をJavaソースコードから探し，ComponentClassPairModelへ格納します．
 	 * @param archiface
-	 * @param packageElement
+	 * @param packageElements
 	 */
-	private void typeCheckInterface(Model archiface,
-			Element packageElement) {
+	private void typeCheckInterface(Model archiface, List<Element> packageElements) {
 		String archClassName = null;
 		Node classNode =  null;
 		ComponentClassPairModel classPairModel = null;
@@ -467,7 +483,12 @@ public class ASTSourceCodeChecker{
 
 		for (Interface archiclass : archiface.getInterfaces()) {
 			archClassName = archiclass.getName();
-			classNode =  packageElement.selectSingleNode("Class[@name='" + archClassName + "']");
+			for(Element packageElement : packageElements){
+				classNode =  packageElement.selectSingleNode("Class[@name='" + archClassName + "']");
+				if(classNode != null){
+					break;
+				}
+			}
 			classPairModel = new ComponentClassPairModel(archiclass, classNode);
 			if(classNode != null){
 				for (Method archimethod : archiclass.getMethods()) {
@@ -485,7 +506,12 @@ public class ASTSourceCodeChecker{
 	}
 
 
-	private ComponentClassPairModel typeCheckUncertainInterface(
+	/**
+	 * 不確かさを包容したComponentに対してのタイプチェックを行い、classPairModelを更新します。
+	 * @param u_interfaces 不確かなComponentのリスト
+	 * @param classPairModel 更新すべきComponentClassPairModelのリスト
+	 */
+	private void typeCheckUncertainInterface(
 			EList<UncertainInterface> u_interfaces,ComponentClassPairModel classPairModel) {
 		Interface superInterface = null;
 		Node classNode = null;
@@ -525,7 +551,6 @@ public class ASTSourceCodeChecker{
 				}
 			}
 		}
-		return classPairModel;
 	}
 
 

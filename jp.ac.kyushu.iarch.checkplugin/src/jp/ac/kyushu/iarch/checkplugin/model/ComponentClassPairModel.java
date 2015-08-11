@@ -1,6 +1,3 @@
-/**
- *
- */
 package jp.ac.kyushu.iarch.checkplugin.model;
 
 import java.util.ArrayList;
@@ -8,9 +5,13 @@ import java.util.List;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 
+import org.dom4j.Element;
 import org.dom4j.Node;
+import org.eclipse.core.resources.IResource;
 
 /**
+ * ArchfaceとJavaコードのXMLノードのペアを保存するためのモデル．
+ * 子にメソッドのペアを持つ．
  * @author fukamachi
  *
  */
@@ -20,12 +21,14 @@ public class ComponentClassPairModel {
 	private Node javaClassNode = null;
 	private boolean isExistJavaNode = false;
 	private String name = null;
+	private Node packageNode = null;
 	public List<ComponentMethodPairModel> methodPairsList = new ArrayList<ComponentMethodPairModel>();
 
 	public ComponentClassPairModel(Interface archInterface, Node javaClassNode) {
 		this.archInterface = archInterface;
 		this.javaClassNode = javaClassNode;
 		this.name = archInterface.getName();
+		this.packageNode = this.javaClassNode.getParent();
 		if (javaClassNode != null) {
 			this.isExistJavaNode = true;
 		}
@@ -67,6 +70,19 @@ public class ComponentClassPairModel {
 
 	public boolean isExistJavaNode() {
 		return isExistJavaNode;
+	}
+
+	public IResource getClassPath(IResource resource){
+		IResource src;
+		if(!this.packageNode.getName().equals("")){
+			src = resource.getProject().getFile("/src/"+ ((Element)packageNode).attributeValue("name").toString() + "/" + this.getName() +".java");
+		}else{
+			src = resource.getProject().getFile("/src/"+ this.getName() +".java");
+		}
+		if(src == null){
+			src = resource;
+		}
+		return src;
 	}
 
 }

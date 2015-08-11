@@ -127,6 +127,9 @@ public class ComponentMethodPairModel {
 		return name;
 	}
 
+	/**
+	 * @return parentModel
+	 */
 	public ComponentClassPairModel getParentModel() {
 		return parentModel;
 	}
