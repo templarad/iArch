@@ -136,14 +136,15 @@ public class ASTSourceCodeChecker{
 									@Override
 									public boolean visit(MethodInvocation node) {
 
-										Element methodInvocationElement = methodElement.addElement("MethodInvocation");
-										methodInvocationElement.addAttribute("name", node.getName().toString());
-										Element mEElement = methodInvocationElement.addElement("InvocationExpression");
-										System.out.println("Method Invocation:" + node.getName());
-										System.out.println("Method InvocationExpression:" + node.getExpression());
-										if ((node.getExpression()) != null)
-											mEElement.addText(node.getExpression().toString());
-
+										if(methodElement != null){
+											Element methodInvocationElement = methodElement.addElement("MethodInvocation");
+											methodInvocationElement.addAttribute("name", node.getName().toString());
+											Element mEElement = methodInvocationElement.addElement("InvocationExpression");
+											System.out.println("Method Invocation:" + node.getName());
+											System.out.println("Method InvocationExpression:" + node.getExpression());
+											if ((node.getExpression()) != null)
+												mEElement.addText(node.getExpression().toString());
+										}
 										return super.visit(node);
 									}
 
@@ -162,37 +163,38 @@ public class ASTSourceCodeChecker{
 
 										int methodModifiersNum = node.getModifiers();
 										// MethodDeclaration
-										methodElement = classElement.addElement("MethodDeclaration");
-										int lineNumber = result.getLineNumber(node.getStartPosition()) ;
-										methodElement.addAttribute("lineNumber", String.valueOf(lineNumber));
-										methodElement.addAttribute("name", methodName);
-										// Modifiers of
-										// MethodDeclaration
-										Element modifiersElement = methodElement.addElement("MethodModifiers");
-										List<String> modifiers = returnModifiers(methodModifiersNum);
-										if (methodReturnType.equals("void") && (!(modifiers.get(0).toString().equals("void"))))
-											modifiers.add("void");
-										for (String str : modifiers) {
-											Element modifierElement = modifiersElement.addElement("modifier");
-											modifierElement.setText(str);
-										}
-										// method parameterType
-										if (node.parameters().size() != 0) {
-											List<SingleVariableDeclaration> methodParameters = node.parameters();
-											Element parameterTypeElement = methodElement.addElement("parameterTypeElement");
-											for (SingleVariableDeclaration methodParameter : methodParameters) {
-												String fType = methodParameter.toString().split(" ")[0];
-												Element parameterType = parameterTypeElement.addElement("parameterType");
-												parameterType.setText(fType);
+										if(classElement != null){
+											methodElement = classElement.addElement("MethodDeclaration");
+											int lineNumber = result.getLineNumber(node.getStartPosition()) ;
+											methodElement.addAttribute("lineNumber", String.valueOf(lineNumber));
+											methodElement.addAttribute("name", methodName);
+											// Modifiers of
+											// MethodDeclaration
+											Element modifiersElement = methodElement.addElement("MethodModifiers");
+											List<String> modifiers = returnModifiers(methodModifiersNum);
+											if (methodReturnType.equals("void") && (!(modifiers.get(0).toString().equals("void"))))
+												modifiers.add("void");
+											for (String str : modifiers) {
+												Element modifierElement = modifiersElement.addElement("modifier");
+												modifierElement.setText(str);
 											}
+											// method parameterType
+											if (node.parameters().size() != 0) {
+												List<SingleVariableDeclaration> methodParameters = node.parameters();
+												Element parameterTypeElement = methodElement.addElement("parameterTypeElement");
+												for (SingleVariableDeclaration methodParameter : methodParameters) {
+													String fType = methodParameter.toString().split(" ")[0];
+													Element parameterType = parameterTypeElement.addElement("parameterType");
+													parameterType.setText(fType);
+												}
+											}
+											// method return type
+											if (!methodReturnType.equals("void")) {
+												Element returnTypeElement = methodElement.addElement("returnType");
+												returnTypeElement.setText(methodReturnType);
+											}
+											System.out.println("Method Define:" + node.getName());
 										}
-
-										// method return type
-										if (!methodReturnType.equals("void")) {
-											Element returnTypeElement = methodElement.addElement("returnType");
-											returnTypeElement.setText(methodReturnType);
-										}
-										System.out.println("Method Define:" + node.getName());
 										return super.visit(node);
 									}
 								});

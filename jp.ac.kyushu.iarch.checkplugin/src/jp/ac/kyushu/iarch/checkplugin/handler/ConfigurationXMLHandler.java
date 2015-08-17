@@ -21,64 +21,65 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 public class ConfigurationXMLHandler implements IHandler{
-	
+
 	public void CreateConfigFile(IProject project, SelectAllFileDialog AllDialog){
 		Document codeXmlDocument = DocumentHelper.createDocument();
 		Element rootElement = codeXmlDocument.addElement("Project");
 		rootElement.addAttribute("name", project.getName());
-		
+
 		final Element ArchCodeElement = rootElement.addElement("Archfile");
 		{
 			final Element PathElement = ArchCodeElement.addElement("Path");
 			PathElement.addAttribute("Attribute", AllDialog.getArchiface().getFullPath().toOSString());
 		}
 
-		
+
 		final Element ClassDiagramElement = rootElement.addElement("ClassDiagram");
 		if(AllDialog.getClassDiagram() != null)
-		{			
+		{
 			final Element PathElement = ClassDiagramElement.addElement("Path");
 			PathElement.addAttribute("Attribute", AllDialog.getClassDiagram().getFullPath().toOSString());
 		}
-		
+
 		final Element DataflowDiagramElement = rootElement.addElement("DataflowDiagram");
 		if(AllDialog.getDataflowDiagram() != null)
-		{			
+		{
 			final Element PathElement = DataflowDiagramElement.addElement("Path");
 			PathElement.addAttribute("Attribute", AllDialog.getDataflowDiagram().getFullPath().toOSString());
 		}
-		
+
 		final Element SequenceDiagramElement = rootElement.addElement("SequenceDiagram");
 		if(AllDialog.getSequenceDiagrams() != null)
-		{			
+		{
 			for(IResource resource:AllDialog.getSequenceDiagrams()){
 				final Element PathElement = SequenceDiagramElement.addElement("Path");
 				PathElement.addAttribute("Attribute", resource.getFullPath().toOSString());
 			}
 		}
-		
-		
+
+
 		final Element SourceCodeElement = rootElement.addElement("SourceCode");
 		{
-			
+
 			for(IResource resource:AllDialog.getSourceCode()){
 				final Element PathElement = SourceCodeElement.addElement("Path");
 				PathElement.addAttribute("Attribute", resource.getFullPath().toOSString());
 			}
 		}
-		
-		
+
+
 		final Element XMLElement = rootElement.addElement("ARXML");
 		{
 			final Element PathElement = XMLElement.addElement("Path");
 			PathElement.addAttribute("Attribute", AllDialog.getXml().getFullPath().toOSString());
 		}
-		
-		
+
+
 		try {
 			OutputFormat format = OutputFormat.createPrettyPrint();
 			String projectPath = project.getProject().getLocation().toOSString();
-			XMLWriter output = new XMLWriter(new FileWriter(new File(projectPath + "/Config.xml")), format);
+			System.out.println(projectPath);
+			XMLWriter output = new XMLWriter(new FileWriter(new File(projectPath + File.separator + "Config.xml")), format);
 			codeXmlDocument.setXMLEncoding("utf-8");
 			output.write(codeXmlDocument);
 			output.close();
@@ -88,9 +89,9 @@ public class ConfigurationXMLHandler implements IHandler{
 	}
 
 
-	
+
 	public boolean isConfigFileExist(IProject project){
-		String ConfigFile=project.getProject().getLocation().toOSString()+"/Config.xml";
+		String ConfigFile=project.getProject().getLocation().toOSString()+ File.separator +"Config.xml";
 		File myFilePath = new File(ConfigFile);
 
 		if (myFilePath.exists()) {
@@ -101,13 +102,13 @@ public class ConfigurationXMLHandler implements IHandler{
 	@Override
 	public void addHandlerListener(IHandlerListener arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -123,13 +124,14 @@ public class ConfigurationXMLHandler implements IHandler{
 			if(isConfigFileExist(project)){
 				CreateConfigFile(project,dialog);
 			}else{
+				System.out.println("config file does not exist.");
 				CreateConfigFile(project,dialog);
 			}
 			ArchfaceChecker.readXMLContent(project);
 		}
-		
-			
-		
+
+
+
 		return null;
 	}
 
@@ -148,7 +150,7 @@ public class ConfigurationXMLHandler implements IHandler{
 	@Override
 	public void removeHandlerListener(IHandlerListener arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
