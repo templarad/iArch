@@ -28,9 +28,9 @@ public class ComponentClassPairModel {
 		this.archInterface = archInterface;
 		this.javaClassNode = javaClassNode;
 		this.name = archInterface.getName();
-		this.packageNode = this.javaClassNode.getParent();
 		if (javaClassNode != null) {
 			this.isExistJavaNode = true;
+			this.packageNode = this.javaClassNode.getParent();
 		}
 	}
 
@@ -72,12 +72,18 @@ public class ComponentClassPairModel {
 		return isExistJavaNode;
 	}
 
+	//TODO なんか返り値がおかしい…
 	public IResource getClassPath(IResource resource){
-		IResource src;
-		if(!this.packageNode.getName().equals("")){
-			src = resource.getProject().getFile("/src/"+ ((Element)packageNode).attributeValue("name").toString() + "/" + this.getName() +".java");
-		}else{
-			src = resource.getProject().getFile("/src/"+ this.getName() +".java");
+		IResource src = null;
+		if(this.isExistJavaNode){
+			if(!this.packageNode.getName().equals("")){
+				String packPath = ((Element)packageNode).attributeValue("name").toString();
+				packPath = packPath.replace(".", "/");
+//				src = resource.getProject().getFile(packPath + "/src/"+ "/" + this.getName() +".java");
+				src = resource;
+			}else{
+				src = resource.getProject().getFile("/src/"+ this.getName() +".java");
+			}
 		}
 		if(src == null){
 			src = resource;

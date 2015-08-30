@@ -20,7 +20,7 @@ public class ArchfaceChecker extends XMLreader {
 
 	Logger logger = Logger.getGlobal();
 	private List<ComponentClassPairModel> classPairs = new ArrayList<ComponentClassPairModel>();
-	
+
 	public ArchfaceChecker(IProject project){
 		super(project);
 
@@ -31,13 +31,13 @@ public class ArchfaceChecker extends XMLreader {
 //		setJavaProject(JavaCore.create(project));
 //		return archfacechecker;
 //	}
-	public void checkProject(){		
+	public void checkProject(){
 		checkProjectValidation(getArchfileResource(),getClassDiagramResource(),getDataflowDiagramResource(),
 				getSequenceDiagramResource(),getSourceCodeResource(),getARXMLResource());
 	}
-	
-	public synchronized void checkProjectValidation(IResource archfile, 
-			IResource classDiagramResource, 
+
+	public synchronized void checkProjectValidation(IResource archfile,
+			IResource classDiagramResource,
 			IResource dataflowDiagramResource,
 			List<IResource> sequenceDiagramResources,
 			List<IResource> sourceCodeResources,
@@ -47,27 +47,27 @@ public class ArchfaceChecker extends XMLreader {
 			return;
 		}
 		ArchModel archmodel = new ArchModel(archfile);
-		
+
 		Model archModel = archmodel.getModel();
 		//check diagram
 		if(classDiagramResource != null){
 			ClassDiagramChecker classDiagramChecker = new ClassDiagramChecker();
 			classDiagramChecker.checkClassDiagram(archModel, classDiagramResource);
 		}
-		
+
 		if(sequenceDiagramResources.size() > 0){
 			SequenceDiagramChecker sequenceDiagramChecker = new SequenceDiagramChecker();
 			for(IResource sequenceDiagramResource : sequenceDiagramResources){
-				sequenceDiagramChecker.checkSequenceDiagram(archModel, sequenceDiagramResource);					
+				sequenceDiagramChecker.checkSequenceDiagram(archModel, sequenceDiagramResource);
 			}
 		}
-		
+
 		//check dataflow diagram
 		if(dataflowDiagramResource != null){
 			DataflowDiagramChecker dataflowDiagramChecker = new DataflowDiagramChecker();
 			dataflowDiagramChecker.checkDataflowDiagram(archModel, dataflowDiagramResource);
 		}
-		
+
 		//Check source code
 		ASTSourceCodeChecker astchecker = new ASTSourceCodeChecker();
 		astchecker.SourceCodeArchifileChecker(archModel, getJavaProject());
@@ -75,11 +75,11 @@ public class ArchfaceChecker extends XMLreader {
 		//Check AR
 //		ARChecker archecker = new ARChecker();
 //		archecker.checkAR(archfile, aRXMLResource);
-		
+
 		return;
 	}
 	public List<ComponentClassPairModel> getClassPairs() {
 		return classPairs;
 	}
-	
+
 }

@@ -2,17 +2,18 @@
 ')'=19
 ');'=17
 ','=18
-'->'=25
-'.'=27
-'='=24
+'->'=26
+'.'=28
+'='=25
 '['=21
 ']'=22
 'extends'=14
 'interface component'=15
 'interface connector'=23
-'null'=28
-'uc'=26
+'null'=29
+'u'=27
 'uncertain component'=11
+'uncertain connector'=24
 '{'=12
 '}'=13
 '};'=20
@@ -41,3 +42,4 @@ T__25=25
 T__26=26
 T__27=27
 T__28=28
+T__29=29
