@@ -38,6 +38,7 @@ public class ArchfaceMarkerResolutionGenerator implements
 				String Path=(String) marker.getAttribute(IMarker.LOCATION);
 				System.out.println(Message);
 				Message= Message.trim();
+				
 				Pattern pattern1 = Pattern.compile("(Behavior)\\s*:\\s*([A-Za-z]*)\\s*:\\s*([A-Za-z]*).([A-Za-z]*)\\s*:\\s*([A-zA-Z_0-9]*)\\s*is not defined");
 				Pattern pattern2 = Pattern.compile("(Interface-)\\s*([A-Za-z]*)\\s*:\\s*([A-zA-Z_0-9]*)\\s*is not defined");
 				
@@ -74,7 +75,7 @@ public class ArchfaceMarkerResolutionGenerator implements
 		@Override
 		public String getLabel() {
 			// TODO Auto-generated method stub
-			return "Fix Archface Error:Insert ";
+			return "Fix Archface Error by Inserting ";
 		}
 	};
 	
@@ -115,7 +116,7 @@ public class ArchfaceMarkerResolutionGenerator implements
 		@Override
 		public String getLabel() {
 			// TODO Auto-generated method stub
-			return "Fix Archface Warning ";
+			return "Fix Archface Warning by deleting";
 		}
 	};
 //	return new IMarkerResolution[]{resoulution};
