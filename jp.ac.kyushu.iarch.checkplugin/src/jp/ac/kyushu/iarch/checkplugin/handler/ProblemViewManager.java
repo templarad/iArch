@@ -7,24 +7,24 @@ import org.eclipse.core.runtime.CoreException;
 
 public class ProblemViewManager {
 	private static ProblemViewManager problemviewmanager = new ProblemViewManager();
-	
-	
+
+
 	private ProblemViewManager(){
 		//Singleton
 	}
 	public static ProblemViewManager getInstance(){
 		return problemviewmanager;
 	}
-	
+
 	public static void removeAllProblems(IProject project){
 		try {
 			project.deleteMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE);
-			
+
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void addError(IResource resource, String message, String location) {
 		try {
 			IMarker marker = resource.createMarker(IMarker.PROBLEM);
@@ -41,6 +41,18 @@ public class ProblemViewManager {
 			IMarker marker = resource.createMarker(IMarker.PROBLEM);
 			marker.setAttribute(IMarker.MESSAGE, message);
 			marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
+			marker.setAttribute(IMarker.LOCATION, location);
+			marker.setAttribute(IMarker.LINE_NUMBER,lineNumber);
+		} catch (CoreException ce) {
+			ce.printStackTrace();
+		}
+	}
+
+	public static void addWarning1(IResource resource, String message, String location,int lineNumber) {
+		try {
+			IMarker marker = resource.createMarker(IMarker.PROBLEM);
+			marker.setAttribute(IMarker.MESSAGE, message);
+			marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_WARNING);
 			marker.setAttribute(IMarker.LOCATION, location);
 			marker.setAttribute(IMarker.LINE_NUMBER,lineNumber);
 		} catch (CoreException ce) {

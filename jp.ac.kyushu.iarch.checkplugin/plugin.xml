@@ -79,6 +79,12 @@
             name="Abstraction Ratio View"
             restorable="true">
       </view>
+      <view
+            class="jp.ac.kyushu.iarch.checkplugin.view.SourceCodeCheckViewPart"
+            id="jp.ac.kyushu.iarch.checkplugin.archfaceview"
+            name="Archface View"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.core.resources.fileModificationValidator">
