@@ -55,7 +55,7 @@ public class InsertJavaCode  {
 	        System.out.println(code);
 	        
 	        
-	        BufferedWriter out = new BufferedWriter(new FileWriter("C:/Users/Liyuning/Desktop/iArch/ObserverPattern/src/Subject.java"));
+	        BufferedWriter out = new BufferedWriter(new FileWriter(Path));
 	        out.write(code);
 	        out.close();
 //	        PrintWriter out = new PrintWriter("change.java");
@@ -98,7 +98,7 @@ public class InsertJavaCode  {
 	        System.out.println(code);
 	        
 	        
-	        BufferedWriter out = new BufferedWriter(new FileWriter("C:/Users/Liyuning/Desktop/iArch/ObserverPattern/src/Subject.java"));
+	        BufferedWriter out = new BufferedWriter(new FileWriter(Path));
 	        out.write(code);
 	        out.close();
 

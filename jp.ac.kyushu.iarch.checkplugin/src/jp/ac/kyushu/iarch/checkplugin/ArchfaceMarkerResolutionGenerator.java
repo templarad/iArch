@@ -49,7 +49,7 @@ public class ArchfaceMarkerResolutionGenerator implements
 					  while(matcher1.find()){		
 					  
 				//	  String  Message1 = matcher1.group(3).toString();
-					  Path="C:/Users/Liyuning/Desktop/iArch/ObserverPattern/src/"+Path+".java";
+				//	  Path="C:/Users/Liyuning/Desktop/iArch/ObserverPattern/src/"+Path+".java";
 					  MethordName = matcher1.group(4).toString();
 					  Insertcode = matcher1.group(5).toString();
 					  ijc.insert(Path,MethordName,Insertcode);
@@ -57,7 +57,7 @@ public class ArchfaceMarkerResolutionGenerator implements
 				
 				
 					 while(matcher2.find()){		
-						 Path="C:/Users/Liyuning/Desktop/iArch/ObserverPattern/src/"+Path+".java";
+					//	 Path="C:/Users/Liyuning/Desktop/iArch/ObserverPattern/src/"+Path+".java";
 						  MethordName = matcher2.group(3).toString();
 						  System.out.println(MethordName);
 						  ijc.insert2(Path,MethordName);
@@ -97,7 +97,6 @@ public class ArchfaceMarkerResolutionGenerator implements
 					while(matcher.find()){		
 
 					  MethordName = matcher.group(3).toString();	
-					  Path="C:/Users/Liyuning/Desktop/iArch/ObserverPattern/src/"+Path+".java";
 					  djc.delete(Path, MethordName);
 				  }	 
 				

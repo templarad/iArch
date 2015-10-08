@@ -248,7 +248,7 @@ public class ASTSourceCodeChecker{
 								}
 							}
 							if (!flag) {
-								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not defined", archiclass.getName(),lineNumberClass);
+								ProblemViewManager.addError1(st2, "Interface- Method :" + methodname + " is not defined", st2.getProject().getRawLocationURI().getPath() + "/src/" + archiclass.getName()+".java",lineNumberClass);
 								
 							}
 						}
@@ -258,11 +258,11 @@ public class ASTSourceCodeChecker{
 			//component:warning
 			for (Element javaCode : testClass) {
 				String javafileClassname=javaCode.attributeValue("name");
+				IResource st2=st.getProject().getFile("/src/"+javafileClassname+".java");
 				int lineNumberClass=Integer.parseInt(javaCode.attributeValue("lineNumber").toString());
 					for(Interface archiclass : archiface.getInterfaces()){
 						String ArchClassname = archiclass.getName();
 							if(ArchClassname.equals(javafileClassname)){
-								IResource st2=st.getProject().getFile("/src/"+ArchClassname+".java");
 								List<Element> methodList = javaCode.selectNodes("MethodDeclaration");
 								for (Element javaCodemethod : methodList){
 									String javacodemethodname = javaCodemethod.attributeValue("name");
@@ -276,7 +276,7 @@ public class ASTSourceCodeChecker{
 										}
 											if(!flag){
 												
-												ProblemViewManager.addWarning1(st2, "JavaCode- Method :"+javacodemethodname+" is not in the Archface", archiclass.getName(), lineNumberMethod);
+												ProblemViewManager.addWarning1(st2, "JavaCode- Method :"+javacodemethodname+" is not in the Archface", st2.getProject().getLocationURI().getPath() + "/src/" + javafileClassname + ".java", lineNumberMethod);
 											}
 										}
 								}
@@ -313,7 +313,7 @@ public class ASTSourceCodeChecker{
 							IResource st2=st.getProject().getFile("/src/"+classNameL+".java");
 							String message = "Behavior  : " + interNameString + " :  " + classNameL + "." + methodNameLaString + " : " + methodName + " " + "is not defined";
 							
-							IMarker marker = ProblemViewManager.addError1(st2, message, classNameString,lineNumber);
+							IMarker marker = ProblemViewManager.addError1(st2, message, st2.getProject().getRawLocationURI().getPath() + "/src/" + classNameString+".java",lineNumber);
 							ArchfaceMarkerResolutionGenerator archfaceErrorResolution = new ArchfaceMarkerResolutionGenerator();
 							archfaceErrorResolution.getResolutions(marker);
 							
