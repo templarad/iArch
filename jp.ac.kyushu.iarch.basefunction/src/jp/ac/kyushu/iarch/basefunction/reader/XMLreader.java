@@ -42,7 +42,7 @@ public class XMLreader {
 
 
 	public boolean isConfigFileExist(IProject project){
-		String ConfigFile=project.getProject().getLocation().toOSString()+"/Config.xml";
+		String ConfigFile=project.getProject().getLocation().toOSString()+File.separator+"Config.xml";
 		File myFilePath = new File(ConfigFile);
 
 		if (myFilePath.exists()) {

@@ -3,9 +3,14 @@
  */
 package jp.ac.kyushu.iarch.archdsl.generator
 
+import com.google.inject.Inject
+import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior
+import jp.ac.kyushu.iarch.archdsl.archDSL.Interface
+import jp.ac.kyushu.iarch.archdsl.archDSL.Method
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.xtext.naming.IQualifiedNameProvider
 
 /**
  * Generates code from your model files on save.
@@ -13,12 +18,100 @@ import org.eclipse.xtext.generator.IFileSystemAccess
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class ArchDSLGenerator implements IGenerator {
-	
+
+	@Inject extension IQualifiedNameProvider
+       
+       
+            
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+		
+		
+		for (e : resource.allContents.toIterable.filter(Interface)) {
+			for (f : resource.allContents.toIterable.filter(Behavior)) {
+				if (e.name == f.interface.name) {
+					fsa.generateFile(e.fullyQualifiedName.toString("/") + ".java", compile(e, f))
+				}
+			}
+		}
 	}
+
+	def compile(Interface e, Behavior f) '''
+		public class «e.name» {	
+		«genInstance(e, f)»
+		«FOR m : e.methods» 
+			«genMethod(m, f)»
+		«ENDFOR»
+		}
+	'''
+
+	def genMethod(Method method, Behavior behavior) '''
+		public «method.type» «method.name»(«FOR n : method.param» «n.type» «n.name» «ENDFOR»){
+				«(genBehavior(behavior, method))»
+		}
+	'''
+
+	def CharSequence genBehavior(Behavior behavior, Method method){
+		val calls = behavior.call
+		// find owned methods
+		for(target : calls.filter[call|call == method]){
+			var nextIndex = calls.indexOf(target)+1
+			if(nextIndex==calls.length){
+				return genText();
+			}
+			else	if(nextIndex < calls.length){
+				var nextCall = calls.get(calls.indexOf(target)+1)
+				if(nextCall.eContainer == method.eContainer){ // private method.
+					return genMethodCall(nextCall.name)
+				}else{
+					return genMethodCall((nextCall.eContainer as Interface).name.toFirstLower+"."+nextCall.name)					
+				}
+			}
+		
+		}
+		return ""
+	}
+
+def genText()'''
+return null;
+'''
+/* 	def Behavior(Behavior h, Method m) {
+		var g = h.call;
+		var size = h.call.size;
+		var i = 0;
+		var j = 0;
+		var BEnd = h.end.name;
+		for (mtest : g) {
+			var BMName = h.call.get(i).name;
+			var BMNameNext = h.call.get(i + 1).name;
+			var BClassName = (h.call.get(j).eContainer as Interface).name
+			var BClassNameNext = (h.call.get(j + 1).eContainer as Interface).name
+
+			if (m.name == BMName) {
+				if (BClassNameNext == BMName) {
+//					return genBehavior1(BClassNameNext);
+				} else {
+					return genBehavior2(BClassNameNext, BMNameNext);
+				}
+			} else if (i == size - 2 && j == size - 2) {
+				return null;
+			} else
+				i = i + 1;
+			j = j + 1;
+		}
+	}*/
+	
+	def genInstance(Interface iface, Behavior behavior)'''
+		«var dependClasses = behavior.call.filter[c|c.eContainer!=iface].map[c|c.eContainer as Interface]»
+		«FOR clazz:dependClasses»
+			«clazz.name» «clazz.name.toFirstLower» = new «clazz.name»();
+		«ENDFOR»
+	'''
+
+	def genMethodCall(String methodName) '''
+		«methodName»();
+	'''
+/* 
+	def genBehavior2(String C, String D) '''
+		«C».«D»();
+	'''*/
 }
