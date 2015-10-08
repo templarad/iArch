@@ -22,6 +22,7 @@ import jp.ac.kyushu.iarch.checkplugin.model.BehaviorPairModel;
 import jp.ac.kyushu.iarch.checkplugin.model.CallPairModel;
 import jp.ac.kyushu.iarch.checkplugin.model.ComponentClassPairModel;
 import jp.ac.kyushu.iarch.checkplugin.model.ComponentMethodPairModel;
+import jp.ac.kyushu.iarch.checkplugin.ArchfaceMarkerResolutionGenerator;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -29,6 +30,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -54,6 +56,11 @@ public class ASTSourceCodeChecker{
 	private List<BehaviorPairModel> behaviorPairModels = new ArrayList<BehaviorPairModel>();
 	private List<BehaviorPairModel> uncertainBehaviorPairModels = new ArrayList<BehaviorPairModel>();
 
+
+	public static String InsertPath;
+	public static String InsertMethod;
+	public static String InsertJavaCode;
+
 	public void SourceCodeArchifileChecker(Model archiface,	IJavaProject project){
 		long start = System.currentTimeMillis();
 		Document codeXmlDocument = DocumentHelper.createDocument();
@@ -61,6 +68,7 @@ public class ASTSourceCodeChecker{
 		parser.setProject(project);
 		IResource javaFileIResource = null;
 		// read javafiles and write its info on codeXML.xml
+
 		try {
 
 			String projectName = project.getElementName();
@@ -217,7 +225,8 @@ public class ASTSourceCodeChecker{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			long compileStart = System.currentTimeMillis();
+
+
 			// TODO リファクタリングでメソッド化されていないチェックを全て消去する
 			Element root = codeXmlDocument.getRootElement();
 			Element packageElement = (Element) root.selectSingleNode("//Package[@name='']");
@@ -230,6 +239,35 @@ public class ASTSourceCodeChecker{
 
 			// Interface check
 			typeCheckInterface(archiface,packageElements);
+
+			//component:warning
+			List<Element> classNodes = packageElement.selectNodes("Class");
+			for (Element javaCode : classNodes) {
+				String javafileClassname=javaCode.attributeValue("name");
+				IResource st2=javaFileIResource.getProject().getFile("/src/"+javafileClassname+".java");
+				int lineNumberClass=Integer.parseInt(javaCode.attributeValue("lineNumber").toString());
+					for(Interface archiclass : archiface.getInterfaces()){
+						String ArchClassname = archiclass.getName();
+							if(ArchClassname.equals(javafileClassname)){
+								List<Element> methodList = javaCode.selectNodes("MethodDeclaration");
+								for (Element javaCodemethod : methodList){
+									String javacodemethodname = javaCodemethod.attributeValue("name");
+									int lineNumberMethod=Integer.parseInt(javaCodemethod.attributeValue("lineNumber").toString());
+									boolean flag = false;
+										for (Method archmethod : archiclass.getMethods()){
+											String Archmethodname=archmethod.getName();
+											if(Archmethodname.equals(javacodemethodname)){
+												flag = true;
+											}
+										}
+											if(!flag){
+												ProblemViewManager.addWarning1(st2, "JavaCode- Method :"+javacodemethodname+" is not in the Archface", st2.getProject().getLocationURI().getPath() + "/src/" + javafileClassname + ".java", lineNumberMethod);
+											}
+										}
+								}
+							}
+
+					}
 
 			// behaver
 			typeCheckBehavior(archiface);
@@ -262,12 +300,13 @@ public class ASTSourceCodeChecker{
 						if (!flag2) {
 							IResource st2=javaFileIResource.getProject().getFile("/src/"+classNameL+".java");
 							String message = "Behavior  : " + interNameString + " :  " + classNameL + "." + methodNameLaString + " : " + methodName + " " + "is not defined";
-							ProblemViewManager.addError1(st2, message, classNameString,lineNumber);
+							ProblemViewManager.addError1(st2, message, st2.getLocationURI().getPath() ,lineNumber);
 						}
 					}
 
 					if (flag2) {
 						outString = "Behavior  : " + interNameString + " : " + classNameL + "." + methodNameLaString + " ->" + classNameString + "." + methodName;
+
 					}
 					if (outString != null) {
 						IResource st2=javaFileIResource.getProject().getFile("/src/"+classNameL+".java");
@@ -278,99 +317,7 @@ public class ASTSourceCodeChecker{
 				}
 			}
 
-			//Uncertain Behaviors Check
-//			for (UncertainBehavior u_behavior : archiface.getU_behaviors()) {
-//				String uncertainInterfaceName = u_behavior.getName();
-//				String superInterfaceName = u_behavior.getSuperInterface().getName();
-//				if(superInterfaceName != null){
-//					String lastClassName = null;
-//					if(u_behavior.getCall().get(0).getName().getClass().getSimpleName().equals("MethodImpl")){
-//						lastClassName = ((Interface)u_behavior.getCall().get(0).getName().eContainer()).getName();
-//					}else{
-//						lastClassName = ((UncertainInterface)u_behavior.getCall().get(0).getName().eContainer()).getSuperInterface().getName();
-//					}
-//					String lastMethodName = null;
-//					String lastTypeOfMethod = null;
-//
-//					for (SuperCall methodCall : u_behavior.getCall()) {
-//						boolean isMethodInvocationExist = false;
-//						String typeOfCall = methodCall.getClass().getSimpleName();// CertainCallImpl,OptCallImpl,AltCallImpl
-//						String typeOfMethod = methodCall.getName().getClass().getSimpleName();	//MethodImpl : Certain Method, OptMethodImpl : Optional Method
-//						int lineNumber = 0;
-//						Node classNode = null;
-//						String currentClassName = null;
-//						String currentMethodName = methodCall.getName().getName();
-//						String outputMsg = null;
-//
-//						if(currentMethodName == null)continue;	//for end of calls
-//						if(lastClassName != null){
-//							classNode = packageElement.selectSingleNode("Class[@name='" + lastClassName + "']");
-//						}
-//						if(classNode==null)continue;
-//						if(typeOfMethod.equals("MethodImpl")){
-//							currentClassName = ((Interface)methodCall.getName().eContainer()).getName();
-//						}else if(typeOfMethod.equals("OptMethodImpl")){
-//							currentClassName = ((UncertainInterface)methodCall.getName().eContainer()).getSuperInterface().getName();
-//						}
-//						if (lastMethodName != null) {
-//							Node methodDcl = classNode.selectSingleNode("MethodDeclaration[@name='" + lastMethodName + "']");
-//							IResource st2=javaFileIResource.getProject().getFile("/src/"+lastClassName+".java");
-//							if(methodDcl == null){
-//								ProblemViewManager.addWarning1(st2, lastMethodName + " is not implemented, so this connector can't check.", currentClassName, lineNumber);
-//								continue;
-//							}
-//							isMethodInvocationExist = (methodDcl.selectSingleNode("MethodInvocation[@name='" + currentMethodName + "']") != null);
-//							lineNumber=Integer.parseInt(((Element) methodDcl).attributeValue("lineNumber").toString());
-//							if (!isMethodInvocationExist) {
-//								String errMsg = "Behavior  : " + uncertainInterfaceName + " :  " + lastClassName + "." + lastMethodName + " -> " + currentMethodName + " " + "is not defined.";
-//								if(typeOfCall.equals("CertainCallImpl")){
-//									ProblemViewManager.addError1(st2, errMsg, currentClassName,lineNumber);
-//								}else if(typeOfCall.equals("OptCallImpl")){
-//									ProblemViewManager.addWarning1(st2, errMsg, currentClassName, lineNumber);
-//									currentClassName = lastClassName;
-//									currentMethodName = lastMethodName;	/* return to certain method and class(This impl is temporary...)*/
-//								}else if(typeOfCall.equals("AltCallImpl")){
-//									AltCall altCall = (AltCall)methodCall;
-//									for (SuperMethod altMethod : altCall.getA_name()) {// altMethodCallに書かれている2つ目以降のMethodのチェック
-//										typeOfMethod = altMethod.getClass().getSimpleName();
-//										if(typeOfMethod.equals("MethodImpl")){
-//											currentClassName = ((Interface)altMethod.eContainer()).getName();
-//										}else if(typeOfMethod.equals("OptMethodImpl")){
-//											currentClassName = ((UncertainInterface)altMethod.eContainer()).getSuperInterface().getName();
-//										}
-//										currentMethodName = altMethod.getName();
-//										isMethodInvocationExist = (methodDcl.selectSingleNode("MethodInvocation[@name='" + currentMethodName + "']") != null);
-//										if(isMethodInvocationExist)	break;
-//									}
-//									if(altCall.isOpt() && !isMethodInvocationExist){
-//										currentClassName = lastClassName;
-//										currentMethodName = lastMethodName;	/* return to certain method and class(This impl is temporary...)*/
-//									}
-//								}
-//							}
-//						}
-//
-//						if (isMethodInvocationExist) {
-//							if(!currentMethodName.equals(lastMethodName)){
-//								outputMsg = "UncertainBehavior  : " + uncertainInterfaceName + " : " + lastClassName + "." + lastMethodName + " -> " + currentClassName + "." + currentMethodName;
-//							}
-//						}
-//						if (outputMsg != null) {
-//							IResource st2=javaFileIResource.getProject().getFile("/src/"+lastClassName+".java");
-//							ProblemViewManager.addInfo1(st2, outputMsg, lastClassName,lineNumber);
-//							System.out.println(outputMsg);
-//						}
-//						lastClassName = currentClassName;
-//						lastMethodName = currentMethodName;
-//						lastTypeOfMethod = typeOfMethod;
-//					}
-//				}
-//			}
-
 			outputErrorMessages(javaFileIResource);
-			long end = System.currentTimeMillis();
-			System.out.println(end - compileStart);
-
 	}
 
 
@@ -391,7 +338,7 @@ public class ASTSourceCodeChecker{
 							if(methodModel.isOpt()){
 								ProblemViewManager.addWarning1(pairModel.getClassPath(resource),"OptComponent :" +  methodModel.getName()+" is not defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 							}else{
-								ProblemViewManager.addError1(pairModel.getClassPath(resource),"Component :" +  methodModel.getName()+" is not defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+								ProblemViewManager.addError1(pairModel.getClassPath(resource),"Component :" +  methodModel.getName()+" is not defined",resource.getLocationURI().getPath() + "/src/" + pairModel.getName() + ".java", Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 							}
 						}
 					}else{
@@ -411,7 +358,7 @@ public class ASTSourceCodeChecker{
 				if(!pairModel.methodPairsList.isEmpty()){
 					ProblemViewManager.addError1(pairModel.getClassPath(resource), "Component :" + pairModel.getArchInterface().getName() + " is not defined", pairModel.getArchInterface().getName(), 0);
 				}else{
-					ProblemViewManager.addWarning1(pairModel.getClassPath(resource), "Component :" + pairModel.getArchInterface().getName() + " is not defined", pairModel.getArchInterface().getName(), 0);
+					ProblemViewManager.addWarning1(pairModel.getClassPath(resource), "Component :" + pairModel.getArchInterface().getName() + " is not defined", resource.getLocationURI().getPath() + "/src/" + pairModel.getArchInterface().getName() + ".java", 0);
 				}
 			}
 		}
@@ -596,6 +543,7 @@ public class ASTSourceCodeChecker{
 		behaviorPairModels = pairModels;
 	}
 
+
 	private List<String> returnModifiers(int ModifiersNum) {
 		// It is not all
 		List<String> modifiers = new LinkedList<String>();
@@ -643,7 +591,4 @@ public class ASTSourceCodeChecker{
 
 		return modifiers;
 	}
-
-
-
 }
