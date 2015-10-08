@@ -22,7 +22,6 @@ import jp.ac.kyushu.iarch.checkplugin.model.BehaviorPairModel;
 import jp.ac.kyushu.iarch.checkplugin.model.CallPairModel;
 import jp.ac.kyushu.iarch.checkplugin.model.ComponentClassPairModel;
 import jp.ac.kyushu.iarch.checkplugin.model.ComponentMethodPairModel;
-import jp.ac.kyushu.iarch.checkplugin.ArchfaceMarkerResolutionGenerator;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -30,8 +29,9 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
-import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
@@ -326,8 +326,15 @@ public class ASTSourceCodeChecker{
 	 * @param resource IResource型 リソース
 	 */
 	private void outputErrorMessages(IResource resource) {
+		IProject projectResource = resource.getProject();
+		IResource classResource = null;
 		// tmp compile error output
 		for (ComponentClassPairModel pairModel : componentClassPairModels) {
+			if(pairModel.getPackageNode().attributeValue("name") == ""){
+				classResource = projectResource.getFile(new Path("src/" + pairModel.getName() + ".java"));
+			}else{
+				classResource = projectResource.getFile(new Path("src/" + pairModel.getPackageNode().attributeValue("name") + "/" + pairModel.getName() + ".java"));
+			}
 			if(pairModel.isExistJavaNode()){
 //				ProblemViewManager.addInfo1(pairModel.getClassPath(resource), "Component :" + pairModel.getName()+" is defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 				for (ComponentMethodPairModel methodModel : pairModel.methodPairsList) {
@@ -336,9 +343,9 @@ public class ASTSourceCodeChecker{
 //							ProblemViewManager.addInfo1(pairModel.getClassPath(resource), "Component :" + methodModel.getName()+" is defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 						}else{
 							if(methodModel.isOpt()){
-								ProblemViewManager.addWarning1(pairModel.getClassPath(resource),"OptComponent :" +  methodModel.getName()+" is not defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+								ProblemViewManager.addWarning1(classResource,"OptComponent :" +  methodModel.getName()+" is not defined",classResource.getLocationURI().getPath(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 							}else{
-								ProblemViewManager.addError1(pairModel.getClassPath(resource),"Component :" +  methodModel.getName()+" is not defined",resource.getLocationURI().getPath() + "/src/" + pairModel.getName() + ".java", Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+								ProblemViewManager.addError1(classResource,"Interface- " +  methodModel.getName()+" is not defined",classResource.getLocationURI().getPath() , Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 							}
 						}
 					}else{
@@ -350,15 +357,15 @@ public class ASTSourceCodeChecker{
 							}
 						}
 						if(isError){
-							ProblemViewManager.addError1(pairModel.getClassPath(resource), "AltComponent : " + methodModel.getName()+" is not defined",pairModel.getName(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
+							ProblemViewManager.addError1(classResource, "AltComponent : " + methodModel.getName()+" is not defined",classResource.getLocationURI().getPath(), Integer.parseInt(((Element) pairModel.getJavaClassNode()).attributeValue("lineNumber").toString()));
 						}
 					}
 				}
 			}else{
 				if(!pairModel.methodPairsList.isEmpty()){
-					ProblemViewManager.addError1(pairModel.getClassPath(resource), "Component :" + pairModel.getArchInterface().getName() + " is not defined", pairModel.getArchInterface().getName(), 0);
+					ProblemViewManager.addError1(classResource, "Interface- " + pairModel.getArchInterface().getName() + " is not defined", classResource.getLocationURI().getPath(), 0);
 				}else{
-					ProblemViewManager.addWarning1(pairModel.getClassPath(resource), "Component :" + pairModel.getArchInterface().getName() + " is not defined", resource.getLocationURI().getPath() + "/src/" + pairModel.getArchInterface().getName() + ".java", 0);
+					ProblemViewManager.addWarning1(classResource, "Component :" + pairModel.getArchInterface().getName() + " is not defined", classResource.getLocationURI().getPath(), 0);
 				}
 			}
 		}
@@ -370,9 +377,9 @@ public class ASTSourceCodeChecker{
 				CallPairModel currentCallModel = callModelList.get(i);
 				CallPairModel nextCallModel = callModelList.get(i+1);
 				if(currentCallModel.getMethodModel().isInvocationExist(nextCallModel.getName())){
-					ProblemViewManager.addInfo1(currentCallModel.getMethodModel().getParentModel().getClassPath(resource), "Connector - " + currentCallModel.getName() +" -> " + nextCallModel.getName() + " is defined", currentCallModel.getName(), Integer.parseInt(((Element)currentCallModel.getMethodModel().getJavaClassNode()).attributeValue("lineNumber").toString()));
+					ProblemViewManager.addInfo1(currentCallModel.getMethodModel().getParentModel().getClassPath(resource), "Behavior - " + currentCallModel.getName() +" -> " + nextCallModel.getName() + " is defined", currentCallModel.getName(), Integer.parseInt(((Element)currentCallModel.getMethodModel().getJavaClassNode()).attributeValue("lineNumber").toString()));
 				}else{
-					ProblemViewManager.addError1(currentCallModel.getMethodModel().getParentModel().getClassPath(resource), "Connector - " + currentCallModel.getName() +" -> " + nextCallModel.getName() + " is not defined", currentCallModel.getName(), Integer.parseInt(((Element)currentCallModel.getMethodModel().getJavaClassNode()).attributeValue("lineNumber").toString()));
+					ProblemViewManager.addError1(currentCallModel.getMethodModel().getParentModel().getClassPath(resource), "Behavior - " + currentCallModel.getName() +" -> " + nextCallModel.getName() + " is not defined", currentCallModel.getName(), Integer.parseInt(((Element)currentCallModel.getMethodModel().getJavaClassNode()).attributeValue("lineNumber").toString()));
 				}
 			}
 		}

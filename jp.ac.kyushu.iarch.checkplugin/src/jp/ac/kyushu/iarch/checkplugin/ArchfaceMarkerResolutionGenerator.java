@@ -28,7 +28,7 @@ public class ArchfaceMarkerResolutionGenerator implements
 	public IMarkerResolution[] getResolutions(IMarker marker) {
 		// TODO Auto-generated method stub
 	IMarkerResolution resoulution = new IMarkerResolution() {
-		
+
 		@Override
 		public void run(IMarker marker) {
 			// TODO Auto-generated method stub
@@ -38,55 +38,55 @@ public class ArchfaceMarkerResolutionGenerator implements
 				String Path=(String) marker.getAttribute(IMarker.LOCATION);
 				System.out.println(Message);
 				Message= Message.trim();
-				
+
 				Pattern pattern1 = Pattern.compile("(Behavior)\\s*:\\s*([A-Za-z]*)\\s*:\\s*([A-Za-z]*).([A-Za-z]*)\\s*:\\s*([A-zA-Z_0-9]*)\\s*is not defined");
 				Pattern pattern2 = Pattern.compile("(Interface-)\\s*([A-Za-z]*)\\s*:\\s*([A-zA-Z_0-9]*)\\s*is not defined");
-				
+
 				Matcher matcher1 = pattern1.matcher(Message);
 				Matcher matcher2 = pattern2.matcher(Message);
-			
 
-					  while(matcher1.find()){		
-					  
+
+					  while(matcher1.find()){
+
 				//	  String  Message1 = matcher1.group(3).toString();
 				//	  Path="C:/Users/Liyuning/Desktop/iArch/ObserverPattern/src/"+Path+".java";
 					  MethordName = matcher1.group(4).toString();
 					  Insertcode = matcher1.group(5).toString();
 					  ijc.insert(Path,MethordName,Insertcode);
-				  }	 
-				
-				
-					 while(matcher2.find()){		
+				  }
+
+
+					 while(matcher2.find()){
 					//	 Path="C:/Users/Liyuning/Desktop/iArch/ObserverPattern/src/"+Path+".java";
 						  MethordName = matcher2.group(3).toString();
 						  System.out.println(MethordName);
 						  ijc.insert2(Path,MethordName);
-					  }	
+					  }
 
-							
+
 			} catch (CoreException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-		
+
 		}
-		
+
 		@Override
 		public String getLabel() {
 			// TODO Auto-generated method stub
 			return "Fix Archface Error by Inserting ";
 		}
 	};
-	
+
 	IMarkerResolution resolution2 = new IMarkerResolution() {
-		
+
 		@Override
 		public void run(IMarker marker) {
 			// TODO Auto-generated method stub
-			
+
 			DeleteJavaCode djc=new DeleteJavaCode();
-			
+
 			try {
 				String Message=(String) marker.getAttribute(IMarker.MESSAGE);
 				String Path=(String) marker.getAttribute(IMarker.LOCATION);
@@ -94,24 +94,24 @@ public class ArchfaceMarkerResolutionGenerator implements
 				Message= Message.trim();
 				Pattern pattern = Pattern.compile("(JavaCode-)\\s*([A-Za-z]*)\\s*:\\s*([A-zA-Z_0-9]*)\\s*is not in the Archface");
 				Matcher matcher = pattern.matcher(Message);
-					while(matcher.find()){		
+					while(matcher.find()){
 
-					  MethordName = matcher.group(3).toString();	
+					  MethordName = matcher.group(3).toString();
 					  djc.delete(Path, MethordName);
-				  }	 
-				
-				
-			
-			
+				  }
+
+
+
+
 			} catch (CoreException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		
-			
-	
+
+
+
 		}
-		
+
 		@Override
 		public String getLabel() {
 			// TODO Auto-generated method stub

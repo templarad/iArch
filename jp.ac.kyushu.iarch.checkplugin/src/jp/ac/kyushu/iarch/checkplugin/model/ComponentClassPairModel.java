@@ -68,6 +68,13 @@ public class ComponentClassPairModel {
 		return name;
 	}
 
+	/**
+	 * @return packageNode
+	 */
+	public Element getPackageNode() {
+		return (Element)packageNode;
+	}
+
 	public boolean isExistJavaNode() {
 		return isExistJavaNode;
 	}
