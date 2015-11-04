@@ -104,13 +104,13 @@ public interface ArchDSLFactory extends EFactory
   Dataflow createDataflow();
 
   /**
-   * Returns a new object of class '<em>State Notification</em>'.
+   * Returns a new object of class '<em>Data</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>State Notification</em>'.
+   * @return a new object of class '<em>Data</em>'.
    * @generated
    */
-  StateNotification createStateNotification();
+  Data createData();
 
   /**
    * Returns the package supported by this factory.

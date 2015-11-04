@@ -73,7 +73,7 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
       case ArchDSLPackage.BEHAVIOR: return createBehavior();
       case ArchDSLPackage.DFLOW: return createDFlow();
       case ArchDSLPackage.DATAFLOW: return createDataflow();
-      case ArchDSLPackage.STATE_NOTIFICATION: return createStateNotification();
+      case ArchDSLPackage.DATA: return createData();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -183,10 +183,10 @@ public class ArchDSLFactoryImpl extends EFactoryImpl implements ArchDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public StateNotification createStateNotification()
+  public Data createData()
   {
-    StateNotificationImpl stateNotification = new StateNotificationImpl();
-    return stateNotification;
+    DataImpl data = new DataImpl();
+    return data;
   }
 
   /**

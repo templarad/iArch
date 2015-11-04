@@ -120,9 +120,9 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
         return createDataflowAdapter();
       }
       @Override
-      public Adapter caseStateNotification(StateNotification object)
+      public Adapter caseData(Data object)
       {
-        return createStateNotificationAdapter();
+        return createDataAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -282,16 +282,16 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.StateNotification <em>State Notification</em>}'.
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Data <em>Data</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.StateNotification
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Data
    * @generated
    */
-  public Adapter createStateNotificationAdapter()
+  public Adapter createDataAdapter()
   {
     return null;
   }

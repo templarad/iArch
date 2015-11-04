@@ -6,12 +6,12 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Connector;
 import jp.ac.kyushu.iarch.archdsl.archDSL.DFlow;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Data;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
-import jp.ac.kyushu.iarch.archdsl.archDSL.StateNotification;
 import jp.ac.kyushu.iarch.archdsl.archDSL.cParam;
 import jp.ac.kyushu.iarch.archdsl.services.ArchDSLGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
@@ -52,6 +52,12 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 					return; 
 				}
 				else break;
+			case ArchDSLPackage.DATA:
+				if(context == grammarAccess.getDataRule()) {
+					sequence_Data(context, (Data) semanticObject); 
+					return; 
+				}
+				else break;
 			case ArchDSLPackage.DATAFLOW:
 				if(context == grammarAccess.getDataflowRule()) {
 					sequence_Dataflow(context, (Dataflow) semanticObject); 
@@ -79,12 +85,6 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case ArchDSLPackage.PARAM:
 				if(context == grammarAccess.getParamRule()) {
 					sequence_Param(context, (Param) semanticObject); 
-					return; 
-				}
-				else break;
-			case ArchDSLPackage.STATE_NOTIFICATION:
-				if(context == grammarAccess.getStateNotificationRule()) {
-					sequence_StateNotification(context, (StateNotification) semanticObject); 
 					return; 
 				}
 				else break;
@@ -127,18 +127,32 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_Data(EObject context, Data semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ArchDSLPackage.Literals.DATA__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchDSLPackage.Literals.DATA__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getDataAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
-	 *         statenotification=[StateNotification|ID] 
 	 *         (
-	 *             getflow+=[Param|ID] 
+	 *             getflow+=[Data|ID] 
 	 *             call+=[Method|FQN] 
-	 *             getflow+=[Param|ID] 
+	 *             getflow+=[Data|ID] 
 	 *             getIf+=[Interface|ID] 
-	 *             getflow+=[Param|ID] 
+	 *             getflow+=[Data|ID] 
 	 *             call+=[Method|FQN] 
-	 *             getflow+=[Param|ID] 
-	 *             call+=[Method|FQN] 
-	 *             end=[StateNotification|ID]
+	 *             getflow+=[Data|ID] 
+	 *             call+=[Method|FQN]
 	 *         )?
 	 *     )
 	 */
@@ -167,7 +181,7 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (interfaces+=Interface* behaviors+=Behavior* connectors+=Connector* dflows+=DFlow* statenotificaions+=StateNotification*)
+	 *     (interfaces+=Interface* behaviors+=Behavior* connectors+=Connector* dflows+=DFlow* datas+=Data*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -189,22 +203,6 @@ public class ArchDSLSemanticSequencer extends AbstractDelegatingSemanticSequence
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getParamAccess().getTypeIDTerminalRuleCall_0_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getParamAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     name=ID
-	 */
-	protected void sequence_StateNotification(EObject context, StateNotification semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ArchDSLPackage.Literals.STATE_NOTIFICATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchDSLPackage.Literals.STATE_NOTIFICATION__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getStateNotificationAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	

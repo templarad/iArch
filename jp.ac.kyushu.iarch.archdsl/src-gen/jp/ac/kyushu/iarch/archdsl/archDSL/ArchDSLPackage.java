@@ -103,13 +103,13 @@ public interface ArchDSLPackage extends EPackage
   int MODEL__DFLOWS = 3;
 
   /**
-   * The feature id for the '<em><b>Statenotificaions</b></em>' containment reference list.
+   * The feature id for the '<em><b>Datas</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__STATENOTIFICAIONS = 4;
+  int MODEL__DATAS = 4;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -417,22 +417,13 @@ public interface ArchDSLPackage extends EPackage
   int DATAFLOW = 8;
 
   /**
-   * The feature id for the '<em><b>Statenotification</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATAFLOW__STATENOTIFICATION = 0;
-
-  /**
    * The feature id for the '<em><b>Getflow</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DATAFLOW__GETFLOW = 1;
+  int DATAFLOW__GETFLOW = 0;
 
   /**
    * The feature id for the '<em><b>Call</b></em>' reference list.
@@ -441,7 +432,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATAFLOW__CALL = 2;
+  int DATAFLOW__CALL = 1;
 
   /**
    * The feature id for the '<em><b>Get If</b></em>' reference list.
@@ -450,16 +441,7 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATAFLOW__GET_IF = 3;
-
-  /**
-   * The feature id for the '<em><b>End</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATAFLOW__END = 4;
+  int DATAFLOW__GET_IF = 2;
 
   /**
    * The number of structural features of the '<em>Dataflow</em>' class.
@@ -468,17 +450,17 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATAFLOW_FEATURE_COUNT = 5;
+  int DATAFLOW_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.StateNotificationImpl <em>State Notification</em>}' class.
+   * The meta object id for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataImpl <em>Data</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.StateNotificationImpl
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getStateNotification()
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataImpl
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getData()
    * @generated
    */
-  int STATE_NOTIFICATION = 9;
+  int DATA = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -487,16 +469,16 @@ public interface ArchDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STATE_NOTIFICATION__NAME = 0;
+  int DATA__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>State Notification</em>' class.
+   * The number of structural features of the '<em>Data</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STATE_NOTIFICATION_FEATURE_COUNT = 1;
+  int DATA_FEATURE_COUNT = 1;
 
 
   /**
@@ -554,15 +536,15 @@ public interface ArchDSLPackage extends EPackage
   EReference getModel_Dflows();
 
   /**
-   * Returns the meta object for the containment reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getStatenotificaions <em>Statenotificaions</em>}'.
+   * Returns the meta object for the containment reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getDatas <em>Datas</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Statenotificaions</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Model#getStatenotificaions()
+   * @return the meta object for the containment reference list '<em>Datas</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Model#getDatas()
    * @see #getModel()
    * @generated
    */
-  EReference getModel_Statenotificaions();
+  EReference getModel_Datas();
 
   /**
    * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Interface <em>Interface</em>}'.
@@ -832,17 +814,6 @@ public interface ArchDSLPackage extends EPackage
   EClass getDataflow();
 
   /**
-   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getStatenotification <em>Statenotification</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Statenotification</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getStatenotification()
-   * @see #getDataflow()
-   * @generated
-   */
-  EReference getDataflow_Statenotification();
-
-  /**
    * Returns the meta object for the reference list '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getGetflow <em>Getflow</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -876,36 +847,25 @@ public interface ArchDSLPackage extends EPackage
   EReference getDataflow_GetIf();
 
   /**
-   * Returns the meta object for the reference '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getEnd <em>End</em>}'.
+   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Data <em>Data</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>End</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow#getEnd()
-   * @see #getDataflow()
+   * @return the meta object for class '<em>Data</em>'.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Data
    * @generated
    */
-  EReference getDataflow_End();
+  EClass getData();
 
   /**
-   * Returns the meta object for class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.StateNotification <em>State Notification</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>State Notification</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.StateNotification
-   * @generated
-   */
-  EClass getStateNotification();
-
-  /**
-   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.StateNotification#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Data#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.StateNotification#getName()
-   * @see #getStateNotification()
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Data#getName()
+   * @see #getData()
    * @generated
    */
-  EAttribute getStateNotification_Name();
+  EAttribute getData_Name();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -973,12 +933,12 @@ public interface ArchDSLPackage extends EPackage
     EReference MODEL__DFLOWS = eINSTANCE.getModel_Dflows();
 
     /**
-     * The meta object literal for the '<em><b>Statenotificaions</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Datas</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__STATENOTIFICAIONS = eINSTANCE.getModel_Statenotificaions();
+    EReference MODEL__DATAS = eINSTANCE.getModel_Datas();
 
     /**
      * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.InterfaceImpl <em>Interface</em>}' class.
@@ -1197,14 +1157,6 @@ public interface ArchDSLPackage extends EPackage
     EClass DATAFLOW = eINSTANCE.getDataflow();
 
     /**
-     * The meta object literal for the '<em><b>Statenotification</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DATAFLOW__STATENOTIFICATION = eINSTANCE.getDataflow_Statenotification();
-
-    /**
      * The meta object literal for the '<em><b>Getflow</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1229,22 +1181,14 @@ public interface ArchDSLPackage extends EPackage
     EReference DATAFLOW__GET_IF = eINSTANCE.getDataflow_GetIf();
 
     /**
-     * The meta object literal for the '<em><b>End</b></em>' reference feature.
+     * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataImpl <em>Data</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataImpl
+     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getData()
      * @generated
      */
-    EReference DATAFLOW__END = eINSTANCE.getDataflow_End();
-
-    /**
-     * The meta object literal for the '{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.StateNotificationImpl <em>State Notification</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.StateNotificationImpl
-     * @see jp.ac.kyushu.iarch.archdsl.archDSL.impl.ArchDSLPackageImpl#getStateNotification()
-     * @generated
-     */
-    EClass STATE_NOTIFICATION = eINSTANCE.getStateNotification();
+    EClass DATA = eINSTANCE.getData();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1252,7 +1196,7 @@ public interface ArchDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute STATE_NOTIFICATION__NAME = eINSTANCE.getStateNotification_Name();
+    EAttribute DATA__NAME = eINSTANCE.getData_Name();
 
   }
 

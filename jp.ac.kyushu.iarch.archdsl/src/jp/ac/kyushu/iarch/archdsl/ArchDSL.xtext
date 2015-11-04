@@ -7,7 +7,7 @@ Model:
 	behaviors+=Behavior* 
 	connectors+=Connector*
 	dflows+=DFlow*
-	statenotificaions+=StateNotification*
+	datas+=Data*
 ;
 
 Interface:
@@ -45,16 +45,21 @@ DFlow:
 ;	
 	
 Dataflow:		
-		statenotification=[StateNotification] "="
-		("|"getflow+=[Param]"|""->>"
+		{Dataflow}	
+		"dStateNotification" "="
+		("|"getflow+=[Data]"|""->>"
 		call+=[Method|FQN]
-		"->>""|"getflow+=[Param]"|""->>"
+		"->>""|"getflow+=[Data]"|""->>"
 		getIf+=[Interface]
-		"->>""|"getflow+=[Param]"|""->>"
+		"->>""|"getflow+=[Data]"|""->>"
 		call+=[Method|FQN]
-		"->>""|"getflow+=[Param]"|""->>"
+		"->>""|"getflow+=[Data]"|""->>"
 		call+=[Method|FQN]
-		"->>"end=[StateNotification])?";"  		
+		"->>""dStateNotification")?";"  		
+;
+
+Data:
+	"flow" name=ID ";"
 ;
 
 /* some definition Directions
@@ -63,11 +68,6 @@ Dataflow:
 * "call"-> get Method_name (for instance:"getState" and so on), 
 * "getIf"-> get Interface_name (for instance:"Subject" or "Observer").
 */
-
-StateNotification:
-	name=ID
-;
-
 
 FQN:
 	ID ("."ID)*

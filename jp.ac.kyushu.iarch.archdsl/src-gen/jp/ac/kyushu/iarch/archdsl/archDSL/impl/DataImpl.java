@@ -3,7 +3,7 @@
 package jp.ac.kyushu.iarch.archdsl.archDSL.impl;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
-import jp.ac.kyushu.iarch.archdsl.archDSL.StateNotification;
+import jp.ac.kyushu.iarch.archdsl.archDSL.Data;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>State Notification</b></em>'.
+ * An implementation of the model object '<em><b>Data</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.StateNotificationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class StateNotificationImpl extends MinimalEObjectImpl.Container implements StateNotification
+public class DataImpl extends MinimalEObjectImpl.Container implements Data
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -52,7 +52,7 @@ public class StateNotificationImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  protected StateNotificationImpl()
+  protected DataImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class StateNotificationImpl extends MinimalEObjectImpl.Container implemen
   @Override
   protected EClass eStaticClass()
   {
-    return ArchDSLPackage.Literals.STATE_NOTIFICATION;
+    return ArchDSLPackage.Literals.DATA;
   }
 
   /**
@@ -88,7 +88,7 @@ public class StateNotificationImpl extends MinimalEObjectImpl.Container implemen
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.STATE_NOTIFICATION__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.DATA__NAME, oldName, name));
   }
 
   /**
@@ -101,7 +101,7 @@ public class StateNotificationImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case ArchDSLPackage.STATE_NOTIFICATION__NAME:
+      case ArchDSLPackage.DATA__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -117,7 +117,7 @@ public class StateNotificationImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case ArchDSLPackage.STATE_NOTIFICATION__NAME:
+      case ArchDSLPackage.DATA__NAME:
         setName((String)newValue);
         return;
     }
@@ -134,7 +134,7 @@ public class StateNotificationImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case ArchDSLPackage.STATE_NOTIFICATION__NAME:
+      case ArchDSLPackage.DATA__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -151,7 +151,7 @@ public class StateNotificationImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case ArchDSLPackage.STATE_NOTIFICATION__NAME:
+      case ArchDSLPackage.DATA__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
@@ -174,4 +174,4 @@ public class StateNotificationImpl extends MinimalEObjectImpl.Container implemen
     return result.toString();
   }
 
-} //StateNotificationImpl
+} //DataImpl

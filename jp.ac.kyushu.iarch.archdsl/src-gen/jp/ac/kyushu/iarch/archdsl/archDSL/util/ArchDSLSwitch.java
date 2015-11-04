@@ -135,10 +135,10 @@ public class ArchDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchDSLPackage.STATE_NOTIFICATION:
+      case ArchDSLPackage.DATA:
       {
-        StateNotification stateNotification = (StateNotification)theEObject;
-        T result = caseStateNotification(stateNotification);
+        Data data = (Data)theEObject;
+        T result = caseData(data);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -291,17 +291,17 @@ public class ArchDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>State Notification</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Data</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>State Notification</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Data</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseStateNotification(StateNotification object)
+  public T caseData(Data object)
   {
     return null;
   }
