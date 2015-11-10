@@ -7,7 +7,7 @@ import java.util.Collection;
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.DFlow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
-import jp.ac.kyushu.iarch.archdsl.archDSL.cParam;
+import jp.ac.kyushu.iarch.archdsl.archDSL.dParam;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DFlowImpl#getName <em>Name</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DFlowImpl#getCparam <em>Cparam</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DFlowImpl#getDparam <em>Dparam</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DFlowImpl#getDataflows <em>Dataflows</em>}</li>
  * </ul>
  * </p>
@@ -61,14 +61,14 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getCparam() <em>Cparam</em>}' containment reference list.
+   * The cached value of the '{@link #getDparam() <em>Dparam</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCparam()
+   * @see #getDparam()
    * @generated
    * @ordered
    */
-  protected EList<cParam> cparam;
+  protected EList<dParam> dparam;
 
   /**
    * The cached value of the '{@link #getDataflows() <em>Dataflows</em>}' containment reference list.
@@ -129,13 +129,13 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<cParam> getCparam()
+  public EList<dParam> getDparam()
   {
-    if (cparam == null)
+    if (dparam == null)
     {
-      cparam = new EObjectContainmentEList<cParam>(cParam.class, this, ArchDSLPackage.DFLOW__CPARAM);
+      dparam = new EObjectContainmentEList<dParam>(dParam.class, this, ArchDSLPackage.DFLOW__DPARAM);
     }
-    return cparam;
+    return dparam;
   }
 
   /**
@@ -162,8 +162,8 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
   {
     switch (featureID)
     {
-      case ArchDSLPackage.DFLOW__CPARAM:
-        return ((InternalEList<?>)getCparam()).basicRemove(otherEnd, msgs);
+      case ArchDSLPackage.DFLOW__DPARAM:
+        return ((InternalEList<?>)getDparam()).basicRemove(otherEnd, msgs);
       case ArchDSLPackage.DFLOW__DATAFLOWS:
         return ((InternalEList<?>)getDataflows()).basicRemove(otherEnd, msgs);
     }
@@ -182,8 +182,8 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
     {
       case ArchDSLPackage.DFLOW__NAME:
         return getName();
-      case ArchDSLPackage.DFLOW__CPARAM:
-        return getCparam();
+      case ArchDSLPackage.DFLOW__DPARAM:
+        return getDparam();
       case ArchDSLPackage.DFLOW__DATAFLOWS:
         return getDataflows();
     }
@@ -204,9 +204,9 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
       case ArchDSLPackage.DFLOW__NAME:
         setName((String)newValue);
         return;
-      case ArchDSLPackage.DFLOW__CPARAM:
-        getCparam().clear();
-        getCparam().addAll((Collection<? extends cParam>)newValue);
+      case ArchDSLPackage.DFLOW__DPARAM:
+        getDparam().clear();
+        getDparam().addAll((Collection<? extends dParam>)newValue);
         return;
       case ArchDSLPackage.DFLOW__DATAFLOWS:
         getDataflows().clear();
@@ -229,8 +229,8 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
       case ArchDSLPackage.DFLOW__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ArchDSLPackage.DFLOW__CPARAM:
-        getCparam().clear();
+      case ArchDSLPackage.DFLOW__DPARAM:
+        getDparam().clear();
         return;
       case ArchDSLPackage.DFLOW__DATAFLOWS:
         getDataflows().clear();
@@ -251,8 +251,8 @@ public class DFlowImpl extends MinimalEObjectImpl.Container implements DFlow
     {
       case ArchDSLPackage.DFLOW__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ArchDSLPackage.DFLOW__CPARAM:
-        return cparam != null && !cparam.isEmpty();
+      case ArchDSLPackage.DFLOW__DPARAM:
+        return dparam != null && !dparam.isEmpty();
       case ArchDSLPackage.DFLOW__DATAFLOWS:
         return dataflows != null && !dataflows.isEmpty();
     }

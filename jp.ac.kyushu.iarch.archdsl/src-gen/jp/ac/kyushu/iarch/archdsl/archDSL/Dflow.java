@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.DFlow#getName <em>Name</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.DFlow#getCparam <em>Cparam</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.DFlow#getDparam <em>Dparam</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.DFlow#getDataflows <em>Dataflows</em>}</li>
  * </ul>
  * </p>
@@ -53,20 +53,20 @@ public interface DFlow extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Cparam</b></em>' containment reference list.
-   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.cParam}.
+   * Returns the value of the '<em><b>Dparam</b></em>' containment reference list.
+   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.dParam}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Cparam</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Dparam</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cparam</em>' containment reference list.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getDFlow_Cparam()
+   * @return the value of the '<em>Dparam</em>' containment reference list.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getDFlow_Dparam()
    * @model containment="true"
    * @generated
    */
-  EList<cParam> getCparam();
+  EList<dParam> getDparam();
 
   /**
    * Returns the value of the '<em><b>Dataflows</b></em>' containment reference list.

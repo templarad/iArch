@@ -100,6 +100,11 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
         return createcParamAdapter();
       }
       @Override
+      public Adapter casedParam(dParam object)
+      {
+        return createdParamAdapter();
+      }
+      @Override
       public Adapter caseConnector(Connector object)
       {
         return createConnectorAdapter();
@@ -118,11 +123,6 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseDataflow(Dataflow object)
       {
         return createDataflowAdapter();
-      }
-      @Override
-      public Adapter caseData(Data object)
-      {
-        return createDataAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -222,6 +222,21 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.dParam <em>dParam</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see jp.ac.kyushu.iarch.archdsl.archDSL.dParam
+   * @generated
+   */
+  public Adapter createdParamAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Connector <em>Connector</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -277,21 +292,6 @@ public class ArchDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDataflowAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link jp.ac.kyushu.iarch.archdsl.archDSL.Data <em>Data</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.Data
-   * @generated
-   */
-  public Adapter createDataAdapter()
   {
     return null;
   }

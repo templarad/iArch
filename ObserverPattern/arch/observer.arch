@@ -14,24 +14,3 @@ Subject = (Subject.setState->
 );            
 Observer = (Observer.update->Subject.getState
 	->Observer);
-
-
-//dataflow definition
-//Dflow data state;
-//
-//Dfa  Dataflow;
-
-/* 
-Dataflow = (Subject.setState->>
-	Observer.update->>Subject.getState->>Subject
-); 
-*/
-
-//Dataflow = [|state|->>Subject.setState->>|state|->>Subject->>
-//	|state|->>Subject.getState->>|state|->>Observer];
-      
-
-/*    
-Dataflow = [ |state|->>Subject.getState->>|state|->>Observer ];
-*/
-

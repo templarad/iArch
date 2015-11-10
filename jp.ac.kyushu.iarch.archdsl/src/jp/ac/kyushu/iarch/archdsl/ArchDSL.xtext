@@ -7,7 +7,6 @@ Model:
 	behaviors+=Behavior* 
 	connectors+=Connector*
 	dflows+=DFlow*
-	datas+=Data*
 ;
 
 Interface:
@@ -28,6 +27,10 @@ cParam :
     name=ID
 ;
 
+dParam :
+    name=ID
+;
+
 Connector:
     "interface connector" name=ID "(" (cparam+=cParam(","cparam+=cParam)*)? ")" "{"
         behaviors+=Behavior*
@@ -38,29 +41,24 @@ Behavior:
 	interface=[Interface] "="  (call+=[Method|FQN]("->"call+=[Method|FQN])*"->"end=[Interface])?";"
 ;
 	
+
 DFlow:
-	"interface dflow" name=ID "(" (cparam+=cParam(","cparam+=cParam)*)? ")" "{"
-		dataflows+=Dataflow*
+	"interface dflow" name=ID "("(dparam+=dParam(","dparam+=dParam)*)?")" "{"
+		dataflows+=Dataflow*		
 	 "}"
 ;	
 	
 Dataflow:		
-		{Dataflow}	
-		"dStateNotification" "="
-		("|"getflow+=[Data]"|""->>"
+		dparam=[dParam] "="
+		("|"getflow+=[dParam]"|""->>"
 		call+=[Method|FQN]
-		"->>""|"getflow+=[Data]"|""->>"
+		"->>""|"getflow+=[dParam]"|""->>"
 		getIf+=[Interface]
-		"->>""|"getflow+=[Data]"|""->>"
-		call+=[Method|FQN]
-		"->>""|"getflow+=[Data]"|""->>"
-		call+=[Method|FQN]
-		"->>""dStateNotification")?";"  		
+		("->>""|"getflow+=[dParam]"|""->>"
+		call+=[Method|FQN])*
+		"->>"end=[dParam])?";"  		
 ;
 
-Data:
-	"flow" name=ID ";"
-;
 
 /* some definition Directions
 * 

@@ -12,7 +12,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/behaviors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/connectors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/dflows"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Model/datas"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//Interface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Interface/name"/>
@@ -30,6 +29,9 @@
     <genClasses ecoreClass="ArchDSL.ecore#//cParam">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//cParam/name"/>
     </genClasses>
+    <genClasses ecoreClass="ArchDSL.ecore#//dParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//dParam/name"/>
+    </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//Connector">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Connector/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Connector/cparam"/>
@@ -42,16 +44,15 @@
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//DFlow">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//DFlow/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//DFlow/cparam"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//DFlow/dparam"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//DFlow/dataflows"/>
     </genClasses>
     <genClasses ecoreClass="ArchDSL.ecore#//Dataflow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Dataflow/dparam"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Dataflow/getflow"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Dataflow/call"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Dataflow/getIf"/>
-    </genClasses>
-    <genClasses ecoreClass="ArchDSL.ecore#//Data">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchDSL.ecore#//Data/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchDSL.ecore#//Dataflow/end"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

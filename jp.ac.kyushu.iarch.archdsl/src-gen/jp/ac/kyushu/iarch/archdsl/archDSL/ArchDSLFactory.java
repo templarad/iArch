@@ -68,6 +68,15 @@ public interface ArchDSLFactory extends EFactory
   cParam createcParam();
 
   /**
+   * Returns a new object of class '<em>dParam</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>dParam</em>'.
+   * @generated
+   */
+  dParam createdParam();
+
+  /**
    * Returns a new object of class '<em>Connector</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -102,15 +111,6 @@ public interface ArchDSLFactory extends EFactory
    * @generated
    */
   Dataflow createDataflow();
-
-  /**
-   * Returns a new object of class '<em>Data</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Data</em>'.
-   * @generated
-   */
-  Data createData();
 
   /**
    * Returns the package supported by this factory.

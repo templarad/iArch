@@ -107,6 +107,13 @@ public class ArchDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ArchDSLPackage.DPARAM:
+      {
+        dParam dParam = (dParam)theEObject;
+        T result = casedParam(dParam);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ArchDSLPackage.CONNECTOR:
       {
         Connector connector = (Connector)theEObject;
@@ -132,13 +139,6 @@ public class ArchDSLSwitch<T> extends Switch<T>
       {
         Dataflow dataflow = (Dataflow)theEObject;
         T result = caseDataflow(dataflow);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ArchDSLPackage.DATA:
-      {
-        Data data = (Data)theEObject;
-        T result = caseData(data);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -227,6 +227,22 @@ public class ArchDSLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>dParam</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>dParam</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casedParam(dParam object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Connector</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -286,22 +302,6 @@ public class ArchDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDataflow(Dataflow object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Data</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Data</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseData(Data object)
   {
     return null;
   }

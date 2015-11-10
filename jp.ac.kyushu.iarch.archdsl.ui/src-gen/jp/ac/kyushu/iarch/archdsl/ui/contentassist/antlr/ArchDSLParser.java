@@ -53,15 +53,14 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDFlowAccess().getGroup_3(), "rule__DFlow__Group_3__0");
 					put(grammarAccess.getDFlowAccess().getGroup_3_1(), "rule__DFlow__Group_3_1__0");
 					put(grammarAccess.getDataflowAccess().getGroup(), "rule__Dataflow__Group__0");
-					put(grammarAccess.getDataflowAccess().getGroup_3(), "rule__Dataflow__Group_3__0");
-					put(grammarAccess.getDataAccess().getGroup(), "rule__Data__Group__0");
+					put(grammarAccess.getDataflowAccess().getGroup_2(), "rule__Dataflow__Group_2__0");
+					put(grammarAccess.getDataflowAccess().getGroup_2_11(), "rule__Dataflow__Group_2_11__0");
 					put(grammarAccess.getFQNAccess().getGroup(), "rule__FQN__Group__0");
 					put(grammarAccess.getFQNAccess().getGroup_1(), "rule__FQN__Group_1__0");
 					put(grammarAccess.getModelAccess().getInterfacesAssignment_0(), "rule__Model__InterfacesAssignment_0");
 					put(grammarAccess.getModelAccess().getBehaviorsAssignment_1(), "rule__Model__BehaviorsAssignment_1");
 					put(grammarAccess.getModelAccess().getConnectorsAssignment_2(), "rule__Model__ConnectorsAssignment_2");
 					put(grammarAccess.getModelAccess().getDflowsAssignment_3(), "rule__Model__DflowsAssignment_3");
-					put(grammarAccess.getModelAccess().getDatasAssignment_4(), "rule__Model__DatasAssignment_4");
 					put(grammarAccess.getInterfaceAccess().getNameAssignment_1(), "rule__Interface__NameAssignment_1");
 					put(grammarAccess.getInterfaceAccess().getMethodsAssignment_3(), "rule__Interface__MethodsAssignment_3");
 					put(grammarAccess.getMethodAccess().getTypeAssignment_0(), "rule__Method__TypeAssignment_0");
@@ -71,6 +70,7 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParamAccess().getTypeAssignment_0(), "rule__Param__TypeAssignment_0");
 					put(grammarAccess.getParamAccess().getNameAssignment_1(), "rule__Param__NameAssignment_1");
 					put(grammarAccess.getCParamAccess().getNameAssignment(), "rule__CParam__NameAssignment");
+					put(grammarAccess.getDParamAccess().getNameAssignment(), "rule__DParam__NameAssignment");
 					put(grammarAccess.getConnectorAccess().getNameAssignment_1(), "rule__Connector__NameAssignment_1");
 					put(grammarAccess.getConnectorAccess().getCparamAssignment_3_0(), "rule__Connector__CparamAssignment_3_0");
 					put(grammarAccess.getConnectorAccess().getCparamAssignment_3_1_1(), "rule__Connector__CparamAssignment_3_1_1");
@@ -80,18 +80,17 @@ public class ArchDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBehaviorAccess().getCallAssignment_2_1_1(), "rule__Behavior__CallAssignment_2_1_1");
 					put(grammarAccess.getBehaviorAccess().getEndAssignment_2_3(), "rule__Behavior__EndAssignment_2_3");
 					put(grammarAccess.getDFlowAccess().getNameAssignment_1(), "rule__DFlow__NameAssignment_1");
-					put(grammarAccess.getDFlowAccess().getCparamAssignment_3_0(), "rule__DFlow__CparamAssignment_3_0");
-					put(grammarAccess.getDFlowAccess().getCparamAssignment_3_1_1(), "rule__DFlow__CparamAssignment_3_1_1");
+					put(grammarAccess.getDFlowAccess().getDparamAssignment_3_0(), "rule__DFlow__DparamAssignment_3_0");
+					put(grammarAccess.getDFlowAccess().getDparamAssignment_3_1_1(), "rule__DFlow__DparamAssignment_3_1_1");
 					put(grammarAccess.getDFlowAccess().getDataflowsAssignment_6(), "rule__DFlow__DataflowsAssignment_6");
-					put(grammarAccess.getDataflowAccess().getGetflowAssignment_3_1(), "rule__Dataflow__GetflowAssignment_3_1");
-					put(grammarAccess.getDataflowAccess().getCallAssignment_3_4(), "rule__Dataflow__CallAssignment_3_4");
-					put(grammarAccess.getDataflowAccess().getGetflowAssignment_3_7(), "rule__Dataflow__GetflowAssignment_3_7");
-					put(grammarAccess.getDataflowAccess().getGetIfAssignment_3_10(), "rule__Dataflow__GetIfAssignment_3_10");
-					put(grammarAccess.getDataflowAccess().getGetflowAssignment_3_13(), "rule__Dataflow__GetflowAssignment_3_13");
-					put(grammarAccess.getDataflowAccess().getCallAssignment_3_16(), "rule__Dataflow__CallAssignment_3_16");
-					put(grammarAccess.getDataflowAccess().getGetflowAssignment_3_19(), "rule__Dataflow__GetflowAssignment_3_19");
-					put(grammarAccess.getDataflowAccess().getCallAssignment_3_22(), "rule__Dataflow__CallAssignment_3_22");
-					put(grammarAccess.getDataAccess().getNameAssignment_1(), "rule__Data__NameAssignment_1");
+					put(grammarAccess.getDataflowAccess().getDparamAssignment_0(), "rule__Dataflow__DparamAssignment_0");
+					put(grammarAccess.getDataflowAccess().getGetflowAssignment_2_1(), "rule__Dataflow__GetflowAssignment_2_1");
+					put(grammarAccess.getDataflowAccess().getCallAssignment_2_4(), "rule__Dataflow__CallAssignment_2_4");
+					put(grammarAccess.getDataflowAccess().getGetflowAssignment_2_7(), "rule__Dataflow__GetflowAssignment_2_7");
+					put(grammarAccess.getDataflowAccess().getGetIfAssignment_2_10(), "rule__Dataflow__GetIfAssignment_2_10");
+					put(grammarAccess.getDataflowAccess().getGetflowAssignment_2_11_2(), "rule__Dataflow__GetflowAssignment_2_11_2");
+					put(grammarAccess.getDataflowAccess().getCallAssignment_2_11_5(), "rule__Dataflow__CallAssignment_2_11_5");
+					put(grammarAccess.getDataflowAccess().getEndAssignment_2_13(), "rule__Dataflow__EndAssignment_2_13");
 				}
 			};
 		}

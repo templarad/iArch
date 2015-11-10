@@ -5,15 +5,19 @@ package jp.ac.kyushu.iarch.archdsl.archDSL.impl;
 import java.util.Collection;
 
 import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Data;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
+import jp.ac.kyushu.iarch.archdsl.archDSL.dParam;
+
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
@@ -25,9 +29,11 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getDparam <em>Dparam</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getGetflow <em>Getflow</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getCall <em>Call</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getGetIf <em>Get If</em>}</li>
+ *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.impl.DataflowImpl#getEnd <em>End</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,6 +42,16 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 public class DataflowImpl extends MinimalEObjectImpl.Container implements Dataflow
 {
   /**
+   * The cached value of the '{@link #getDparam() <em>Dparam</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDparam()
+   * @generated
+   * @ordered
+   */
+  protected dParam dparam;
+
+  /**
    * The cached value of the '{@link #getGetflow() <em>Getflow</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -43,7 +59,7 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * @generated
    * @ordered
    */
-  protected EList<Data> getflow;
+  protected EList<dParam> getflow;
 
   /**
    * The cached value of the '{@link #getCall() <em>Call</em>}' reference list.
@@ -64,6 +80,16 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * @ordered
    */
   protected EList<Interface> getIf;
+
+  /**
+   * The cached value of the '{@link #getEnd() <em>End</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnd()
+   * @generated
+   * @ordered
+   */
+  protected dParam end;
 
   /**
    * <!-- begin-user-doc -->
@@ -91,11 +117,54 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Data> getGetflow()
+  public dParam getDparam()
+  {
+    if (dparam != null && dparam.eIsProxy())
+    {
+      InternalEObject oldDparam = (InternalEObject)dparam;
+      dparam = (dParam)eResolveProxy(oldDparam);
+      if (dparam != oldDparam)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.DATAFLOW__DPARAM, oldDparam, dparam));
+      }
+    }
+    return dparam;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public dParam basicGetDparam()
+  {
+    return dparam;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDparam(dParam newDparam)
+  {
+    dParam oldDparam = dparam;
+    dparam = newDparam;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.DATAFLOW__DPARAM, oldDparam, dparam));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<dParam> getGetflow()
   {
     if (getflow == null)
     {
-      getflow = new EObjectResolvingEList<Data>(Data.class, this, ArchDSLPackage.DATAFLOW__GETFLOW);
+      getflow = new EObjectResolvingEList<dParam>(dParam.class, this, ArchDSLPackage.DATAFLOW__GETFLOW);
     }
     return getflow;
   }
@@ -133,17 +202,66 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
    * <!-- end-user-doc -->
    * @generated
    */
+  public dParam getEnd()
+  {
+    if (end != null && end.eIsProxy())
+    {
+      InternalEObject oldEnd = (InternalEObject)end;
+      end = (dParam)eResolveProxy(oldEnd);
+      if (end != oldEnd)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchDSLPackage.DATAFLOW__END, oldEnd, end));
+      }
+    }
+    return end;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public dParam basicGetEnd()
+  {
+    return end;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEnd(dParam newEnd)
+  {
+    dParam oldEnd = end;
+    end = newEnd;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchDSLPackage.DATAFLOW__END, oldEnd, end));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
+      case ArchDSLPackage.DATAFLOW__DPARAM:
+        if (resolve) return getDparam();
+        return basicGetDparam();
       case ArchDSLPackage.DATAFLOW__GETFLOW:
         return getGetflow();
       case ArchDSLPackage.DATAFLOW__CALL:
         return getCall();
       case ArchDSLPackage.DATAFLOW__GET_IF:
         return getGetIf();
+      case ArchDSLPackage.DATAFLOW__END:
+        if (resolve) return getEnd();
+        return basicGetEnd();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -159,9 +277,12 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
   {
     switch (featureID)
     {
+      case ArchDSLPackage.DATAFLOW__DPARAM:
+        setDparam((dParam)newValue);
+        return;
       case ArchDSLPackage.DATAFLOW__GETFLOW:
         getGetflow().clear();
-        getGetflow().addAll((Collection<? extends Data>)newValue);
+        getGetflow().addAll((Collection<? extends dParam>)newValue);
         return;
       case ArchDSLPackage.DATAFLOW__CALL:
         getCall().clear();
@@ -170,6 +291,9 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
       case ArchDSLPackage.DATAFLOW__GET_IF:
         getGetIf().clear();
         getGetIf().addAll((Collection<? extends Interface>)newValue);
+        return;
+      case ArchDSLPackage.DATAFLOW__END:
+        setEnd((dParam)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -185,6 +309,9 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
   {
     switch (featureID)
     {
+      case ArchDSLPackage.DATAFLOW__DPARAM:
+        setDparam((dParam)null);
+        return;
       case ArchDSLPackage.DATAFLOW__GETFLOW:
         getGetflow().clear();
         return;
@@ -193,6 +320,9 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
         return;
       case ArchDSLPackage.DATAFLOW__GET_IF:
         getGetIf().clear();
+        return;
+      case ArchDSLPackage.DATAFLOW__END:
+        setEnd((dParam)null);
         return;
     }
     super.eUnset(featureID);
@@ -208,12 +338,16 @@ public class DataflowImpl extends MinimalEObjectImpl.Container implements Datafl
   {
     switch (featureID)
     {
+      case ArchDSLPackage.DATAFLOW__DPARAM:
+        return dparam != null;
       case ArchDSLPackage.DATAFLOW__GETFLOW:
         return getflow != null && !getflow.isEmpty();
       case ArchDSLPackage.DATAFLOW__CALL:
         return call != null && !call.isEmpty();
       case ArchDSLPackage.DATAFLOW__GET_IF:
         return getIf != null && !getIf.isEmpty();
+      case ArchDSLPackage.DATAFLOW__END:
+        return end != null;
     }
     return super.eIsSet(featureID);
   }

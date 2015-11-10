@@ -19,7 +19,7 @@ cObserver =
 	->cObserver;
 }
 
-interface dflow dObserverPattern(cSubject,cObserver){
+interface dflow dObserverPattern(dStateNotification,cSubject,cObserver,state){
 	dStateNotification = 
 		 |state|->>
 	cSubject.setState
@@ -31,11 +31,3 @@ interface dflow dObserverPattern(cSubject,cObserver){
 	cObserver.update
 	->>dStateNotification;
 }
-
-
-
-
-
-
-flow
-	state;	

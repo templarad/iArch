@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getBehaviors <em>Behaviors</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getConnectors <em>Connectors</em>}</li>
  *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getDflows <em>Dflows</em>}</li>
- *   <li>{@link jp.ac.kyushu.iarch.archdsl.archDSL.Model#getDatas <em>Datas</em>}</li>
  * </ul>
  * </p>
  *
@@ -91,21 +90,5 @@ public interface Model extends EObject
    * @generated
    */
   EList<DFlow> getDflows();
-
-  /**
-   * Returns the value of the '<em><b>Datas</b></em>' containment reference list.
-   * The list contents are of type {@link jp.ac.kyushu.iarch.archdsl.archDSL.Data}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Datas</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Datas</em>' containment reference list.
-   * @see jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage#getModel_Datas()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Data> getDatas();
 
 } // Model

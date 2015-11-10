@@ -51,7 +51,7 @@ public class SelectDiagramsDialog extends Dialog {
 	
 	@Override
 	protected Point getInitialSize() {
-		return new Point(400, 500);
+		return new Point(480, 700);
 	}
 	
 	@Override

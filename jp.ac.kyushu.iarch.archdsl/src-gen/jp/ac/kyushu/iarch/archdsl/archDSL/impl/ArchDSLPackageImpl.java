@@ -7,13 +7,13 @@ import jp.ac.kyushu.iarch.archdsl.archDSL.ArchDSLPackage;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Behavior;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Connector;
 import jp.ac.kyushu.iarch.archdsl.archDSL.DFlow;
-import jp.ac.kyushu.iarch.archdsl.archDSL.Data;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Dataflow;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Interface;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Method;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Model;
 import jp.ac.kyushu.iarch.archdsl.archDSL.Param;
 import jp.ac.kyushu.iarch.archdsl.archDSL.cParam;
+import jp.ac.kyushu.iarch.archdsl.archDSL.dParam;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -70,6 +70,13 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass dParamEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass connectorEClass = null;
 
   /**
@@ -92,13 +99,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * @generated
    */
   private EClass dataflowEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass dataEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -211,16 +211,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
   public EReference getModel_Dflows()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getModel_Datas()
-  {
-    return (EReference)modelEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -348,6 +338,26 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getdParam()
+  {
+    return dParamEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getdParam_Name()
+  {
+    return (EAttribute)dParamEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getConnector()
   {
     return connectorEClass;
@@ -448,7 +458,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDFlow_Cparam()
+  public EReference getDFlow_Dparam()
   {
     return (EReference)dFlowEClass.getEStructuralFeatures().get(1);
   }
@@ -478,7 +488,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDataflow_Getflow()
+  public EReference getDataflow_Dparam()
   {
     return (EReference)dataflowEClass.getEStructuralFeatures().get(0);
   }
@@ -488,7 +498,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDataflow_Call()
+  public EReference getDataflow_Getflow()
   {
     return (EReference)dataflowEClass.getEStructuralFeatures().get(1);
   }
@@ -498,7 +508,7 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDataflow_GetIf()
+  public EReference getDataflow_Call()
   {
     return (EReference)dataflowEClass.getEStructuralFeatures().get(2);
   }
@@ -508,9 +518,9 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getData()
+  public EReference getDataflow_GetIf()
   {
-    return dataEClass;
+    return (EReference)dataflowEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -518,9 +528,9 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getData_Name()
+  public EReference getDataflow_End()
   {
-    return (EAttribute)dataEClass.getEStructuralFeatures().get(0);
+    return (EReference)dataflowEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -558,7 +568,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     createEReference(modelEClass, MODEL__BEHAVIORS);
     createEReference(modelEClass, MODEL__CONNECTORS);
     createEReference(modelEClass, MODEL__DFLOWS);
-    createEReference(modelEClass, MODEL__DATAS);
 
     interfaceEClass = createEClass(INTERFACE);
     createEAttribute(interfaceEClass, INTERFACE__NAME);
@@ -576,6 +585,9 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     cParamEClass = createEClass(CPARAM);
     createEAttribute(cParamEClass, CPARAM__NAME);
 
+    dParamEClass = createEClass(DPARAM);
+    createEAttribute(dParamEClass, DPARAM__NAME);
+
     connectorEClass = createEClass(CONNECTOR);
     createEAttribute(connectorEClass, CONNECTOR__NAME);
     createEReference(connectorEClass, CONNECTOR__CPARAM);
@@ -588,16 +600,15 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
 
     dFlowEClass = createEClass(DFLOW);
     createEAttribute(dFlowEClass, DFLOW__NAME);
-    createEReference(dFlowEClass, DFLOW__CPARAM);
+    createEReference(dFlowEClass, DFLOW__DPARAM);
     createEReference(dFlowEClass, DFLOW__DATAFLOWS);
 
     dataflowEClass = createEClass(DATAFLOW);
+    createEReference(dataflowEClass, DATAFLOW__DPARAM);
     createEReference(dataflowEClass, DATAFLOW__GETFLOW);
     createEReference(dataflowEClass, DATAFLOW__CALL);
     createEReference(dataflowEClass, DATAFLOW__GET_IF);
-
-    dataEClass = createEClass(DATA);
-    createEAttribute(dataEClass, DATA__NAME);
+    createEReference(dataflowEClass, DATAFLOW__END);
   }
 
   /**
@@ -636,7 +647,6 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     initEReference(getModel_Behaviors(), this.getBehavior(), null, "behaviors", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Connectors(), this.getConnector(), null, "connectors", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Dflows(), this.getDFlow(), null, "dflows", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Datas(), this.getData(), null, "datas", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(interfaceEClass, Interface.class, "Interface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInterface_Name(), ecorePackage.getEString(), "name", null, 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -654,6 +664,9 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
     initEClass(cParamEClass, cParam.class, "cParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getcParam_Name(), ecorePackage.getEString(), "name", null, 0, 1, cParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(dParamEClass, dParam.class, "dParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getdParam_Name(), ecorePackage.getEString(), "name", null, 0, 1, dParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(connectorEClass, Connector.class, "Connector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getConnector_Name(), ecorePackage.getEString(), "name", null, 0, 1, Connector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConnector_Cparam(), this.getcParam(), null, "cparam", null, 0, -1, Connector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -666,16 +679,15 @@ public class ArchDSLPackageImpl extends EPackageImpl implements ArchDSLPackage
 
     initEClass(dFlowEClass, DFlow.class, "DFlow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDFlow_Name(), ecorePackage.getEString(), "name", null, 0, 1, DFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDFlow_Cparam(), this.getcParam(), null, "cparam", null, 0, -1, DFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDFlow_Dparam(), this.getdParam(), null, "dparam", null, 0, -1, DFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDFlow_Dataflows(), this.getDataflow(), null, "dataflows", null, 0, -1, DFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(dataflowEClass, Dataflow.class, "Dataflow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getDataflow_Getflow(), this.getData(), null, "getflow", null, 0, -1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDataflow_Dparam(), this.getdParam(), null, "dparam", null, 0, 1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDataflow_Getflow(), this.getdParam(), null, "getflow", null, 0, -1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDataflow_Call(), this.getMethod(), null, "call", null, 0, -1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDataflow_GetIf(), this.getInterface(), null, "getIf", null, 0, -1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(dataEClass, Data.class, "Data", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getData_Name(), ecorePackage.getEString(), "name", null, 0, 1, Data.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDataflow_End(), this.getdParam(), null, "end", null, 0, 1, Dataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);
